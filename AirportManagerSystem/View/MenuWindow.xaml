@@ -1,0 +1,41 @@
+﻿<Window x:Class="AirportManagerSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirportManagerSystem"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <DockPanel>
+            <Menu HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="auto">
+                <MenuItem Header="System" Name="systemMenu">
+                    <MenuItem Header="My Log" Name="logMenu"/>
+                    <MenuItem Header="Profile" Name="profileMenu"/>
+                    <Separator/>
+                    <MenuItem Header="Exit" Name="exitMenu" Click="ExitMenu_Click"/>
+                </MenuItem>
+                <MenuItem Header="Manage">
+                    <MenuItem Header="Users" Name="usersMenu"/>
+                    <MenuItem Header="Fights" Name="fightsMenu"/>
+                    <MenuItem Header="Tickets" Name="ticketsMenu"/>
+                    <MenuItem Header="Amenities" Name="amenitiesMenu"/>
+                    <MenuItem Header="Seats" Name="seatsMenu"/>
+                </MenuItem>
+                <MenuItem Header="Business">
+                    <MenuItem Header="Book Flight" Name="bookFlightMenu"/>
+                    <MenuItem Header="Purchase Amenities" Name="purchaseAmenitiesMenu"/>
+                </MenuItem>
+                <MenuItem Header="Report">
+                    <MenuItem Header="Amenities" Name="amenitiesReprotMenu"/>
+                    <MenuItem Header="Survey" Name="surveyReportMenu"/>
+                    <MenuItem Header="Short Summary" Name="shortSummaryReportMenu"/>
+                </MenuItem>
+                <MenuItem Header="Introduce">
+                    <MenuItem Header="Amonic Airline" Name="amonicAirlineMenu"/>
+                    <MenuItem Header="Automation System" Name="automationSystemMenu"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+    </StackPanel>
+</Window>
