@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AirportManagerSystem.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,19 +11,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AirportManagerSystem
+namespace AirportManagerSystem.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MenuWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MenuWindow : Window
     {
-        public MainWindow()
+        public User User { get; internal set; }
+        public MenuWindow()
         {
             InitializeComponent();
+        }
+
+        private void usersMenu_Click(object sender, RoutedEventArgs e)
+        {
+            UserManagementWindow wUsers = new UserManagementWindow();
+            wUsers.ShowDialog();
         }
     }
 }

@@ -31,6 +31,7 @@ namespace AirportManagerSystem.Model
         public int PassportCountryID { get; set; }
         public string BookingReference { get; set; }
         public bool Confirmed { get; set; }
+        public string Seat { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AmenitiesTicket> AmenitiesTickets { get; set; }

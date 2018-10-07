@@ -63,13 +63,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="View\LoginWindow.xaml">
+    <Compile Include="View\CrashWindow.xaml.cs">
+      <DependentUpon>CrashWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginHistoryWindow.xaml.cs">
+      <DependentUpon>LoginHistoryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MenuWindow.xaml.cs">
+      <DependentUpon>MenuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserManagementWindow.xaml.cs">
+      <DependentUpon>UserManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\CrashWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MenuWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="View\LayoutWindow.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -114,9 +129,11 @@
     <Compile Include="Model\Crash.cs">
       <DependentUpon>AirlineManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Db.cs" />
     <Compile Include="Model\LoginHistory.cs">
       <DependentUpon>AirlineManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Md5Helper.cs" />
     <Compile Include="Model\Office.cs">
       <DependentUpon>AirlineManagementModel.tt</DependentUpon>
     </Compile>
@@ -144,13 +161,25 @@
     <Compile Include="Model\User.cs">
       <DependentUpon>AirlineManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="View\LoginWindow.xaml.cs">
-      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    <Compile Include="View\LayoutWindow.xaml.cs">
+      <DependentUpon>LayoutWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MenuWindow.xaml.cs">
-      <DependentUpon>MenuWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="View\LoginHistoryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserManagementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -193,6 +222,7 @@
     <Folder Include="Controller\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\WSC2017_TP09_color.png" />
     <Content Include="Model\AirlineManagementModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AirlineManagementModel.edmx</DependentUpon>
