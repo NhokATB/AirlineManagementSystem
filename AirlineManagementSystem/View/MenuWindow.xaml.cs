@@ -24,12 +24,26 @@ namespace AirportManagerSystem.View
         public MenuWindow()
         {
             InitializeComponent();
+            imgLogo.Source = new BitmapImage(new Uri(@"/AirportManagerSystem;component/Images/WSC2017_TP09_color@4x.png", UriKind.Relative));
+            this.Closing += MenuWindow_Closing;
         }
 
-        private void usersMenu_Click(object sender, RoutedEventArgs e)
+        private void MenuWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var log = Db.Context.LoginHistories.Where(t => t.UserId == User.ID).ToList().Last();
+            log.LogoutTime = DateTime.Now;
+            Db.Context.SaveChanges();
+        }
+
+        private void MnUsers_Click(object sender, RoutedEventArgs e)
         {
             UserManagementWindow wUsers = new UserManagementWindow();
             wUsers.ShowDialog();
+        }
+
+        private void mnExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

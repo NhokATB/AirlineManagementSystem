@@ -63,6 +63,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\AddUserWindow.xaml.cs">
+      <DependentUpon>AddUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChangeRoleWindow.xaml.cs">
+      <DependentUpon>ChangeRoleWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CrashWindow.xaml.cs">
       <DependentUpon>CrashWindow.xaml</DependentUpon>
     </Compile>
@@ -78,6 +84,14 @@
     <Compile Include="View\UserManagementWindow.xaml.cs">
       <DependentUpon>UserManagementWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\AddUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChangeRoleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CrashWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -223,6 +237,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\WSC2017_TP09_color.png" />
+    <Resource Include="Images\WSC2017_TP09_color%402x.png" />
+    <Resource Include="Images\WSC2017_TP09_color%404x.png" />
     <Content Include="Model\AirlineManagementModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AirlineManagementModel.edmx</DependentUpon>

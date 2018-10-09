@@ -6,27 +6,36 @@
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Loaded="Window_Loaded"
         Title="User Management" Height="550" Width="1000">
     <StackPanel>
         <Menu>
             <MenuItem Header="Add User" Name="addUserMenu" Click="addUserMenu_Click"></MenuItem>
         </Menu>
-        <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+        <StackPanel Orientation="Horizontal" Margin="10,5,5,5">
             <TextBlock TextAlignment="Left" VerticalAlignment="Center">Office:</TextBlock>
-            <ComboBox Width="150" Margin="5,5,5,5"></ComboBox>
+            <ComboBox Name="cbOffice" Width="150" Margin="5,5,5,5" SelectionChanged="cbOffice_SelectionChanged"></ComboBox>
         </StackPanel>
-        <ListView Margin="5,5,5,5" Name="lsvUsers">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding FirstName}"  Width="100" Header="First name"></GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding LastName}" Width="100" Header="Last name"></GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Birthdate}" Header="Age"></GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Role.Title}" Width="80" Header="User Role"></GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Email}" Width="300" Header="Email Address"></GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Office.Title}" Width="140" Header="Office"></GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="10,5,10,5" Height="360" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Firstname" Binding="{Binding FirstName}" Width="0.6*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Lastname" Binding="{Binding LastName}" Width="0.8*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Age" Binding="{Binding Birthdate}" Width="0.2*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="User role" Binding="{Binding Role.Title}" Width="0.4*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Email address" Binding="{Binding Email}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Office" Binding="{Binding Office.Title}" Width="0.5*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation="Horizontal" Margin="10,5,5,5">
+            <DockPanel Width="20" Height="20" Background="#196AA6">
+            </DockPanel>
+            <TextBlock Margin="5,5,5,5">Admistrator</TextBlock>
+            <DockPanel Width="20" Height="20" Background="#F79420">
+            </DockPanel>
+            <TextBlock Margin="5,5,5,5">Disabled account</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10,5,5,5">
+            <Button Width="100" Height="35" Name="btnChangeRole" Click="btnChangeRole_Click" Margin="0,0,15,0">Change role</Button>
+            <Button Width="100" Height="35" Click="btnDisableAccount_Click" Name="btnDisableAccount">Disable account</Button>
+        </StackPanel>
     </StackPanel>
 </Window>

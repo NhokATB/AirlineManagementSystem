@@ -6,37 +6,38 @@
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="MenuWindow" Height="450" Width="800">
+        Title="MenuWindow" Height="550" Width="1000">
     <StackPanel>
-        <DockPanel>
-            <Menu HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="auto">
-                <MenuItem Header="System" Name="systemMenu">
-                    <MenuItem Header="My Log" Name="logMenu"/>
-                    <MenuItem Header="Profile" Name="profileMenu"/>
-                    <Separator/>
-                    <MenuItem Header="Exit" Name="exitMenu"/>
-                </MenuItem>
-                <MenuItem Header="Manage">
-                    <MenuItem Header="Users" Name="usersMenu" Click="usersMenu_Click"/>
-                    <MenuItem Header="Fights" Name="fightsMenu"/>
-                    <MenuItem Header="Tickets" Name="ticketsMenu"/>
-                    <MenuItem Header="Amenities" Name="amenitiesMenu"/>
-                    <MenuItem Header="Seats" Name="seatsMenu"/>
-                </MenuItem>
-                <MenuItem Header="Business">
-                    <MenuItem Header="Book Flight" Name="bookFlightMenu"/>
-                    <MenuItem Header="Purchase Amenities" Name="purchaseAmenitiesMenu"/>
-                </MenuItem>
-                <MenuItem Header="Report">
-                    <MenuItem Header="Amenities" Name="amenitiesReprotMenu"/>
-                    <MenuItem Header="Survey" Name="surveyReportMenu"/>
-                    <MenuItem Header="Short Summary" Name="shortSummaryReportMenu"/>
-                </MenuItem>
-                <MenuItem Header="Introduce">
-                    <MenuItem Header="Amonic Airline" Name="amonicAirlineMenu"/>
-                    <MenuItem Header="Automation System" Name="automationSystemMenu"/>
-                </MenuItem>
-            </Menu>
-        </DockPanel>
+        <Menu HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="auto">
+            <MenuItem Header="System" Name="mnSystem">
+                <MenuItem Header="My Log" Name="mnLogingHistory"/>
+                <MenuItem Header="Profile" Name="mnProfile"/>
+                <Separator/>
+                <MenuItem Header="Exit" Name="mnExit" Click="mnExit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Manage">
+                <MenuItem Header="Users" Name="mnUsers" Click="MnUsers_Click"/>
+                <MenuItem Header="Fights" Name="mnFlights"/>
+                <MenuItem Header="Tickets" Name="mnTickets"/>
+                <MenuItem Header="Amenities" Name="mnAmenities"/>
+                <MenuItem Header="Seats" Name="mnSeats"/>
+            </MenuItem>
+            <MenuItem Header="Business">
+                <MenuItem Header="Check in" Name="mnCheckIn"/>
+                <MenuItem Header="Book Flight" Name="mnBookFlight"/>
+                <MenuItem Header="Purchase Amenities" Name="mnPurchaseAmenities"/>
+            </MenuItem>
+            <MenuItem Header="Report">
+                <MenuItem Header="Amenities" Name="mnAmenitiesReprot"/>
+                <MenuItem Header="Survey" Name="mnSurveyReport"/>
+                <MenuItem Header="Short Summary" Name="mnShortSummaryReport"/>
+            </MenuItem>
+            <MenuItem Header="Introduce">
+                <MenuItem Header="Amonic Airline" Name="mnAmonicAirline"/>
+                <MenuItem Header="Automation System" Name="mnAutomationSystem"/>
+            </MenuItem>
+        </Menu>
+        <TextBlock TextAlignment="Center" FontSize="40" Margin="10,30,10,10" Foreground="DarkGreen" FontWeight="Bold">Welcome to AMONIC Airlines Automation System</TextBlock>
+        <Image Name="imgLogo" Width="auto" Height="auto" Margin="20,50,20,20"></Image>
     </StackPanel>
 </Window>
