@@ -15,7 +15,7 @@
             <TextBlock TextAlignment="Left" VerticalAlignment="Center">Office:</TextBlock>
             <ComboBox Name="cbOffice" Width="150" Margin="5,5,5,5" SelectionChanged="cbOffice_SelectionChanged"></ComboBox>
         </StackPanel>
-        <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="10,5,10,5" Height="360" CanUserAddRows="False">
+        <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="10,5,10,5" Height="355" CanUserAddRows="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Firstname" Binding="{Binding FirstName}" Width="0.6*" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Lastname" Binding="{Binding LastName}" Width="0.8*" ></DataGridTextColumn>

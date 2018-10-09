@@ -28,10 +28,18 @@ namespace AirportManagerSystem.View
             dgUsers.SelectedCellsChanged += DgUsers_SelectedCellsChanged;
             dgUsers.LoadingRow += DgUsers_LoadingRow;
         }
-        public ObservableCollection<User> Users { get; set; }
         private void DgUsers_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             var row = e.Row;
+            var user = e.Row.Item as User;
+            if (user.RoleID == 1)
+            {
+                row.Background = new SolidColorBrush(Color.FromRgb(25, 106, 166));
+            }
+            if (user.Active.Value == false)
+            {
+                row.Background = new SolidColorBrush(Color.FromRgb(247, 148, 32));
+            }
         }
 
         private void DgUsers_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
@@ -71,22 +79,10 @@ namespace AirportManagerSystem.View
             var users = Db.Context.Users.ToList();
             if (cbOffice.SelectedIndex != 0)
             {
-                users = Users.Where(t => t.Office.Title == cbOffice.Text).ToList();
+                users = users.Where(t => t.Office.Title == cbOffice.Text).ToList();
             }
 
-            foreach (var item in Users)
-            {
-                dgUsers.Items.Add(item);
-                //var row = (DataGridRow)dgUsers.ItemContainerGenerator.ContainerFromItem(item);
-                //if (item.RoleID == 1)
-                //{
-                //    row.Background = new SolidColorBrush(Color.FromRgb(25, 106, 166));
-                //}
-                //if (item.Active.Value == false)
-                //{
-                //    row.Background = new SolidColorBrush(Color.FromRgb(247, 148, 32));
-                //}
-            }
+            dgUsers.ItemsSource = users;
         }
 
         private void addUserMenu_Click(object sender, RoutedEventArgs e)
