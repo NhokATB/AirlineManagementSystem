@@ -28,6 +28,8 @@ namespace AirportManagerSystem.View
             dgUsers.SelectedCellsChanged += DgUsers_SelectedCellsChanged;
             dgUsers.LoadingRow += DgUsers_LoadingRow;
         }
+        private User currentUser;
+        private List<Office> offices;
         private void DgUsers_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             var row = e.Row;
@@ -46,9 +48,9 @@ namespace AirportManagerSystem.View
         {
             try
             {
-                var user = dgUsers.CurrentItem as User;
+                currentUser = dgUsers.CurrentItem as User;
 
-                if (user.Active.Value)
+                if (currentUser.Active.Value)
                 {
                     btnDisableAccount.Content = "Disable account";
                     btnDisableAccount.Foreground = new SolidColorBrush(Colors.Red);
@@ -66,7 +68,7 @@ namespace AirportManagerSystem.View
 
         private void UserManagementWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            var offices = Db.Context.Offices.ToList();
+            offices = Db.Context.Offices.ToList();
             offices.Insert(0, new Office() { Title = "All offices" });
             cbOffice.ItemsSource = offices;
             cbOffice.DisplayMemberPath = "Title";
@@ -75,11 +77,12 @@ namespace AirportManagerSystem.View
 
         public void LoadUsers()
         {
-            dgUsers.Items.Clear();
+            dgUsers.ItemsSource = null;
             var users = Db.Context.Users.ToList();
-            if (cbOffice.SelectedIndex != 0)
+            var officeName = offices[cbOffice.SelectedIndex].Title;
+            if (officeName != "All offices")
             {
-                users = users.Where(t => t.Office.Title == cbOffice.Text).ToList();
+                users = users.Where(t => t.Office.Title == officeName).ToList();
             }
 
             dgUsers.ItemsSource = users;
@@ -94,21 +97,49 @@ namespace AirportManagerSystem.View
 
         private void btnChangeRole_Click(object sender, RoutedEventArgs e)
         {
-            ChangeRoleWindow wChangeRole = new ChangeRoleWindow();
-            var user = dgUsers.CurrentItem as User;
-            wChangeRole.User = user;
-            wChangeRole.ManageWindow = this;
-            wChangeRole.ShowDialog();
+            if (currentUser != null)
+            {
+                try
+                {
+                    ChangeRoleWindow wChangeRole = new ChangeRoleWindow();
+                    currentUser = dgUsers.CurrentItem as User;
+                    wChangeRole.User = currentUser;
+                    wChangeRole.ManageWindow = this;
+                    wChangeRole.ShowDialog();
+                    currentUser = null;
+                }
+                catch (Exception)
+                {
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please choose a user!", "Message");
+            }
+           
         }
 
         private void btnDisableAccount_Click(object sender, RoutedEventArgs e)
         {
-            var user = dgUsers.CurrentItem as User;
-            user.Active = user.Active.Value ? false : true;
-            Db.Context.SaveChanges();
-            LoadUsers();
+            if (currentUser != null)
+            {
+                try
+                {
+                    currentUser.Active = currentUser.Active.Value ? false : true;
+                    Db.Context.SaveChanges();
+                    LoadUsers();
+                    currentUser = null;
+                }
+                catch (Exception)
+                {
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please choose a user!", "Message");
+            }
         }
-
+        
         private void cbOffice_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             LoadUsers();

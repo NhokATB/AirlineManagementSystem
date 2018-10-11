@@ -10,7 +10,7 @@
     <StackPanel>
         <Menu HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="auto">
             <MenuItem Header="System" Name="mnSystem">
-                <MenuItem Header="My Log" Name="mnLogingHistory"/>
+                <MenuItem Header="My Log" Name="mnLogingHistory" Click="mnLogingHistory_Click"/>
                 <MenuItem Header="Profile" Name="mnProfile"/>
                 <Separator/>
                 <MenuItem Header="Exit" Name="mnExit" Click="mnExit_Click"/>

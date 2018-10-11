@@ -15,7 +15,7 @@
             <TextBlock TextAlignment="Left" VerticalAlignment="Center">Office:</TextBlock>
             <ComboBox Name="cbOffice" Width="150" Margin="5,5,5,5" SelectionChanged="cbOffice_SelectionChanged"></ComboBox>
         </StackPanel>
-        <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="10,5,10,5" Height="355" CanUserAddRows="False" >
+        <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="10,5,10,5" Height="355" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="FullRow">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Firstname" Binding="{Binding FirstName}" Width="0.6*" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Lastname" Binding="{Binding LastName}" Width="0.8*" ></DataGridTextColumn>
@@ -35,7 +35,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10,5,5,5">
             <Button Width="100" Height="35" Name="btnChangeRole" Click="btnChangeRole_Click" Margin="0,0,15,0">Change role</Button>
-            <Button Width="100" Height="35" Click="btnDisableAccount_Click" Name="btnDisableAccount">Disable account</Button>
+            <Button Width="120" Height="35" Click="btnDisableAccount_Click" Name="btnDisableAccount">Disable account</Button>
         </StackPanel>
     </StackPanel>
 </Window>

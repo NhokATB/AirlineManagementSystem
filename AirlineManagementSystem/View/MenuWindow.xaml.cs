@@ -45,5 +45,12 @@ namespace AirportManagerSystem.View
         {
             this.Close();
         }
+
+        private void mnLogingHistory_Click(object sender, RoutedEventArgs e)
+        {
+            LoginHistoryWindow wLoginHistory = new LoginHistoryWindow();
+            wLoginHistory.User = User;
+            wLoginHistory.ShowDialog();
+        }
     }
 }
