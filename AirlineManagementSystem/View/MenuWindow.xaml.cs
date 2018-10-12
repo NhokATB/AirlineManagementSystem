@@ -38,7 +38,10 @@ namespace AirportManagerSystem.View
         private void MnUsers_Click(object sender, RoutedEventArgs e)
         {
             UserManagementWindow wUsers = new UserManagementWindow();
+            wUsers.User = User;
+            this.Hide();
             wUsers.ShowDialog();
+            this.Show();
         }
 
         private void mnExit_Click(object sender, RoutedEventArgs e)
@@ -51,6 +54,13 @@ namespace AirportManagerSystem.View
             LoginHistoryWindow wLoginHistory = new LoginHistoryWindow();
             wLoginHistory.User = User;
             wLoginHistory.ShowDialog();
+        }
+
+        private void mnProfile_Click(object sender, RoutedEventArgs e)
+        {
+            EditProfileWindow wEditProfile = new EditProfileWindow();
+            wEditProfile.User = User;
+            wEditProfile.ShowDialog();
         }
     }
 }

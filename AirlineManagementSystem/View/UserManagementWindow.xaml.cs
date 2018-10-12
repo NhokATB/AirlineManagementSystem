@@ -30,6 +30,9 @@ namespace AirportManagerSystem.View
         }
         private User currentUser;
         private List<Office> offices;
+
+        public User User { get; internal set; }
+
         private void DgUsers_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             var row = e.Row;
@@ -65,7 +68,6 @@ namespace AirportManagerSystem.View
             {
             }
         }
-
         private void UserManagementWindow_Loaded(object sender, RoutedEventArgs e)
         {
             offices = Db.Context.Offices.ToList();
@@ -78,7 +80,7 @@ namespace AirportManagerSystem.View
         public void LoadUsers()
         {
             dgUsers.ItemsSource = null;
-            var users = Db.Context.Users.ToList();
+            var users = Db.Context.Users.Where(t=>t.ID != User.ID).ToList();
             var officeName = offices[cbOffice.SelectedIndex].Title;
             if (officeName != "All offices")
             {
@@ -101,8 +103,7 @@ namespace AirportManagerSystem.View
             {
                 try
                 {
-                    ChangeRoleWindow wChangeRole = new ChangeRoleWindow();
-                    currentUser = dgUsers.CurrentItem as User;
+                    EditProfileWindow wChangeRole = new EditProfileWindow();
                     wChangeRole.User = currentUser;
                     wChangeRole.ManageWindow = this;
                     wChangeRole.ShowDialog();
@@ -116,7 +117,7 @@ namespace AirportManagerSystem.View
             {
                 MessageBox.Show("Please choose a user!", "Message");
             }
-           
+
         }
 
         private void btnDisableAccount_Click(object sender, RoutedEventArgs e)
@@ -139,10 +140,11 @@ namespace AirportManagerSystem.View
                 MessageBox.Show("Please choose a user!", "Message");
             }
         }
-        
+
         private void cbOffice_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             LoadUsers();
         }
     }
 }
+
