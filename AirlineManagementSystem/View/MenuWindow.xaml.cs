@@ -39,9 +39,9 @@ namespace AirportManagerSystem.View
         {
             UserManagementWindow wUsers = new UserManagementWindow();
             wUsers.User = User;
-            this.Hide();
+            this.Opacity = 0.9;
             wUsers.ShowDialog();
-            this.Show();
+            this.Opacity = 1;
         }
 
         private void mnExit_Click(object sender, RoutedEventArgs e)
@@ -61,6 +61,13 @@ namespace AirportManagerSystem.View
             EditProfileWindow wEditProfile = new EditProfileWindow();
             wEditProfile.User = User;
             wEditProfile.ShowDialog();
+        }
+
+        private void mnChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            ChangePasswordWindow wChangePass = new ChangePasswordWindow();
+            wChangePass.User = User;
+            wChangePass.ShowDialog();
         }
     }
 }

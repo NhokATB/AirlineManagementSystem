@@ -5,22 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
-        Title="UserWindow" Height="500" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="Login history" Height="500" Width="800">
     <StackPanel>
         <TextBlock Name="tblMessage" Margin="10,15,5,5" TextAlignment="Left" VerticalAlignment="Center">Message</TextBlock>
-        <StackPanel Orientation="Horizontal" Margin="10,5,5,5" HorizontalAlignment="Center">
-            <TextBlock TextAlignment="Right" VerticalAlignment="Center" Margin="5,5,5,5">Time spent on system:</TextBlock>
-            <TextBlock TextAlignment="Left" VerticalAlignment="Center" Margin="5,5,5,5" Name="tblTimeSpent"></TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="10,5,5,5" HorizontalAlignment="Right">
             <TextBlock TextAlignment="Right" VerticalAlignment="Center" Margin="5,5,5,5">Number of crashes:</TextBlock>
             <TextBlock TextAlignment="Left" VerticalAlignment="Center" Margin="5,5,5,5" Name="tblNumberOfCrash"></TextBlock>
         </StackPanel>
-        <DataGrid SelectionMode="Single" SelectionUnit="FullRow" Name="dgUsers" AutoGenerateColumns="False" Margin="10,5,10,5" Height="355" CanUserAddRows="False" >
+        <DataGrid SelectionMode="Single" SelectionUnit="FullRow" Name="dgLogs" RowHeaderWidth="0" AutoGenerateColumns="False" Margin="10,5,10,5" Height="340" CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Date" Binding="{Binding FirstName}" Width="0.4*" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Login Time" Binding="{Binding LastName}" Width="0.6*" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Logout Time" Binding="{Binding Birthdate}" Width="0.6*" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Time spent on system" Binding="{Binding Role.Title}" Width="0.6*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Unsuccessful logou reason" Binding="{Binding Email}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Date" Binding="{Binding LoginTime, StringFormat=d}" Width="0.4*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Login Time" Binding="{Binding LoginTime, StringFormat='{}{0:H:mm:ss}'}" Width="0.4*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Logout Time" Binding="{Binding LogoutTime, StringFormat='{}{0:H:mm:ss}'}" Width="0.4*" ></DataGridTextColumn>
+        <DataGridTextColumn Header="Unsuccessful logout reason" Binding="{Binding Reason}" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Orientation="Horizontal" Margin="10,5,5,5">

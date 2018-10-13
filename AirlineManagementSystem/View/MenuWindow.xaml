@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="MenuWindow" Height="650" Width="1000">
+        Title="Amonic Airline" Height="650" Width="1000">
     <StackPanel>
         <Menu HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="auto">
             <MenuItem Header="System" Name="mnSystem">
                 <MenuItem Header="My Log" Name="mnLogingHistory" Click="mnLogingHistory_Click"/>
                 <MenuItem Header="Profile" Name="mnProfile" Click="mnProfile_Click"/>
-                <MenuItem Header="Change password" Name="mnChangePassword"/>
+                <MenuItem Header="Change password" Name="mnChangePassword" Click="mnChangePassword_Click"/>
                 <Separator/>
                 <MenuItem Header="Exit" Name="mnExit" Click="mnExit_Click"/>
             </MenuItem>
