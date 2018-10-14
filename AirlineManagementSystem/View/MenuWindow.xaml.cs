@@ -69,5 +69,11 @@ namespace AirportManagerSystem.View
             wChangePass.User = User;
             wChangePass.ShowDialog();
         }
+
+        private void mnPurchaseAmenities_Click(object sender, RoutedEventArgs e)
+        {
+            PurchaseAmenitiesWindow wPurchaseAmenities = new PurchaseAmenitiesWindow();
+            wPurchaseAmenities.ShowDialog();
+        }
     }
 }
