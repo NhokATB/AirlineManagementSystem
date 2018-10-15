@@ -25,6 +25,7 @@ namespace AirportManagerSystem.View
         {
             InitializeComponent();
             this.Loaded += UserManagementWindow_Loaded;
+
             dgUsers.SelectedCellsChanged += DgUsers_SelectedCellsChanged;
             dgUsers.LoadingRow += DgUsers_LoadingRow;
         }

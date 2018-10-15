@@ -75,5 +75,11 @@ namespace AirportManagerSystem.View
             PurchaseAmenitiesWindow wPurchaseAmenities = new PurchaseAmenitiesWindow();
             wPurchaseAmenities.ShowDialog();
         }
+
+        private void mnBookFlight_Click(object sender, RoutedEventArgs e)
+        {
+            BookFlightWindow wBookFlight = new BookFlightWindow();
+            wBookFlight.ShowDialog();
+        }
     }
 }

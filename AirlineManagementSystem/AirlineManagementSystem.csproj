@@ -63,8 +63,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Flight.cs" />
     <Compile Include="View\AddUserWindow.xaml.cs">
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BillingConfirmationWindow.xaml.cs">
+      <DependentUpon>BillingConfirmationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BookConfirmationWindow.xaml.cs">
+      <DependentUpon>BookConfirmationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BookFlightWindow.xaml.cs">
+      <DependentUpon>BookFlightWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ChangePasswordWindow.xaml.cs">
       <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
@@ -91,6 +101,18 @@
       <DependentUpon>UserManagementWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="View\AddUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BillingConfirmationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BookConfirmationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BookFlightWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

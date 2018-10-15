@@ -25,7 +25,7 @@
             </MenuItem>
             <MenuItem Header="Business">
                 <MenuItem Header="Check in" Name="mnCheckIn"/>
-                <MenuItem Header="Book Flight" Name="mnBookFlight"/>
+                <MenuItem Header="Book Flight" Name="mnBookFlight" Click="mnBookFlight_Click"/>
                 <MenuItem Header="Purchase Amenities" Name="mnPurchaseAmenities" Click="mnPurchaseAmenities_Click"/>
             </MenuItem>
             <MenuItem Header="Report">
