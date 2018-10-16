@@ -50,7 +50,6 @@
             </Grid>
             <DataGrid x:Name="dgOutboundFlights" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" Height="120" RowHeaderWidth="0" CanUserAddRows="False">
                
-                
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="From" Width="0.15*" Binding="{Binding From}"/>
                     <DataGridTextColumn Header="To" Width="0.15*" Binding="{Binding To}"/>
@@ -60,17 +59,6 @@
                     <DataGridTextColumn Header="Cabin price" Width="0.2*" Binding="{Binding Price, StringFormat='{}{0:C0}'}"/>
                     <DataGridTextColumn Header="Number of stops" Width="0.3*" Binding="{Binding NumberOfStop}"/>
                 </DataGrid.Columns>
-                
-                <DataGrid.RowStyle>
-                    <Style TargetType="DataGridRow">
-                        <Style.Triggers>
-                            <Trigger Property="AlternationIndex" Value="1">
-                                <Setter Property="Background" Value="Red"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </DataGrid.RowStyle>
-                
             </DataGrid>
         </StackPanel>
         <StackPanel Height="150" Margin="10,5,10,5">

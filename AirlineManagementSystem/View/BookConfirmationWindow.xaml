@@ -7,7 +7,66 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Booking Confirmation" Height="700" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Window.Resources>
+        <Style TargetType="DataGridCell">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#3498DB"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <StackPanel>
+        <GroupBox Header="Outbound flight details" Margin="10,10,10,5" Height="110">
+
+        </GroupBox>
+        <GroupBox Header="Return flight details" Margin="10,5,10,5" Height="110">
+
+        </GroupBox>
+        <GroupBox Header="Search parameters" Margin="10,5,10,5">
+            <GroupBox.Content>
+                <StackPanel Width="auto" HorizontalAlignment="Center" Margin="5,5,5,10">
+                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5" HorizontalAlignment="Center">
+                        <TextBlock VerticalAlignment="Center">First name:</TextBlock>
+                        <TextBox Name="txtFirstName" Margin="5,5,30,5" Width="160"></TextBox>
+                        <TextBlock VerticalAlignment="Center">Last name:</TextBlock>
+                        <TextBox Name="txtLastName" Margin="5,5,30,5" Width="150"></TextBox>
+                        <TextBlock VerticalAlignment="Center">Birhtdate:</TextBlock>
+                        <DatePicker Name="dpBirthdate" Margin="5,5,5,5" Width="160"></DatePicker>
+                    </StackPanel>
+                    <StackPanel Width="auto" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock VerticalAlignment="Center">Passport number:</TextBlock>
+                        <TextBox Name="txtPassportNumber" Width="130" Margin="5,5,20,5"></TextBox>
+                        <TextBlock VerticalAlignment="Center">Passport country:</TextBlock>
+                        <ComboBox Name="cbPassportCountry" Width="130" Margin="5,5,50,5"></ComboBox>
+                        <TextBlock VerticalAlignment="Center">Phone:</TextBlock>
+                        <TextBox Name="txtPhone" Width="160" Margin="5,5,20,5"></TextBox>
+                    </StackPanel>
+                    <Grid Width="750" HorizontalAlignment="Center">
+                        <Button Name="btnAddPassenger" Height="35" Margin="5,5,23,5" HorizontalAlignment="Right" Width="100">Add passenger</Button>
+                    </Grid>
+                </StackPanel>
+            </GroupBox.Content>
+        </GroupBox>
+        <TextBlock Margin="10,5,10,0">Passenger list:</TextBlock>
+        <DataGrid x:Name="dgOutboundFlights" Margin="10,5,10,5" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" Height="120" RowHeaderWidth="0" CanUserAddRows="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="From" Width="0.15*" Binding="{Binding From}"/>
+                <DataGridTextColumn Header="To" Width="0.15*" Binding="{Binding To}"/>
+                <DataGridTextColumn Header="Date" Width="0.2*" Binding="{Binding FirstFlight.Date, StringFormat=d}"/>
+                <DataGridTextColumn Header="Time" Width="0.15*" Binding="{Binding FirstFlight.Time}"/>
+                <DataGridTextColumn Header="Flight number(s)" Width="0.3*" Binding="{Binding FlightNumbers}"/>
+                <DataGridTextColumn Header="Cabin price" Width="0.2*" Binding="{Binding Price, StringFormat='{}{0:C0}'}"/>
+                <DataGridTextColumn Header="Number of stops" Width="0.3*" Binding="{Binding NumberOfStop}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid HorizontalAlignment="Right" Margin="10,5,10,5">
+            <Button Name="btnRemovePassenger" Height="35" HorizontalAlignment="Right" Width="120">Remove passenger</Button>
+        </Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Height="35" Name="btnBackToSearch" Margin="5,5,5,5"  HorizontalAlignment="Right" Width="150">Back to search for flight</Button>
+            <Button Height="35" Name="btnBookConfirm" Margin="5,5,5,5" HorizontalAlignment="Right" Width="150">Confirm booking</Button>
+        </StackPanel>
+    </StackPanel>
 </Window>
