@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="AirportManagerSystem.View.UcFlightDetail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AirportManagerSystem.View"
+             mc:Ignorable="d" 
+             Background="White"
+             d:DesignHeight="30" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="5,2,2,2"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left">
+        <TextBlock>From:</TextBlock>
+        <TextBlock Name="tblFrom" Width="60"></TextBlock>
+        <TextBlock>To:</TextBlock>
+        <TextBlock Name="tblTo" Width="60"></TextBlock>
+        <TextBlock>Cabin type:</TextBlock>
+        <TextBlock Name="tblCabinType" Width="80"></TextBlock>
+        <TextBlock>Date:</TextBlock>
+        <TextBlock Name="tblDate" Width="70"></TextBlock>
+        <TextBlock>Time:</TextBlock>
+        <TextBlock Name="tblTime" Width="60"></TextBlock>
+        <TextBlock>Flight number:</TextBlock>
+        <TextBlock Name="tblFlightNumber" Width="30"></TextBlock>
+    </StackPanel>
+</UserControl>

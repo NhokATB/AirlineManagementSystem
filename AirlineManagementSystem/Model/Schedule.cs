@@ -33,14 +33,5 @@ namespace AirportManagerSystem.Model
         public virtual Route Route { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Tickets { get; set; }
-
-        public static double GetPrice(Schedule item, CabinType cabin)
-        {
-            double price = (int)item.EconomyPrice;
-            double bprice = Math.Floor(price * 1.35);
-            double fprice = Math.Floor(bprice * 1.3);
-
-            return cabin.ID == 1 ? price : (cabin.ID == 2 ? bprice : fprice);
-        }
     }
 }

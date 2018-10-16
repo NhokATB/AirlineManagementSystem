@@ -30,9 +30,6 @@ namespace AirportManagerSystem.View
         private List<Airport> arrivalAirport;
         private List<CabinType> cabins;
 
-        private List<Flight> outboundFlights;
-        private List<Flight> returnFlights;
-
         private Flight CurrentOutboundFlight;
         private Flight CurrentReturnFlight;
 
@@ -77,13 +74,13 @@ namespace AirportManagerSystem.View
         private void ChbThreeDaysReturn_Click(object sender, RoutedEventArgs e)
         {
             if (isApplied)
-                returnFlights = LoadData(dgReturnFlights, to, from, chbThreeDaysReturn.IsChecked, rdate);
+                LoadData(dgReturnFlights, to, from, chbThreeDaysReturn.IsChecked, rdate);
         }
 
         private void ChbThreeDaysOutbound_Click(object sender, RoutedEventArgs e)
         {
             if (isApplied)
-                outboundFlights = LoadData(dgOutboundFlights, from, to, chbThreeDaysOutbound.IsChecked, odate);
+                LoadData(dgOutboundFlights, from, to, chbThreeDaysOutbound.IsChecked, odate);
         }
 
         private void BookFlightWindow_Loaded(object sender, RoutedEventArgs e)
@@ -156,9 +153,9 @@ namespace AirportManagerSystem.View
                     return;
                 }
 
-                returnFlights = LoadData(dgReturnFlights, to, from, chbThreeDaysReturn.IsChecked, rdate);
+                LoadData(dgReturnFlights, to, from, chbThreeDaysReturn.IsChecked, rdate);
             }
-            outboundFlights = LoadData(dgOutboundFlights, from, to, chbThreeDaysOutbound.IsChecked, odate);
+            LoadData(dgOutboundFlights, from, to, chbThreeDaysOutbound.IsChecked, odate);
 
             if (dgOutboundFlights.Items.Count == 0)
             {
@@ -194,7 +191,7 @@ namespace AirportManagerSystem.View
                     To = to,
                     FirstFlight = item,
                     NumberOfStop = 0,
-                    Price = Schedule.GetPrice(item, cbCabinType.SelectedItem as CabinType),
+                    Price = Flight.GetPrice(item, cbCabinType.SelectedItem as CabinType),
                     Flights = new List<Schedule>() { item },
                     FlightNumbers = $"[{item.FlightNumber}]"
                 });
@@ -228,7 +225,7 @@ namespace AirportManagerSystem.View
                     {
                         From = from,
                         To = to,
-                        Price = Schedule.GetPrice(s1, cbCabinType.SelectedItem as CabinType) + Schedule.GetPrice(s2, cbCabinType.SelectedItem as CabinType),
+                        Price = Flight.GetPrice(s1, cbCabinType.SelectedItem as CabinType) + Flight.GetPrice(s2, cbCabinType.SelectedItem as CabinType),
                         Flights = new List<Schedule>() { s1, s2 },
                         NumberOfStop = 1,
                         FirstFlight = s1,
@@ -268,7 +265,7 @@ namespace AirportManagerSystem.View
                         {
                             From = from,
                             To = to,
-                            Price = Schedule.GetPrice(s1, cbCabinType.SelectedItem as CabinType) + Schedule.GetPrice(s2, cbCabinType.SelectedItem as CabinType) + Schedule.GetPrice(s3, cbCabinType.SelectedItem as CabinType),
+                            Price = Flight.GetPrice(s1, cbCabinType.SelectedItem as CabinType) + Flight.GetPrice(s2, cbCabinType.SelectedItem as CabinType) + Flight.GetPrice(s3, cbCabinType.SelectedItem as CabinType),
                             Flights = new List<Schedule>() { s1, s2, s3 },
                             NumberOfStop = 2,
                             FirstFlight = s1,
@@ -345,8 +342,8 @@ namespace AirportManagerSystem.View
 
                 BookConfirmationWindow wBookingConfirmation = new BookConfirmationWindow();
                 wBookingConfirmation.Numpass = int.Parse(txtNum.Text);
-                wBookingConfirmation.Flight1 = CurrentOutboundFlight;
-                wBookingConfirmation.Flight2 = rdbReturn.IsChecked.Value ? CurrentReturnFlight : null;
+                wBookingConfirmation.OutboundFlight = CurrentOutboundFlight;
+                wBookingConfirmation.ReturnFlight = rdbReturn.IsChecked.Value ? CurrentReturnFlight : null;
                 wBookingConfirmation.Cabin = cbCabinType.SelectedItem as CabinType;
 
                 this.Hide();

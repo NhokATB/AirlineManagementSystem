@@ -42,6 +42,7 @@
         <AssociationConnector Association="AirlineManagementSystemModel.FK_Ticket_Schedule" ManuallyRouted="false" />
         <AssociationConnector Association="AirlineManagementSystemModel.FK_Ticket_User" ManuallyRouted="false" />
         <AssociationConnector Association="AirlineManagementSystemModel.AmenitiesCabinType" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineManagementSystemModel.FK_Tickets_Countries" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

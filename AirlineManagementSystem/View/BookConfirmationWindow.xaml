@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Booking Confirmation" Height="700" Width="800">
+        Title="Booking Confirmation" Height="665" Width="800">
     <Window.Resources>
         <Style TargetType="DataGridCell">
             <Style.Triggers>
@@ -18,15 +18,15 @@
     </Window.Resources>
     <StackPanel>
         <GroupBox Header="Outbound flight details" Margin="10,10,10,5" Height="110">
-
+            <StackPanel Name="stpOutboundFlight" HorizontalAlignment="Center"></StackPanel>
         </GroupBox>
-        <GroupBox Header="Return flight details" Margin="10,5,10,5" Height="110">
-
+        <GroupBox Name="grReturnFlight" Header="Return flight details" Margin="10,5,10,5" Height="110" Visibility="Hidden">
+            <StackPanel Name="stpReturnFlight"  HorizontalAlignment="Center"></StackPanel>
         </GroupBox>
-        <GroupBox Header="Search parameters" Margin="10,5,10,5">
+        <GroupBox Header="Passenger details" Margin="10,5,10,0">
             <GroupBox.Content>
-                <StackPanel Width="auto" HorizontalAlignment="Center" Margin="5,5,5,10">
-                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5" HorizontalAlignment="Center">
+                <StackPanel Width="auto" HorizontalAlignment="Center" Margin="5,5,5,0">
+                    <StackPanel Orientation="Horizontal" Margin="5,5,5,0" HorizontalAlignment="Center">
                         <TextBlock VerticalAlignment="Center">First name:</TextBlock>
                         <TextBox Name="txtFirstName" Margin="5,5,30,5" Width="160"></TextBox>
                         <TextBlock VerticalAlignment="Center">Last name:</TextBlock>
@@ -43,30 +43,30 @@
                         <TextBox Name="txtPhone" Width="160" Margin="5,5,20,5"></TextBox>
                     </StackPanel>
                     <Grid Width="750" HorizontalAlignment="Center">
-                        <Button Name="btnAddPassenger" Height="35" Margin="5,5,23,5" HorizontalAlignment="Right" Width="100">Add passenger</Button>
+                        <Button Name="btnAddPassenger" Height="35" Margin="5,5,23,5" HorizontalAlignment="Right" Width="100" Click="btnAddPassenger_Click">Add passenger</Button>
                     </Grid>
                 </StackPanel>
             </GroupBox.Content>
         </GroupBox>
         <TextBlock Margin="10,5,10,0">Passenger list:</TextBlock>
-        <DataGrid x:Name="dgOutboundFlights" Margin="10,5,10,5" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" Height="120" RowHeaderWidth="0" CanUserAddRows="False">
+        <DataGrid x:Name="dgPassengers" Margin="10,5,10,5" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" Height="120" RowHeaderWidth="0" CanUserAddRows="False">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="From" Width="0.15*" Binding="{Binding From}"/>
-                <DataGridTextColumn Header="To" Width="0.15*" Binding="{Binding To}"/>
-                <DataGridTextColumn Header="Date" Width="0.2*" Binding="{Binding FirstFlight.Date, StringFormat=d}"/>
-                <DataGridTextColumn Header="Time" Width="0.15*" Binding="{Binding FirstFlight.Time}"/>
-                <DataGridTextColumn Header="Flight number(s)" Width="0.3*" Binding="{Binding FlightNumbers}"/>
-                <DataGridTextColumn Header="Cabin price" Width="0.2*" Binding="{Binding Price, StringFormat='{}{0:C0}'}"/>
-                <DataGridTextColumn Header="Number of stops" Width="0.3*" Binding="{Binding NumberOfStop}"/>
+                <DataGridTextColumn Header="First name" Width="0.15*" Binding="{Binding Firstname}"/>
+                <DataGridTextColumn Header="Last name" Width="0.15*" Binding="{Binding Lastname}"/>
+                <DataGridTextColumn Header="Birhtdate" Width="0.2*" Binding="{Binding Birthdate, StringFormat=d}"/>
+                <DataGridTextColumn Header="PassportNumber" Width="0.15*" Binding="{Binding PassportNumber}"/>
+                <DataGridTextColumn Header="Passport country" Width="0.3*" Binding="{Binding Country.Name}"/>
+                <DataGridTextColumn Header="Phone" Width="0.2*" Binding="{Binding Phone}"/>
             </DataGrid.Columns>
+            
         </DataGrid>
-        <Grid HorizontalAlignment="Right" Margin="10,5,10,5">
-            <Button Name="btnRemovePassenger" Height="35" HorizontalAlignment="Right" Width="120">Remove passenger</Button>
+        <Grid HorizontalAlignment="Right" Margin="10,0,10,0">
+            <Button Name="btnRemovePassenger" Height="35" HorizontalAlignment="Right" Width="120" VerticalAlignment="Top" Click="btnRemovePassenger_Click">Remove passenger</Button>
         </Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Height="35" Name="btnBackToSearch" Margin="5,5,5,5"  HorizontalAlignment="Right" Width="150">Back to search for flight</Button>
-            <Button Height="35" Name="btnBookConfirm" Margin="5,5,5,5" HorizontalAlignment="Right" Width="150">Confirm booking</Button>
+            <Button Height="35" Name="btnBackToSearch" Margin="5,5,5,5"  HorizontalAlignment="Right" Width="150" Click="btnBackToSearch_Click">Back to search for flight</Button>
+            <Button Height="35" Name="btnBookConfirm" Margin="5,5,5,5" HorizontalAlignment="Right" Width="150" Click="btnBookConfirm_Click">Confirm booking</Button>
         </StackPanel>
     </StackPanel>
 </Window>

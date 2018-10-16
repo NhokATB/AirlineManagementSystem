@@ -19,5 +19,15 @@ namespace AirportManagerSystem.Model
         public Schedule FirstFlight { get; set; }
         public string From { get; set; }
         public string To { get; set; }
+
+        public static double GetPrice(Schedule item, CabinType cabin)
+        {
+            double price = (int)item.EconomyPrice;
+            double bprice = Math.Floor(price * 1.35);
+            double fprice = Math.Floor(bprice * 1.3);
+
+            return cabin.ID == 1 ? price : (cabin.ID == 2 ? bprice : fprice);
+        }
+
     }
 }

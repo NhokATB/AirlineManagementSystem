@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
-        Title="BillingConfirmationWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        WindowStartupLocation="CenterScreen"
+        Title="Billing Confirmation" Height="300" Width="400">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" Width="150" Margin="5,25" HorizontalAlignment="Center">
+            <TextBlock Margin="5">Total amount:</TextBlock>
+            <TextBlock Name="tblTotalAmount" Margin="5"></TextBlock>
+        </StackPanel>
+        <Grid Width="350">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="10,0" TextAlignment="Right" Grid.Column="0">Paid using:</TextBlock>
+            <StackPanel Grid.Column="1">
+                <RadioButton IsChecked="True" Margin="5">Credit card</RadioButton>
+                <RadioButton Margin="5">Cash</RadioButton>
+                <RadioButton Margin="5">Voucher</RadioButton>
+            </StackPanel>
+        </Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,35">
+            <Button Name="btnIssueTicket" Height="35" Width="100" Click="btnIssueTicket_Click" Margin="10">Issue Tickets</Button>
+            <Button Name="Cancel" Height="35" Width="100" Margin="10" Click="Cancel_Click">Cancel</Button>
+        </StackPanel>
+    </StackPanel>
 </Window>

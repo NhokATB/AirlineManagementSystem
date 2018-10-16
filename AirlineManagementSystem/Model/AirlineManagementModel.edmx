@@ -174,6 +174,7 @@
           <Property Name="BookingReference" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="Confirmed" Type="bit" Nullable="false" />
           <Property Name="Seat" Type="varchar" MaxLength="4" />
+          <Property Name="Birthdate" Type="datetime" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -381,6 +382,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Tickets_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="PassportCountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TravelClassAdditionalService_AdditionalService">
           <End Role="Amenities" Type="Self.Amenities" Multiplicity="1" />
           <End Role="AmenitiesCabinType" Type="Self.AmenitiesCabinType" Multiplicity="*" />
@@ -513,6 +526,10 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Tickets" EntitySet="Tickets" />
           </AssociationSet>
+          <AssociationSet Name="FK_Tickets_Countries" Association="Self.FK_Tickets_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
           <AssociationSet Name="FK_TravelClassAdditionalService_AdditionalService" Association="Self.FK_TravelClassAdditionalService_AdditionalService">
             <End Role="Amenities" EntitySet="Amenities" />
             <End Role="AmenitiesCabinType" EntitySet="AmenitiesCabinType" />
@@ -604,6 +621,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Airports" Relationship="Self.FK_AirPort_Country" FromRole="Countries" ToRole="Airports" />
           <NavigationProperty Name="Offices" Relationship="Self.FK_Office_Country" FromRole="Countries" ToRole="Offices" />
+          <NavigationProperty Name="Tickets" Relationship="AirlineManagementSystemModel.FK_Tickets_Countries" FromRole="Country" ToRole="Ticket" />
         </EntityType>
         <EntityType Name="Crash">
           <Key>
@@ -729,6 +747,8 @@
           <NavigationProperty Name="Schedule" Relationship="Self.FK_Ticket_Schedule" FromRole="Tickets" ToRole="Schedules" />
           <NavigationProperty Name="User" Relationship="Self.FK_Ticket_User" FromRole="Tickets" ToRole="Users" />
           <Property Name="Seat" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Birthdate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Country" Relationship="AirlineManagementSystemModel.FK_Tickets_Countries" FromRole="Ticket" ToRole="Country" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -1063,7 +1083,23 @@
             <End Role="Amenities" EntitySet="Amenities" />
             <End Role="CabinTypes" EntitySet="CabinTypes" />
           </AssociationSet>
+          <AssociationSet Name="FK_Tickets_Countries" Association="AirlineManagementSystemModel.FK_Tickets_Countries">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Tickets_Countries">
+          <End Type="AirlineManagementSystemModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="AirlineManagementSystemModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="PassportCountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1233,6 +1269,7 @@
           <EntitySetMapping Name="Tickets">
             <EntityTypeMapping TypeName="AirlineManagementSystemModel.Ticket">
               <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
                 <ScalarProperty Name="Seat" ColumnName="Seat" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
