@@ -25,20 +25,65 @@ namespace AirportManagerSystem.View
         DateTime odate, rdate;
         private bool isApplied;
         private int numValue = 0;
+
         private List<Airport> departureAirport;
         private List<Airport> arrivalAirport;
         private List<CabinType> cabins;
+
         private List<Flight> outboundFlights;
         private List<Flight> returnFlights;
+
+        private Flight CurrentOutboundFlight;
+        private Flight CurrentReturnFlight;
 
         public BookFlightWindow()
         {
             InitializeComponent();
             this.Loaded += BookFlightWindow_Loaded;
 
+            chbThreeDaysOutbound.Click += ChbThreeDaysOutbound_Click;
+            chbThreeDaysReturn.Click += ChbThreeDaysReturn_Click;
+
+            dgOutboundFlights.SelectionChanged += DgOutboundFlights_SelectionChanged;
+            dgReturnFlights.SelectionChanged += DgReturnFlights_SelectionChanged;
+
             txtNum.Text = numValue.ToString();
             dpReturn.SelectedDate = DateTime.Now;
             dpOutbound.SelectedDate = DateTime.Now;
+        }
+
+        private void DgReturnFlights_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                CurrentReturnFlight = dgReturnFlights.CurrentItem as Flight;
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void DgOutboundFlights_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                CurrentOutboundFlight = dgOutboundFlights.CurrentItem as Flight;
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void ChbThreeDaysReturn_Click(object sender, RoutedEventArgs e)
+        {
+            if (isApplied)
+                returnFlights = LoadData(dgReturnFlights, to, from, chbThreeDaysReturn.IsChecked, rdate);
+        }
+
+        private void ChbThreeDaysOutbound_Click(object sender, RoutedEventArgs e)
+        {
+            if (isApplied)
+                outboundFlights = LoadData(dgOutboundFlights, from, to, chbThreeDaysOutbound.IsChecked, odate);
         }
 
         private void BookFlightWindow_Loaded(object sender, RoutedEventArgs e)
@@ -59,6 +104,7 @@ namespace AirportManagerSystem.View
             cbCabinType.SelectedIndex = 0;
         }
 
+        #region Numerric updown
         public int NumValue
         {
             get { return numValue; }
@@ -76,7 +122,8 @@ namespace AirportManagerSystem.View
 
         private void cmdDown_Click(object sender, RoutedEventArgs e)
         {
-            NumValue--;
+            if (numValue > 1)
+                NumValue--;
         }
 
         private void txtNum_TextChanged(object sender, TextChangedEventArgs e)
@@ -87,8 +134,9 @@ namespace AirportManagerSystem.View
             }
 
             if (!int.TryParse(txtNum.Text, out numValue))
-                txtNum.Text = numValue.ToString();
+                txtNum.Text = "1";
         }
+        #endregion
 
         private void btnApply_Click(object sender, RoutedEventArgs e)
         {
@@ -191,53 +239,6 @@ namespace AirportManagerSystem.View
 
             return results;
         }
-
-        private void chbThreeDaysOutbound_Checked(object sender, RoutedEventArgs e)
-        {
-            if (isApplied)
-                outboundFlights = LoadData(dgOutboundFlights, from, to, chbThreeDaysOutbound.IsChecked, odate);
-        }
-
-        private void chbThreeDaysReturn_Checked(object sender, RoutedEventArgs e)
-        {
-            if (isApplied)
-                returnFlights = LoadData(dgReturnFlights, to, from, chbThreeDaysReturn.IsChecked, rdate);
-        }
-
-        private void rdbReturn_Checked(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                tblReturn.Visibility = Visibility.Visible;
-                dpReturn.Visibility = Visibility.Visible;
-                grReturnFlightsDetail.Visibility = Visibility.Visible;
-                dgReturnFlights.Visibility = Visibility.Visible;
-            }
-            catch (Exception)
-            {
-            }
-
-        }
-
-        private void rdbOneway_Checked(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                tblReturn.Visibility = Visibility.Hidden;
-                dpReturn.Visibility = Visibility.Hidden;
-                grReturnFlightsDetail.Visibility = Visibility.Hidden;
-                dgReturnFlights.Visibility = Visibility.Hidden;
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private List<Flight> IndirectFlight2(string from, string to, bool isChecked, DateTime date)
         {
             List<Flight> results = new List<Flight>();
@@ -279,6 +280,113 @@ namespace AirportManagerSystem.View
 
             return results;
         }
+
+        private void rdbReturn_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                tblReturn.Visibility = Visibility.Visible;
+                dpReturn.Visibility = Visibility.Visible;
+                grReturnFlightsDetail.Visibility = Visibility.Visible;
+                dgReturnFlights.Visibility = Visibility.Visible;
+            }
+            catch (Exception)
+            {
+            }
+
+        }
+
+        private void rdbOneway_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                tblReturn.Visibility = Visibility.Hidden;
+                dpReturn.Visibility = Visibility.Hidden;
+                grReturnFlightsDetail.Visibility = Visibility.Hidden;
+                dgReturnFlights.Visibility = Visibility.Hidden;
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private bool CheckDate(Flight flight1, Flight flight2)
+        {
+            var date1 = (flight1.Flights.Last().Date + flight1.Flights.Last().Time).AddMinutes(flight1.Flights.Last().Route.FlightTime);
+            var date2 = flight2.Flights.First().Date + flight2.Flights.First().Time;
+
+            if (date2 < date1)
+            {
+                MessageBox.Show("The first return flight can only after the last outbound flight", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        private void btnBookFlight_Click(object sender, RoutedEventArgs e)
+        {
+            if (CurrentOutboundFlight != null)
+            {
+                if (CheckSeat(CurrentOutboundFlight, "Outbound flight") == false) return;
+                if (rdbReturn.IsChecked.Value)
+                {
+                    try
+                    {
+                        if (CheckDate(CurrentOutboundFlight, CurrentReturnFlight) == false) return;
+                        if (CheckSeat(CurrentReturnFlight, "Return flight") == false) return;
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Please choose return flight before book flight", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
+
+                BookConfirmationWindow wBookingConfirmation = new BookConfirmationWindow();
+                wBookingConfirmation.Numpass = int.Parse(txtNum.Text);
+                wBookingConfirmation.Flight1 = CurrentOutboundFlight;
+                wBookingConfirmation.Flight2 = rdbReturn.IsChecked.Value ? CurrentReturnFlight : null;
+                wBookingConfirmation.Cabin = cbCabinType.SelectedItem as CabinType;
+
+                this.Hide();
+                wBookingConfirmation.ShowDialog();
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please choose outbound flight before book flight", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private bool CheckSeat(Flight flight, string v)
+        {
+            var cabin = cbCabinType.SelectedItem as CabinType;
+            foreach (var item in flight.Flights)
+            {
+                var seat = item.Aircraft.EconomySeats;
+                if (cabin.ID == 2) seat = item.Aircraft.BusinessSeats;
+                if (cabin.ID == 3) seat = item.Aircraft.TotalSeats - item.Aircraft.EconomySeats - item.Aircraft.BusinessSeats;
+
+                var numTick = item.Tickets.Where(t => t.Confirmed && t.CabinTypeID == cabin.ID).Count();
+                var empty = seat - numTick;
+
+                if (empty < int.Parse(txtNum.Text))
+                {
+                    MessageBox.Show($"{v}: Not enough seat for cabin {cabin.Name} and flight number {item.FlightNumber}. The maximum of empty seat for this flight is {empty}", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+
 
         private void SetParameter()
         {

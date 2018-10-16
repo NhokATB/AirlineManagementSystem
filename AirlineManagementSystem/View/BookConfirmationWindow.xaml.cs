@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AirportManagerSystem.Model;
 
 namespace AirportManagerSystem.View
 {
@@ -23,5 +24,10 @@ namespace AirportManagerSystem.View
         {
             InitializeComponent();
         }
+
+        public CabinType Cabin { get; internal set; }
+        public int Numpass { get; internal set; }
+        internal Flight Flight2 { get; set; }
+        internal Flight Flight1 { get; set; }
     }
 }

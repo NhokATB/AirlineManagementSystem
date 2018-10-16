@@ -6,6 +6,15 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Search for Flights" Height="600" Width="800">
+    <Window.Resources>
+        <Style TargetType="DataGridCell">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#3498DB"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <StackPanel>
         <GroupBox Header="Search parameters" Margin="10,5,10,5">
             <GroupBox.Content>
@@ -37,9 +46,11 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" VerticalAlignment="Center">Outbound flights detail:</TextBlock>
-                <CheckBox Name="chbThreeDaysOutbound" Grid.Column="1" HorizontalAlignment="Right" Margin="5,5,5,5" Checked="chbThreeDaysOutbound_Checked" >Display three days before and after</CheckBox>
+                <CheckBox Name="chbThreeDaysOutbound" Grid.Column="1" HorizontalAlignment="Right" Margin="5,5,5,5">Display three days before and after</CheckBox>
             </Grid>
             <DataGrid x:Name="dgOutboundFlights" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow" Height="120" RowHeaderWidth="0" CanUserAddRows="False">
+               
+                
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="From" Width="0.15*" Binding="{Binding From}"/>
                     <DataGridTextColumn Header="To" Width="0.15*" Binding="{Binding To}"/>
@@ -49,6 +60,17 @@
                     <DataGridTextColumn Header="Cabin price" Width="0.2*" Binding="{Binding Price, StringFormat='{}{0:C0}'}"/>
                     <DataGridTextColumn Header="Number of stops" Width="0.3*" Binding="{Binding NumberOfStop}"/>
                 </DataGrid.Columns>
+                
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Style.Triggers>
+                            <Trigger Property="AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                
             </DataGrid>
         </StackPanel>
         <StackPanel Height="150" Margin="10,5,10,5">
@@ -58,7 +80,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" VerticalAlignment="Center">Return flights detail:</TextBlock>
-                <CheckBox Name="chbThreeDaysReturn" Grid.Column="1" HorizontalAlignment="Right" Margin="5,5,5,5" Checked="chbThreeDaysReturn_Checked" >Display three days before and after</CheckBox>
+                <CheckBox Name="chbThreeDaysReturn" Grid.Column="1" HorizontalAlignment="Right" Margin="5,5,5,5">Display three days before and after</CheckBox>
             </Grid>
             <DataGrid Name="dgReturnFlights" IsReadOnly="True" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" Height="120" RowHeaderWidth="0">
                 <DataGrid.Columns>
@@ -83,7 +105,7 @@
                         <Border BorderBrush="Gray" BorderThickness="1" Height="20">
                             <Grid Height="18">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBox x:Name="txtNum" x:FieldModifier="private"  Width="70" Text="0" Height="20" TextChanged="txtNum_TextChanged" />
+                                    <TextBox x:Name="txtNum" x:FieldModifier="private"  Width="70" Text="1" Height="20" TextChanged="txtNum_TextChanged" />
                                     <StackPanel>
                                         <Button FontSize="5" Height="10" x:Name="cmdUp" x:FieldModifier="private"  Content="˄" Width="20" Click="cmdUp_Click" />
                                         <Button FontSize="5" Height="10" x:Name="cmdDown" x:FieldModifier="private" Content="˅" Width="20" Click="cmdDown_Click" />
@@ -92,12 +114,11 @@
                             </Grid>
                         </Border>
                         <TextBlock VerticalAlignment="Center" Margin="15,0,0,0">Passengers</TextBlock>
-                        <Button Margin="150,5,5,5" Width="100" Height="35">Book Flight</Button>
-
+                        <Button Name="btnBookFlight" Margin="150,5,5,5" Width="100" Height="35" Click="btnBookFlight_Click">Book Flight</Button>
                     </StackPanel>
                 </GroupBox.Content>
             </GroupBox>
-            <Button Grid.Column="1" Width="100" HorizontalAlignment="Right" Height="35" Click="Button_Click">Cancel</Button>
+            <Button Name="btnCancel" Grid.Column="1" Width="100" HorizontalAlignment="Right" Height="35" Click="btnCancel_Click">Cancel</Button>
         </Grid>
 
     </StackPanel>
