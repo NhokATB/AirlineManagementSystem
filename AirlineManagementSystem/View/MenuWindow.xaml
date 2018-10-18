@@ -31,7 +31,7 @@
             <MenuItem Header="Report">
                 <MenuItem Header="Amenities" Name="mnAmenitiesReprot"/>
                 <MenuItem Header="Survey" Name="mnSurveyReport"/>
-                <MenuItem Header="Short Summary" Name="mnShortSummaryReport"/>
+                <MenuItem Header="Short Summary" Name="mnShortSummaryReport" Click="mnShortSummaryReport_Click"/>
             </MenuItem>
             <MenuItem Header="Introduce">
                 <MenuItem Header="Amonic Airline" Name="mnAmonicAirline"/>

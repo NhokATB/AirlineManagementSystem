@@ -81,5 +81,11 @@ namespace AirportManagerSystem.View
             BookFlightWindow wBookFlight = new BookFlightWindow();
             wBookFlight.ShowDialog();
         }
+
+        private void mnShortSummaryReport_Click(object sender, RoutedEventArgs e)
+        {
+            ShortSummaryWindow wShortSummary = new ShortSummaryWindow();
+            wShortSummary.ShowDialog();
+        }
     }
 }
