@@ -72,6 +72,6 @@
                 </StackPanel>
             </GroupBox>
         </StackPanel>
-        <Button Name="btnClose" Width="100" Height="35" HorizontalAlignment="Right" Margin="0,10" Click="btnClose_Click">Close</Button>
+        <Button Name="btnClose" Width="100" Height="35" HorizontalAlignment="Right" Margin="6,10" Click="btnClose_Click">Close</Button>
     </StackPanel>
 </Window>

@@ -29,7 +29,7 @@
                 <MenuItem Header="Purchase Amenities" Name="mnPurchaseAmenities" Click="mnPurchaseAmenities_Click"/>
             </MenuItem>
             <MenuItem Header="Report">
-                <MenuItem Header="Amenities" Name="mnAmenitiesReprot"/>
+                <MenuItem Header="Amenities" Name="mnAmenitiesReprot" Click="mnAmenitiesReprot_Click"/>
                 <MenuItem Header="Survey" Name="mnSurveyReport"/>
                 <MenuItem Header="Short Summary" Name="mnShortSummaryReport" Click="mnShortSummaryReport_Click"/>
             </MenuItem>

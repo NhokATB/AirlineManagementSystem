@@ -7,31 +7,29 @@
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Amenities Report" Height="600" Width="800">
-    <StackPanel Margin="10">
-        <Grid>
+        Title="Amenities Report" Height="650" Width="800">
+    <StackPanel Margin="10,20">
+        <Grid Width="auto" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
                 <ColumnDefinition Width="1.5*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Width="150" VerticalAlignment="Center">
-                <RadioButton Name="rdbFlightId" IsChecked="True" Margin="5">Search by flight id</RadioButton>
-                <RadioButton Name="rdbDate" Margin="5">Search by date</RadioButton>
-            </StackPanel>
-            <GroupBox Header="Filter" Grid.Column="1">
-                <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
-                    <TextBlock VerticalAlignment="Center" Margin="5">From:</TextBlock>
-                    <DatePicker Name="dpFrom" Margin="5" Width="120"></DatePicker>
-                    <TextBlock VerticalAlignment="Center" Margin="5">to:</TextBlock>
-                    <DatePicker Name="dpTo" Margin="5" Width="120"></DatePicker>
-                </StackPanel>
+            <GroupBox Header="Filter" Grid.Column="0">
+                <Grid>
+                    <StackPanel Name="stpFilterByFlightId" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                        <TextBlock VerticalAlignment="Center" Margin="10,5">Flight id:</TextBlock>
+                        <TextBox Name="txtFlightNumber" Margin="5" Width="100"></TextBox>
+                        <TextBlock VerticalAlignment="Center" Margin="10,5">From:</TextBlock>
+                        <DatePicker Name="dpFrom" Margin="5" Width="120"></DatePicker>
+                        <TextBlock VerticalAlignment="Center" Margin="10,5">To:</TextBlock>
+                        <DatePicker Name="dpTo" Margin="5" Width="120"></DatePicker>
+                    </StackPanel>
+                </Grid>
             </GroupBox>
-            <Button Name="btnMakeReport" Grid.Column="2" Height="40" Width="100" VerticalAlignment="Bottom" HorizontalAlignment="Right">Make report</Button>
+            <Button Name="btnMakeReport" Grid.Column="1" Height="40" Width="100" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="50,0" Click="btnMakeReport_Click">Make report</Button>
         </Grid>
-        <DataGrid Name="dgReport" CanUserAddRows="False"></DataGrid>
-        <WindowsFormsHost>
-            <rv:ReportViewer x:Name="_reportViewer"/>
+        <WindowsFormsHost Name="wfAmenitiesReport" Margin="10" Visibility="Hidden" Height="500">
+            <rv:ReportViewer x:Name="rvAmenitiesReport"/>
         </WindowsFormsHost>
     </StackPanel>
 </Window>

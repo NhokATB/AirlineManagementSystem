@@ -97,6 +97,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\AmenitiesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AmenitiesDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Model\AMONICColor.cs" />
     <Compile Include="Model\Flight.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
@@ -316,6 +321,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Model\AmenitiesReport.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -326,6 +332,17 @@
     </EntityDeploy>
     <None Include="Model\AirlineManagementModel.edmx.diagram">
       <DependentUpon>AirlineManagementModel.edmx</DependentUpon>
+    </None>
+    <None Include="Model\AmenitiesDataSet.xsc">
+      <DependentUpon>AmenitiesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Model\AmenitiesDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AmenitiesDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Model\AmenitiesDataSet.xss">
+      <DependentUpon>AmenitiesDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

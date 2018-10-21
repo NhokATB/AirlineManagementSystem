@@ -87,5 +87,11 @@ namespace AirportManagerSystem.View
             ShortSummaryWindow wShortSummary = new ShortSummaryWindow();
             wShortSummary.ShowDialog();
         }
+
+        private void mnAmenitiesReprot_Click(object sender, RoutedEventArgs e)
+        {
+            AmenitiesReportWindow wAmenitiesReport = new AmenitiesReportWindow();
+            wAmenitiesReport.ShowDialog();
+        }
     }
 }
