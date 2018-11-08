@@ -93,5 +93,17 @@ namespace AirportManagerSystem.View
             AmenitiesReportWindow wAmenitiesReport = new AmenitiesReportWindow();
             wAmenitiesReport.ShowDialog();
         }
+
+        private void mnSurveyReport_Click(object sender, RoutedEventArgs e)
+        {
+            SurveyReportWindow wSurveyReport = new SurveyReportWindow();
+            wSurveyReport.ShowDialog();
+        }
+
+        private void mnSurveyQuestionaire_Click(object sender, RoutedEventArgs e)
+        {
+            SurveyQuestionnaireWindow wSurveyQuestionnaire = new SurveyQuestionnaireWindow();
+            wSurveyQuestionnaire.ShowDialog();
+        }
     }
 }

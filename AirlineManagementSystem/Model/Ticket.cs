@@ -37,8 +37,8 @@ namespace AirportManagerSystem.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AmenitiesTicket> AmenitiesTickets { get; set; }
         public virtual CabinType CabinType { get; set; }
+        public virtual Country Country { get; set; }
         public virtual Schedule Schedule { get; set; }
         public virtual User User { get; set; }
-        public virtual Country Country { get; set; }
     }
 }

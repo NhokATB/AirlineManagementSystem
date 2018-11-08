@@ -6,14 +6,14 @@
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Check-In" Height="450" Width="700">
+        Title="Check-In" Height="450" Width="750">
     <StackPanel Margin="10">
         <GroupBox Header="Filter by">
             <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
                 <TextBlock VerticalAlignment="Center">Ticket id:</TextBlock>
                 <TextBox Name="txtTicketId" Width="80" Margin="10,5"></TextBox>
-                <TextBlock VerticalAlignment="Center">First name:</TextBlock>
-                <TextBox Name="txtFirstName" Width="140" Margin="10,5"></TextBox>
+                <TextBlock VerticalAlignment="Center">Booking refenrence:</TextBlock>
+                <TextBox Name="txtBookingReference" Width="140" Margin="10,5"></TextBox>
                 <TextBlock VerticalAlignment="Center">Passport number:</TextBlock>
                 <TextBox Name="txtPassportNumber" Width="140" Margin="10,5"></TextBox>
             </StackPanel>
@@ -24,6 +24,7 @@
                 <DataGridTextColumn Header="First name" Width="0.5*" Binding="{Binding Firstname}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Last name" Width="0.5*" Binding="{Binding Lastname}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Passport number" Width="0.5*" Binding="{Binding PassportNumber}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Booking refenrence" Width="0.5*" Binding="{Binding BookingReference}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         

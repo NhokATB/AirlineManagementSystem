@@ -17,6 +17,7 @@ namespace AirportManagerSystem.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Schedule()
         {
+            this.Respondents = new HashSet<Respondent>();
             this.Tickets = new HashSet<Ticket>();
         }
     
@@ -30,6 +31,8 @@ namespace AirportManagerSystem.Model
         public string FlightNumber { get; set; }
     
         public virtual Aircraft Aircraft { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Respondent> Respondents { get; set; }
         public virtual Route Route { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Tickets { get; set; }

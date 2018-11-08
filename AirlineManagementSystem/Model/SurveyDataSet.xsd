@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SurveyDataSet" targetNamespace="http://tempuri.org/SurveyDataSet.xsd" xmlns:mstns="http://tempuri.org/SurveyDataSet.xsd" xmlns="http://tempuri.org/SurveyDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SurveyDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SurveyDataSet" msprop:Generator_UserDSName="SurveyDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Survey" msprop:Generator_TableClassName="SurveyDataTable" msprop:Generator_TableVarName="tableSurvey" msprop:Generator_TablePropName="Survey" msprop:Generator_RowDeletingName="SurveyRowDeleting" msprop:Generator_RowChangingName="SurveyRowChanging" msprop:Generator_RowEvHandlerName="SurveyRowChangeEventHandler" msprop:Generator_RowDeletedName="SurveyRowDeleted" msprop:Generator_UserTableName="Survey" msprop:Generator_RowChangedName="SurveyRowChanged" msprop:Generator_RowEvArgName="SurveyRowChangeEvent" msprop:Generator_RowClassName="SurveyRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Question" msprop:Generator_ColumnVarNameInTable="columnQuestion" msprop:Generator_ColumnPropNameInRow="Question" msprop:Generator_ColumnPropNameInTable="QuestionColumn" msprop:Generator_UserColumnName="Question" type="xs:string" minOccurs="0" />
+              <xs:element name="Answer" msprop:Generator_ColumnVarNameInTable="columnAnswer" msprop:Generator_ColumnPropNameInRow="Answer" msprop:Generator_ColumnPropNameInTable="AnswerColumn" msprop:Generator_UserColumnName="Answer" type="xs:string" minOccurs="0" />
+              <xs:element name="AnswerId" msprop:Generator_ColumnVarNameInTable="columnAnswerId" msprop:Generator_ColumnPropNameInRow="AnswerId" msprop:Generator_ColumnPropNameInTable="AnswerIdColumn" msprop:Generator_UserColumnName="AnswerId" type="xs:int" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:int" minOccurs="0" />
+              <xs:element name="Male" msprop:Generator_ColumnVarNameInTable="columnMale" msprop:Generator_ColumnPropNameInRow="Male" msprop:Generator_ColumnPropNameInTable="MaleColumn" msprop:Generator_UserColumnName="Male" type="xs:int" minOccurs="0" />
+              <xs:element name="Female" msprop:Generator_ColumnVarNameInTable="columnFemale" msprop:Generator_ColumnPropNameInRow="Female" msprop:Generator_ColumnPropNameInTable="FemaleColumn" msprop:Generator_UserColumnName="Female" type="xs:int" minOccurs="0" />
+              <xs:element name="Age18" msprop:Generator_ColumnVarNameInTable="columnAge18" msprop:Generator_ColumnPropNameInRow="Age18" msprop:Generator_ColumnPropNameInTable="Age18Column" msprop:Generator_UserColumnName="Age18" type="xs:int" minOccurs="0" />
+              <xs:element name="Age25" msprop:Generator_ColumnVarNameInTable="columnAge25" msprop:Generator_ColumnPropNameInRow="Age25" msprop:Generator_ColumnPropNameInTable="Age25Column" msprop:Generator_UserColumnName="Age25" type="xs:int" minOccurs="0" />
+              <xs:element name="Age40" msprop:Generator_ColumnVarNameInTable="columnAge40" msprop:Generator_ColumnPropNameInRow="Age40" msprop:Generator_ColumnPropNameInTable="Age40Column" msprop:Generator_UserColumnName="Age40" type="xs:int" minOccurs="0" />
+              <xs:element name="Age60" msprop:Generator_ColumnVarNameInTable="columnAge60" msprop:Generator_ColumnPropNameInRow="Age60" msprop:Generator_ColumnPropNameInTable="Age60Column" msprop:Generator_UserColumnName="Age60" type="xs:int" minOccurs="0" />
+              <xs:element name="Economy" msprop:Generator_ColumnVarNameInTable="columnEconomy" msprop:Generator_ColumnPropNameInRow="Economy" msprop:Generator_ColumnPropNameInTable="EconomyColumn" msprop:Generator_UserColumnName="Economy" type="xs:int" minOccurs="0" />
+              <xs:element name="Business" msprop:Generator_ColumnVarNameInTable="columnBusiness" msprop:Generator_ColumnPropNameInRow="Business" msprop:Generator_ColumnPropNameInTable="BusinessColumn" msprop:Generator_UserColumnName="Business" type="xs:int" minOccurs="0" />
+              <xs:element name="First" msprop:Generator_ColumnVarNameInTable="columnFirst" msprop:Generator_ColumnPropNameInRow="First" msprop:Generator_ColumnPropNameInTable="FirstColumn" msprop:Generator_UserColumnName="First" type="xs:int" minOccurs="0" />
+              <xs:element name="AUH" msprop:Generator_ColumnVarNameInTable="columnAUH" msprop:Generator_ColumnPropNameInRow="AUH" msprop:Generator_ColumnPropNameInTable="AUHColumn" msprop:Generator_UserColumnName="AUH" type="xs:int" minOccurs="0" />
+              <xs:element name="BAH" msprop:Generator_ColumnVarNameInTable="columnBAH" msprop:Generator_ColumnPropNameInRow="BAH" msprop:Generator_ColumnPropNameInTable="BAHColumn" msprop:Generator_UserColumnName="BAH" type="xs:int" minOccurs="0" />
+              <xs:element name="DOH" msprop:Generator_ColumnVarNameInTable="columnDOH" msprop:Generator_ColumnPropNameInRow="DOH" msprop:Generator_ColumnPropNameInTable="DOHColumn" msprop:Generator_UserColumnName="DOH" type="xs:int" minOccurs="0" />
+              <xs:element name="RUH" msprop:Generator_ColumnVarNameInTable="columnRUH" msprop:Generator_ColumnPropNameInRow="RUH" msprop:Generator_ColumnPropNameInTable="RUHColumn" msprop:Generator_UserColumnName="RUH" type="xs:int" minOccurs="0" />
+              <xs:element name="CAI" msprop:Generator_ColumnVarNameInTable="columnCAI" msprop:Generator_ColumnPropNameInRow="CAI" msprop:Generator_ColumnPropNameInTable="CAIColumn" msprop:Generator_UserColumnName="CAI" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="De.TorstenMandelkow.MetroChart">
+      <HintPath>..\..\..\..\Desktop\ModernUICharts-WPF-master\packages\De.TorstenMandelkow.MetroChart.1.0.0\lib\De.TorstenMandelkow.MetroChart.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -76,6 +79,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Controls.DataVisualization.Toolkit.4.0.0.0\lib\net40-Client\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -97,14 +103,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ChartControls\UcSurveyColumnChart.xaml.cs">
+      <DependentUpon>UcSurveyColumnChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChartControls\UcSurveyLineChart.xaml.cs">
+      <DependentUpon>UcSurveyLineChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CommandClass.cs" />
     <Compile Include="Model\AmenitiesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AmenitiesDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Model\AMONICColor.cs" />
+    <Compile Include="HelperClass\AMONICColor.cs" />
     <Compile Include="Model\Flight.cs" />
+    <Compile Include="Model\NewSurvey.cs" />
+    <Compile Include="Model\SurveyDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SurveyDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UserControls\UcSurvey.xaml.cs">
+      <DependentUpon>UcSurvey.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddUserWindow.xaml.cs">
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
     </Compile>
@@ -138,7 +160,13 @@
     <Compile Include="View\ShortSummaryWindow.xaml.cs">
       <DependentUpon>ShortSummaryWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UcFlightDetail.xaml.cs">
+    <Compile Include="View\SurveyQuestionnaireWindow.xaml.cs">
+      <DependentUpon>SurveyQuestionnaireWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SurveyReportWindow.xaml.cs">
+      <DependentUpon>SurveyReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UcFlightDetail.xaml.cs">
       <DependentUpon>UcFlightDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginHistoryWindow.xaml.cs">
@@ -156,6 +184,18 @@
     <Compile Include="View\UserManagementWindow.xaml.cs">
       <DependentUpon>UserManagementWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="ChartControls\UcSurveyColumnChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChartControls\UcSurveyLineChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UcSurvey.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AddUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -200,7 +240,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UcFlightDetail.xaml">
+    <Page Include="View\SurveyQuestionnaireWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SurveyReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UcFlightDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -255,7 +303,7 @@
     <Compile Include="Model\LoginHistory.cs">
       <DependentUpon>AirlineManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Md5Helper.cs" />
+    <Compile Include="HelperClass\Md5Helper.cs" />
     <Compile Include="Model\Office.cs">
       <DependentUpon>AirlineManagementModel.tt</DependentUpon>
     </Compile>
@@ -322,6 +370,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Model\AmenitiesReport.rdlc" />
+    <EmbeddedResource Include="Model\SurveyDetailReport.rdlc" />
+    <EmbeddedResource Include="Model\SurveySummaryReport.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -343,6 +393,17 @@
     </None>
     <None Include="Model\AmenitiesDataSet.xss">
       <DependentUpon>AmenitiesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Model\SurveyDataSet.xsc">
+      <DependentUpon>SurveyDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Model\SurveyDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SurveyDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Model\SurveyDataSet.xss">
+      <DependentUpon>SurveyDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

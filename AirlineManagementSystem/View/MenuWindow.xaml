@@ -27,10 +27,11 @@
                 <MenuItem Header="Check in" Name="mnCheckIn"/>
                 <MenuItem Header="Book Flight" Name="mnBookFlight" Click="mnBookFlight_Click"/>
                 <MenuItem Header="Purchase Amenities" Name="mnPurchaseAmenities" Click="mnPurchaseAmenities_Click"/>
+                <MenuItem Header="Survey questionaire" Name="mnSurveyQuestionaire" Click="mnSurveyQuestionaire_Click"/>
             </MenuItem>
             <MenuItem Header="Report">
                 <MenuItem Header="Amenities" Name="mnAmenitiesReprot" Click="mnAmenitiesReprot_Click"/>
-                <MenuItem Header="Survey" Name="mnSurveyReport"/>
+                <MenuItem Header="Survey" Name="mnSurveyReport" Click="mnSurveyReport_Click"/>
                 <MenuItem Header="Short Summary" Name="mnShortSummaryReport" Click="mnShortSummaryReport_Click"/>
             </MenuItem>
             <MenuItem Header="Introduce">
@@ -38,7 +39,7 @@
                 <MenuItem Header="Automation System" Name="mnAutomationSystem"/>
             </MenuItem>
         </Menu>
-        <TextBlock TextAlignment="Center" FontSize="40" Margin="10,30,10,25" Foreground="DarkGreen" FontWeight="Bold">Welcome to AMONIC Airlines Automation System</TextBlock>
+        <TextBlock TextAlignment="Center" FontSize="40" Margin="10,30,10,25" Foreground="DarkGreen" FontWeight="Bold" TextWrapping="Wrap">Welcome to AMONIC Airlines Automation System</TextBlock>
         <Image Name="imgLogo" Width="auto" Height="auto" Margin="20,50,20,20"></Image>
     </StackPanel>
 </Window>

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AirportManagerSystem.HelperClass;
 using AirportManagerSystem.Model;
 
 namespace AirportManagerSystem.View
@@ -25,12 +26,6 @@ namespace AirportManagerSystem.View
         public ChangePasswordWindow()
         {
             InitializeComponent();
-            this.Loaded += ChangePasswordWindow_Loaded;
-        }
-
-        private void ChangePasswordWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)

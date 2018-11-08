@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="AirportManagerSystem.UserControls.UcSurvey"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AirportManagerSystem.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="750">
+    <UserControl.Resources>
+        <Style TargetType="RadioButton">
+            <Setter Property="Margin" Value="10,5"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Width" Value="50"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="3">
+        <TextBlock Name="tblQuestion" TextWrapping="WrapWithOverflow" Width="250" TextAlignment="Left" VerticalAlignment="Center">fawefawefawef</TextBlock>
+        <RadioButton Name="rdbOutstanding"></RadioButton>
+        <RadioButton Name="rdbVeryGood"></RadioButton>
+        <RadioButton Name="rdbGood"></RadioButton>
+        <RadioButton Name="rdbAdequate"></RadioButton>
+        <RadioButton Name="rdbNeedImprovement"></RadioButton>
+        <RadioButton Name="rdbPoor"></RadioButton>
+        <RadioButton Name="rdbNotKnow"></RadioButton>
+    </StackPanel>
+</UserControl>

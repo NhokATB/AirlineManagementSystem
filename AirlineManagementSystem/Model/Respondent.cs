@@ -25,9 +25,10 @@ namespace AirportManagerSystem.Model
         public Nullable<int> Age { get; set; }
         public string Gender { get; set; }
         public string CabinType { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
         public int RespondentId { get; set; }
+        public Nullable<int> ScheduleId { get; set; }
     
+        public virtual Schedule Schedule { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Survey> Surveys { get; set; }
     }

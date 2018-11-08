@@ -28,7 +28,7 @@ namespace AirportManagerSystem.View
 
         private void CrashWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            tblMessage.Text = $"No logout detected for your last login on {Log.LoginTime.ToString("dd/MM/yyyy")} at {Log.LoginTime.ToString("HH:/mm")}";
+            tblMessage.Text = $"No logout detected for your last login on {Log.LoginTime.ToString("dd/MM/yyyy")} at {Log.LoginTime.ToString("HH:mm")}";
         }
 
         public LoginHistory Log { get; internal set; }
