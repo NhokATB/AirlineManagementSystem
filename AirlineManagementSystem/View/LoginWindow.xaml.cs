@@ -105,6 +105,34 @@ namespace AirportManagerSystem
             timer.Tick += Timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 1);
 
+            var schedules = Db.Context.Schedules.Where(t => t.Tickets.Count > 10 && t.Date.Year == 2019).ToList();
+            var date = new DateTime(2019, 1, 25);
+            var re = Db.Context.Respondents.Where(t => t.Schedule.Date > date).ToList();
+            foreach (var item in re)
+            {
+                var su = item.Surveys.ToList();
+                Db.Context.Surveys.RemoveRange(su);
+            }
+            Db.Context.SaveChanges();
+            Db.Context.Respondents.RemoveRange(re);
+            Db.Context.SaveChanges();
+
+            foreach (var item in schedules)
+            {
+                var respond = item.Respondents.Take(10).ToList();
+
+                //foreach (var re in respond)
+                //{
+                //    re.Surveys.Clear();
+                //}
+                //Db.Context.SaveChanges();
+
+                //Db.Context.Respondents.RemoveRange(respond);
+            }
+            //Db.Context.Schedules.RemoveRange(schedules);
+            Db.Context.SaveChanges();
+
+
             //var s = Db.Context.Schedules.ToList().Where(t => t.Surveys.Count == 0).ToList();
 
             //var date1 = new DateTime(2017, 9, 1);
