@@ -81,7 +81,7 @@ namespace AirportManagerSystem.View
         public void LoadUsers()
         {
             dgUsers.ItemsSource = null;
-            var users = Db.Context.Users.Where(t=>t.ID != User.ID).ToList();
+            var users = Db.Context.Users.Where(t => t.ID != User.ID).ToList();
             var officeName = offices[cbOffice.SelectedIndex].Title;
             if (officeName != "All offices")
             {
@@ -116,7 +116,7 @@ namespace AirportManagerSystem.View
             }
             else
             {
-                MessageBox.Show("Please choose a user!", "Message");
+                MessageBox.Show("Please choose a user!", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
         }
@@ -138,13 +138,48 @@ namespace AirportManagerSystem.View
             }
             else
             {
-                MessageBox.Show("Please choose a user!", "Message");
+                MessageBox.Show("Please choose a user!", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
         private void cbOffice_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             LoadUsers();
+        }
+
+        private void btnAddUser_Click(object sender, RoutedEventArgs e)
+        {
+            AddUserWindow wAddUser = new AddUserWindow();
+            wAddUser.ManageWindow = this;
+            wAddUser.ShowDialog();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnDeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentUser != null)
+            {
+                if (currentUser.Tickets.Count == 0)
+                {
+                    Db.Context.LoginHistories.RemoveRange(currentUser.LoginHistories);
+                    Db.Context.Users.Remove(currentUser);
+                    Db.Context.SaveChanges();
+                    LoadUsers();
+                    currentUser = null;
+                }
+                else
+                {
+                    MessageBox.Show("This user can not be deleted because it is related to tickets", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please choose a user!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

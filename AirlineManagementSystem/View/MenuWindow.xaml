@@ -18,13 +18,13 @@
             </MenuItem>
             <MenuItem Header="Manage">
                 <MenuItem Header="Users" Name="mnUsers" Click="MnUsers_Click"/>
-                <MenuItem Header="Fights" Name="mnFlights"/>
+                <MenuItem Header="Fights" Name="mnFlights" Click="mnFlights_Click"/>
                 <MenuItem Header="Tickets" Name="mnTickets"/>
                 <MenuItem Header="Amenities" Name="mnAmenities"/>
                 <MenuItem Header="Seats" Name="mnSeats"/>
             </MenuItem>
             <MenuItem Header="Business">
-                <MenuItem Header="Check in" Name="mnCheckIn"/>
+                <MenuItem Header="Check in" Name="mnCheckIn" Click="mnCheckIn_Click"/>
                 <MenuItem Header="Book Flight" Name="mnBookFlight" Click="mnBookFlight_Click"/>
                 <MenuItem Header="Purchase Amenities" Name="mnPurchaseAmenities" Click="mnPurchaseAmenities_Click"/>
                 <MenuItem Header="Survey questionaire" Name="mnSurveyQuestionaire" Click="mnSurveyQuestionaire_Click"/>

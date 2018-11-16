@@ -20,7 +20,7 @@
         </GroupBox>
         <DataGrid Name="dgTickets" Margin="0,5" CanUserAddRows="False" AutoGenerateColumns="False" IsReadOnly="True" RowHeaderWidth="0" Height="270">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Ticket id" Width="0.2*" Binding="{Binding Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ticket id" Width="0.2*" Binding="{Binding ID}"></DataGridTextColumn>
                 <DataGridTextColumn Header="First name" Width="0.5*" Binding="{Binding Firstname}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Last name" Width="0.5*" Binding="{Binding Lastname}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Passport number" Width="0.5*" Binding="{Binding PassportNumber}"></DataGridTextColumn>
@@ -30,7 +30,6 @@
         
         <StackPanel Orientation="Horizontal" Margin="0,5" HorizontalAlignment="Right">
             <Button Name="btnCheckIn" Width="100" Height="35" Margin="10,0" Click="btnCheckIn_Click">Check in</Button>
-            <Button Name="btnReset" Width="100" Height="35" Margin="10,0" Click="btnReset_Click">Reset</Button>
             <Button Name="btnCancel" Width="100" Height="35" Margin="10,0,0,0" Click="btnCancel_Click">Cancel</Button>
         </StackPanel>
     </StackPanel>

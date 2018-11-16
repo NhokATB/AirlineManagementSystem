@@ -105,5 +105,17 @@ namespace AirportManagerSystem.View
             SurveyQuestionnaireWindow wSurveyQuestionnaire = new SurveyQuestionnaireWindow();
             wSurveyQuestionnaire.ShowDialog();
         }
+
+        private void mnCheckIn_Click(object sender, RoutedEventArgs e)
+        {
+            CheckInWindow wCheckin = new CheckInWindow();
+            wCheckin.ShowDialog();
+        }
+
+        private void mnFlights_Click(object sender, RoutedEventArgs e)
+        {
+            FlightManagementWindow wFlightManagement = new FlightManagementWindow();
+            wFlightManagement.ShowDialog();
+        }
     }
 }

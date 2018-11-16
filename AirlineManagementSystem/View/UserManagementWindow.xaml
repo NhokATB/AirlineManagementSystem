@@ -7,16 +7,22 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="User Management" Height="550" Width="1000">
+        Title="User Management" Height="660" Width="1000">
     <StackPanel>
-        <Menu>
-            <MenuItem Header="Add User" Name="addUserMenu" Click="addUserMenu_Click"></MenuItem>
-        </Menu>
-        <StackPanel Orientation="Horizontal" Margin="10,5,5,5">
-            <TextBlock TextAlignment="Left" VerticalAlignment="Center">Office:</TextBlock>
-            <ComboBox Name="cbOffice" Width="150" Margin="5,5,5,5" SelectionChanged="cbOffice_SelectionChanged"></ComboBox>
-        </StackPanel>
-        <DataGrid RowHeaderWidth="0" IsReadOnly="True" Name="dgUsers" AutoGenerateColumns="False" Margin="10,5,10,5" Height="355" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="FullRow">
+        <Grid Margin="10,15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock TextAlignment="Left" VerticalAlignment="Center">Office:</TextBlock>
+                <ComboBox Name="cbOffice" Width="150" Margin="5,5,5,5" SelectionChanged="cbOffice_SelectionChanged"></ComboBox>
+
+            </StackPanel>
+           
+        </Grid>
+
+        <DataGrid RowHeaderWidth="0" IsReadOnly="True" Name="dgUsers" AutoGenerateColumns="False" Margin="10,5,10,5" Height="455" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="FullRow">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Firstname" Binding="{Binding FirstName}" Width="0.6*" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Lastname" Binding="{Binding LastName}" Width="0.8*" ></DataGridTextColumn>
@@ -34,9 +40,18 @@
             </DockPanel>
             <TextBlock Margin="5,5,5,5">Disabled account</TextBlock>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="10,5,5,5">
-            <Button Width="100" Height="35" Name="btnChangeRole" Click="btnChangeRole_Click" Margin="0,0,15,0">Change role</Button>
-            <Button Width="120" Height="35" Click="btnDisableAccount_Click" Name="btnDisableAccount">Disable account</Button>
-        </StackPanel>
+        <Grid Margin="10,15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal" >
+                <Button Grid.Column="1" Width="100" Height="32" Name="btnAddUser" Click="btnAddUser_Click" Margin="0,0,15,0">Add User</Button>
+                <Button Width="120" Height="35" Name="btnChangeRole" Click="btnChangeRole_Click" Margin="0,0,15,0">Edit User</Button>
+                <Button Width="120" Height="35" Name="btnDeleteUser" Click="btnDeleteUser_Click"  Margin="0,0,15,0" VerticalAlignment="Top">Delete User</Button>
+                <Button Width="120" Height="35" Margin="0,0,15,0" Click="btnDisableAccount_Click" Name="btnDisableAccount">Disable User</Button>
+            </StackPanel>
+            <Button Grid.Column="1" Width="120" Height="35" Name="btnCancel" HorizontalAlignment="Right" Click="btnCancel_Click" >Cancel</Button>
+        </Grid>
     </StackPanel>
 </Window>

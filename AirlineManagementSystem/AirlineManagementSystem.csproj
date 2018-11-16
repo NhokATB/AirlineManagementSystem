@@ -117,6 +117,7 @@
     </Compile>
     <Compile Include="HelperClass\AMONICColor.cs" />
     <Compile Include="Model\Flight.cs" />
+    <Compile Include="Model\NewFlight.cs" />
     <Compile Include="Model\NewSurvey.cs" />
     <Compile Include="Model\SurveyDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -126,6 +127,12 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UserControls\UcSurvey.xaml.cs">
       <DependentUpon>UcSurvey.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddFlightWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddFlightWindow.Designer.cs">
+      <DependentUpon>AddFlightWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AddUserWindow.xaml.cs">
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
@@ -148,14 +155,26 @@
     <Compile Include="View\CheckInWindow.xaml.cs">
       <DependentUpon>CheckInWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditFlightWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EditFlightWindow.Designer.cs">
+      <DependentUpon>EditFlightWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\EditProfileWindow.xaml.cs">
       <DependentUpon>EditProfileWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CrashWindow.xaml.cs">
       <DependentUpon>CrashWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\FlightManagementWindow.xaml.cs">
+      <DependentUpon>FlightManagementWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SeatManagementWindow.xaml.cs">
       <DependentUpon>SeatManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SeatModelWindow.xaml.cs">
+      <DependentUpon>SeatModelWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ShortSummaryWindow.xaml.cs">
       <DependentUpon>ShortSummaryWindow.xaml</DependentUpon>
@@ -180,6 +199,9 @@
     </Compile>
     <Compile Include="View\PurchaseAmenitiesWindow.xaml.cs">
       <DependentUpon>PurchaseAmenitiesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TicketsManagermentWindow.xaml.cs">
+      <DependentUpon>TicketsManagermentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserManagementWindow.xaml.cs">
       <DependentUpon>UserManagementWindow.xaml</DependentUpon>
@@ -232,7 +254,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\FlightManagementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SeatManagementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SeatModelWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -350,6 +380,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\TicketsManagermentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -375,6 +409,12 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AddFlightWindow.resx">
+      <DependentUpon>AddFlightWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EditFlightWindow.resx">
+      <DependentUpon>EditFlightWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\AirlineManagementModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
