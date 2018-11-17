@@ -56,7 +56,7 @@
                 <ColumnDefinition Width="0.3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <Button Grid.Column="1" Width="100" Height="32" Name="btnAddUser" Click="btnAddFlight_Click" Margin="0,0,15,0">Add Flight</Button>
+                <Button Grid.Column="1" Width="100" Height="35" Name="btnAddUser" Click="btnAddFlight_Click" Margin="0,0,15,0">Add Flight</Button>
                 <Button Width="120" Height="35" Name="btnEditFlight" Margin="0,0,15,0" Click="btnEditFlight_Click">Edit Flight</Button>
                 <Button Width="120" Name="btnDeleteFlight" Margin="0,0,15,0" Click="btnDeleteFlight_Click">Delete Flight</Button>
                 <Button Width="120" Height="35" Margin="0,0,15,0" Name="btnCancelFlight" Click="btnCancelFlight_Click" VerticalAlignment="Top">Cancel Flight</Button>

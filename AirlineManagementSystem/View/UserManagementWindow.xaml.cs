@@ -112,7 +112,7 @@ namespace AirportManagerSystem.View
             wAddUser.ShowDialog();
         }
 
-        private void btnChangeRole_Click(object sender, RoutedEventArgs e)
+        private void btnEditUser_Click(object sender, RoutedEventArgs e)
         {
             if (currentUser != null)
             {
@@ -132,7 +132,6 @@ namespace AirportManagerSystem.View
             {
                 MessageBox.Show("Please choose a user!", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
         }
 
         private void btnDisableAccount_Click(object sender, RoutedEventArgs e)
@@ -179,11 +178,14 @@ namespace AirportManagerSystem.View
             {
                 if (currentUser.Tickets.Count == 0)
                 {
-                    Db.Context.LoginHistories.RemoveRange(currentUser.LoginHistories);
-                    Db.Context.Users.Remove(currentUser);
-                    Db.Context.SaveChanges();
-                    LoadUsers();
-                    currentUser = null;
+                    if (MessageBox.Show("Do you want to delete this user?", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                    {
+                        Db.Context.LoginHistories.RemoveRange(currentUser.LoginHistories);
+                        Db.Context.Users.Remove(currentUser);
+                        Db.Context.SaveChanges();
+                        LoadUsers();
+                        currentUser = null;
+                    }
                 }
                 else
                 {

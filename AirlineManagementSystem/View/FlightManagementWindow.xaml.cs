@@ -44,7 +44,7 @@ namespace AirportManagerSystem.View
             try
             {
                 currentFlight = dgFlights.CurrentItem as NewFlight;
-                
+
                 if (currentFlight.Schedule.Confirmed)
                 {
                     btnCancelFlight.Content = "Cancel Flight";
@@ -102,14 +102,14 @@ namespace AirportManagerSystem.View
         {
             if (cbDepatureAirport.Text == cbArrivalAirport.Text && cbDepatureAirport.SelectedIndex != 0)
             {
-                MessageBox.Show("Airport cannot be the same","Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Airport cannot be the same", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             SetParameter();
             LoadFlights();
             if (dgFlights.Items.Count == 0)
-                MessageBox.Show("No result","Message", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("No result", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         private void SetParameter()
         {
@@ -135,7 +135,7 @@ namespace AirportManagerSystem.View
                 schedules = schedules.Where(t => t.Route.Airport1.Name == to).ToList();
             if (flightNumber != "")
                 schedules = schedules.Where(t => t.FlightNumber == flightNumber).ToList();
-            if(date != null)
+            if (date != null)
                 schedules = schedules.Where(t => t.Date == date.Value.Date).ToList();
         }
 
@@ -146,7 +146,7 @@ namespace AirportManagerSystem.View
                 currentFlight.Schedule.Confirmed = !currentFlight.Schedule.Confirmed;
                 Db.Context.SaveChanges();
                 LoadFlights();
-                MessageBox.Show(btnCancelFlight.Content +  " successful!","Message", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(btnCancelFlight.Content + " successful!", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
@@ -160,10 +160,13 @@ namespace AirportManagerSystem.View
             {
                 if (currentFlight.Schedule.Tickets.Count == 0)
                 {
-                    Db.Context.Schedules.Remove(currentFlight.Schedule);
-                    Db.Context.SaveChanges();
-                    LoadFlights();
-                    currentFlight = null;
+                    if (MessageBox.Show("Do you want to delete this flight?", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                    {
+                        Db.Context.Schedules.Remove(currentFlight.Schedule);
+                        Db.Context.SaveChanges();
+                        LoadFlights();
+                        currentFlight = null;
+                    }
                 }
                 else
                 {

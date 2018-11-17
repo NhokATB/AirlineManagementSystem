@@ -33,7 +33,7 @@
                     </WindowsFormsHost>
                 </StackPanel>
             </TabItem>
-            <TabItem>
+            <TabItem Name="tiDetail">
                 <TabItem.Header>
                     <TextBlock Margin="2,1">Result Detail</TextBlock>
                 </TabItem.Header>

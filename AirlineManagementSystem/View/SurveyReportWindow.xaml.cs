@@ -38,7 +38,6 @@ namespace AirportManagerSystem.View
             rvSummaryReport.ZoomMode = ZoomMode.FullPage;
             rvDetailReport.ZoomMode = ZoomMode.PageWidth;
             this.Loaded += SurveyReportWindow_Loaded;
-
         }
 
         private void SurveyReportWindow_Loaded(object sender, RoutedEventArgs e)

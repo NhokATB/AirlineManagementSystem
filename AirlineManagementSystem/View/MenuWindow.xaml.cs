@@ -123,5 +123,11 @@ namespace AirportManagerSystem.View
             TicketsManagementWindow wTicketsManagement = new TicketsManagementWindow();
             wTicketsManagement.ShowDialog();
         }
+
+        private void mnAmenities_Click(object sender, RoutedEventArgs e)
+        {
+            AmenitiesManagementWindow wAmenityManagement = new AmenitiesManagementWindow();
+            wAmenityManagement.ShowDialog();
+        }
     }
 }
