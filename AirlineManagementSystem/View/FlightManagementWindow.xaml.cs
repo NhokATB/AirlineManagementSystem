@@ -44,7 +44,7 @@ namespace AirportManagerSystem.View
             try
             {
                 currentFlight = dgFlights.CurrentItem as NewFlight;
-
+                
                 if (currentFlight.Schedule.Confirmed)
                 {
                     btnCancelFlight.Content = "Cancel Flight";
@@ -68,6 +68,10 @@ namespace AirportManagerSystem.View
             if (flight.Schedule.Confirmed == false)
             {
                 row.Background = new SolidColorBrush(Color.FromRgb(247, 148, 32));
+            }
+            else
+            {
+                row.Background = new SolidColorBrush(Colors.White);
             }
         }
 
@@ -126,9 +130,9 @@ namespace AirportManagerSystem.View
         {
             schedules = Db.Context.Schedules.ToList();
             if (from.Contains("All") == false)
-                schedules = schedules.Where(t => t.Route.Airport.IATACode == from).ToList();
+                schedules = schedules.Where(t => t.Route.Airport.Name == from).ToList();
             if (to.Contains("All") == false)
-                schedules = schedules.Where(t => t.Route.Airport1.IATACode == to).ToList();
+                schedules = schedules.Where(t => t.Route.Airport1.Name == to).ToList();
             if (flightNumber != "")
                 schedules = schedules.Where(t => t.FlightNumber == flightNumber).ToList();
             if(date != null)
@@ -142,7 +146,7 @@ namespace AirportManagerSystem.View
                 currentFlight.Schedule.Confirmed = !currentFlight.Schedule.Confirmed;
                 Db.Context.SaveChanges();
                 LoadFlights();
-                MessageBox.Show(btnCancel.Content +  " successful","Message", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(btnCancelFlight.Content +  " successful!","Message", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
@@ -172,7 +176,7 @@ namespace AirportManagerSystem.View
             }
         }
 
-        private void btnAddUser_Click(object sender, RoutedEventArgs e)
+        private void btnAddFlight_Click(object sender, RoutedEventArgs e)
         {
             AddFlightWindow wAddFlight = new AddFlightWindow();
             wAddFlight.ManageWindow = this;
@@ -222,17 +226,11 @@ namespace AirportManagerSystem.View
 
                 flights.Add(new NewFlight()
                 {
-                    //Aircraft = item.Aircraft,
-                    //Date = item.Date,
-                    //Time = item.Time,
-                    //From = item.Route.Airport,
-                    //To = item.Route.Airport1,
-                    //FlightNumber = item.FlightNumber,
                     EconomyPrice = price,
                     BusinessPrice = bprice,
                     FirstClassPrice = fprice,
-                    //Confirmed = item.Confirmed,
-                    Schedule = item
+                    Schedule = item,
+                    Aircraft = item.Aircraft.Name + " " + item.Aircraft.MakeModel
                 });
             }
 

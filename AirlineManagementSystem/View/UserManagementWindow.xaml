@@ -17,16 +17,14 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock TextAlignment="Left" VerticalAlignment="Center">Office:</TextBlock>
                 <ComboBox Name="cbOffice" Width="150" Margin="5,5,5,5" SelectionChanged="cbOffice_SelectionChanged"></ComboBox>
-
             </StackPanel>
-           
         </Grid>
 
         <DataGrid RowHeaderWidth="0" IsReadOnly="True" Name="dgUsers" AutoGenerateColumns="False" Margin="10,5,10,5" Height="455" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="FullRow">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Firstname" Binding="{Binding FirstName}" Width="0.6*" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Lastname" Binding="{Binding LastName}" Width="0.8*" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Birthdate" Binding="{Binding Birthdate, StringFormat='d'}" Width="0.3*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Birthdate" Binding="{Binding Birthdate, StringFormat={}{0:dd/MM/yyyy}}" Width="0.3*" ></DataGridTextColumn>
                 <DataGridTextColumn Header="User role" Binding="{Binding Role.Title}" Width="0.4*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Email address" Binding="{Binding Email}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Office" Binding="{Binding Office.Title}" Width="0.5*"></DataGridTextColumn>

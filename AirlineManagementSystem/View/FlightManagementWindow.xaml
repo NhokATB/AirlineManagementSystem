@@ -10,7 +10,7 @@
         Title="Flights Management" Height="660" Width="1000">
     <StackPanel>
 
-        <GroupBox Header="Filter by" Margin="10,5,10,5">
+        <GroupBox Header="Filter Flight" Margin="10,5,10,5">
             <GroupBox.Content>
                 <StackPanel Width="700" HorizontalAlignment="Center" Margin="5,5,5,10">
                     <StackPanel Orientation="Horizontal" Margin="5,5,5,5" HorizontalAlignment="Center">
@@ -33,24 +33,13 @@
         </GroupBox>
 
         <DataGrid RowHeaderWidth="0" IsReadOnly="True" Name="dgFlights" AutoGenerateColumns="False" Margin="10,5,10,5" Height="385" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="FullRow">
-            <!--<DataGrid.Columns>
-                <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat=d}" Width="0.4*" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Time" Binding="{Binding Time}" Width="0.3*" ></DataGridTextColumn>
-                <DataGridTextColumn Header="From" Binding="{Binding From.IATACode}" Width="0.3*" ></DataGridTextColumn>
-                <DataGridTextColumn Header="To" Binding="{Binding To.IATACode}" Width="0.4*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Flight number" Binding="{Binding FlightNumber}" Width="0.4*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Aircraft" Binding="{Binding Aircraft.Name}" Width="0.5*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Economy Price" Binding="{Binding EconomyPrice, StringFormat='{}{0:C0}'}" Width="0.5*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Business Price" Binding="{Binding BusinessPrice, StringFormat='{}{0:C0}'}" Width="0.5*"></DataGridTextColumn>
-                <DataGridTextColumn Header="First Class Price" Binding="{Binding FirstClassPrice, StringFormat='{}{0:C0}'}" Width="0.5*"></DataGridTextColumn>
-            </DataGrid.Columns>-->
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Date" Binding="{Binding Schedule.Date, StringFormat=d}" Width="0.4*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Date" Binding="{Binding Schedule.Date, StringFormat=d}" Width="0.35*" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Time" Binding="{Binding Schedule.Time}" Width="0.3*" ></DataGridTextColumn>
                 <DataGridTextColumn Header="From" Binding="{Binding Schedule.Route.Airport.IATACode}" Width="0.3*" ></DataGridTextColumn>
-                <DataGridTextColumn Header="To" Binding="{Binding Schedule.Route.Airport1.IATACode}" Width="0.4*"></DataGridTextColumn>
+                <DataGridTextColumn Header="To" Binding="{Binding Schedule.Route.Airport1.IATACode}" Width="0.3*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Flight number" Binding="{Binding Schedule.FlightNumber}" Width="0.4*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Aircraft" Binding="{Binding Aircraft.Name}" Width="0.5*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Aircraft" Binding="{Binding Aircraft}" Width="0.5*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Economy Price" Binding="{Binding EconomyPrice, StringFormat='{}{0:C0}'}" Width="0.5*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Business Price" Binding="{Binding BusinessPrice, StringFormat='{}{0:C0}'}" Width="0.5*"></DataGridTextColumn>
                 <DataGridTextColumn Header="First Class Price" Binding="{Binding FirstClassPrice, StringFormat='{}{0:C0}'}" Width="0.5*"></DataGridTextColumn>
@@ -67,7 +56,7 @@
                 <ColumnDefinition Width="0.3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <Button Grid.Column="1" Width="100" Height="32" Name="btnAddUser" Click="btnAddUser_Click" Margin="0,0,15,0">Add Flight</Button>
+                <Button Grid.Column="1" Width="100" Height="32" Name="btnAddUser" Click="btnAddFlight_Click" Margin="0,0,15,0">Add Flight</Button>
                 <Button Width="120" Height="35" Name="btnEditFlight" Margin="0,0,15,0" Click="btnEditFlight_Click">Edit Flight</Button>
                 <Button Width="120" Name="btnDeleteFlight" Margin="0,0,15,0" Click="btnDeleteFlight_Click">Delete Flight</Button>
                 <Button Width="120" Height="35" Margin="0,0,15,0" Name="btnCancelFlight" Click="btnCancelFlight_Click" VerticalAlignment="Top">Cancel Flight</Button>

@@ -20,6 +20,7 @@ namespace AirportManagerSystem.View
     /// </summary>
     public partial class PurchaseAmenitiesWindow : Window
     {
+
         public PurchaseAmenitiesWindow()
         {
             InitializeComponent();
@@ -35,11 +36,20 @@ namespace AirportManagerSystem.View
         private void PurchaseAmenitiesWindow_Loaded(object sender, RoutedEventArgs e)
         {
             ResetAll();
+
+            if (BookingReference != null)
+            {
+                txtBookingReference.Text = BookingReference;
+                txtBookingReference.IsEnabled = false;
+                btnOk_Click(btnOk, new RoutedEventArgs());
+            }
         }
 
         Ticket updatedTicket;
         List<int> ticketIds = new List<int>();
         decimal total = 0, duty = 0, dutyPayed = 0, payed = 0;
+
+        public string BookingReference { get; internal set; }
 
         private void ResetAll()
         {

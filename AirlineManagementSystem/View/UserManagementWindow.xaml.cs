@@ -40,11 +40,25 @@ namespace AirportManagerSystem.View
             var user = e.Row.Item as User;
             if (user.RoleID == 1)
             {
-                row.Background = new SolidColorBrush(Color.FromRgb(25, 106, 166));
+                if (user.Active.Value == false)
+                {
+                    row.Background = new SolidColorBrush(Color.FromRgb(247, 148, 32));
+                }
+                else
+                {
+                    row.Background = new SolidColorBrush(Color.FromRgb(25, 106, 166));
+                }
             }
-            if (user.Active.Value == false)
+            else
             {
-                row.Background = new SolidColorBrush(Color.FromRgb(247, 148, 32));
+                if (user.Active.Value == false)
+                {
+                    row.Background = new SolidColorBrush(Color.FromRgb(247, 148, 32));
+                }
+                else
+                {
+                    row.Background = new SolidColorBrush(Colors.White);
+                }
             }
         }
 

@@ -19,7 +19,7 @@
             <MenuItem Header="Manage">
                 <MenuItem Header="Users" Name="mnUsers" Click="MnUsers_Click"/>
                 <MenuItem Header="Fights" Name="mnFlights" Click="mnFlights_Click"/>
-                <MenuItem Header="Tickets" Name="mnTickets"/>
+                <MenuItem Header="Tickets" Name="mnTickets" Click="mnTickets_Click"></MenuItem>
                 <MenuItem Header="Amenities" Name="mnAmenities"/>
                 <MenuItem Header="Seats" Name="mnSeats"/>
             </MenuItem>

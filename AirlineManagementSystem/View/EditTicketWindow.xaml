@@ -1,0 +1,92 @@
+﻿<Window x:Class="AirportManagerSystem.View.EditTicketWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirportManagerSystem.View"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Edit Tikcet" Height="475" Width="600">
+    <StackPanel Margin="20,20,20,20" Width="550">
+        <StackPanel.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            </Style>
+        </StackPanel.Resources>
+        <GroupBox Header="Flight information">
+            <GroupBox.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                    <Setter Property="Margin" Value="5,2,2,2"></Setter>
+                </Style>
+            </GroupBox.Resources>
+            <GroupBox.Content>
+                <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">
+                    <TextBlock>From:</TextBlock>
+                    <TextBlock Name="tblFrom" Width="60"></TextBlock>
+                    <TextBlock>To:</TextBlock>
+                    <TextBlock Name="tblTo" Width="60"></TextBlock>
+                    <TextBlock>Date:</TextBlock>
+                    <TextBlock Name="tblDate" Width="70"></TextBlock>
+                    <TextBlock>Time:</TextBlock>
+                    <TextBlock Name="tblTime" Width="60"></TextBlock>
+                    <TextBlock>Aircraft:</TextBlock>
+                    <TextBlock Name="tblAircraft" Width="60"></TextBlock>
+                </StackPanel>
+            </GroupBox.Content>
+        </GroupBox>
+        
+        <StackPanel Orientation="Horizontal" Margin="5,15,5,5" Width="500">
+            <TextBlock Width="100" TextAlignment="Right">Firstname:</TextBlock>
+            <TextBox Name="txtFirstName" Width="395" Margin="5,0,0,0"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5" Width="500">
+            <TextBlock Width="100" TextAlignment="Right">Lastname:</TextBlock>
+            <TextBox Name="txtLastName" Width="395" Margin="5,0,0,0"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5" Width="500">
+            <TextBlock Width="100" TextAlignment="Right">Country:</TextBlock>
+            <ComboBox Name="cbCountry" Width="395" Margin="5,0,0,0"></ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5" Width="500">
+            <TextBlock Width="100" TextAlignment="Right">Passport number:</TextBlock>
+            <TextBox Name="txtPassportNumber" Width="395" Margin="5,0,0,0"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5" Width="500">
+            <TextBlock Width="100" TextAlignment="Right">Phone:</TextBlock>
+            <TextBox Name="txtPhone" Width="395" Margin="5,0,0,0"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5" Width="500" IsEnabled="False">
+            <TextBlock Width="100" TextAlignment="Right">Booking reference:</TextBlock>
+            <TextBox Name="txtBr" Width="395" Margin="5,0,0,0"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5" Width="500">
+            <TextBlock Width="100" TextAlignment="Right">Cabin type:</TextBlock>
+            <ComboBox Name="cbCabinType" Width="395" Margin="5,0,0,0" SelectionChanged="cbCabinType_SelectionChanged"></ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5,5,5,0" Width="500">
+            <TextBlock Width="100" TextAlignment="Right">Ticket Price:</TextBlock>
+            <TextBlock Name="tblTicketPrice" Width="395" Margin="5,0,0,0" FontWeight="Bold"></TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5,5,5,0" Width="500">
+            <TextBlock Width="100" TextAlignment="Right">Total payed:</TextBlock>
+            <TextBlock Name="tblTotalPayed" Width="275" Margin="5,0,0,0" FontWeight="Bold"></TextBlock>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5,5,5,25" Width="500">
+            <TextBlock Width="100" TextAlignment="Right">Total payable:</TextBlock>
+            <TextBlock Name="tblTotalPayable" Width="395" Margin="5,0,0,0" FontWeight="Bold"></TextBlock>
+        </StackPanel>
+       
+        <Grid Width="500" Height="35">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="240"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0"></TextBlock>
+            <Button Name="btnUpdate" Width="110" HorizontalAlignment="Right" Click="btnUpdate_Click" Grid.Column="1">Update</Button>
+            <Button Name="btnCancel" Width="110" HorizontalAlignment="Right" Click="btnCancel_Click" Grid.Column="2"  Foreground="Red">Cancel</Button>
+        </Grid>
+    </StackPanel>
+</Window>

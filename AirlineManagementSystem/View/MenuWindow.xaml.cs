@@ -117,5 +117,11 @@ namespace AirportManagerSystem.View
             FlightManagementWindow wFlightManagement = new FlightManagementWindow();
             wFlightManagement.ShowDialog();
         }
+
+        private void mnTickets_Click(object sender, RoutedEventArgs e)
+        {
+            TicketsManagementWindow wTicketsManagement = new TicketsManagementWindow();
+            wTicketsManagement.ShowDialog();
+        }
     }
 }
