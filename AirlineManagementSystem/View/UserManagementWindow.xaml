@@ -16,7 +16,9 @@
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal">
                 <TextBlock TextAlignment="Left" VerticalAlignment="Center">Office:</TextBlock>
-                <ComboBox Name="cbOffice" Width="150" Margin="5,5,5,5" SelectionChanged="cbOffice_SelectionChanged"></ComboBox>
+                <ComboBox Name="cbOffice" Width="150" Margin="5,5,25,5" SelectionChanged="cbOffice_SelectionChanged"></ComboBox>
+                <TextBlock TextAlignment="Left" VerticalAlignment="Center">User role:</TextBlock>
+                <ComboBox Name="cbRole" Width="150" Margin="5" SelectionChanged="cbRole_SelectionChanged"/>
             </StackPanel>
         </Grid>
 
@@ -44,7 +46,7 @@
                 <ColumnDefinition Width="0.3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal" >
-                <Button Grid.Column="1" Width="100" Height="35" Name="btnAddUser" Click="btnAddUser_Click" Margin="0,0,15,0">Add User</Button>
+                <Button Grid.Column="1" Width="100" Height="35" Name="btnAddUser" Click="btnAddUser_Click" Margin="0,0,15,0" VerticalAlignment="Top">Add User</Button>
                 <Button Width="120" Height="35" Name="btnChangeRole" Click="btnEditUser_Click" Margin="0,0,15,0">Edit User</Button>
                 <Button Width="120" Height="35" Name="btnDeleteUser" Click="btnDeleteUser_Click"  Margin="0,0,15,0" VerticalAlignment="Top">Delete User</Button>
                 <Button Width="120" Height="35" Margin="0,0,15,0" Click="btnDisableAccount_Click" Name="btnDisableAccount">Disable User</Button>

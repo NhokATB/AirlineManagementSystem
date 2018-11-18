@@ -35,8 +35,6 @@ namespace AirportManagerSystem.View
             this.Loaded += TicketsManagermentWindow_Loaded;
             dgTickets.LoadingRow += DgTickets_LoadingRow;
             dgTickets.SelectedCellsChanged += DgTickets_SelectedCellsChanged;
-
-            //dpOutbound.SelectedDateFormat = DatePickerFormat.
         }
 
         private void TicketsManagermentWindow_Loaded(object sender, RoutedEventArgs e)

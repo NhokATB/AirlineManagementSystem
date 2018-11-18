@@ -129,5 +129,11 @@ namespace AirportManagerSystem.View
             AmenitiesManagementWindow wAmenityManagement = new AmenitiesManagementWindow();
             wAmenityManagement.ShowDialog();
         }
+
+        private void mnRoutes_Click(object sender, RoutedEventArgs e)
+        {
+            RoutesManagementWindow wRouteManagement = new RoutesManagementWindow();
+            wRouteManagement.ShowDialog();
+        }
     }
 }

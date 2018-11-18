@@ -31,6 +31,7 @@ namespace AirportManagerSystem.View
         }
         private User currentUser;
         private List<Office> offices;
+        private List<Role> roles;
 
         public User User { get; internal set; }
 
@@ -90,16 +91,30 @@ namespace AirportManagerSystem.View
             cbOffice.ItemsSource = offices;
             cbOffice.DisplayMemberPath = "Title";
             cbOffice.SelectedIndex = 0;
+
+            roles = Db.Context.Roles.ToList();
+            roles.Insert(0, new Role() { Title = "All roles" });
+            cbRole.ItemsSource = roles;
+            cbRole.DisplayMemberPath = "Title";
+            cbRole.SelectedIndex = 0;
         }
 
         public void LoadUsers()
         {
             dgUsers.ItemsSource = null;
+
             var users = Db.Context.Users.Where(t => t.ID != User.ID).ToList();
+
             var officeName = offices[cbOffice.SelectedIndex].Title;
             if (officeName != "All offices")
             {
                 users = users.Where(t => t.Office.Title == officeName).ToList();
+            }
+
+            var roleName = roles[cbRole.SelectedIndex].Title;
+            if (roleName != "All roles")
+            {
+                users = users.Where(t => t.Role.Title == roleName).ToList();
             }
 
             dgUsers.ItemsSource = users;
@@ -118,10 +133,10 @@ namespace AirportManagerSystem.View
             {
                 try
                 {
-                    EditProfileWindow wChangeRole = new EditProfileWindow();
-                    wChangeRole.User = currentUser;
-                    wChangeRole.ManageWindow = this;
-                    wChangeRole.ShowDialog();
+                    EditProfileWindow wEditProfile = new EditProfileWindow();
+                    wEditProfile.User = currentUser;
+                    wEditProfile.ManageWindow = this;
+                    wEditProfile.ShowDialog();
                     currentUser = null;
                 }
                 catch (Exception)
@@ -151,7 +166,7 @@ namespace AirportManagerSystem.View
             }
             else
             {
-                MessageBox.Show("Please choose a user!", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Please choose a user!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -196,6 +211,11 @@ namespace AirportManagerSystem.View
             {
                 MessageBox.Show("Please choose a user!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void cbRole_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LoadUsers();
         }
     }
 }

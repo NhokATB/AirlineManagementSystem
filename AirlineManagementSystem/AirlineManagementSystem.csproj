@@ -138,6 +138,9 @@
     <Compile Include="View\AddFlightWindow.Designer.cs">
       <DependentUpon>AddFlightWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AddRouteWindow.xaml.cs">
+      <DependentUpon>AddRouteWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddUserWindow.xaml.cs">
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
     </Compile>
@@ -177,11 +180,17 @@
     <Compile Include="View\CrashWindow.xaml.cs">
       <DependentUpon>CrashWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditRouteWindow.xaml.cs">
+      <DependentUpon>EditRouteWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EditTicketWindow.xaml.cs">
       <DependentUpon>EditTicketWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\FlightManagementWindow.xaml.cs">
       <DependentUpon>FlightManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RoutesManagementWindow.xaml.cs">
+      <DependentUpon>RoutesManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SeatManagementWindow.xaml.cs">
       <DependentUpon>SeatManagementWindow.xaml</DependentUpon>
@@ -235,6 +244,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddRouteWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AddUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -279,11 +292,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\EditRouteWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\EditTicketWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\FlightManagementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RoutesManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
