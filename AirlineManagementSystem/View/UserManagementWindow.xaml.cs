@@ -90,13 +90,14 @@ namespace AirportManagerSystem.View
             offices.Insert(0, new Office() { Title = "All offices" });
             cbOffice.ItemsSource = offices;
             cbOffice.DisplayMemberPath = "Title";
-            cbOffice.SelectedIndex = 0;
 
             roles = Db.Context.Roles.ToList();
             roles.Insert(0, new Role() { Title = "All roles" });
             cbRole.ItemsSource = roles;
             cbRole.DisplayMemberPath = "Title";
+
             cbRole.SelectedIndex = 0;
+            cbOffice.SelectedIndex = 0;
         }
 
         public void LoadUsers()
@@ -105,10 +106,16 @@ namespace AirportManagerSystem.View
 
             var users = Db.Context.Users.Where(t => t.ID != User.ID).ToList();
 
-            var officeName = offices[cbOffice.SelectedIndex].Title;
-            if (officeName != "All offices")
+            try
             {
-                users = users.Where(t => t.Office.Title == officeName).ToList();
+                var officeName = offices[cbOffice.SelectedIndex].Title;
+                if (officeName != "All offices")
+                {
+                    users = users.Where(t => t.Office.Title == officeName).ToList();
+                }
+            }
+            catch (Exception)
+            {
             }
 
             var roleName = roles[cbRole.SelectedIndex].Title;

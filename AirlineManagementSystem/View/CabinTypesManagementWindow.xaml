@@ -1,0 +1,40 @@
+﻿<Window x:Class="AirportManagerSystem.View.CabinTypesManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirportManagerSystem.View"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Aircrafts Management" Height="500" Width="600">
+    <StackPanel Margin="10,15">
+        <TextBlock Margin="10,5,10,0">List of cabin types:</TextBlock>
+        <DataGrid RowHeaderWidth="0" IsReadOnly="True" Name="dgCabinTypes" AutoGenerateColumns="False" Margin="10,5,10,5" Height="335" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="FullRow">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="0.4*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="0.6*"></DataGridTextColumn>
+                <DataGridTemplateColumn Width="0.25*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="AmenitiesList">Amenities</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Margin="10,15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal" >
+                <Button Grid.Column="1" Width="100" Height="35" Name="btnAddCabinType" Margin="0,0,15,0" VerticalAlignment="Top" Click="btnAddCabinType_Click" >Add CabinType</Button>
+                <Button Width="120" Height="35" Name="btnEditCabinType" Margin="0,0,15,0" Click="btnEditCabinType_Click">Edit CabinType</Button>
+                <Button Width="120" Height="35" Name="btnDeleteCabinType"  Margin="0,0,15,0" VerticalAlignment="Top" Click="btnDeleteCabinType_Click">Delete CabinType</Button>
+            </StackPanel>
+            <Button Grid.Column="1" Width="120" Height="35" Name="btnCancel" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="btnCancel_Click">Cancel</Button>
+        </Grid>
+    </StackPanel>
+</Window>

@@ -26,6 +26,12 @@ namespace AirportManagerSystem.View
             InitializeComponent();
             imgLogo.Source = new BitmapImage(new Uri(@"/AirportManagerSystem;component/Images/WSC2017_TP09_color@4x.png", UriKind.Relative));
             this.Closing += MenuWindow_Closing;
+            this.Loaded += MenuWindow_Loaded;
+        }
+
+        private void MenuWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            //Process Menu
         }
 
         private void MenuWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -79,6 +85,7 @@ namespace AirportManagerSystem.View
         private void mnBookFlight_Click(object sender, RoutedEventArgs e)
         {
             BookFlightWindow wBookFlight = new BookFlightWindow();
+            wBookFlight.User = User;
             wBookFlight.ShowDialog();
         }
 
@@ -134,6 +141,18 @@ namespace AirportManagerSystem.View
         {
             RoutesManagementWindow wRouteManagement = new RoutesManagementWindow();
             wRouteManagement.ShowDialog();
+        }
+
+        private void mnAircrafts_Click(object sender, RoutedEventArgs e)
+        {
+            AircraftManagementWindow wAircraftManagement = new AircraftManagementWindow();
+            wAircraftManagement.ShowDialog();
+        }
+
+        private void mnCabinTypes_Click(object sender, RoutedEventArgs e)
+        {
+            CabinTypesManagementWindow wCabinTypesManagement = new CabinTypesManagementWindow();
+            wCabinTypesManagement.ShowDialog();
         }
     }
 }

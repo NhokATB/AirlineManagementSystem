@@ -112,6 +112,8 @@ namespace AirportManagerSystem.View
             }
         }
 
+        public User User { get; internal set; }
+
         private void cmdUp_Click(object sender, RoutedEventArgs e)
         {
             NumValue++;
@@ -341,6 +343,7 @@ namespace AirportManagerSystem.View
                 }
 
                 BookConfirmationWindow wBookingConfirmation = new BookConfirmationWindow();
+                wBookingConfirmation.User = User;
                 wBookingConfirmation.Numpass = int.Parse(txtNum.Text);
                 wBookingConfirmation.OutboundFlight = CurrentOutboundFlight;
                 wBookingConfirmation.ReturnFlight = rdbReturn.IsChecked.Value ? CurrentReturnFlight : null;

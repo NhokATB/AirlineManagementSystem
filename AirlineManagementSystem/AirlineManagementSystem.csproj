@@ -129,8 +129,14 @@
     <Compile Include="UserControls\UcSurvey.xaml.cs">
       <DependentUpon>UcSurvey.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AddAircraftWindow.xaml.cs">
+      <DependentUpon>AddAircraftWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddAmenityWindow.xaml.cs">
       <DependentUpon>AddAmenityWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddCabinTypeWindow.xaml.cs">
+      <DependentUpon>AddCabinTypeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AddFlightWindow.cs">
       <SubType>Form</SubType>
@@ -143,6 +149,9 @@
     </Compile>
     <Compile Include="View\AddUserWindow.xaml.cs">
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AircraftManagementWindow.xaml.cs">
+      <DependentUpon>AircraftManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AmenitiesManagementWindow.xaml.cs">
       <DependentUpon>AmenitiesManagementWindow.xaml</DependentUpon>
@@ -159,14 +168,23 @@
     <Compile Include="View\BookFlightWindow.xaml.cs">
       <DependentUpon>BookFlightWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CabinTypesManagementWindow.xaml.cs">
+      <DependentUpon>CabinTypesManagementWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ChangePasswordWindow.xaml.cs">
       <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CheckInWindow.xaml.cs">
       <DependentUpon>CheckInWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditAircraftWindow.xaml.cs">
+      <DependentUpon>EditAircraftWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EditAmenityWindow.xaml.cs">
       <DependentUpon>EditAmenityWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditCabinTypeWindow.xaml.cs">
+      <DependentUpon>EditCabinTypeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\EditFlightWindow.cs">
       <SubType>Form</SubType>
@@ -240,7 +258,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddAircraftWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AddAmenityWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddCabinTypeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -249,6 +275,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AddUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AircraftManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -272,6 +302,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\CabinTypesManagementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ChangePasswordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -280,7 +314,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\EditAircraftWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\EditAmenityWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditCabinTypeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

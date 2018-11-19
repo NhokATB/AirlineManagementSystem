@@ -29,6 +29,8 @@ namespace AirportManagerSystem.View
         public int Numpass { get; internal set; }
         internal Flight ReturnFlight { get; set; }
         internal Flight OutboundFlight { get; set; }
+        public User User { get; internal set; }
+
         private int SelecetedIndexPassenger = -1;
         public BookConfirmationWindow()
         {
@@ -200,7 +202,7 @@ namespace AirportManagerSystem.View
                         Schedule = item,
                         CabinType = Cabin,
                         Confirmed = true,
-                        UserID = 1,
+                        UserID = User.ID,
                         Birthdate = p.Birthdate
                     };
 
@@ -220,7 +222,7 @@ namespace AirportManagerSystem.View
                             Schedule = item,
                             CabinType = Cabin,
                             Confirmed = true,
-                            UserID = 1,
+                            UserID = User.ID,
                             Birthdate = p.Birthdate
                         };
 

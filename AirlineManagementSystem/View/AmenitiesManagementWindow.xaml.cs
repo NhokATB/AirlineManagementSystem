@@ -26,7 +26,6 @@ namespace AirportManagerSystem.View
             InitializeComponent();
             this.Loaded += AmenitiesManagementWindow_Loaded;
             dgAmenities.SelectedCellsChanged += DgAmenities_SelectedCellsChanged;
-            currentAmenity = null;
         }
 
         private void DgAmenities_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
