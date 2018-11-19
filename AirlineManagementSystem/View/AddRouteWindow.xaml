@@ -35,7 +35,7 @@
             <TextBlock Width="50" TextAlignment="Left">minutes</TextBlock>
         </StackPanel>
 
-        <Grid Margin="5,20,5,0" Height="45" HorizontalAlignment="Center" Width="380">
+        <Grid Margin="5,20,5,0" Height="45" HorizontalAlignment="Center" Width="378">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.6*"></ColumnDefinition>
                 <ColumnDefinition Width="0.7*"></ColumnDefinition>

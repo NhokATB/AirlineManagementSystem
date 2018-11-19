@@ -65,6 +65,7 @@ namespace AirportManagerSystem.View
         private void mnProfile_Click(object sender, RoutedEventArgs e)
         {
             EditProfileWindow wEditProfile = new EditProfileWindow();
+            wEditProfile.LogonUser = User;
             wEditProfile.User = User;
             wEditProfile.ShowDialog();
         }

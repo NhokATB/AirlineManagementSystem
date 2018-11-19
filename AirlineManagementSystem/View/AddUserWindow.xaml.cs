@@ -28,15 +28,27 @@ namespace AirportManagerSystem.View
             this.Loaded += AddUserWindow_Loaded;
         }
         private List<Office> offiices;
+        private List<Role> roles;
         private void AddUserWindow_Loaded(object sender, RoutedEventArgs e)
         {
             offiices = Db.Context.Offices.ToList();
             cbOffice.ItemsSource = offiices;
             cbOffice.DisplayMemberPath = "Title";
             cbOffice.SelectedIndex = 0;
+
+            roles = Db.Context.Roles.Where(t=>t.Title != "Administrator").ToList();
+            cbUserRole.ItemsSource = roles;
+            cbUserRole.DisplayMemberPath = "Title";
+            cbUserRole.SelectedIndex = 0;
+
+            if (LogonUser.Role.Title == "Manager")
+            {
+                cbUserRole.IsEnabled = false;
+            }
         }
 
         public UserManagementWindow ManageWindow { get; internal set; }
+        public User LogonUser { get; internal set; }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -88,7 +100,7 @@ namespace AirportManagerSystem.View
                 Office = offiices[cbOffice.SelectedIndex],
                 Active = true,
                 Password = Md5Helper.GetMd5(txtPassword.Password),
-                RoleID = 2,
+                RoleID = roles[cbUserRole.SelectedIndex].ID
             };
 
             Db.Context.Users.Add(user);

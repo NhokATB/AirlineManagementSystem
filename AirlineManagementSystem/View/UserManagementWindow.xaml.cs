@@ -39,7 +39,7 @@ namespace AirportManagerSystem.View
         {
             var row = e.Row;
             var user = e.Row.Item as User;
-            if (user.RoleID == 1)
+            if (user.Role.Title == "Manager")
             {
                 if (user.Active.Value == false)
                 {
@@ -91,20 +91,30 @@ namespace AirportManagerSystem.View
             cbOffice.ItemsSource = offices;
             cbOffice.DisplayMemberPath = "Title";
 
-            roles = Db.Context.Roles.ToList();
+            roles = Db.Context.Roles.Where(t => t.Title != "Administrator").ToList();
             roles.Insert(0, new Role() { Title = "All roles" });
             cbRole.ItemsSource = roles;
             cbRole.DisplayMemberPath = "Title";
 
             cbRole.SelectedIndex = 0;
             cbOffice.SelectedIndex = 0;
+
+            if (User.Role.Title == "Manager")
+            {
+                cbOffice.SelectedItem = User.Office;
+                cbOffice.IsEnabled = false;
+            }
         }
 
         public void LoadUsers()
         {
             dgUsers.ItemsSource = null;
 
-            var users = Db.Context.Users.Where(t => t.ID != User.ID).ToList();
+            var users = Db.Context.Users.Where(t => t.ID != User.ID && t.Role.Title != "Administrator").ToList();
+            if (User.Role.Title == "Manager")
+            {
+                users = users.Where(t => t.OfficeID == User.OfficeID).ToList();
+            }
 
             try
             {
@@ -141,6 +151,7 @@ namespace AirportManagerSystem.View
                 try
                 {
                     EditProfileWindow wEditProfile = new EditProfileWindow();
+                    wEditProfile.LogonUser = User;
                     wEditProfile.User = currentUser;
                     wEditProfile.ManageWindow = this;
                     wEditProfile.ShowDialog();
@@ -152,7 +163,7 @@ namespace AirportManagerSystem.View
             }
             else
             {
-                MessageBox.Show("Please choose a user!", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Please choose a user!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -185,6 +196,7 @@ namespace AirportManagerSystem.View
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
         {
             AddUserWindow wAddUser = new AddUserWindow();
+            wAddUser.LogonUser = User;
             wAddUser.ManageWindow = this;
             wAddUser.ShowDialog();
         }

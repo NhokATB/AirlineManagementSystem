@@ -42,7 +42,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Margin="5,5,5,5"  TextAlignment="Right"></TextBlock>
             <Button Name="btnUpdate" Width="110" HorizontalAlignment="Right" Click="btnUpdate_Click" Grid.Column="1"  Margin="5,5,5,5">Save</Button>
-            <Button Name="btnCancel" Width="110" HorizontalAlignment="Right" Click="btnCancel_Click" Grid.Column="2"  Margin="5,5,5,5" Foreground="Red">Cancel</Button>
+            <Button Name="btnCancel" Width="110" HorizontalAlignment="Right" Click="btnCancel_Click" Grid.Column="2"  Margin="5,5,0,5" Foreground="Red">Cancel</Button>
         </Grid>
     </StackPanel>
 </Window>

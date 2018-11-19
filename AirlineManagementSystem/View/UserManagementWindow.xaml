@@ -9,20 +9,20 @@
         WindowStartupLocation="CenterScreen"
         Title="User Management" Height="660" Width="1000">
     <StackPanel>
-        <Grid Margin="10,15">
+        <Grid Margin="10,20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal">
-                <TextBlock TextAlignment="Left" VerticalAlignment="Center">Office:</TextBlock>
+                <TextBlock Name="tblOffices" TextAlignment="Left" VerticalAlignment="Center">Office:</TextBlock>
                 <ComboBox Name="cbOffice" Width="150" Margin="5,5,25,5" SelectionChanged="cbOffice_SelectionChanged"></ComboBox>
                 <TextBlock TextAlignment="Left" VerticalAlignment="Center">User role:</TextBlock>
                 <ComboBox Name="cbRole" Width="150" Margin="5" SelectionChanged="cbRole_SelectionChanged"/>
             </StackPanel>
         </Grid>
 
-        <DataGrid RowHeaderWidth="0" IsReadOnly="True" Name="dgUsers" AutoGenerateColumns="False" Margin="10,5,10,5" Height="455" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="FullRow">
+        <DataGrid RowHeaderWidth="0" IsReadOnly="True" Name="dgUsers" AutoGenerateColumns="False" Margin="10,5,10,5" Height="435" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="FullRow">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Firstname" Binding="{Binding FirstName}" Width="0.6*" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Lastname" Binding="{Binding LastName}" Width="0.8*" ></DataGridTextColumn>
@@ -35,7 +35,7 @@
         <StackPanel Orientation="Horizontal" Margin="10,5,5,5">
             <DockPanel Width="20" Height="20" Background="#196AA6">
             </DockPanel>
-            <TextBlock Margin="5,5,5,5">Admistrator</TextBlock>
+            <TextBlock Margin="5,5,5,5">Manager</TextBlock>
             <DockPanel Width="20" Height="20" Background="#F79420">
             </DockPanel>
             <TextBlock Margin="5,5,5,5">Disabled account</TextBlock>

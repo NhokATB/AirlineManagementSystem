@@ -86,7 +86,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0"></TextBlock>
             <Button Name="btnUpdate" Width="110" HorizontalAlignment="Right" Click="btnUpdate_Click" Grid.Column="1">Update</Button>
-            <Button Name="btnCancel" Width="110" HorizontalAlignment="Right" Click="btnCancel_Click" Grid.Column="2"  Foreground="Red">Cancel</Button>
+            <Button Name="btnCancel" Width="110" HorizontalAlignment="Right" Click="btnCancel_Click" Grid.Column="2" Foreground="Red">Cancel</Button>
         </Grid>
     </StackPanel>
 </Window>

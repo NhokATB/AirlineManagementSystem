@@ -38,12 +38,19 @@ namespace AirportManagerSystem.View
             txtLastName.Text = User.LastName;
             cbOffice.SelectedItem = User.Office;
             dtpBirthdate.SelectedDate = User.Birthdate;
-            if (User.RoleID == 1) rdbAdmin.IsChecked = true;
+            if (User.Role.Title == "Manager") rdbManager.IsChecked = true;
             else rdbUser.IsChecked = true;
+
+            if (LogonUser.Role.Title == "Manager")
+            {
+                rdbManager.IsEnabled = false;
+                rdbUser.IsEnabled = false;
+            }
         }
 
         public User User { get; internal set; }
         public UserManagementWindow ManageWindow { get; internal set; }
+        public User LogonUser { get; internal set; }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -69,7 +76,7 @@ namespace AirportManagerSystem.View
                 var user = Db.Context.Users.Where(t => t.Email == txtEmail.Text).FirstOrDefault();
                 if (user != null)
                 {
-                    MessageBox.Show("This email is used", "Message");
+                    MessageBox.Show("This email is used", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }
@@ -84,7 +91,7 @@ namespace AirportManagerSystem.View
             {
                 if (DateTime.Now.Year < 18 - dtpBirthdate.SelectedDate.Value.Year)
                 {
-                    MessageBox.Show("Age of user is at least 18", "Message");
+                    MessageBox.Show("Age of user is at least 18", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }
@@ -99,7 +106,7 @@ namespace AirportManagerSystem.View
             User.LastName = txtLastName.Text;
             User.Birthdate = dtpBirthdate.SelectedDate;
             User.Office = offices[cbOffice.SelectedIndex];
-            User.RoleID = rdbAdmin.IsChecked.Value ? 1 : 2;
+            User.RoleID = rdbManager.IsChecked.Value ? 3 : 2;
 
             Db.Context.SaveChanges();
             try

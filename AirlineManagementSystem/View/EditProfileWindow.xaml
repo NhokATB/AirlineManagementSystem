@@ -41,7 +41,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Width="100" TextAlignment="Right" VerticalAlignment="Top">User role:</TextBlock>
             <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,5,5,5" Width="395" VerticalAlignment="Top">
-                <RadioButton Name="rdbAdmin" Margin="0,0,0,10">Administrator</RadioButton>
+                <RadioButton Name="rdbManager" Margin="0,0,0,10">Manager</RadioButton>
                 <RadioButton Name="rdbUser">User</RadioButton>
             </StackPanel>
         </Grid>
@@ -54,7 +54,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Margin="5,5,5,5"  TextAlignment="Right"></TextBlock>
             <Button Name="btnSave" Width="110" HorizontalAlignment="Right" Click="btnSave_Click" Grid.Column="1"  Margin="5,5,5,5">Save</Button>
-            <Button Name="btnCancel" Width="110" HorizontalAlignment="Right" Click="btnCancel_Click" Grid.Column="2"  Margin="5,5,5,5" Foreground="Red">Cancel</Button>
+            <Button Name="btnCancel" Width="110" HorizontalAlignment="Right" Click="btnCancel_Click" Grid.Column="2"  Margin="5,5,0,5" Foreground="Red">Cancel</Button>
         </Grid>
     </StackPanel>
 </Window>

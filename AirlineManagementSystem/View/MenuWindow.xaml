@@ -26,6 +26,7 @@
                 <MenuItem Header="Cabin types" Name="mnCabinTypes" Click="mnCabinTypes_Click"/>
                 <MenuItem Header="Airports" Name="mnAirports"/>
                 <MenuItem Header="Offices" Name="mnOffices"/>
+                <MenuItem Header="Login histories" Name="mnLoginHistory"/>
                 <MenuItem Header="Seats" Name="mnSeats"/>
             </MenuItem>
             <MenuItem Header="Business">
