@@ -118,6 +118,7 @@
     <Compile Include="HelperClass\AMONICColor.cs" />
     <Compile Include="Model\Flight.cs" />
     <Compile Include="Model\NewFlight.cs" />
+    <Compile Include="Model\NewLog.cs" />
     <Compile Include="Model\NewSurvey.cs" />
     <Compile Include="Model\NewTicket.cs" />
     <Compile Include="Model\SurveyDataSet.Designer.cs">
@@ -206,6 +207,9 @@
     </Compile>
     <Compile Include="View\FlightManagementWindow.xaml.cs">
       <DependentUpon>FlightManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginHistoryManagementWindow.xaml.cs">
+      <DependentUpon>LoginHistoryManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RoutesManagementWindow.xaml.cs">
       <DependentUpon>RoutesManagementWindow.xaml</DependentUpon>
@@ -343,6 +347,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\FlightManagementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoginHistoryManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

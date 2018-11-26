@@ -16,7 +16,7 @@
                 <Separator/>
                 <MenuItem Header="Exit" Name="mnExit" Click="mnExit_Click"/>
             </MenuItem>
-            <MenuItem Header="Manage">
+            <MenuItem Header="Management">
                 <MenuItem Header="Users" Name="mnUsers" Click="MnUsers_Click"/>
                 <MenuItem Header="Fights" Name="mnFlights" Click="mnFlights_Click"/>
                 <MenuItem Header="Tickets" Name="mnTickets" Click="mnTickets_Click"></MenuItem>
@@ -26,7 +26,7 @@
                 <MenuItem Header="Cabin types" Name="mnCabinTypes" Click="mnCabinTypes_Click"/>
                 <MenuItem Header="Airports" Name="mnAirports"/>
                 <MenuItem Header="Offices" Name="mnOffices"/>
-                <MenuItem Header="Login histories" Name="mnLoginHistory"/>
+                <MenuItem Header="Login histories" Name="mnLoginHistory" Click="mnLoginHistory_Click"/>
                 <MenuItem Header="Seats" Name="mnSeats"/>
             </MenuItem>
             <MenuItem Header="Business">

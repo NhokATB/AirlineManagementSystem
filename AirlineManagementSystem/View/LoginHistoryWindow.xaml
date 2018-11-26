@@ -18,7 +18,7 @@
                 <DataGridTextColumn Header="Date" Binding="{Binding LoginTime, StringFormat=d}" Width="0.4*" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Login Time" Binding="{Binding LoginTime, StringFormat='{}{0:H:mm:ss}'}" Width="0.4*" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Logout Time" Binding="{Binding LogoutTime, StringFormat='{}{0:H:mm:ss}'}" Width="0.4*" ></DataGridTextColumn>
-        <DataGridTextColumn Header="Unsuccessful logout reason" Binding="{Binding Reason}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Unsuccessful logout reason" Binding="{Binding Reason}" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Orientation="Horizontal" Margin="10,5,5,5">

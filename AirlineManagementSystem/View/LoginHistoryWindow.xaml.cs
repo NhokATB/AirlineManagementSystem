@@ -34,6 +34,10 @@ namespace AirportManagerSystem.View
             {
                 e.Row.Background = new SolidColorBrush(Color.FromRgb(247, 148, 32));
             }
+            else
+            {
+                e.Row.Background = new SolidColorBrush(Colors.White);
+            }
         }
 
         private void LoginHistoryWindow_Loaded(object sender, RoutedEventArgs e)

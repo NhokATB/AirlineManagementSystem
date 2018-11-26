@@ -21,6 +21,8 @@ namespace AirportManagerSystem.View
     public partial class MenuWindow : Window
     {
         public User User { get; internal set; }
+        public bool IsClosed { get; internal set; }
+
         public MenuWindow()
         {
             InitializeComponent();
@@ -45,9 +47,7 @@ namespace AirportManagerSystem.View
         {
             UserManagementWindow wUsers = new UserManagementWindow();
             wUsers.User = User;
-            this.Opacity = 0.9;
-            wUsers.ShowDialog();
-            this.Opacity = 1;
+            ShowDialogWindow(wUsers);
         }
 
         private void mnExit_Click(object sender, RoutedEventArgs e)
@@ -59,7 +59,7 @@ namespace AirportManagerSystem.View
         {
             LoginHistoryWindow wLoginHistory = new LoginHistoryWindow();
             wLoginHistory.User = User;
-            wLoginHistory.ShowDialog();
+            ShowDialogWindow(wLoginHistory);
         }
 
         private void mnProfile_Click(object sender, RoutedEventArgs e)
@@ -67,93 +67,106 @@ namespace AirportManagerSystem.View
             EditProfileWindow wEditProfile = new EditProfileWindow();
             wEditProfile.LogonUser = User;
             wEditProfile.User = User;
-            wEditProfile.ShowDialog();
+            ShowDialogWindow(wEditProfile);
         }
 
         private void mnChangePassword_Click(object sender, RoutedEventArgs e)
         {
             ChangePasswordWindow wChangePass = new ChangePasswordWindow();
             wChangePass.User = User;
-            wChangePass.ShowDialog();
+            ShowDialogWindow(wChangePass);
         }
 
         private void mnPurchaseAmenities_Click(object sender, RoutedEventArgs e)
         {
             PurchaseAmenitiesWindow wPurchaseAmenities = new PurchaseAmenitiesWindow();
-            wPurchaseAmenities.ShowDialog();
+            ShowDialogWindow(wPurchaseAmenities);
         }
 
         private void mnBookFlight_Click(object sender, RoutedEventArgs e)
         {
             BookFlightWindow wBookFlight = new BookFlightWindow();
             wBookFlight.User = User;
-            wBookFlight.ShowDialog();
+            ShowDialogWindow(wBookFlight);
         }
 
         private void mnShortSummaryReport_Click(object sender, RoutedEventArgs e)
         {
             ShortSummaryWindow wShortSummary = new ShortSummaryWindow();
-            wShortSummary.ShowDialog();
+            ShowDialogWindow(wShortSummary);
         }
 
         private void mnAmenitiesReprot_Click(object sender, RoutedEventArgs e)
         {
             AmenitiesReportWindow wAmenitiesReport = new AmenitiesReportWindow();
-            wAmenitiesReport.ShowDialog();
+            ShowDialogWindow(wAmenitiesReport);
         }
 
         private void mnSurveyReport_Click(object sender, RoutedEventArgs e)
         {
             SurveyReportWindow wSurveyReport = new SurveyReportWindow();
-            wSurveyReport.ShowDialog();
+            ShowDialogWindow(wSurveyReport);
         }
 
         private void mnSurveyQuestionaire_Click(object sender, RoutedEventArgs e)
         {
             SurveyQuestionnaireWindow wSurveyQuestionnaire = new SurveyQuestionnaireWindow();
-            wSurveyQuestionnaire.ShowDialog();
+            ShowDialogWindow(wSurveyQuestionnaire);
         }
 
         private void mnCheckIn_Click(object sender, RoutedEventArgs e)
         {
             CheckInWindow wCheckin = new CheckInWindow();
-            wCheckin.ShowDialog();
+            ShowDialogWindow(wCheckin);
         }
 
         private void mnFlights_Click(object sender, RoutedEventArgs e)
         {
             FlightManagementWindow wFlightManagement = new FlightManagementWindow();
-            wFlightManagement.ShowDialog();
+            ShowDialogWindow(wFlightManagement);
         }
 
         private void mnTickets_Click(object sender, RoutedEventArgs e)
         {
             TicketsManagementWindow wTicketsManagement = new TicketsManagementWindow();
-            wTicketsManagement.ShowDialog();
+            ShowDialogWindow(wTicketsManagement);
         }
 
         private void mnAmenities_Click(object sender, RoutedEventArgs e)
         {
             AmenitiesManagementWindow wAmenityManagement = new AmenitiesManagementWindow();
-            wAmenityManagement.ShowDialog();
+            ShowDialogWindow(wAmenityManagement);
         }
 
         private void mnRoutes_Click(object sender, RoutedEventArgs e)
         {
             RoutesManagementWindow wRouteManagement = new RoutesManagementWindow();
-            wRouteManagement.ShowDialog();
+            ShowDialogWindow(wRouteManagement);
         }
 
         private void mnAircrafts_Click(object sender, RoutedEventArgs e)
         {
             AircraftManagementWindow wAircraftManagement = new AircraftManagementWindow();
-            wAircraftManagement.ShowDialog();
+            ShowDialogWindow(wAircraftManagement);
         }
 
         private void mnCabinTypes_Click(object sender, RoutedEventArgs e)
         {
             CabinTypesManagementWindow wCabinTypesManagement = new CabinTypesManagementWindow();
-            wCabinTypesManagement.ShowDialog();
+            ShowDialogWindow(wCabinTypesManagement);
+        }
+
+        private void mnLoginHistory_Click(object sender, RoutedEventArgs e)
+        {
+            LoginHistoryManagementWindow wLoginHistoryManagement = new LoginHistoryManagementWindow();
+            ShowDialogWindow(wLoginHistoryManagement);
+        }
+
+        private void ShowDialogWindow(Window window)
+        {
+            this.Opacity = 0.5;
+            window.ShowDialog();
+            this.Opacity = 1;
         }
     }
 }

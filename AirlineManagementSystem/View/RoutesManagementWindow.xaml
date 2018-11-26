@@ -59,11 +59,11 @@
                 <ColumnDefinition Width="0.3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal" >
-                <Button Grid.Column="1" Width="100" Name="btnAddRoute" Margin="0,0,15,0" Click="btnAddRoute_Click">Add Route</Button>
-                <Button Width="120" Height="35" Name="btnEditRoute" Margin="0,0,15,0" VerticalAlignment="Top" Click="btnEditRoute_Click" >Edit Route</Button>
-                <Button Width="120" Name="btnDeleteRoute"  Margin="0,0,15,0" Click="btnDeleteRoute_Click">Delete Route</Button>
+                <Button Grid.Column="1" Width="110" Name="btnAddRoute" Margin="0,0,15,0" Click="btnAddRoute_Click">Add Route</Button>
+                <Button Width="110" Height="35" Name="btnEditRoute" Margin="0,0,15,0" VerticalAlignment="Top" Click="btnEditRoute_Click" >Edit Route</Button>
+                <Button Width="110" Name="btnDeleteRoute"  Margin="0,0,15,0" Click="btnDeleteRoute_Click">Delete Route</Button>
             </StackPanel>
-            <Button Grid.Column="1" Width="120" Height="35" Name="btnCancel" HorizontalAlignment="Right" Click="btnCancel_Click">Cancel</Button>
+            <Button Grid.Column="1" Width="110" Height="35" Name="btnCancel" HorizontalAlignment="Right" Click="btnCancel_Click">Cancel</Button>
         </Grid>
     </StackPanel>
 </Window>
