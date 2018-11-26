@@ -133,6 +133,9 @@
     <Compile Include="View\AddAircraftWindow.xaml.cs">
       <DependentUpon>AddAircraftWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AddAirportWindow.xaml.cs">
+      <DependentUpon>AddAirportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddAmenityWindow.xaml.cs">
       <DependentUpon>AddAmenityWindow.xaml</DependentUpon>
     </Compile>
@@ -156,6 +159,9 @@
     </Compile>
     <Compile Include="View\AircraftManagementWindow.xaml.cs">
       <DependentUpon>AircraftManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AirportManagementWindow.xaml.cs">
+      <DependentUpon>AirportManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AmenitiesManagementWindow.xaml.cs">
       <DependentUpon>AmenitiesManagementWindow.xaml</DependentUpon>
@@ -183,6 +189,9 @@
     </Compile>
     <Compile Include="View\EditAircraftWindow.xaml.cs">
       <DependentUpon>EditAircraftWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditAirportWindow.xaml.cs">
+      <DependentUpon>EditAirportWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\EditAmenityWindow.xaml.cs">
       <DependentUpon>EditAmenityWindow.xaml</DependentUpon>
@@ -275,6 +284,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddAirportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AddAmenityWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -296,6 +309,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AircraftManagementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AirportManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -332,6 +349,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EditAircraftWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditAirportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

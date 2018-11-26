@@ -174,5 +174,11 @@ namespace AirportManagerSystem.View
             OfficesManagementWindow officesManagementWindow = new OfficesManagementWindow();
             ShowDialogWindow(officesManagementWindow);
         }
+
+        private void mnAirports_Click(object sender, RoutedEventArgs e)
+        {
+            AirportManagementWindow airportManagementWindow = new AirportManagementWindow();
+            ShowDialogWindow(airportManagementWindow);
+        }
     }
 }
