@@ -168,5 +168,11 @@ namespace AirportManagerSystem.View
             window.ShowDialog();
             this.Opacity = 1;
         }
+
+        private void mnOffices_Click(object sender, RoutedEventArgs e)
+        {
+            OfficesManagementWindow officesManagementWindow = new OfficesManagementWindow();
+            ShowDialogWindow(officesManagementWindow);
+        }
     }
 }

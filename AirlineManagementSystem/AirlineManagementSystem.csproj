@@ -145,6 +145,9 @@
     <Compile Include="View\AddFlightWindow.Designer.cs">
       <DependentUpon>AddFlightWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AddOfficeWindow.xaml.cs">
+      <DependentUpon>AddOfficeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddRouteWindow.xaml.cs">
       <DependentUpon>AddRouteWindow.xaml</DependentUpon>
     </Compile>
@@ -193,6 +196,9 @@
     <Compile Include="View\EditFlightWindow.Designer.cs">
       <DependentUpon>EditFlightWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EditOfficeWindow.xaml.cs">
+      <DependentUpon>EditOfficeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EditProfileWindow.xaml.cs">
       <DependentUpon>EditProfileWindow.xaml</DependentUpon>
     </Compile>
@@ -210,6 +216,9 @@
     </Compile>
     <Compile Include="View\LoginHistoryManagementWindow.xaml.cs">
       <DependentUpon>LoginHistoryManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OfficesManagementWindow.xaml.cs">
+      <DependentUpon>OfficesManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RoutesManagementWindow.xaml.cs">
       <DependentUpon>RoutesManagementWindow.xaml</DependentUpon>
@@ -274,6 +283,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddOfficeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AddRouteWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -330,6 +343,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\EditOfficeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\EditProfileWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -351,6 +368,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LoginHistoryManagementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OfficesManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

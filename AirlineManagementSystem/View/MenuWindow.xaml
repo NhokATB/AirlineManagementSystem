@@ -25,7 +25,7 @@
                 <MenuItem Header="Aircraft" Name="mnAircrafts" Click="mnAircrafts_Click"/>
                 <MenuItem Header="Cabin types" Name="mnCabinTypes" Click="mnCabinTypes_Click"/>
                 <MenuItem Header="Airports" Name="mnAirports"/>
-                <MenuItem Header="Offices" Name="mnOffices"/>
+                <MenuItem Header="Offices" Name="mnOffices" Click="mnOffices_Click"/>
                 <MenuItem Header="Login histories" Name="mnLoginHistory" Click="mnLoginHistory_Click"/>
                 <MenuItem Header="Seats" Name="mnSeats"/>
             </MenuItem>
