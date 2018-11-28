@@ -92,9 +92,14 @@ namespace AirportManagerSystem.View
                 }
             }
 
-            if (txtFirstName.Text == "" || txtLastName.Text == "")
+            if (txtFirstName.Text.Trim() == "")
             {
-                MessageBox.Show("Please fill all field", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("First name was required!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (txtLastName.Text.Trim() == "")
+            {
+                MessageBox.Show("Last name was required!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
