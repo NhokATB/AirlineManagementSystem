@@ -15,15 +15,16 @@ c.	Nghiệp vụ (Business): Thực hiện các nghiệp vụ cơ bản của m�
 d.	Báo cáo (Report): Kết xuất các báo cáo cần thiết.
 e.	Giới thiệu (Introduce): Giới thiệu vễ hãng máy bay AMONIC Airline và hệ thống.
 6.	Kiểm thử
+7.  Triển khai
 # Đặc điểm, tính năng
 - Hệ thống cấp quyền thao tác tương ứng với quyền của người dùng khi đăng nhập vào hệ thống (Administrator, manager, user).
 - Đây là hệ thống tự động giúp quản lí hãng máy bay Amonic hiệu quả hơn (quản lí user, quản lí chuyến bay, quản lí vé, quản lí tiện ích…).
 - Hệ thống giúp người dùng dễ dàng đặt vé theo yêu cầu (về tuyến đi, ngày đi, hạng ghế,…) của hành khách; thực hiện hiện check in cho hành khách một cách đơn giản và nhanh chóng; Hệ thống còn giúp người dùng mua thêm tiện ích hoặc bỏ bớt tiện ích đã mua theo hạng ghế hành khách đã đặt(trong thời gian quy định) một cách nhanh gọn.
 - Hệ thống còn kết xuất tự động các báo cáo về chuyến bay, khảo sát khách hàng, báo cáo tóm tắt về doanh thu, thời gian bay… để hỗ trợ người quản lí trong việc theo dõi doanh thu, đánh giá của người dùng về chất lượng dịch vụ của hãng để kịp thời đưa ra những điều chỉnh phù hợp.
 - Một số tính năng được viết trên di động để hỗ trợ tốt hơn cho người dùng đặc biệt là hành khách (báo cáo tiện ích, khảo sát dịch vụ bay, kiểm tra thông tin chuyến bay).
-Thách thức, khó khăn
+# Thách thức, khó khăn
 -	Tìm hiểu về nghiệp vụ của một hãng máy bay, chủ yếu chỉ tìm hiểu dựa vào môt số tài liệu từ đề thi tay nghề thế giới 2017, internet và kinh nghiệm bản thân đã đi máy bay vài lần cùng với sự chỉ dẫn của thầy cô hướng dẫn.
-Tính khả thi
+# Tính khả thi
 Hệ thống có tích hợp các nghiệp vụ của một hệ thống quản lý sân bay. Hoạt động chủ yếu của hệ thống là tương tác với cơ sở dữ liệu để thực thi các chức năng như: đăng nhập, đăng xuất, quản lý user, quản lý chuyến bay, xem lịch sử đăng nhập, đặt vé, check in…
 - Tính khả thi về kinh tế
 Hệ thống có thể được sử dụng bởi những nhân viên của hãng, những hành khách có nhu cầu kiểm ra thông tin chuyến bay hoặc những đại lí bán vé của hãng. Giúp thuận tiện hơn trong nghiệp vụ bán vé và các nghiệp vụ khác, từ đó giảm được các chi phí quản lí. Dữ liệu được lưu trữ dưới database và được sao lưu thường xuyên nên có thể giảm thiểu rủi ro mất dữ liệu, từ đó cải thiện và nâng cao hiệu suất quản lí và tăng doanh thu lợi nhuận cho hãng.
