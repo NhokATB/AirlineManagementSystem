@@ -1,6 +1,8 @@
 # Yêu cầu
+```
 AMONIC Airline là một hệ thống vận chyển hành khách và hàng hóa bằng máy bay có trụ sở ở Abu Dhabi, UAE. AMONIC cung cấp những chuyến bay tốt nhất cho khách hang với giá cả phải chăng, những tiện ích tốt nhất, những máy bay mới toanh và đội ngũ nhân viên, tiếp viên nhiệt tình, thân thiện để giúp khách hàng có những trải nghiệm bay thú vị và thoải mái nhất trong suốt chuyến bay.
 Hãng cần có một hệ thống để tự động hóa quy trình quản lí (tuyến bay, chuyến bay, vé, người dùng…); Thực hiện các nghiệp vụ một cách nhanh gọn và chính xác (như check in, đặt vé, mua tiện ích, theo dõi tiến trình bay, kiểm tra thông tin chuyến bay…); Tự động kết xuất các báo cáo về doanh thu – lợi nhuận (Giúp quản lí dễ dàng theo dõi và đánh giá lợi nhuận (theo tháng, theo quý, theo năm, từ vé, từ tiện ích) của hãng để có chiến lược phù hợp hơn); Các báo cáo về chuyến bay, giờ bay (Giúp quản lí đánh giá hiệu suất bay: trễ giờ, đúng giờ, bị hoãn); Báo cáo khảo sát về nhận xét của khách hàng khi sử dụng dịch vụ bay của hãng (Theo độ tuổi, theo tuyến, theo hạng ghế - cabin type). Từ đó giúp hãng dễ quản lí các đối tượng hơn, đưa ra những chiến lược phù hợp hơn để đẩy mạnh doanh thu, nâng cao hơn nữa chất lượng dịch vụ của hãng.
+```
 # Đề cương công việc:
 1.	Tìm hiểu và nắm được các quy trình nghiệp vụ cơ bản của một hãng máy bay.
 2.	Phân tích và thiết kế chức năng của một hệ thống quản lí hãng máy bay.
