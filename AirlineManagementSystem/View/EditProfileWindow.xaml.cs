@@ -32,19 +32,30 @@ namespace AirportManagerSystem.View
             offices = Db.Context.Offices.ToList();
             cbOffice.ItemsSource = offices;
             cbOffice.DisplayMemberPath = "Title";
-            cbOffice.SelectedIndex = 0;
+
+            var roles = Db.Context.Roles.ToList();
+            cbUserRole.ItemsSource = roles;
+            cbUserRole.DisplayMemberPath = "Title";
+
             txtEmail.Text = User.Email;
             txtFirstName.Text = User.FirstName;
             txtLastName.Text = User.LastName;
             cbOffice.SelectedItem = User.Office;
+            cbUserRole.SelectedItem = User.Role;
             dtpBirthdate.SelectedDate = User.Birthdate;
-            if (User.Role.Title == "Manager") rdbManager.IsChecked = true;
-            else rdbUser.IsChecked = true;
 
-            if (LogonUser.Role.Title == "Manager")
+            if (ManageWindow == null)
             {
-                rdbManager.IsEnabled = false;
-                rdbUser.IsEnabled = false;
+                cbUserRole.IsEnabled = false;
+            }
+            else
+            {
+                roles.RemoveAt(0);
+                cbUserRole.ItemsSource = roles;
+                if (LogonUser.Role.Title == "Manager")
+                {
+                    cbUserRole.IsEnabled = false;
+                }
             }
         }
 
@@ -106,15 +117,12 @@ namespace AirportManagerSystem.View
             User.LastName = txtLastName.Text;
             User.Birthdate = dtpBirthdate.SelectedDate;
             User.Office = offices[cbOffice.SelectedIndex];
-            User.RoleID = rdbManager.IsChecked.Value ? 3 : 2;
+            User.RoleID = (cbUserRole.SelectedItem as Role).ID;
 
             Db.Context.SaveChanges();
-            try
+            if (ManageWindow != null)
             {
                 this.ManageWindow.LoadUsers();
-            }
-            catch (Exception)
-            {
             }
 
             MessageBox.Show("Edit user successful", "Message", MessageBoxButton.OK, MessageBoxImage.Information);

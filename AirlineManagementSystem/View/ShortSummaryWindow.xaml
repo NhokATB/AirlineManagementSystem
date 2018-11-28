@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="AMONIC Airlines Short Summary" Height="720" Width="800">
+        Title="AMONIC Airlines Short Summary" Height="700" Width="800">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="5"></Setter>
@@ -15,8 +15,8 @@
             <Setter Property="Margin" Value="5"></Setter>
         </Style>
     </Window.Resources>
-    <StackPanel Margin="10">
-        <Image Name="imgLogo" Width="400" Height="200" Margin="20"></Image>
+    <StackPanel Margin="10,10,10,10">
+        <Image Name="imgLogo" Width="400" Height="200"></Image>
         <StackPanel>
             <GroupBox Header="In the last 30 days...">
                 <Grid>
@@ -43,35 +43,45 @@
                     </GroupBox>
                     <GroupBox Grid.Column="1" Grid.Row="0" Header="Top AMONIC Airlines office (Revenue)">
                         <StackPanel>
-                            <TextBlock Name="tblTopCus1"></TextBlock>
-                            <TextBlock Name="tblTopCus2"></TextBlock>
-                            <TextBlock Name="tblTopCus3"></TextBlock>
+                            <TextBlock Name="tblTopCus1">1</TextBlock>
+                            <TextBlock Name="tblTopCus2">2</TextBlock>
+                            <TextBlock Name="tblTopCus3">3</TextBlock>
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Grid.Column="1" Grid.Row="1" Header="Flights">
                         <StackPanel>
-                            <TextBlock Name="tblTopOffice1">Number of confirmed:</TextBlock>
-                            <TextBlock Name="tblTopOffice2">Number of canceled:</TextBlock>
-                            <TextBlock Name="tblTopOffice3">Average of daily flight time:</TextBlock>
+                            <TextBlock Name="tblTopOffice1">1</TextBlock>
+                            <TextBlock Name="tblTopOffice2">2</TextBlock>
+                            <TextBlock Name="tblTopOffice3">3</TextBlock>
                         </StackPanel>
                     </GroupBox>
                 </Grid>
             </GroupBox>
             <GroupBox Header="Revenue from ticket sales">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock Name="tblYesterday">Yesterday:</TextBlock>
+                <GroupBox.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Margin" Value="60,0,80,0"></Setter>
+                    </Style>
+                </GroupBox.Resources>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                    <TextBlock Name="tblYesterday" Margin="10,0,80,0">Yesterday:</TextBlock>
                     <TextBlock Name="tblTwoDaysAgo">Two days ago:</TextBlock>
                     <TextBlock Name="tblThreeDaysAgo">Three days ago:</TextBlock>
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="Weekly report of percentage of emprty seat">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock Name="tblThisWeek">This week:</TextBlock>
+                <GroupBox.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Margin" Value="60,0,80,0"></Setter>
+                    </Style>
+                </GroupBox.Resources>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                    <TextBlock Name="tblThisWeek" Margin="10,0,80,0">This week:</TextBlock>
                     <TextBlock Name="tblLastWeek">Two week ago:</TextBlock>
                     <TextBlock Name="tblThreeWeekAgo">Three week ago:</TextBlock>
                 </StackPanel>
             </GroupBox>
         </StackPanel>
-        <Button Name="btnClose" Width="100" Height="35" HorizontalAlignment="Right" Margin="6,10" Click="btnClose_Click">Close</Button>
+        <Button Name="btnClose" Width="110" Height="35" HorizontalAlignment="Right" Margin="6,10" Click="btnClose_Click">Close</Button>
     </StackPanel>
 </Window>

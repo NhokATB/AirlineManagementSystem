@@ -17,7 +17,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" TextAlignment="Right" VerticalAlignment="Center">Username:</TextBlock>
-                <TextBox Name="txtUsername" Height="22"  Grid.Column="1" Margin="5,5,5,5" ></TextBox>
+                <TextBox Name="txtUsername" Height="22" Grid.Column="1" Margin="5,5,5,5"></TextBox>
             </Grid>
             <Grid Margin="5,20,5,5" Width="450">
                 <Grid.ColumnDefinitions>

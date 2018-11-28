@@ -96,8 +96,42 @@ namespace AirportManagerSystem.View
             Db.Context.Routes.Add(route);
             Db.Context.SaveChanges();
             ManageWindow.LoadRoutes();
-            MessageBox.Show("Add route successful!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Add route successful!", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Close();
+        }
+
+        private void cbDepatureAirport_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var from = departureAirports[cbDepatureAirport.SelectedIndex].Name;
+            var to = arrivalAirports[cbArrivalAirport.SelectedIndex].Name;
+            Route route;
+            if ((route = Db.Context.Routes.Where(t => t.Airport.Name == from && t.Airport1.Name == to).FirstOrDefault()) != null)
+            {
+                txtDistance.Text = route.Distance.ToString();
+                txtDistance.IsEnabled = false;
+            }
+            else
+            {
+                txtDistance.Text = "";
+                txtDistance.IsEnabled = true;
+            }
+        }
+
+        private void cbArrivalAirport_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var from = departureAirports[cbDepatureAirport.SelectedIndex].Name;
+            var to = arrivalAirports[cbArrivalAirport.SelectedIndex].Name;
+            Route route;
+            if ((route = Db.Context.Routes.Where(t => t.Airport.Name == from && t.Airport1.Name == to).FirstOrDefault()) != null)
+            {
+                txtDistance.Text = route.Distance.ToString();
+                txtDistance.IsEnabled = false;
+            }
+            else
+            {
+                txtDistance.Text = "";
+                txtDistance.IsEnabled = true;
+            }
         }
     }
 }

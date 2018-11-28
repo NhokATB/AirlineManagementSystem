@@ -57,7 +57,7 @@ namespace AirportManagerSystem.View
 
             if (txtIATACode.Text != Airport.IATACode)
             {
-                if (Db.Context.Airports.ToList().Where(t => t.IATACode == txtIATACode.Text).FirstOrDefault() != null)
+                if (Db.Context.Airports.ToList().Where(t => t.IATACode == txtIATACode.Text.ToUpper()).FirstOrDefault() != null)
                 {
                     MessageBox.Show("This IATACode was existed!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
@@ -71,14 +71,14 @@ namespace AirportManagerSystem.View
             }
             if (txtName.Text != Airport.Name)
             {
-                if (Db.Context.Airports.ToList().Where(t => t.Name == txtName.Text).FirstOrDefault() != null)
+                if (Db.Context.Airports.ToList().Where(t => t.Name.ToUpper() == txtName.Text.ToUpper()).FirstOrDefault() != null)
                 {
                     MessageBox.Show("This airport name was used!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }
 
-            Airport.IATACode = txtIATACode.Text;
+            Airport.IATACode = txtIATACode.Text.ToUpper();
             Airport.Name = txtName.Text;
             Airport.Country = countries[cbCountry.SelectedIndex];
 

@@ -33,18 +33,10 @@
             <TextBlock Width="100" TextAlignment="Right">Birthdate:</TextBlock>
             <DatePicker Name="dtpBirthdate" Width="395" Margin="5,0,0,0"></DatePicker>
         </StackPanel>
-
-        <Grid Margin="5,25,5,10" Width="500">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Width="100" TextAlignment="Right" VerticalAlignment="Top">User role:</TextBlock>
-            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,5,5,5" Width="395" VerticalAlignment="Top">
-                <RadioButton Name="rdbManager" Margin="0,0,0,10">Manager</RadioButton>
-                <RadioButton Name="rdbUser">User</RadioButton>
-            </StackPanel>
-        </Grid>
+        <StackPanel Orientation="Horizontal" Margin="5,25,5,40" Width="500">
+            <TextBlock Width="100" TextAlignment="Right">User role:</TextBlock>
+            <ComboBox Name="cbUserRole" Width="395" Margin="5,0,0,0"></ComboBox>
+        </StackPanel>
 
         <Grid Margin="5,5,5,5" Width="500" Height="45">
             <Grid.ColumnDefinitions>

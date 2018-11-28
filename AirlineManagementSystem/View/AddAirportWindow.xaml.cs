@@ -50,7 +50,7 @@ namespace AirportManagerSystem.View
                 return;
             }
 
-            if (Db.Context.Airports.ToList().Where(t => t.IATACode == txtIATACode.Text).FirstOrDefault() != null)
+            if (Db.Context.Airports.ToList().Where(t => t.IATACode == txtIATACode.Text.ToUpper()).FirstOrDefault() != null)
             {
                 MessageBox.Show("IATACode wasn't duplicated!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -62,7 +62,7 @@ namespace AirportManagerSystem.View
                 return;
             }
 
-            if (Db.Context.Airports.ToList().Where(t => t.Name == txtName.Text).FirstOrDefault() != null)
+            if (Db.Context.Airports.ToList().Where(t => t.Name.ToLower() == txtName.Text.ToLower()).FirstOrDefault() != null)
             {
                 MessageBox.Show("Airport name was used!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -70,7 +70,7 @@ namespace AirportManagerSystem.View
 
             Airport airport = new Airport()
             {
-                IATACode = txtIATACode.Text,
+                IATACode = txtIATACode.Text.ToUpper(),
                 Name = txtName.Text,
                 Country = countries[cbCountry.SelectedIndex]
             };

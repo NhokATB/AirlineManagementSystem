@@ -121,7 +121,7 @@ namespace AirportManagerSystem.View
 
             try
             {
-                tblTopOffice1.Text = $"1. {off[0].Title}";
+                tblTopOffice1.Text = $"1. {off[0].Title} ({off[0].Revenue.ToString("C0")})";
             }
             catch (Exception)
             {
@@ -129,7 +129,7 @@ namespace AirportManagerSystem.View
             }
             try
             {
-                tblTopOffice2.Text = $"2. {off[1].Title}";
+                tblTopOffice2.Text = $"2. {off[1].Title} ({off[1].Revenue.ToString("C0")})";
             }
             catch (Exception)
             {
@@ -137,7 +137,7 @@ namespace AirportManagerSystem.View
             }
             try
             {
-                tblTopOffice3.Text = $"3. {off[2].Title}";
+                tblTopOffice3.Text = $"3. {off[2].Title} ({off[2].Revenue.ToString("C0")})";
             }
             catch (Exception)
             {
@@ -153,7 +153,7 @@ namespace AirportManagerSystem.View
 
             Revenue(tYes, tblYesterday, "Yesterday: ");
             Revenue(tTwo, tblTwoDaysAgo, "Two days ago: ");
-            Revenue(tThree, tblTwoDaysAgo, "Three days ago: ");
+            Revenue(tThree, tblThreeDaysAgo, "Three days ago: ");
 
             var dayofWeek = (int)now.DayOfWeek == 0 ? 7 : (int)now.DayOfWeek;
             var thisWeek = now.Date.AddDays(-dayofWeek + 1);

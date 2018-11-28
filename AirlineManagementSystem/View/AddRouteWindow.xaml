@@ -18,9 +18,9 @@
         </StackPanel.Resources>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5,20,5,5">
             <TextBlock>From:</TextBlock>
-            <ComboBox Name="cbDepatureAirport" Width="132"></ComboBox>
+            <ComboBox Name="cbDepatureAirport" Width="132" SelectionChanged="cbDepatureAirport_SelectionChanged"></ComboBox>
             <TextBlock>To:</TextBlock>
-            <ComboBox Name="cbArrivalAirport" Width="133"></ComboBox>
+            <ComboBox Name="cbArrivalAirport" Width="133" SelectionChanged="cbArrivalAirport_SelectionChanged"></ComboBox>
         </StackPanel>
        
         <StackPanel Orientation="Horizontal" Margin="5,20,5,5" HorizontalAlignment="Center" >

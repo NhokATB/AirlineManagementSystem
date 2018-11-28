@@ -40,6 +40,8 @@ namespace AirportManagerSystem
             imgLogo.Source = new BitmapImage(new Uri(@"/AirportManagerSystem;component/Images/WSC2017_TP09_color.png", UriKind.Relative));
             timer.Tick += Timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 1);
+
+            txtUsername.Focus();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
