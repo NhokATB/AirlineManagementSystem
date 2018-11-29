@@ -116,11 +116,21 @@
       <DependentUpon>AmenitiesDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="HelperClass\AMONICColor.cs" />
+    <Compile Include="Model\Crew.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CrewMember.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Flight.cs" />
+    <Compile Include="Model\Member.cs" />
     <Compile Include="Model\NewFlight.cs" />
     <Compile Include="Model\NewLog.cs" />
     <Compile Include="Model\NewSurvey.cs" />
     <Compile Include="Model\NewTicket.cs" />
+    <Compile Include="Model\Position.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\SurveyDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -142,11 +152,17 @@
     <Compile Include="View\AddCabinTypeWindow.xaml.cs">
       <DependentUpon>AddCabinTypeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AddCrewWindow.xaml.cs">
+      <DependentUpon>AddCrewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddFlightWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\AddFlightWindow.Designer.cs">
       <DependentUpon>AddFlightWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddMemberWindow.xaml.cs">
+      <DependentUpon>AddMemberWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AddOfficeWindow.xaml.cs">
       <DependentUpon>AddOfficeWindow.xaml</DependentUpon>
@@ -187,6 +203,9 @@
     <Compile Include="View\CheckInWindow.xaml.cs">
       <DependentUpon>CheckInWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CrewManagementWindow.xaml.cs">
+      <DependentUpon>CrewManagementWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EditAircraftWindow.xaml.cs">
       <DependentUpon>EditAircraftWindow.xaml</DependentUpon>
     </Compile>
@@ -199,11 +218,17 @@
     <Compile Include="View\EditCabinTypeWindow.xaml.cs">
       <DependentUpon>EditCabinTypeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditCrewWindow.xaml.cs">
+      <DependentUpon>EditCrewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EditFlightWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\EditFlightWindow.Designer.cs">
       <DependentUpon>EditFlightWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditMemberWindow.xaml.cs">
+      <DependentUpon>EditMemberWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\EditOfficeWindow.xaml.cs">
       <DependentUpon>EditOfficeWindow.xaml</DependentUpon>
@@ -226,6 +251,12 @@
     <Compile Include="View\LoginHistoryManagementWindow.xaml.cs">
       <DependentUpon>LoginHistoryManagementWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MemberListWindow.xaml.cs">
+      <DependentUpon>MemberListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MemberManagementWindow.xaml.cs">
+      <DependentUpon>MemberManagementWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\OfficesManagementWindow.xaml.cs">
       <DependentUpon>OfficesManagementWindow.xaml</DependentUpon>
     </Compile>
@@ -237,6 +268,9 @@
     </Compile>
     <Compile Include="View\SeatModelWindow.xaml.cs">
       <DependentUpon>SeatModelWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SetUpCrewWindow.xaml.cs">
+      <DependentUpon>SetUpCrewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ShortSummaryWindow.xaml.cs">
       <DependentUpon>ShortSummaryWindow.xaml</DependentUpon>
@@ -296,6 +330,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddCrewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddMemberWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AddOfficeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -348,6 +390,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\CrewManagementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\EditAircraftWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -361,6 +407,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EditCabinTypeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditCrewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditMemberWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -392,6 +446,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\MemberListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MemberManagementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\OfficesManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -405,6 +467,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SeatModelWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SetUpCrewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -39,10 +39,11 @@
                 <DataGridTextColumn Header="From" Binding="{Binding Schedule.Route.Airport.IATACode}" Width="0.3*" ></DataGridTextColumn>
                 <DataGridTextColumn Header="To" Binding="{Binding Schedule.Route.Airport1.IATACode}" Width="0.3*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Flight number" Binding="{Binding Schedule.FlightNumber}" Width="0.4*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Aircraft" Binding="{Binding Aircraft}" Width="0.5*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Aircraft" Binding="{Binding Aircraft}" Width="0.4*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Economy Price" Binding="{Binding EconomyPrice, StringFormat='{}{0:C0}'}" Width="0.5*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Business Price" Binding="{Binding BusinessPrice, StringFormat='{}{0:C0}'}" Width="0.5*"></DataGridTextColumn>
                 <DataGridTextColumn Header="First Class Price" Binding="{Binding FirstClassPrice, StringFormat='{}{0:C0}'}" Width="0.5*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Crew" Binding="{Binding Crew}" Width="0.5*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Orientation="Horizontal" Margin="10,5,5,5">
@@ -56,10 +57,11 @@
                 <ColumnDefinition Width="0.3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <Button Grid.Column="1" Width="100" Height="35" Name="btnAddUser" Click="btnAddFlight_Click" Margin="0,0,15,0">Add Flight</Button>
+                <Button Grid.Column="1" Width="120" Height="35" Name="btnAddUser" Click="btnAddFlight_Click" Margin="0,0,15,0">Add Flight</Button>
                 <Button Width="120" Height="35" Name="btnEditFlight" Margin="0,0,15,0" Click="btnEditFlight_Click">Edit Flight</Button>
                 <Button Width="120" Name="btnDeleteFlight" Margin="0,0,15,0" Click="btnDeleteFlight_Click">Delete Flight</Button>
                 <Button Width="120" Height="35" Margin="0,0,15,0" Name="btnCancelFlight" Click="btnCancelFlight_Click" VerticalAlignment="Top">Cancel Flight</Button>
+                <Button Width="120" Height="35" Margin="0,0,15,0" Name="btnSetupCrew" Click="btnSetupCrew_Click" VerticalAlignment="Top">Set up the Crew</Button>
             </StackPanel>
             <Button Grid.Column="1" Width="120" Height="35" Name="btnCancel" HorizontalAlignment="Right" Click="btnCancel_Click" >Cancel</Button>
         </Grid>

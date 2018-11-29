@@ -16,7 +16,7 @@
                 <Separator/>
                 <MenuItem Header="Exit" Name="mnExit" Click="mnExit_Click"/>
             </MenuItem>
-            <MenuItem Header="Management" Name="mnManagement">
+            <MenuItem Header="Category" Name="mnManagement">
                 <MenuItem Header="Users" Name="mnUsers" Click="MnUsers_Click"/>
                 <MenuItem Header="Fights" Name="mnFlights" Click="mnFlights_Click"/>
                 <MenuItem Header="Tickets" Name="mnTickets" Click="mnTickets_Click"></MenuItem>
@@ -27,6 +27,8 @@
                 <MenuItem Header="Airports" Name="mnAirports" Click="mnAirports_Click"/>
                 <MenuItem Header="Offices" Name="mnOffices" Click="mnOffices_Click"/>
                 <MenuItem Header="Login histories" Name="mnLoginHistory" Click="mnLoginHistory_Click"/>
+                <MenuItem Header="Crews" Name="mnCrews" Click="mnCrews_Click"/>
+                <MenuItem Header="Members" Name="mnMembers" Click="mnMembers_Click"/>
                 <MenuItem Header="Seats" Name="mnSeats"/>
             </MenuItem>
             <MenuItem Header="Business" Name="mnBusiness">
@@ -41,7 +43,7 @@
                 <MenuItem Header="Short Summary" Name="mnShortSummaryReport" Click="mnShortSummaryReport_Click"/>
                 <MenuItem Header="Revenue" Name="mnRevenueReport"/>
             </MenuItem>
-            <MenuItem Header="Introduce">
+            <MenuItem Header="Help">
                 <MenuItem Header="Amonic Airline" Name="mnAmonicAirline"/>
                 <MenuItem Header="Automation System" Name="mnAutomationSystem"/>
             </MenuItem>

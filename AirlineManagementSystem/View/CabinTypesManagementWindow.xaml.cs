@@ -81,6 +81,7 @@ namespace AirportManagerSystem.View
                 {
                     if (MessageBox.Show("Do you want to delete this cabin type?", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
                     {
+                        currentCabin.Amenities.Clear();
                         Db.Context.CabinTypes.Remove(currentCabin);
                         Db.Context.SaveChanges();
                         LoadCabinTypes();

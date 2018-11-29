@@ -44,6 +44,15 @@
         <AssociationConnector Association="AirlineManagementSystemModel.FK_Ticket_Schedule" />
         <AssociationConnector Association="AirlineManagementSystemModel.FK_Ticket_User" />
         <AssociationConnector Association="AirlineManagementSystemModel.AmenitiesCabinType" />
+        <EntityTypeShape EntityType="AirlineManagementSystemModel.Crew" Width="1.5" PointX="5.25" PointY="19.25" />
+        <EntityTypeShape EntityType="AirlineManagementSystemModel.CrewMember" Width="1.5" PointX="7.5" PointY="18.75" />
+        <EntityTypeShape EntityType="AirlineManagementSystemModel.Position" Width="1.5" PointX="5.25" PointY="22.5" />
+        <AssociationConnector Association="AirlineManagementSystemModel.FK_Crew_Offices" />
+        <AssociationConnector Association="AirlineManagementSystemModel.FK_CrewMember_Crew" />
+        <AssociationConnector Association="AirlineManagementSystemModel.FK_CrewMember_Position" />
+        <AssociationConnector Association="AirlineManagementSystemModel.FK_Schedules_Crew" />
+        <AssociationConnector Association="AirlineManagementSystemModel.FK_CrewMember_Offices" />
+        <AssociationConnector Association="AirlineManagementSystemModel.FK_CrewMember_Countries" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

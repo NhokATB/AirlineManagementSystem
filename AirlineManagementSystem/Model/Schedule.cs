@@ -29,6 +29,7 @@ namespace AirportManagerSystem.Model
         public decimal EconomyPrice { get; set; }
         public bool Confirmed { get; set; }
         public string FlightNumber { get; set; }
+        public Nullable<int> CrewId { get; set; }
     
         public virtual Aircraft Aircraft { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -36,5 +37,6 @@ namespace AirportManagerSystem.Model
         public virtual Route Route { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Tickets { get; set; }
+        public virtual Crew Crew { get; set; }
     }
 }

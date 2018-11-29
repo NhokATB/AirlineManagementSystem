@@ -38,6 +38,16 @@ namespace AirportManagerSystem.View
             rvSummaryReport.ZoomMode = ZoomMode.FullPage;
             rvDetailReport.ZoomMode = ZoomMode.PageWidth;
             this.Loaded += SurveyReportWindow_Loaded;
+            dpDateOfFlight.SelectedDateChanged += DpDateOfFlight_SelectedDateChanged;
+        }
+
+        private void DpDateOfFlight_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var date = dpDateOfFlight.SelectedDate.Value.Date;
+            var flightNumbers = Db.Context.Schedules.Where(t=>t.Date == date).Select(t => t.FlightNumber).Distinct().ToList();
+            flightNumbers.Insert(0, "All");
+            cbFlightNumber.ItemsSource = flightNumbers;
+            cbFlightNumber.SelectedIndex = 0;
         }
 
         private void SurveyReportWindow_Loaded(object sender, RoutedEventArgs e)
@@ -61,7 +71,7 @@ namespace AirportManagerSystem.View
 
         private void LoadDataForTabDetail()
         {
-            times = Db.Context.Respondents.Select(t=>t.Schedule.Date).Distinct().OrderByDescending(t => t).ToList().Select(t => t.ToString("MMMM yyyy")).Distinct().ToList();
+            times = Db.Context.Respondents.Select(t => t.Schedule.Date).Distinct().OrderByDescending(t => t).ToList().Select(t => t.ToString("MMMM yyyy")).Distinct().ToList();
             times.Insert(0, "All times");
             cbTimePeriod.ItemsSource = times;
             cbTimePeriod.SelectedIndex = 0;
@@ -405,7 +415,7 @@ namespace AirportManagerSystem.View
                 surveys = surveys.Where(t => t.Respondent.CabinType == cbCabinType.Text).ToList();
             if (cbFlightNumber.SelectedIndex != 0)
                 surveys = surveys.Where(t => t.Respondent.Schedule.FlightNumber == cbFlightNumber.Text).ToList();
-            if(dpDateOfFlight.SelectedDate != null)
+            if (dpDateOfFlight.SelectedDate != null)
                 surveys = surveys.Where(t => t.Respondent.Schedule.Date == dpDateOfFlight.SelectedDate.Value.Date).ToList();
         }
 

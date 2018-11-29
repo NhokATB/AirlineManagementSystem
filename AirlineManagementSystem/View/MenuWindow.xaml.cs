@@ -35,34 +35,22 @@ namespace AirportManagerSystem.View
         {
             if (User.Role.Title != "Administrator")
             {
-                mnAircrafts.Visibility = Visibility.Hidden;
-                mnAirports.Visibility = Visibility.Hidden;
-                mnCabinTypes.Visibility = Visibility.Hidden;
-                mnOffices.Visibility = Visibility.Hidden;
-                mnRoutes.Visibility = Visibility.Hidden;
-
                 mnManagement.Items.Remove(mnAircrafts);
                 mnManagement.Items.Remove(mnAirports);
                 mnManagement.Items.Remove(mnOffices);
                 mnManagement.Items.Remove(mnCabinTypes);
                 mnManagement.Items.Remove(mnRoutes);
 
-                mnShortSummaryReport.Visibility = Visibility.Hidden;
                 mnReport.Items.Remove(mnShortSummaryReport);
 
                 if (User.Role.Title == "User")
                 {
-                    mnUsers.Visibility = Visibility.Hidden;
-                    mnFlights.Visibility = Visibility.Hidden;
-                    mnAmenities.Visibility = Visibility.Hidden;
-                    mnLogingHistory.Visibility = Visibility.Hidden;
-
                     mnManagement.Items.Remove(mnUsers);
                     mnManagement.Items.Remove(mnAmenities);
                     mnManagement.Items.Remove(mnFlights);
                     mnManagement.Items.Remove(mnLogingHistory);
+                    mnManagement.Items.Remove(mnCrews);
 
-                    mnSurveyReport.Visibility = Visibility.Hidden;
                     mnReport.Items.Remove(mnSurveyReport);
                 }
             }
@@ -211,6 +199,24 @@ namespace AirportManagerSystem.View
         {
             AirportManagementWindow airportManagementWindow = new AirportManagementWindow();
             ShowDialogWindow(airportManagementWindow);
+        }
+
+        private void mnCrews_Click(object sender, RoutedEventArgs e)
+        {
+            CrewManagementWindow crewManagementWindow = new CrewManagementWindow()
+            {
+                LogonUser = User
+            };
+            ShowDialogWindow(crewManagementWindow);
+        }
+
+        private void mnMembers_Click(object sender, RoutedEventArgs e)
+        {
+            MemberManagementWindow memberManagementWindow = new MemberManagementWindow()
+            {
+                LogonUser = User
+            };
+            ShowDialogWindow(memberManagementWindow);
         }
     }
 }

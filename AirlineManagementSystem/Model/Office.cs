@@ -18,6 +18,8 @@ namespace AirportManagerSystem.Model
         public Office()
         {
             this.Users = new HashSet<User>();
+            this.Crews = new HashSet<Crew>();
+            this.CrewMembers = new HashSet<CrewMember>();
         }
     
         public int ID { get; set; }
@@ -29,5 +31,9 @@ namespace AirportManagerSystem.Model
         public virtual Country Country { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Crew> Crews { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CrewMember> CrewMembers { get; set; }
     }
 }

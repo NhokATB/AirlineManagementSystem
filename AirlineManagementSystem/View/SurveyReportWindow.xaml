@@ -86,7 +86,7 @@
                                 <ComboBox Name="cbArrivalAirport" Margin="10,5,40,5" Width="120" SelectionChanged="cbArrivalAirport_SelectionChanged"></ComboBox>
                                 <TextBlock VerticalAlignment="Center">Cabin type:</TextBlock>
                                 <ComboBox Name="cbCabinType" Margin="10,5,40,5" Width="120" SelectionChanged="cbCabinType_SelectionChanged"></ComboBox>
-                                <Button Name="btnApply" Width="100" Height="35" Click="btnApply_Click" >Apply</Button>
+                                <Button Name="btnApply" Width="100" Height="35" Click="btnApply_Click" VerticalAlignment="Top" >Apply</Button>
                             </StackPanel>
                         </GroupBox>
                     </DockPanel>

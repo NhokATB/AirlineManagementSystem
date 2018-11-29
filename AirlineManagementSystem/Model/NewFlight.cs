@@ -13,5 +13,6 @@ namespace AirportManagerSystem.Model
         public double FirstClassPrice { get; set; }
         public Schedule Schedule { get; set; }
         public string Aircraft { get; set; }
+        public string Crew { get; set; }
     }
 }

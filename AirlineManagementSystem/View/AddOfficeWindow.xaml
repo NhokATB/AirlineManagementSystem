@@ -28,7 +28,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="5,25,5,5" HorizontalAlignment="Center">
             <TextBlock Width="70">Phone:</TextBlock>
-            <TextBox Name="txtPhone" Width="325" MaxLength="14"></TextBox>
+            <TextBox Name="txtPhone" Width="325" MaxLength="11"></TextBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="5,25,5,5" HorizontalAlignment="Center">
             <TextBlock Width="70">Contact:</TextBlock>

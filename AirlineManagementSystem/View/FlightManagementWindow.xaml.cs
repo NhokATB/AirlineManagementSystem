@@ -208,6 +208,28 @@ namespace AirportManagerSystem.View
             }
         }
 
+        private void btnSetupCrew_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentFlight != null)
+            {
+                try
+                {
+                    SetUpCrewWindow setUpCrewWindow = new SetUpCrewWindow();
+                    setUpCrewWindow.Flight = currentFlight;
+                    setUpCrewWindow.ManageWindow = this;
+                    setUpCrewWindow.ShowDialog();
+                    currentFlight = null;
+                }
+                catch (Exception)
+                {
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please choose a flight!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void SortFlights()
         {
             if (sortBy == 0)
@@ -233,7 +255,8 @@ namespace AirportManagerSystem.View
                     BusinessPrice = bprice,
                     FirstClassPrice = fprice,
                     Schedule = item,
-                    Aircraft = item.Aircraft.Name + " " + item.Aircraft.MakeModel
+                    Aircraft = item.Aircraft.Name + " " + item.Aircraft.MakeModel,
+                    Crew = item.CrewId == null ? "None" : item.Crew.CrewName
                 });
             }
 

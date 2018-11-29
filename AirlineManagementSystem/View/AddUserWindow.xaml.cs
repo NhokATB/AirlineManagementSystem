@@ -71,13 +71,19 @@ namespace AirportManagerSystem.View
                 return;
             }
 
-            if (txtFirstName.Text == "" || txtLastName.Text == "" || txtPassword.Password == "")
+            if (txtFirstName.Text.Trim() == "")
             {
-                MessageBox.Show("Please fill all field", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("First name was required!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            if (txtLastName.Text.Trim() == "")
+            {
+                MessageBox.Show("Last name was required!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+           
 
-            try
+            if(dtpBirthdate.SelectedDate != null)
             {
                 if (DateTime.Now.Year < 18 - dtpBirthdate.SelectedDate.Value.Year)
                 {
@@ -85,9 +91,15 @@ namespace AirportManagerSystem.View
                     return;
                 }
             }
-            catch (Exception)
+            else
             {
                 MessageBox.Show("Please choose birthdate", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (txtPassword.Password.Trim() == "")
+            {
+                MessageBox.Show("Password was required!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

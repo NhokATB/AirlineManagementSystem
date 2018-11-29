@@ -78,6 +78,30 @@
           <Property Name="CrashId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="Crew">
+          <Key>
+            <PropertyRef Name="CrewId" />
+          </Key>
+          <Property Name="CrewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumberOfMembers" Type="int" />
+          <Property Name="CrewName" Type="nvarchar" MaxLength="200" />
+          <Property Name="OfficeId" Type="int" />
+        </EntityType>
+        <EntityType Name="CrewMember">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="200" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="200" />
+          <Property Name="PositionId" Type="int" />
+          <Property Name="Phone" Type="varchar" MaxLength="11" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="HireDate" Type="date" />
+          <Property Name="CrewId" Type="int" />
+          <Property Name="OfficeId" Type="int" />
+          <Property Name="PassportCountryId" Type="int" />
+        </EntityType>
         <EntityType Name="LoginHistory">
           <Key>
             <PropertyRef Name="LoginId" />
@@ -96,8 +120,15 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CountryID" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="11" Nullable="false" />
           <Property Name="Contact" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="PositionId" />
+          </Key>
+          <Property Name="PositionId" Type="int" Nullable="false" />
+          <Property Name="PositionName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
@@ -147,6 +178,7 @@
           <Property Name="EconomyPrice" Type="money" Nullable="false" />
           <Property Name="Confirmed" Type="bit" Nullable="false" />
           <Property Name="FlightNumber" Type="nvarchar" MaxLength="10" />
+          <Property Name="CrewId" Type="int" />
         </EntityType>
         <EntityType Name="Survey">
           <Key>
@@ -168,7 +200,7 @@
           <Property Name="CabinTypeID" Type="int" Nullable="false" />
           <Property Name="Firstname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Lastname" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="14" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="11" Nullable="false" />
           <Property Name="PassportNumber" Type="nvarchar" MaxLength="9" Nullable="false" />
           <Property Name="PassportCountryID" Type="int" Nullable="false" />
           <Property Name="BookingReference" Type="nvarchar" MaxLength="6" Nullable="false" />
@@ -223,6 +255,66 @@
             </Principal>
             <Dependent Role="AmenitiesTickets">
               <PropertyRef Name="TicketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Crew_Offices">
+          <End Role="Offices" Type="Self.Offices" Multiplicity="0..1" />
+          <End Role="Crew" Type="Self.Crew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Crew">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CrewMember_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+          <End Role="CrewMember" Type="Self.CrewMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CrewMember">
+              <PropertyRef Name="PassportCountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CrewMember_Crew">
+          <End Role="Crew" Type="Self.Crew" Multiplicity="0..1" />
+          <End Role="CrewMember" Type="Self.CrewMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Crew">
+              <PropertyRef Name="CrewId" />
+            </Principal>
+            <Dependent Role="CrewMember">
+              <PropertyRef Name="CrewId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CrewMember_Offices">
+          <End Role="Offices" Type="Self.Offices" Multiplicity="0..1" />
+          <End Role="CrewMember" Type="Self.CrewMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CrewMember">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CrewMember_Position">
+          <End Role="Position" Type="Self.Position" Multiplicity="0..1" />
+          <End Role="CrewMember" Type="Self.CrewMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="PositionId" />
+            </Principal>
+            <Dependent Role="CrewMember">
+              <PropertyRef Name="PositionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -319,6 +411,18 @@
             </Principal>
             <Dependent Role="Schedules">
               <PropertyRef Name="RouteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedules_Crew">
+          <End Role="Crew" Type="Self.Crew" Multiplicity="0..1" />
+          <End Role="Schedules" Type="Self.Schedules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Crew">
+              <PropertyRef Name="CrewId" />
+            </Principal>
+            <Dependent Role="Schedules">
+              <PropertyRef Name="CrewId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -464,8 +568,11 @@
           <EntitySet Name="CabinTypes" EntityType="Self.CabinTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Crash" EntityType="Self.Crash" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Crew" EntityType="Self.Crew" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CrewMember" EntityType="Self.CrewMember" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoginHistory" EntityType="Self.LoginHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Respondent" EntityType="Self.Respondent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
@@ -485,6 +592,26 @@
           <AssociationSet Name="FK_AmenitiesTickets_Tickets" Association="Self.FK_AmenitiesTickets_Tickets">
             <End Role="Tickets" EntitySet="Tickets" />
             <End Role="AmenitiesTickets" EntitySet="AmenitiesTickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Crew_Offices" Association="Self.FK_Crew_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="Crew" EntitySet="Crew" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CrewMember_Countries" Association="Self.FK_CrewMember_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="CrewMember" EntitySet="CrewMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CrewMember_Crew" Association="Self.FK_CrewMember_Crew">
+            <End Role="Crew" EntitySet="Crew" />
+            <End Role="CrewMember" EntitySet="CrewMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CrewMember_Offices" Association="Self.FK_CrewMember_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="CrewMember" EntitySet="CrewMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CrewMember_Position" Association="Self.FK_CrewMember_Position">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="CrewMember" EntitySet="CrewMember" />
           </AssociationSet>
           <AssociationSet Name="FK_LoginHistory_Crash" Association="Self.FK_LoginHistory_Crash">
             <End Role="Crash" EntitySet="Crash" />
@@ -516,6 +643,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Schedule_Routes" Association="Self.FK_Schedule_Routes">
             <End Role="Routes" EntitySet="Routes" />
+            <End Role="Schedules" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedules_Crew" Association="Self.FK_Schedules_Crew">
+            <End Role="Crew" EntitySet="Crew" />
             <End Role="Schedules" EntitySet="Schedules" />
           </AssociationSet>
           <AssociationSet Name="FK_Survey_Answer" Association="Self.FK_Survey_Answer">
@@ -670,6 +801,33 @@
             <End Role="Amenity" EntitySet="Amenities" />
             <End Role="CabinType" EntitySet="CabinTypes" />
           </AssociationSet>
+          <EntitySet Name="Crews" EntityType="AirlineManagementSystemModel.Crew" />
+          <EntitySet Name="CrewMembers" EntityType="AirlineManagementSystemModel.CrewMember" />
+          <EntitySet Name="Positions" EntityType="AirlineManagementSystemModel.Position" />
+          <AssociationSet Name="FK_Crew_Offices" Association="AirlineManagementSystemModel.FK_Crew_Offices">
+            <End Role="Office" EntitySet="Offices" />
+            <End Role="Crew" EntitySet="Crews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CrewMember_Crew" Association="AirlineManagementSystemModel.FK_CrewMember_Crew">
+            <End Role="Crew" EntitySet="Crews" />
+            <End Role="CrewMember" EntitySet="CrewMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CrewMember_Position" Association="AirlineManagementSystemModel.FK_CrewMember_Position">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="CrewMember" EntitySet="CrewMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedules_Crew" Association="AirlineManagementSystemModel.FK_Schedules_Crew">
+            <End Role="Crew" EntitySet="Crews" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CrewMember_Offices" Association="AirlineManagementSystemModel.FK_CrewMember_Offices">
+            <End Role="Office" EntitySet="Offices" />
+            <End Role="CrewMember" EntitySet="CrewMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CrewMember_Countries" Association="AirlineManagementSystemModel.FK_CrewMember_Countries">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="CrewMember" EntitySet="CrewMembers" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Aircraft">
           <Key>
@@ -742,6 +900,7 @@
           <NavigationProperty Name="Airports" Relationship="AirlineManagementSystemModel.FK_AirPort_Country" FromRole="Country" ToRole="Airport" />
           <NavigationProperty Name="Offices" Relationship="AirlineManagementSystemModel.FK_Office_Country" FromRole="Country" ToRole="Office" />
           <NavigationProperty Name="Tickets" Relationship="AirlineManagementSystemModel.FK_Tickets_Countries" FromRole="Country" ToRole="Ticket" />
+          <NavigationProperty Name="CrewMembers" Relationship="AirlineManagementSystemModel.FK_CrewMember_Countries" FromRole="Country" ToRole="CrewMember" />
         </EntityType>
         <EntityType Name="Crash">
           <Key>
@@ -771,10 +930,12 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CountryID" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="Contact" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Country" Relationship="AirlineManagementSystemModel.FK_Office_Country" FromRole="Office" ToRole="Country" />
           <NavigationProperty Name="Users" Relationship="AirlineManagementSystemModel.FK_Users_Offices" FromRole="Office" ToRole="User" />
+          <NavigationProperty Name="Crews" Relationship="AirlineManagementSystemModel.FK_Crew_Offices" FromRole="Office" ToRole="Crew" />
+          <NavigationProperty Name="CrewMembers" Relationship="AirlineManagementSystemModel.FK_CrewMember_Offices" FromRole="Office" ToRole="CrewMember" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
@@ -835,6 +996,8 @@
           <NavigationProperty Name="Respondents" Relationship="AirlineManagementSystemModel.FK_Respondent_Schedules" FromRole="Schedule" ToRole="Respondent" />
           <NavigationProperty Name="Route" Relationship="AirlineManagementSystemModel.FK_Schedule_Routes" FromRole="Schedule" ToRole="Route" />
           <NavigationProperty Name="Tickets" Relationship="AirlineManagementSystemModel.FK_Ticket_Schedule" FromRole="Schedule" ToRole="Ticket" />
+          <Property Name="CrewId" Type="Int32" />
+          <NavigationProperty Name="Crew" Relationship="AirlineManagementSystemModel.FK_Schedules_Crew" FromRole="Schedule" ToRole="Crew" />
         </EntityType>
         <EntityType Name="Survey">
           <Key>
@@ -859,7 +1022,7 @@
           <Property Name="CabinTypeID" Type="Int32" Nullable="false" />
           <Property Name="Firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Lastname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="PassportNumber" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
           <Property Name="PassportCountryID" Type="Int32" Nullable="false" />
           <Property Name="BookingReference" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
@@ -1134,6 +1297,117 @@
           <End Type="AirlineManagementSystemModel.Amenity" Role="Amenity" Multiplicity="*" />
           <End Type="AirlineManagementSystemModel.CabinType" Role="CabinType" Multiplicity="*" />
         </Association>
+        <EntityType Name="Crew">
+          <Key>
+            <PropertyRef Name="CrewId" />
+          </Key>
+          <Property Name="CrewId" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfMembers" Type="Int32" />
+          <Property Name="CrewName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeId" Type="Int32" />
+          <NavigationProperty Name="Office" Relationship="AirlineManagementSystemModel.FK_Crew_Offices" FromRole="Crew" ToRole="Office" />
+          <NavigationProperty Name="CrewMembers" Relationship="AirlineManagementSystemModel.FK_CrewMember_Crew" FromRole="Crew" ToRole="CrewMember" />
+          <NavigationProperty Name="Schedules" Relationship="AirlineManagementSystemModel.FK_Schedules_Crew" FromRole="Crew" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="CrewMember">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PositionId" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HireDate" Type="DateTime" Precision="0" />
+          <Property Name="CrewId" Type="Int32" />
+          <NavigationProperty Name="Crew" Relationship="AirlineManagementSystemModel.FK_CrewMember_Crew" FromRole="CrewMember" ToRole="Crew" />
+          <NavigationProperty Name="Position" Relationship="AirlineManagementSystemModel.FK_CrewMember_Position" FromRole="CrewMember" ToRole="Position" />
+          <Property Name="OfficeId" Type="Int32" />
+          <NavigationProperty Name="Office" Relationship="AirlineManagementSystemModel.FK_CrewMember_Offices" FromRole="CrewMember" ToRole="Office" />
+          <Property Name="PassportCountryId" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="AirlineManagementSystemModel.FK_CrewMember_Countries" FromRole="CrewMember" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="PositionId" />
+          </Key>
+          <Property Name="PositionId" Type="Int32" Nullable="false" />
+          <Property Name="PositionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CrewMembers" Relationship="AirlineManagementSystemModel.FK_CrewMember_Position" FromRole="Position" ToRole="CrewMember" />
+        </EntityType>
+        <Association Name="FK_Crew_Offices">
+          <End Type="AirlineManagementSystemModel.Office" Role="Office" Multiplicity="0..1" />
+          <End Type="AirlineManagementSystemModel.Crew" Role="Crew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Crew">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CrewMember_Crew">
+          <End Type="AirlineManagementSystemModel.Crew" Role="Crew" Multiplicity="0..1" />
+          <End Type="AirlineManagementSystemModel.CrewMember" Role="CrewMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Crew">
+              <PropertyRef Name="CrewId" />
+            </Principal>
+            <Dependent Role="CrewMember">
+              <PropertyRef Name="CrewId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CrewMember_Position">
+          <End Type="AirlineManagementSystemModel.Position" Role="Position" Multiplicity="0..1" />
+          <End Type="AirlineManagementSystemModel.CrewMember" Role="CrewMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="PositionId" />
+            </Principal>
+            <Dependent Role="CrewMember">
+              <PropertyRef Name="PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedules_Crew">
+          <End Type="AirlineManagementSystemModel.Crew" Role="Crew" Multiplicity="0..1" />
+          <End Type="AirlineManagementSystemModel.Schedule" Role="Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Crew">
+              <PropertyRef Name="CrewId" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="CrewId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CrewMember_Offices">
+          <End Type="AirlineManagementSystemModel.Office" Role="Office" Multiplicity="0..1" />
+          <End Type="AirlineManagementSystemModel.CrewMember" Role="CrewMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CrewMember">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CrewMember_Countries">
+          <End Type="AirlineManagementSystemModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="AirlineManagementSystemModel.CrewMember" Role="CrewMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CrewMember">
+              <PropertyRef Name="PassportCountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1278,6 +1552,7 @@
           <EntitySetMapping Name="Schedules">
             <EntityTypeMapping TypeName="AirlineManagementSystemModel.Schedule">
               <MappingFragment StoreEntitySet="Schedules">
+                <ScalarProperty Name="CrewId" ColumnName="CrewId" />
                 <ScalarProperty Name="FlightNumber" ColumnName="FlightNumber" />
                 <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />
                 <ScalarProperty Name="EconomyPrice" ColumnName="EconomyPrice" />
@@ -1342,6 +1617,40 @@
               <ScalarProperty Name="ID" ColumnName="AmenityID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Crews">
+            <EntityTypeMapping TypeName="AirlineManagementSystemModel.Crew">
+              <MappingFragment StoreEntitySet="Crew">
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="CrewName" ColumnName="CrewName" />
+                <ScalarProperty Name="NumberOfMembers" ColumnName="NumberOfMembers" />
+                <ScalarProperty Name="CrewId" ColumnName="CrewId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CrewMembers">
+            <EntityTypeMapping TypeName="AirlineManagementSystemModel.CrewMember">
+              <MappingFragment StoreEntitySet="CrewMember">
+                <ScalarProperty Name="PassportCountryId" ColumnName="PassportCountryId" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="CrewId" ColumnName="CrewId" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Positions">
+            <EntityTypeMapping TypeName="AirlineManagementSystemModel.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

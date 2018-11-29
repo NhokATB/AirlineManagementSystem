@@ -20,6 +20,7 @@ namespace AirportManagerSystem.Model
             this.Airports = new HashSet<Airport>();
             this.Offices = new HashSet<Office>();
             this.Tickets = new HashSet<Ticket>();
+            this.CrewMembers = new HashSet<CrewMember>();
         }
     
         public int ID { get; set; }
@@ -31,5 +32,7 @@ namespace AirportManagerSystem.Model
         public virtual ICollection<Office> Offices { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Tickets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CrewMember> CrewMembers { get; set; }
     }
 }

@@ -40,7 +40,7 @@
                         <TextBlock VerticalAlignment="Center">Passport country:</TextBlock>
                         <ComboBox Name="cbPassportCountry" Width="130" Margin="5,5,50,5"></ComboBox>
                         <TextBlock VerticalAlignment="Center">Phone:</TextBlock>
-                        <TextBox Name="txtPhone" Width="160" Margin="5,5,20,5" MaxLength="14"></TextBox>
+                        <TextBox Name="txtPhone" Width="160" Margin="5,5,20,5" MaxLength="11"></TextBox>
                     </StackPanel>
                     <Grid Width="750" HorizontalAlignment="Center">
                         <Button Name="btnAddPassenger" Height="35" Margin="5,5,23,5" HorizontalAlignment="Right" Width="100" Click="btnAddPassenger_Click">Add passenger</Button>

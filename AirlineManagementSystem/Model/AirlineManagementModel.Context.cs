@@ -43,5 +43,8 @@ namespace AirportManagerSystem.Model
         public virtual DbSet<Survey> Surveys { get; set; }
         public virtual DbSet<Ticket> Tickets { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Crew> Crews { get; set; }
+        public virtual DbSet<CrewMember> CrewMembers { get; set; }
+        public virtual DbSet<Position> Positions { get; set; }
     }
 }
