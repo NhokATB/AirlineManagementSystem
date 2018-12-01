@@ -6,8 +6,44 @@
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="SeatModelWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Seat model" Height="600" Width="800">
+    <StackPanel Margin="15,15">
+        <StackPanel Name="stpNote" Orientation="Horizontal" Margin="10,5,5,5" HorizontalAlignment="Center">
+            
+            <DockPanel Width="20" Height="20" Name="dpnCheckedInSeat">
+            </DockPanel>
+            <TextBlock Margin="5,5,10,5">Checked-in seat</TextBlock>
+            
+            <DockPanel Width="20" Height="20" Name="dpnEmptySeat">
+            </DockPanel>
+            <TextBlock Margin="5,5,10,5">Empty seat</TextBlock>
+
+            <DockPanel Width="20" Height="20" Name="dpnDualEmptySeat">
+            </DockPanel>
+            <TextBlock Name="tblDualEmptySeat" Margin="5,5,10,5">Dual Empty seat</TextBlock>
+           
+            <DockPanel Width="20" Height="20" Name="dpnSelectedSeat">
+            </DockPanel>
+            <TextBlock Margin="5,5,10,5">Selected seat(s)</TextBlock>
+            
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Width="80" TextAlignment="Center"  VerticalAlignment="Center" FontSize="20">Left</TextBlock>
+            
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="450" Width="585">
+                <Border CornerRadius="2" BorderBrush="Gray" Background="LightGray" BorderThickness="2">
+                    <WrapPanel Name="wpSeats" Width="580" Margin="10">
+
+                    </WrapPanel>
+                </Border>
+            </ScrollViewer>
+
+            <TextBlock Width="80" TextAlignment="Center" VerticalAlignment="Center" FontSize="20">Right</TextBlock>
+        </StackPanel>
+       
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="90, 10">
+            <Button Name="btnCheckIn" Width="120" Height="35" Click="btnOk_Click">Ok</Button>
+            <Button Name="btnCancel" Width="120" Height="35" Margin="10,0,0,0" Click="btnCancel_Click">Cancel</Button>
+        </StackPanel>
+    </StackPanel>
 </Window>

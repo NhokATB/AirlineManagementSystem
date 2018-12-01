@@ -83,6 +83,7 @@
       <HintPath>..\packages\System.Windows.Controls.DataVisualization.Toolkit.4.0.0.0\lib\net40-Client\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -131,12 +132,22 @@
     <Compile Include="Model\Position.cs">
       <DependentUpon>AirlineManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\SolidColorBrushComparer.cs" />
     <Compile Include="Model\SurveyDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SurveyDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UserControls\UcSeatForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcSeatForm.Designer.cs">
+      <DependentUpon>UcSeatForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UcSeat.xaml.cs">
+      <DependentUpon>UcSeat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UcSurvey.xaml.cs">
       <DependentUpon>UcSurvey.xaml</DependentUpon>
     </Compile>
@@ -263,11 +274,20 @@
     <Compile Include="View\RoutesManagementWindow.xaml.cs">
       <DependentUpon>RoutesManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SeatManagementWindow.xaml.cs">
-      <DependentUpon>SeatManagementWindow.xaml</DependentUpon>
+    <Compile Include="View\SeatManagementWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SeatManagementWindow.Designer.cs">
+      <DependentUpon>SeatManagementWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="View\SeatModelWindow.xaml.cs">
       <DependentUpon>SeatModelWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SeatModelWindow1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SeatModelWindow1.Designer.cs">
+      <DependentUpon>SeatModelWindow1.cs</DependentUpon>
     </Compile>
     <Compile Include="View\SetUpCrewWindow.xaml.cs">
       <DependentUpon>SetUpCrewWindow.xaml</DependentUpon>
@@ -307,6 +327,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ChartControls\UcSurveyLineChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UcSeat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -462,10 +486,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SeatManagementWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\SeatModelWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -618,11 +638,20 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UcSeatForm.resx">
+      <DependentUpon>UcSeatForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AddFlightWindow.resx">
       <DependentUpon>AddFlightWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\EditFlightWindow.resx">
       <DependentUpon>EditFlightWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SeatManagementWindow.resx">
+      <DependentUpon>SeatManagementWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SeatModelWindow1.resx">
+      <DependentUpon>SeatModelWindow1.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\AirlineManagementModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

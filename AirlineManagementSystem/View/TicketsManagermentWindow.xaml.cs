@@ -113,6 +113,12 @@ namespace AirportManagerSystem.View
             {
                 try
                 {
+                    if (currentTicket.Ticket.Schedule.Date + currentTicket.Ticket.Schedule.Time < DateTime.Now)
+                    {
+                        MessageBox.Show("This ticket cannot be changed because the flight for this ticket took off!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+
                     EditTicketWindow wEditTicket = new EditTicketWindow();
                     wEditTicket.NewTicket = currentTicket;
                     wEditTicket.ManageWindow = this;
@@ -133,6 +139,12 @@ namespace AirportManagerSystem.View
         {
             if (currentTicket != null)
             {
+                if (currentTicket.Ticket.Schedule.Date + currentTicket.Ticket.Schedule.Time < DateTime.Now)
+                {
+                    MessageBox.Show("This ticket cannot be changed because the flight for this ticket took off!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
                 currentTicket.Ticket.Confirmed = !currentTicket.Ticket.Confirmed;
                 Db.Context.SaveChanges();
                 LoadTickets();

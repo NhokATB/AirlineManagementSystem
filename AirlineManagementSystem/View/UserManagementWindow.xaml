@@ -32,6 +32,7 @@
                 <DataGridTextColumn Header="Office" Binding="{Binding Office.Title}" Width="0.5*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        
         <StackPanel Orientation="Horizontal" Margin="10,5,5,5">
             <DockPanel Width="20" Height="20" Background="#196AA6">
             </DockPanel>
@@ -40,6 +41,7 @@
             </DockPanel>
             <TextBlock Margin="5,5,5,5">Disabled account</TextBlock>
         </StackPanel>
+        
         <Grid Margin="10,15">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.7*"></ColumnDefinition>

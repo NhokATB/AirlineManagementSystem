@@ -29,7 +29,7 @@
                 <MenuItem Header="Login histories" Name="mnLoginHistory" Click="mnLoginHistory_Click"/>
                 <MenuItem Header="Crews" Name="mnCrews" Click="mnCrews_Click"/>
                 <MenuItem Header="Members" Name="mnMembers" Click="mnMembers_Click"/>
-                <MenuItem Header="Seats" Name="mnSeats"/>
+                <MenuItem Header="Seats" Name="mnSeats" Click="mnSeats_Click"/>
             </MenuItem>
             <MenuItem Header="Business" Name="mnBusiness">
                 <MenuItem Header="Check in" Name="mnCheckIn" Click="mnCheckIn_Click"/>

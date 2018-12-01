@@ -20,16 +20,23 @@ namespace AirportManagerSystem.View
     /// </summary>
     public partial class CheckInWindow : Window
     {
+        Ticket curentTicket;
+        List<Ticket> selectedTickets;
+
         public CheckInWindow()
         {
             InitializeComponent();
+            this.Loaded += CheckInWindow_Loaded;
+
             txtTicketId.TextChanged += TextChanged;
             txtBookingReference.TextChanged += TextChanged;
             txtPassportNumber.TextChanged += TextChanged;
 
             dgTickets.SelectedCellsChanged += DgTickets_SelectedCellsChanged;
-            this.Loaded += CheckInWindow_Loaded;
+
+            selectedTickets = new List<Ticket>();
         }
+
 
         private void CheckInWindow_Loaded(object sender, RoutedEventArgs e)
         {
@@ -40,7 +47,7 @@ namespace AirportManagerSystem.View
         {
             try
             {
-                selectedTicket = dgTickets.CurrentItem as Ticket;
+                curentTicket = dgTickets.CurrentItem as Ticket;
             }
             catch (Exception)
             {
@@ -52,15 +59,20 @@ namespace AirportManagerSystem.View
             SearchTickets();
         }
 
-        Ticket selectedTicket;
-
         private void SearchTickets()
         {
+            dgTickets.ItemsSource = null;
+
             var now = DateTime.Now.Date;
+            now = new DateTime(2018, 11, 30);
             var time = DateTime.Now.TimeOfDay;
 
-            var tickets = Db.Context.Tickets.Where(t => t.Schedule.Date == now && t.Schedule.Time >= time).ToList();
-            tickets = Db.Context.Tickets.Where(t => t.Schedule.Date == now).ToList();
+            var tickets = Db.Context.Tickets.Where(t => t.Schedule.Date == now && t.Schedule.Time >= time && t.Confirmed).ToList();
+
+            foreach (var item in selectedTickets)
+            {
+                tickets.Remove(item);
+            }
 
             if (txtTicketId.Text != "")
                 tickets = tickets.Where(t => t.ID.ToString().Contains(txtTicketId.Text)).ToList();
@@ -79,7 +91,82 @@ namespace AirportManagerSystem.View
 
         private void btnCheckIn_Click(object sender, RoutedEventArgs e)
         {
+            if (rdbSingleChekcin.IsChecked.Value)
+            {
+                if (selectedTickets.Count < 1)
+                {
+                    MessageBox.Show("'Single check in' require 1 ticket", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
+            else
+            {
+                if (selectedTickets.Count < 2)
+                {
+                    MessageBox.Show("'Dual check in' require 2 ticket", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
 
+            SeatModelWindow seatModelWindow = new SeatModelWindow();
+            seatModelWindow.Tickets = selectedTickets;
+            seatModelWindow.ShowDialog();
+
+            selectedTickets.Clear();
+            SearchTickets();
+            dgSelectedTicket.ItemsSource = null;
+        }
+
+        private void DeleleTicket(object sender, RoutedEventArgs e)
+        {
+            var currentSelectedTicket = dgSelectedTicket.SelectedItem as Ticket;
+            selectedTickets.Remove(currentSelectedTicket);
+            SearchTickets();
+
+            dgSelectedTicket.ItemsSource = null;
+            dgSelectedTicket.ItemsSource = selectedTickets;
+        }
+
+        private void btnAddToSelectedTicket_Click(object sender, RoutedEventArgs e)
+        {
+            if (curentTicket != null)
+            {
+                if (rdbSingleChekcin.IsChecked.Value)
+                {
+                    if (selectedTickets.Count == 1)
+                    {
+                        MessageBox.Show("Only 1 ticket can be checked in", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    if (selectedTickets.Count == 1)
+                    {
+                        if (selectedTickets[0].ScheduleID != curentTicket.ScheduleID || selectedTickets[0].CabinTypeID != curentTicket.CabinTypeID)
+                        {
+                            MessageBox.Show("Two tickets must be in the same flight and the same cabin", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                            return;
+                        }
+                    }
+
+                    if (selectedTickets.Count == 2)
+                    {
+                        MessageBox.Show("Only 2 ticket can be checked in", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
+
+                selectedTickets.Add(curentTicket);
+                SearchTickets();
+
+                dgSelectedTicket.ItemsSource = null;
+                dgSelectedTicket.ItemsSource = selectedTickets;
+            }
+            else
+            {
+                MessageBox.Show("Please choose a ticket", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

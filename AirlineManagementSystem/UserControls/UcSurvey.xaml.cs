@@ -27,6 +27,7 @@ namespace AirportManagerSystem.UserControls
         public UcSurvey()
         {
             InitializeComponent();
+
             SetColorlegendForAnswer();
             rdbOutstanding.Checked += AnwserChecked;
             rdbVeryGood.Checked += AnwserChecked;

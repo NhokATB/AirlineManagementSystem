@@ -29,7 +29,7 @@
             </Grid>
             <Grid Margin="5,20,5,5" Width="450" Height="45">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>

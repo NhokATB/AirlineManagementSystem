@@ -143,6 +143,12 @@ namespace AirportManagerSystem.View
         {
             if (currentFlight != null)
             {
+                if (currentFlight.Schedule.Date + currentFlight.Schedule.Time < DateTime.Now)
+                {
+                    MessageBox.Show("This flight cannot be changed because it took off!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
                 currentFlight.Schedule.Confirmed = !currentFlight.Schedule.Confirmed;
                 Db.Context.SaveChanges();
                 LoadFlights();
@@ -175,7 +181,7 @@ namespace AirportManagerSystem.View
             }
             else
             {
-                MessageBox.Show("Please choose a user!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Please choose a flight!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -192,6 +198,12 @@ namespace AirportManagerSystem.View
             {
                 try
                 {
+                    if (currentFlight.Schedule.Date + currentFlight.Schedule.Time < DateTime.Now)
+                    {
+                        MessageBox.Show("This flight cannot be changed because it took off!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+
                     EditFlightWindow wEditFlight = new EditFlightWindow();
                     wEditFlight.Flight = currentFlight;
                     wEditFlight.ManageWindow = this;
@@ -214,6 +226,12 @@ namespace AirportManagerSystem.View
             {
                 try
                 {
+                    if (currentFlight.Schedule.Date + currentFlight.Schedule.Time < DateTime.Now)
+                    {
+                        MessageBox.Show("This flight cannot be changed because it took off!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+
                     SetUpCrewWindow setUpCrewWindow = new SetUpCrewWindow();
                     setUpCrewWindow.Flight = currentFlight;
                     setUpCrewWindow.ManageWindow = this;
