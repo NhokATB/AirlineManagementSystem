@@ -104,6 +104,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ChartControls\UcSeatColumnChart.xaml.cs">
+      <DependentUpon>UcSeatColumnChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChartControls\UcSeatPieChart.xaml.cs">
+      <DependentUpon>UcSeatPieChart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ChartControls\UcSurveyColumnChart.xaml.cs">
       <DependentUpon>UcSurveyColumnChart.xaml</DependentUpon>
     </Compile>
@@ -274,20 +280,11 @@
     <Compile Include="View\RoutesManagementWindow.xaml.cs">
       <DependentUpon>RoutesManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SeatManagementWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\SeatManagementWindow.Designer.cs">
-      <DependentUpon>SeatManagementWindow.cs</DependentUpon>
+    <Compile Include="View\SeatManagementWindow.xaml.cs">
+      <DependentUpon>SeatManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SeatModelWindow.xaml.cs">
       <DependentUpon>SeatModelWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\SeatModelWindow1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\SeatModelWindow1.Designer.cs">
-      <DependentUpon>SeatModelWindow1.cs</DependentUpon>
     </Compile>
     <Compile Include="View\SetUpCrewWindow.xaml.cs">
       <DependentUpon>SetUpCrewWindow.xaml</DependentUpon>
@@ -322,6 +319,14 @@
     <Compile Include="View\UserManagementWindow.xaml.cs">
       <DependentUpon>UserManagementWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="ChartControls\UcSeatColumnChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChartControls\UcSeatPieChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ChartControls\UcSurveyColumnChart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -486,6 +491,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\SeatManagementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SeatModelWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -646,12 +655,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\EditFlightWindow.resx">
       <DependentUpon>EditFlightWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\SeatManagementWindow.resx">
-      <DependentUpon>SeatManagementWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\SeatModelWindow1.resx">
-      <DependentUpon>SeatModelWindow1.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\AirlineManagementModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

@@ -90,7 +90,6 @@
                             </StackPanel>
                         </GroupBox>
                     </DockPanel>
-                        
                    
                     <DataGrid RowHeaderWidth="0" IsReadOnly="True" Name="dgSurveys" AutoGenerateColumns="False" Margin="10,5,10,5" Height="118" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="FullRow">
                         <DataGrid.Columns>

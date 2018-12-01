@@ -11,19 +11,19 @@
     <Grid>
         <ChartToolkit:Chart Canvas.Top="80" Canvas.Left="10" Name="mcChart"  Width="1245" Height="380" Background="LightSteelBlue">
             <ChartToolkit:Chart.Series>
-                <ChartToolkit:ColumnSeries Title="Outstanding"   IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                <ChartToolkit:ColumnSeries Title="Outstanding" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
                 </ChartToolkit:ColumnSeries>
                 <ChartToolkit:ColumnSeries Title="Very Good"   IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
                 </ChartToolkit:ColumnSeries>
-                <ChartToolkit:ColumnSeries Title="Good"   IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                <ChartToolkit:ColumnSeries Title="Good" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
                 </ChartToolkit:ColumnSeries>
-                <ChartToolkit:ColumnSeries Title="Adequate"   IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                <ChartToolkit:ColumnSeries Title="Adequate" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
                 </ChartToolkit:ColumnSeries>
                 <ChartToolkit:ColumnSeries Title="Need Improvement"   IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
                 </ChartToolkit:ColumnSeries>
-                <ChartToolkit:ColumnSeries Title="Poor"   IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                <ChartToolkit:ColumnSeries Title="Poor" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
                 </ChartToolkit:ColumnSeries>
-                <ChartToolkit:ColumnSeries Title="Don't know"   IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                <ChartToolkit:ColumnSeries Title="Don't know" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
                 </ChartToolkit:ColumnSeries>
             </ChartToolkit:Chart.Series>
         </ChartToolkit:Chart>

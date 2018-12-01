@@ -25,8 +25,6 @@ namespace AirportManagerSystem.UserControls
         public bool IsDual { get; set; }
         public int CabinId { get; internal set; }
         public Schedule Flight { get; internal set; }
-        public string NearLeft { get; internal set; }
-        public string NearRight { get; internal set; }
         public string Seat { get; internal set; }
         public Ticket Ticket { get; internal set; }
         public UcSeat Previous { get; set; }

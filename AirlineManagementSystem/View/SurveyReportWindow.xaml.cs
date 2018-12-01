@@ -44,6 +44,7 @@ namespace AirportManagerSystem.View
         private void DpDateOfFlight_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             var date = dpDateOfFlight.SelectedDate.Value.Date;
+
             var flightNumbers = Db.Context.Schedules.Where(t=>t.Date == date).Select(t => t.FlightNumber).Distinct().ToList();
             flightNumbers.Insert(0, "All");
             cbFlightNumber.ItemsSource = flightNumbers;

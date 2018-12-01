@@ -30,9 +30,9 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Width="80" TextAlignment="Center"  VerticalAlignment="Center" FontSize="20">Left</TextBlock>
             
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="450" Width="585">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="450" Width="580">
                 <Border CornerRadius="2" BorderBrush="Gray" Background="LightGray" BorderThickness="2">
-                    <WrapPanel Name="wpSeats" Width="580" Margin="10">
+                    <WrapPanel Name="wpSeats" Width="580">
 
                     </WrapPanel>
                 </Border>
@@ -42,7 +42,21 @@
         </StackPanel>
        
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="90, 10">
-            <Button Name="btnCheckIn" Width="120" Height="35" Click="btnOk_Click">Ok</Button>
+            <Button Name="btnReCheckIn" Width="120" Height="35" IsEnabled="False" Click="btnReCheckIn_Click" ToolTipService.ShowOnDisabled="True" ToolTipService.ShowDuration="10000">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Help</TextBlock>
+                            <TextBlock>You can recheck in after click ok if you want</TextBlock>
+                            <TextBlock>to change seat for selected ticket(s)</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Button.Content>
+                    ReCheck in
+                </Button.Content>
+            </Button>
+            <Button Name="btnOk" Width="120" Height="35" Click="btnOk_Click"  Margin="10,0,0,0">Ok</Button>
             <Button Name="btnCancel" Width="120" Height="35" Margin="10,0,0,0" Click="btnCancel_Click">Cancel</Button>
         </StackPanel>
     </StackPanel>

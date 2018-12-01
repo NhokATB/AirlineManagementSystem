@@ -124,77 +124,111 @@ namespace AirportManagerSystem.View
 
         private void btnAddCaptain_Click(object sender, RoutedEventArgs e)
         {
-            if (Crew.CrewMembers.FirstOrDefault(t => t.Position.PositionName == "Captain") == null)
+            if (cbCaptain.SelectedIndex == -1)
             {
-                Crew.CrewMembers.Add((cbCaptain.SelectedItem as Member).CrewMember);
-                Db.Context.SaveChanges();
-                LoadCrewMembers();
-                LoadMemberOfPosition();
+                if (Crew.CrewMembers.FirstOrDefault(t => t.Position.PositionName == "Captain") == null)
+                {
+                    Crew.CrewMembers.Add((cbCaptain.SelectedItem as Member).CrewMember);
+                    Db.Context.SaveChanges();
+                    LoadCrewMembers();
+                    LoadMemberOfPosition();
+                }
+                else
+                {
+                    MessageBox.Show("This crew had captain", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
-                MessageBox.Show("This crew had captain", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Captain not available", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void btnAddFirstOfficer_Click(object sender, RoutedEventArgs e)
         {
-            if (Crew.CrewMembers.FirstOrDefault(t => t.Position.PositionName == "First Officer") == null)
+            if (cbFirstOfficer.SelectedIndex == -1)
             {
-                Crew.CrewMembers.Add((cbFirstOfficer.SelectedItem as Member).CrewMember);
-                Db.Context.SaveChanges();
-                LoadCrewMembers();
-                LoadMemberOfPosition();
+                if (Crew.CrewMembers.FirstOrDefault(t => t.Position.PositionName == "First Officer") == null)
+                {
+                    Crew.CrewMembers.Add((cbFirstOfficer.SelectedItem as Member).CrewMember);
+                    Db.Context.SaveChanges();
+                    LoadCrewMembers();
+                    LoadMemberOfPosition();
+                }
+                else
+                {
+                    MessageBox.Show("This crew had First Officer", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
-                MessageBox.Show("This crew had First Officer", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("First officer not available", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void btnAddSecondOfficer_Click(object sender, RoutedEventArgs e)
         {
-            if (Crew.CrewMembers.FirstOrDefault(t => t.Position.PositionName == "Second Officer") == null)
+            if (cbSecondOfficer.SelectedIndex == -1)
             {
-                Crew.CrewMembers.Add((cbSecondOfficer.SelectedItem as Member).CrewMember);
-                Db.Context.SaveChanges();
-                LoadCrewMembers();
-                LoadMemberOfPosition();
+                if (Crew.CrewMembers.FirstOrDefault(t => t.Position.PositionName == "Second Officer") == null)
+                {
+                    Crew.CrewMembers.Add((cbSecondOfficer.SelectedItem as Member).CrewMember);
+                    Db.Context.SaveChanges();
+                    LoadCrewMembers();
+                    LoadMemberOfPosition();
+                }
+                else
+                {
+                    MessageBox.Show("This crew had Second Officer", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
-                MessageBox.Show("This crew had Second Officer", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Second officer not available", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void btnAddPurser_Click(object sender, RoutedEventArgs e)
         {
-            if (Crew.CrewMembers.FirstOrDefault(t => t.Position.PositionName == "Purser") == null)
+            if (cbPurser.SelectedIndex == -1)
             {
-                Crew.CrewMembers.Add((cbPurser.SelectedItem as Member).CrewMember);
-                Db.Context.SaveChanges();
-                LoadCrewMembers();
-                LoadMemberOfPosition();
-                //MessageBox.Show("Add purser successful", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (Crew.CrewMembers.FirstOrDefault(t => t.Position.PositionName == "Purser") == null)
+                {
+                    Crew.CrewMembers.Add((cbPurser.SelectedItem as Member).CrewMember);
+                    Db.Context.SaveChanges();
+                    LoadCrewMembers();
+                    LoadMemberOfPosition();
+                }
+                else
+                {
+                    MessageBox.Show("This crew had Purser", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
-                MessageBox.Show("This crew had Purser", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Puser not available", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void btnAddAttendant_Click(object sender, RoutedEventArgs e)
         {
-            if (Crew.CrewMembers.Count(t => t.Position.PositionName == "Flight Attendant") < Crew.NumberOfMembers - 4)
+            if (cbAttendant.SelectedIndex == -1)
             {
-                Crew.CrewMembers.Add((cbAttendant.SelectedItem as Member).CrewMember);
-                Db.Context.SaveChanges();
-                LoadCrewMembers();
-                LoadMemberOfPosition();
+                if (Crew.CrewMembers.Count(t => t.Position.PositionName == "Flight Attendant") < Crew.NumberOfMembers - 4)
+                {
+                    Crew.CrewMembers.Add((cbAttendant.SelectedItem as Member).CrewMember);
+                    Db.Context.SaveChanges();
+                    LoadCrewMembers();
+                    LoadMemberOfPosition();
+                }
+                else
+                {
+                    MessageBox.Show("This crew had enough Flight attendants", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
-                MessageBox.Show("This crew had enough Flight attendants", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Attendant not available", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

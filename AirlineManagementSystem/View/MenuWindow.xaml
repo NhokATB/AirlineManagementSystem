@@ -32,10 +32,12 @@
                 <MenuItem Header="Seats" Name="mnSeats" Click="mnSeats_Click"/>
             </MenuItem>
             <MenuItem Header="Business" Name="mnBusiness">
-                <MenuItem Header="Check in" Name="mnCheckIn" Click="mnCheckIn_Click"/>
+                <MenuItem Header="Check In" Name="mnCheckIn" Click="mnCheckIn_Click"/>
                 <MenuItem Header="Book Flight" Name="mnBookFlight" Click="mnBookFlight_Click"/>
                 <MenuItem Header="Purchase Amenities" Name="mnPurchaseAmenities" Click="mnPurchaseAmenities_Click"/>
-                <MenuItem Header="Survey questionaire" Name="mnSurveyQuestionaire" Click="mnSurveyQuestionaire_Click"/>
+                <MenuItem Header="Survey Questionaire" Name="mnSurveyQuestionaire" Click="mnSurveyQuestionaire_Click"/>
+                <MenuItem Header="Change Ticket" Name="mnChangeTicket"/>
+                <MenuItem Header="Cancel Ticket" Name="mnCancelTicket"/>
             </MenuItem>
             <MenuItem Header="Report" Name="mnReport">
                 <MenuItem Header="Amenities" Name="mnAmenitiesReprot" Click="mnAmenitiesReprot_Click"/>

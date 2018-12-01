@@ -39,7 +39,7 @@ namespace AirportManagerSystem.View
 
         private void SeatModelWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Title = $"Seat model for flight: {Tickets[0].Schedule.Date.ToString("dd/MM/yyyy")} - {Tickets[0].Schedule.Time.ToString(@"hh\:mm")} - {Tickets[0].Schedule.Route.Airport.IATACode} to {Tickets[0].Schedule.Route.Airport1.IATACode}";
+            this.Title = $"Seat model for flight: {Tickets[0].Schedule.FlightNumber} - {Tickets[0].Schedule.Date.ToString("dd/MM/yyyy")} - {Tickets[0].Schedule.Time.ToString(@"hh\:mm")} - {Tickets[0].Schedule.Route.Airport.IATACode} to {Tickets[0].Schedule.Route.Airport1.IATACode}";
 
             LoadSeat();
 
@@ -130,37 +130,32 @@ namespace AirportManagerSystem.View
                     uc.Flight = flight;
                     uc.CabinId = cabinId;
 
-                    var nearLeft = "";
-                    var nearRight = "";
                     if (cabinId == 2)
                     {
-                        if (uc.Seat.Contains("A")) { nearRight = "B"; previous = uc; }
-                        else if (uc.Seat.Contains("B")) { nearLeft = "A"; uc.Previous = previous; previous.After = uc; }
-                        else if (uc.Seat.Contains("C")) { nearRight = "D"; previous = uc; }
-                        else if (uc.Seat.Contains("D")) { nearLeft = "C"; uc.Previous = previous; previous.After = uc; }
+                        if (uc.Seat.Contains("A")) { previous = uc; }
+                        else if (uc.Seat.Contains("B")) { uc.Previous = previous; previous.After = uc; }
+                        else if (uc.Seat.Contains("C")) { previous = uc; }
+                        else if (uc.Seat.Contains("D")) { uc.Previous = previous; previous.After = uc; }
                     }
                     else if (cabinId == 1)
                     {
-                        if (uc.Seat.Contains("A")) { nearRight = "B"; previous = uc; }
-                        else if (uc.Seat.Contains("B")) { nearLeft = "A"; nearRight = "C"; uc.Previous = previous; previous.After = uc; previous = uc; }
-                        else if (uc.Seat.Contains("C")) { nearLeft = "B"; uc.Previous = previous; previous.After = uc; }
-                        else if (uc.Seat.Contains("D")) { nearRight = "E"; previous = uc; }
-                        else if (uc.Seat.Contains("E")) { nearLeft = "D"; nearRight = "F"; uc.Previous = previous; previous.After = uc; previous = uc; }
-                        else if (uc.Seat.Contains("F")) { nearLeft = "E"; uc.Previous = previous; previous.After = uc; }
+                        if (uc.Seat.Contains("A")) { previous = uc; }
+                        else if (uc.Seat.Contains("B")) { uc.Previous = previous; previous.After = uc; previous = uc; }
+                        else if (uc.Seat.Contains("C")) { uc.Previous = previous; previous.After = uc; }
+                        else if (uc.Seat.Contains("D")) { previous = uc; }
+                        else if (uc.Seat.Contains("E")) { uc.Previous = previous; previous.After = uc; previous = uc; }
+                        else if (uc.Seat.Contains("F")) { uc.Previous = previous; previous.After = uc; }
                     }
-
-                    uc.NearLeft = i + nearLeft;
-                    uc.NearRight = i + nearRight;
 
                     if (cabinId == 3)
                     {
-                        if (uc.Seat.Contains("A")) uc.Width = 160;
+                        if (uc.Seat.Contains("A")) uc.Width = 175;
                     }
                     else if (cabinId == 2)
                     {
-                        if (uc.Seat.Contains("B")) uc.Width = 160;
+                        if (uc.Seat.Contains("B")) uc.Width = 175;
                     }
-                    else if (uc.Seat.Contains("C")) uc.Width = 160;
+                    else if (uc.Seat.Contains("C")) uc.Width = 175;
 
                     uc.btnSeat.Click += BtnSeat_Click;
 
@@ -182,7 +177,7 @@ namespace AirportManagerSystem.View
                     }
                     else
                     {
-                        ResetColorBeforeChooseSeat();
+                        ResetColorBeforeChooseDualSeat();
 
                         selectedSeat = ucSeat;
                         ucSeat.btnSeat.Background = new SolidColorBrush(AMONICColor.Selected);
@@ -200,7 +195,7 @@ namespace AirportManagerSystem.View
                             }
                             else
                             {
-                                ResetColorBeforeChooseSeat();
+                                ResetColorBeforeChooseDualSeat();
 
                                 selectedSeat = ucSeat;
                                 ucSeat.btnSeat.Background = new SolidColorBrush(AMONICColor.Selected);
@@ -229,7 +224,7 @@ namespace AirportManagerSystem.View
             }
         }
 
-        private void ResetColorBeforeChooseSeat()
+        private void ResetColorBeforeChooseDualSeat()
         {
             try
             {
@@ -269,25 +264,60 @@ namespace AirportManagerSystem.View
                     Tickets[0].Seat = selectedSeat.Seat;
                     Db.Context.SaveChanges();
                     MessageBox.Show("Check in successful", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
-                    this.Close();
                 }
                 else
                 {
                     Tickets[0].Seat = selectedSeat.Seat;
+                    selectedSeat.btnSeat.Background = new SolidColorBrush(AMONICColor.CheckedIn);
+
                     if (directionOfSelectedSeat == "left")
                     {
                         Tickets[1].Seat = selectedSeat.Previous.Seat;
+                        selectedSeat.Previous.btnSeat.Background = new SolidColorBrush(AMONICColor.CheckedIn);
                     }
                     else if (directionOfSelectedSeat == "right")
                     {
                         Tickets[1].Seat = selectedSeat.After.Seat;
+                        selectedSeat.After.btnSeat.Background = new SolidColorBrush(AMONICColor.CheckedIn);
                     }
 
                     Db.Context.SaveChanges();
                     MessageBox.Show("Check in successful", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
-                    this.Close();
+                }
+
+                btnReCheckIn.IsEnabled = true;
+                btnOk.IsEnabled = false;
+            }
+        }
+
+        private void btnReCheckIn_Click(object sender, RoutedEventArgs e)
+        {
+            if (Tickets.Count == 1)
+            {
+                Tickets[0].Seat = null;
+                Db.Context.SaveChanges();
+                selectedSeat.btnSeat.Background = new SolidColorBrush(AMONICColor.Empty);
+            }
+            else
+            {
+                Tickets[0].Seat = null;
+                Tickets[1].Seat = null;
+                Db.Context.SaveChanges();
+
+                selectedSeat.btnSeat.Background = new SolidColorBrush(AMONICColor.Dual);
+
+                if (directionOfSelectedSeat == "left")
+                {
+                    selectedSeat.Previous.btnSeat.Background = new SolidColorBrush(AMONICColor.Dual);
+                }
+                else if (directionOfSelectedSeat == "right")
+                {
+                    selectedSeat.After.btnSeat.Background = new SolidColorBrush(AMONICColor.Dual);
                 }
             }
+
+            btnReCheckIn.IsEnabled = false;
+            btnOk.IsEnabled = true;
         }
     }
 }

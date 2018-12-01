@@ -27,7 +27,7 @@
         
         <DataGrid Name="dgTickets" Margin="0,2,0,3" CanUserAddRows="False" AutoGenerateColumns="False" IsReadOnly="True" RowHeaderWidth="0" Height="270" SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Ticket id" Width="0.2*" Binding="{Binding ID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ticket id" Width="0.22*" Binding="{Binding ID}"></DataGridTextColumn>
                 <DataGridTextColumn Header="First name" Width="0.5*" Binding="{Binding Firstname}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Last name" Width="0.5*" Binding="{Binding Lastname}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Passport number" Width="0.5*" Binding="{Binding PassportNumber}"></DataGridTextColumn>
@@ -49,7 +49,7 @@
 
         <DataGrid Name="dgSelectedTicket" Margin="0,2,0,5" CanUserAddRows="False" AutoGenerateColumns="False" IsReadOnly="True" RowHeaderWidth="0" Height="72" SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Ticket id" Width="0.2*" Binding="{Binding ID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ticket id" Width="0.22*" Binding="{Binding ID}"></DataGridTextColumn>
                 <DataGridTextColumn Header="First name" Width="0.5*" Binding="{Binding Firstname}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Last name" Width="0.5*" Binding="{Binding Lastname}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Passport number" Width="0.5*" Binding="{Binding PassportNumber}"></DataGridTextColumn>

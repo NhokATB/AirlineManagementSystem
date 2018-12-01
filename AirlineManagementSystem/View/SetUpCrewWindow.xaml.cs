@@ -29,6 +29,7 @@ namespace AirportManagerSystem.View
         {
             InitializeComponent();
             this.Loaded += SetUpCrewWindow_Loaded;
+            this.Title += $"{Flight.Schedule.FlightNumber} - {Flight.Schedule.Date.ToString("dd/MM/yyyy")} - {Flight.Schedule.Time.ToString(@"hh\:mm")} - {Flight.Schedule.Route.Airport.IATACode} to {Flight.Schedule.Route.Airport1.IATACode}";
         }
 
         private void SetUpCrewWindow_Loaded(object sender, RoutedEventArgs e)

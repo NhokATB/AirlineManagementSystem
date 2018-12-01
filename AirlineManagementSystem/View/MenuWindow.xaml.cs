@@ -230,6 +230,12 @@ namespace AirportManagerSystem.View
         {
             SeatManagementWindow seatManagementWindow = new SeatManagementWindow();
             ShowDialogWindow(seatManagementWindow);
+
+            if (seatManagementWindow.CheckInNavigation)
+            {
+                CheckInWindow checkInWindow = new CheckInWindow();
+                ShowDialogWindow(checkInWindow);
+            }
         }
     }
 }
