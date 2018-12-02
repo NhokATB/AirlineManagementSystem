@@ -232,6 +232,9 @@
     <Compile Include="View\CheckInWindow.xaml.cs">
       <DependentUpon>CheckInWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ChooseCrewWindow.xaml.cs">
+      <DependentUpon>ChooseCrewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CrewManagementWindow.xaml.cs">
       <DependentUpon>CrewManagementWindow.xaml</DependentUpon>
     </Compile>
@@ -324,6 +327,9 @@
     </Compile>
     <Compile Include="View\PurchaseAmenitiesWindow.xaml.cs">
       <DependentUpon>PurchaseAmenitiesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TicketControlWindow.xaml.cs">
+      <DependentUpon>TicketControlWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TicketsManagermentWindow.xaml.cs">
       <DependentUpon>TicketsManagermentWindow.xaml</DependentUpon>
@@ -444,6 +450,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CheckInWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChooseCrewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -642,6 +652,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PurchaseAmenitiesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TicketControlWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

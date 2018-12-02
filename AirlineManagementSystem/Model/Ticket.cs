@@ -33,6 +33,7 @@ namespace AirportManagerSystem.Model
         public bool Confirmed { get; set; }
         public string Seat { get; set; }
         public Nullable<System.DateTime> Birthdate { get; set; }
+        public Nullable<bool> Controled { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AmenitiesTicket> AmenitiesTickets { get; set; }

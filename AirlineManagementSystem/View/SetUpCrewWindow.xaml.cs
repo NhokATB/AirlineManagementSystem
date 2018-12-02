@@ -20,28 +20,22 @@ namespace AirportManagerSystem.View
     /// </summary>
     public partial class SetUpCrewWindow : Window
     {
-        List<Crew> crews;
-
-        public FlightManagementWindow ManageWindow { get; internal set; }
-        internal NewFlight Flight { get; set; }
-
+        NewFlight currentFlight;
         public SetUpCrewWindow()
         {
             InitializeComponent();
-            this.Loaded += SetUpCrewWindow_Loaded;
-            this.Title += $"{Flight.Schedule.FlightNumber} - {Flight.Schedule.Date.ToString("dd/MM/yyyy")} - {Flight.Schedule.Time.ToString(@"hh\:mm")} - {Flight.Schedule.Route.Airport.IATACode} to {Flight.Schedule.Route.Airport1.IATACode}";
+            dpOutbound.SelectedDate = DateTime.Now.Date;
+            dgFlights.SelectedCellsChanged += DgFlights_SelectedCellsChanged;
         }
 
-        private void SetUpCrewWindow_Loaded(object sender, RoutedEventArgs e)
+        private void DgFlights_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            crews = Db.Context.Crews.ToList();
-            cbCrews.ItemsSource = crews;
-            cbCrews.DisplayMemberPath = "CrewName";
-            cbCrews.SelectedIndex = 0;
-
-            if (Flight.Crew != "None")
+            try
             {
-                cbCrews.SelectedItem = Flight.Schedule.Crew;
+                currentFlight = dgFlights.SelectedItem as NewFlight;
+            }
+            catch (Exception)
+            {
             }
         }
 
@@ -50,25 +44,78 @@ namespace AirportManagerSystem.View
             this.Close();
         }
 
-        private void cbCrews_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void btnApply_Click(object sender, RoutedEventArgs e)
         {
-            LoadCrewMembers();
+            if (dpOutbound.SelectedDate == null)
+            {
+                MessageBox.Show("Date was required", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            LoadFlights();
         }
 
-        private void LoadCrewMembers()
+        public void LoadFlights()
         {
-            var crew = crews[cbCrews.SelectedIndex];
-            dgMembers.ItemsSource = null;
-            dgMembers.ItemsSource = crew.CrewMembers.ToList();
+            currentFlight = null;
+            dgFlights.ItemsSource = null;
+
+            var date = dpOutbound.SelectedDate.Value.Date;
+            var flightNumber = txtFlightNumber.Text.Trim();
+            var schedules = Db.Context.Schedules.Where(t => t.Date == date).ToList();
+            if (txtFlightNumber.Text.Trim() != "")
+            {
+                schedules = schedules.Where(t => t.FlightNumber == flightNumber).ToList();
+            }
+
+            var flights = new List<NewFlight>();
+            foreach (var item in schedules)
+            {
+                flights.Add(new NewFlight()
+                {
+                    Aircraft = item.Aircraft.Name + " " + item.Aircraft.MakeModel,
+                    Schedule = item,
+                    EconomyPrice = (int)item.EconomyPrice,
+                    Crew = item.CrewId == null ? "None" : item.Crew.CrewName
+                });
+            }
+
+            dgFlights.ItemsSource = flights;
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private void btnSetupCrew_Click(object sender, RoutedEventArgs e)
         {
-            Flight.Schedule.Crew = crews[cbCrews.SelectedIndex];
-            Db.Context.SaveChanges();
-            ManageWindow.LoadFlights();
-            MessageBox.Show("Set up crew successful!", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
-            this.Close();
+            if (currentFlight != null)
+            {
+                if ((currentFlight.Schedule.Date + currentFlight.Schedule.Time) < DateTime.Now)
+                {
+                    MessageBox.Show("This flight cannot be changed because it was took off", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    if (currentFlight.Schedule.CrewId != null)
+                    {
+                        if (MessageBox.Show("This flight was set up the crew. Do you want to change crew for it?", "Message", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
+                        {
+                            ChooseCrewWindow chooseCrewWindow = new ChooseCrewWindow();
+                            chooseCrewWindow.Flight = currentFlight;
+                            chooseCrewWindow.ManageWindow = this;
+                            chooseCrewWindow.ShowDialog();
+                        }
+                    }
+                    else
+                    {
+                        ChooseCrewWindow chooseCrewWindow = new ChooseCrewWindow();
+                        chooseCrewWindow.Flight = currentFlight;
+                        chooseCrewWindow.ManageWindow = this;
+                        chooseCrewWindow.ShowDialog();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please choose a flight", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

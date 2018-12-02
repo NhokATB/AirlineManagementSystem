@@ -44,16 +44,6 @@ namespace AirportManagerSystem
             timer.Interval = new TimeSpan(0, 0, 1);
 
             txtUsername.Focus();
-
-            var date = new DateTime(2019, 1, 10);
-            var res = Db.Context.Respondents.Where(t => t.Schedule.Date > date).ToList();
-            foreach (var item in res)
-            {
-                var sur = item.Surveys.ToList();
-                Db.Context.Surveys.RemoveRange(sur);
-                Db.Context.Respondents.Remove(item);
-                Db.Context.SaveChanges();
-            }
         }
 
         private void AddAmenitiesForTicket()

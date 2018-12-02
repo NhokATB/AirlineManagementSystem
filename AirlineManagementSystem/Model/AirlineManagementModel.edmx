@@ -207,6 +207,7 @@
           <Property Name="Confirmed" Type="bit" Nullable="false" />
           <Property Name="Seat" Type="varchar" MaxLength="4" />
           <Property Name="Birthdate" Type="datetime" />
+          <Property Name="Controled" Type="bit" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -1034,6 +1035,7 @@
           <NavigationProperty Name="Country" Relationship="AirlineManagementSystemModel.FK_Tickets_Countries" FromRole="Ticket" ToRole="Country" />
           <NavigationProperty Name="Schedule" Relationship="AirlineManagementSystemModel.FK_Ticket_Schedule" FromRole="Ticket" ToRole="Schedule" />
           <NavigationProperty Name="User" Relationship="AirlineManagementSystemModel.FK_Ticket_User" FromRole="Ticket" ToRole="User" />
+          <Property Name="Controled" Type="Boolean" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -1578,6 +1580,7 @@
           <EntitySetMapping Name="Tickets">
             <EntityTypeMapping TypeName="AirlineManagementSystemModel.Ticket">
               <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="Controled" ColumnName="Controled" />
                 <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
                 <ScalarProperty Name="Seat" ColumnName="Seat" />
                 <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />

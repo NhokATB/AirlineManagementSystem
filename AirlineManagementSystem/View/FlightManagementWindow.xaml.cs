@@ -145,7 +145,7 @@ namespace AirportManagerSystem.View
             {
                 if (currentFlight.Schedule.Date + currentFlight.Schedule.Time < DateTime.Now)
                 {
-                    MessageBox.Show("This flight cannot be changed because it took off!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"This flight cannot be canceled/Confirmed because it took off!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
@@ -232,9 +232,8 @@ namespace AirportManagerSystem.View
                         return;
                     }
 
-                    SetUpCrewWindow setUpCrewWindow = new SetUpCrewWindow();
+                    ChooseCrewWindow setUpCrewWindow = new ChooseCrewWindow();
                     setUpCrewWindow.Flight = currentFlight;
-                    setUpCrewWindow.ManageWindow = this;
                     setUpCrewWindow.ShowDialog();
                     currentFlight = null;
                 }
@@ -246,6 +245,11 @@ namespace AirportManagerSystem.View
             {
                 MessageBox.Show("Please choose a flight!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void btnImportChange_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void SortFlights()

@@ -152,7 +152,7 @@ namespace AirportManagerSystem.View
                 Country = countries[cbPassportCountry.SelectedIndex],
                 PassportCountryID = countries[cbPassportCountry.SelectedIndex].ID,
                 Phone = txtPhone.Text,
-                Birthdate = dpBirthdate.SelectedDate.Value
+                Birthdate = dpBirthdate.SelectedDate.Value,
             });
 
             dgPassengers.ItemsSource = null;
@@ -203,7 +203,8 @@ namespace AirportManagerSystem.View
                         CabinType = Cabin,
                         Confirmed = true,
                         UserID = User.ID,
-                        Birthdate = p.Birthdate
+                        Birthdate = p.Birthdate,
+                        Controled = false
                     };
 
                     tickets.Add(t);

@@ -61,7 +61,8 @@
                 <Button Width="120" Height="35" Name="btnEditFlight" Margin="0,0,15,0" Click="btnEditFlight_Click">Edit Flight</Button>
                 <Button Width="120" Name="btnDeleteFlight" Margin="0,0,15,0" Click="btnDeleteFlight_Click">Delete Flight</Button>
                 <Button Width="120" Height="35" Margin="0,0,15,0" Name="btnCancelFlight" Click="btnCancelFlight_Click" VerticalAlignment="Top">Cancel Flight</Button>
-                <Button Width="120" Height="35" Margin="0,0,15,0" Name="btnSetupCrew" Click="btnSetupCrew_Click" VerticalAlignment="Top">Set up the Crew</Button>
+                <Button Width="120" Height="35" Margin="0,0,15,0" Name="btnImportChange" Click="btnImportChange_Click" VerticalAlignment="Top">Import Change</Button>
+                <Button Width="120" Height="35" Margin="0,0,15,0" Visibility="Hidden" Name="btnSetupCrew" Click="btnSetupCrew_Click" VerticalAlignment="Top">Set up the Crew</Button>
             </StackPanel>
             <Button Grid.Column="1" Width="120" Height="35" Name="btnCancel" HorizontalAlignment="Right" Click="btnCancel_Click" >Cancel</Button>
         </Grid>

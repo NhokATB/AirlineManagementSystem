@@ -37,7 +37,8 @@
                 <MenuItem Header="Purchase Amenities" Name="mnPurchaseAmenities" Click="mnPurchaseAmenities_Click"/>
                 <MenuItem Header="Change Ticket" Name="mnChangeTicket" Click="mnChangeTicket_Click"/>
                 <MenuItem Header="Cancel Ticket" Name="mnCancelTicket" Click="mnCancelTicket_Click"/>
-                <MenuItem Header="Ticket Control" Name="mnTicketControl"/>
+                <MenuItem Header="Ticket Control" Name="mnTicketControl" Click="mnTicketControl_Click"/>
+                <MenuItem Header="Set up Crew" Name="mnSetUpCrew" Click="mnSetUpCrew_Click"/>
                 <MenuItem Header="Survey Questionaire" Name="mnSurveyQuestionaire" Click="mnSurveyQuestionaire_Click"/>
             </MenuItem>
             <MenuItem Header="Report" Name="mnReport">
