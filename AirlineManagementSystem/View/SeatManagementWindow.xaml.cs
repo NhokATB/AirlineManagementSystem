@@ -49,7 +49,7 @@ namespace AirportManagerSystem.View
 
         private void dpDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            try
+            if (dpDate.SelectedDate != null)
             {
                 var date = dpDate.SelectedDate.Value;
 
@@ -63,17 +63,20 @@ namespace AirportManagerSystem.View
                 cbFlights.ItemsSource = scheduleInfo;
                 cbFlights.SelectedIndex = 0;
             }
-            catch (Exception)
-            {
-            }
         }
 
         private void cbFlights_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LoadSeat();
-            ShowEmptySeat();
-            ShowDualSeat();
-            LoadChart();
+            try
+            {
+                LoadSeat();
+                ShowEmptySeat();
+                ShowDualSeat();
+                LoadChart();
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void LoadSeat()

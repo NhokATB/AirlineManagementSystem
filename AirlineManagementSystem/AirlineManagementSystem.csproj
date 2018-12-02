@@ -214,8 +214,17 @@
     <Compile Include="View\CabinTypesManagementWindow.xaml.cs">
       <DependentUpon>CabinTypesManagementWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CancelTicketPolicyWindow.xaml.cs">
+      <DependentUpon>CancelTicketPolicyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CancelTicketWindow.xaml.cs">
+      <DependentUpon>CancelTicketWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ChangePasswordWindow.xaml.cs">
       <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChangeTicketPolicyWindow.xaml.cs">
+      <DependentUpon>ChangeTicketPolicyWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ChangeTicketWindow.xaml.cs">
       <DependentUpon>ChangeTicketWindow.xaml</DependentUpon>
@@ -414,7 +423,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\CancelTicketPolicyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CancelTicketWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ChangePasswordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChangeTicketPolicyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

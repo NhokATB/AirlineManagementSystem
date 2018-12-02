@@ -243,5 +243,11 @@ namespace AirportManagerSystem.View
             ChangeTicketWindow changeTicketWindow = new ChangeTicketWindow();
             ShowDialogWindow(changeTicketWindow);
         }
+
+        private void mnCancelTicket_Click(object sender, RoutedEventArgs e)
+        {
+            CancelTicketWindow cancelTicketWindow = new CancelTicketWindow();
+            ShowDialogWindow(cancelTicketWindow);
+        }
     }
 }

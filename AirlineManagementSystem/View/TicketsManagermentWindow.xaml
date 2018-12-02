@@ -12,7 +12,7 @@
 
         <GroupBox Header="Filter Ticket" Margin="10,5,10,5">
             <GroupBox.Content>
-                <Grid Width="700">
+                <Grid Width="700" Margin="10">
                     <Grid.Resources>
                         <Style TargetType="TextBlock">
                             <Setter Property="Width" Value="65"></Setter>
@@ -21,8 +21,9 @@
                     </Grid.Resources>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.4*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
@@ -55,12 +56,12 @@
                         <TextBlock VerticalAlignment="Center">Sort by:</TextBlock>
                         <ComboBox Name="cbSorBy" Margin="5" Width="120"></ComboBox>
                     </StackPanel>
-                    <Button Name="btnApply" Width="80" Grid.Column="2" Grid.Row="2" Height="30" Margin="105,2,0,2" Click="btnApply_Click">Apply</Button>
+                    <Button Name="btnApply" Width="80" Grid.Column="3" Grid.Row="1" Height="30" Margin="2" Click="btnApply_Click">Apply</Button>
                 </Grid>
             </GroupBox.Content>
         </GroupBox>
 
-        <DataGrid RowHeaderWidth="0" IsReadOnly="True" Name="dgTickets" AutoGenerateColumns="False" Margin="10,5,10,5" Height="385" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="FullRow">
+        <DataGrid RowHeaderWidth="0" IsReadOnly="True" Name="dgTickets" AutoGenerateColumns="False" Margin="10,5,10,5" Height="400" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="FullRow">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Full name" Binding="{Binding FullName}" Width="0.6*" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Date" Binding="{Binding Ticket.Schedule.Date, StringFormat={}{0:dd/MM/yyyy}}" Width="0.4*" ></DataGridTextColumn>
@@ -88,7 +89,7 @@
             <StackPanel Grid.Column="0" Orientation="Horizontal">
                 <Button Width="120" Height="35" Name="btnEditTicket" Margin="0,0,15,0" Click="btnEditFlight_Click">Edit Ticket</Button>
                 <Button Width="120" Name="btnDeleteTicket" Margin="0,0,15,0" Click="btnDeleteTicket_Click">Delete Ticket</Button>
-                <Button Width="120" Height="35" Margin="0,0,15,0" Name="btnCancelTicket"  VerticalAlignment="Top" Click="btnCancelTicket_Click">Cancel Ticket</Button>
+                <Button Visibility="Hidden" Width="120" Height="35" Margin="0,0,15,0" Name="btnCancelTicket"  VerticalAlignment="Top" Click="btnCancelTicket_Click">Cancel Ticket</Button>
             </StackPanel>
             <Button Grid.Column="1" Width="120" Height="35" Name="btnCancel"  HorizontalAlignment="Right" Click="btnCancel_Click">Cancel</Button>
         </Grid>

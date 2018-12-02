@@ -36,7 +36,7 @@
                 <MenuItem Header="Book Flight" Name="mnBookFlight" Click="mnBookFlight_Click"/>
                 <MenuItem Header="Purchase Amenities" Name="mnPurchaseAmenities" Click="mnPurchaseAmenities_Click"/>
                 <MenuItem Header="Change Ticket" Name="mnChangeTicket" Click="mnChangeTicket_Click"/>
-                <MenuItem Header="Cancel Ticket" Name="mnCancelTicket"/>
+                <MenuItem Header="Cancel Ticket" Name="mnCancelTicket" Click="mnCancelTicket_Click"/>
                 <MenuItem Header="Ticket Control" Name="mnTicketControl"/>
                 <MenuItem Header="Survey Questionaire" Name="mnSurveyQuestionaire" Click="mnSurveyQuestionaire_Click"/>
             </MenuItem>
@@ -48,8 +48,12 @@
                 <MenuItem Header="Short Summary" Name="mnShortSummaryReport" Click="mnShortSummaryReport_Click"/>
             </MenuItem>
             <MenuItem Header="Help">
-                <MenuItem Header="Amonic Airline" Name="mnAmonicAirline"/>
-                <MenuItem Header="Automation System" Name="mnAutomationSystem"/>
+                <MenuItem Header="About Amonic Airline" Name="mnAmonicAirline"/>
+                <MenuItem Header="About Amonic Airline Poclicy" Name="mnPolicy">
+                    <MenuItem Header="Change Ticket" Name="mnChangeTicketPolicy"/>
+                    <MenuItem Header="Cancel Ticket" Name="mnCancelTicketPolicy"/>
+                </MenuItem>
+                <MenuItem Header="About Automation System" Name="mnAutomationSystem"/>
             </MenuItem>
         </Menu>
         <TextBlock TextAlignment="Center" FontSize="40" Margin="10,30,10,25" Foreground="DarkGreen" FontWeight="Bold" TextWrapping="Wrap">Welcome to AMONIC Airlines Automation System</TextBlock>

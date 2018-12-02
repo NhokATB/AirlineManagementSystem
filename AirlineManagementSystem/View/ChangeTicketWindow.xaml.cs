@@ -23,6 +23,7 @@ namespace AirportManagerSystem.View
         List<CabinType> cabins = new List<CabinType>();
         Ticket ticket;
         NewFlight currentFlight;
+        double costIncurred;
         public ChangeTicketWindow()
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace AirportManagerSystem.View
         {
             try
             {
-                CalculateTotalPayable();
+                CalculateCosts();
             }
             catch (Exception)
             {
@@ -47,20 +48,40 @@ namespace AirportManagerSystem.View
             try
             {
                 currentFlight = dgFlights.SelectedItem as NewFlight;
-                CalculateTotalPayable();
+                CalculateCosts();
             }
             catch (Exception)
             {
             }
         }
 
-        private void CalculateTotalPayable()
+        private void CalculateCosts()
         {
             var payed = Flight.GetPrice(ticket.Schedule, ticket.CabinType);
             var total = currentFlight == null ? Flight.GetPrice(ticket.Schedule, cabins[cbCabinType.SelectedIndex]) : Flight.GetPrice(currentFlight.Schedule, cabins[cbCabinType.SelectedIndex]);
 
-            tblTotalPayable.Text = (total - payed).ToString("C0");
+            tblTotalAfterChange.Text = total.ToString("C0");
+            tblTotalPayed.Text = payed.ToString("C0");
+            tblTotalPayable.Text = (total - payed + costIncurred).ToString("C0");
             if (total - payed < 0) tblTotalPayable.Text += " (return for passenger)";
+        }
+
+        private void CalculateCostIncurred()
+        {
+            var ticketPrice = Flight.GetPrice(ticket.Schedule, ticket.CabinType);
+
+            costIncurred = 0;
+            var timeBeforeFlightTakeoff = (ticket.Schedule.Date + ticket.Schedule.Time) - DateTime.Now;
+
+            if (timeBeforeFlightTakeoff.TotalHours <= 3)
+                costIncurred = 20;
+            else if (timeBeforeFlightTakeoff.TotalHours > 3 && timeBeforeFlightTakeoff.TotalHours <= 24)
+                costIncurred = 15;
+            else if (timeBeforeFlightTakeoff.TotalDays > 1 && timeBeforeFlightTakeoff.TotalDays <= 3)
+                costIncurred = 10;
+
+            costIncurred = (ticketPrice * costIncurred / 100);
+            tblCostIncurred.Text = costIncurred.ToString("C0");
         }
 
         private void ChangeTicketWindow_Loaded(object sender, RoutedEventArgs e)
@@ -94,6 +115,11 @@ namespace AirportManagerSystem.View
             tblRoute.Text = "";
             tblTime.Text = "";
             tblTotalPayable.Text = "";
+
+            tblCostIncurred.Text = "";
+            tblTotalPayable.Text = "";
+            tblTotalAfterChange.Text = "";
+            tblTotalPayed.Text = "";
         }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
@@ -125,6 +151,12 @@ namespace AirportManagerSystem.View
                 return;
             }
 
+            if (ticket.Confirmed == false)
+            {
+                MessageBox.Show("Your ticket was canceled", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
             if (ticket.Schedule.Date < DateTime.Now.Date)
             {
                 MessageBox.Show("This ticket cannot be changed because the flight for this ticket was took off", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -133,6 +165,7 @@ namespace AirportManagerSystem.View
 
             LoadTicketInformation(ticket);
             LoadScheduleInformation(ticket.Schedule);
+            CalculateCostIncurred();
 
             btnSearch.IsEnabled = true;
             btnSaveAndCofirm.IsEnabled = true;
@@ -237,11 +270,17 @@ namespace AirportManagerSystem.View
             }
 
             Db.Context.SaveChanges();
-            CalculateTotalPayable();
+            CalculateCosts();
             LoadScheduleInformation(ticket.Schedule);
             dgFlights.ItemsSource = null;
 
             MessageBox.Show("Change ticket successful", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void btnChangeTicketPolicy_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeTicketPolicyWindow changeTicketPolicyWindow = new ChangeTicketPolicyWindow();
+            changeTicketPolicyWindow.ShowDialog();
         }
     }
 }
