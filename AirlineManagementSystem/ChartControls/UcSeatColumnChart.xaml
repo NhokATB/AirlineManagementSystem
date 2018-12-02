@@ -18,13 +18,28 @@
             </ChartToolkit:Chart.LegendStyle>
 
             <ChartToolkit:Chart.Series>
-
+               
                 <ChartToolkit:ColumnSeries Title="Left" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
-                </ChartToolkit:ColumnSeries>
+                    <ChartToolkit:ColumnSeries.DataPointStyle>
+                        <Style TargetType="ChartToolkit:ColumnDataPoint">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ChartToolkit:ColumnDataPoint">
+                                        <Grid>
+                                            <Rectangle Fill="{TemplateBinding Background}" Stroke="Black"/>
+                                            <Grid Margin="0 -20 0 0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                                <TextBlock Text="{TemplateBinding FormattedDependentValue}" Margin="2"/>
+                                            </Grid>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
 
-                <ChartToolkit:ColumnSeries Title="Right" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                            <Setter Property="Background" Value="#196AA6"/>
+                        </Style>
+                    </ChartToolkit:ColumnSeries.DataPointStyle>
                 </ChartToolkit:ColumnSeries>
-
+                
             </ChartToolkit:Chart.Series>
         </ChartToolkit:Chart>
     </Grid>

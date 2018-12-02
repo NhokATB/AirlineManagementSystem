@@ -12,18 +12,144 @@
         <ChartToolkit:Chart Canvas.Top="80" Canvas.Left="10" Name="mcChart"  Width="1245" Height="380" Background="LightSteelBlue">
             <ChartToolkit:Chart.Series>
                 <ChartToolkit:ColumnSeries Title="Outstanding" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                    <ChartToolkit:ColumnSeries.DataPointStyle>
+                        <Style TargetType="ChartToolkit:ColumnDataPoint">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ChartToolkit:ColumnDataPoint">
+                                        <Grid>
+                                            <Rectangle Fill="{TemplateBinding Background}" Stroke="Black"/>
+                                            <Grid Margin="0 -20 0 0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                                <TextBlock Text="{TemplateBinding FormattedDependentValue}" Margin="2"/>
+                                            </Grid>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Setter Property="Background" Value="#064B66"/>
+                        </Style>
+                    </ChartToolkit:ColumnSeries.DataPointStyle>
                 </ChartToolkit:ColumnSeries>
-                <ChartToolkit:ColumnSeries Title="Very Good"   IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                <ChartToolkit:ColumnSeries Title="Very Good" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                    <ChartToolkit:ColumnSeries.DataPointStyle>
+                        <Style TargetType="ChartToolkit:ColumnDataPoint">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ChartToolkit:ColumnDataPoint">
+                                        <Grid>
+                                            <Rectangle Fill="{TemplateBinding Background}" Stroke="Black"/>
+                                            <Grid Margin="0 -20 0 0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                                <TextBlock Text="{TemplateBinding FormattedDependentValue}" Margin="2"/>
+                                            </Grid>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Setter Property="Background" Value="#EDD688"/>
+                        </Style>
+                    </ChartToolkit:ColumnSeries.DataPointStyle>
                 </ChartToolkit:ColumnSeries>
                 <ChartToolkit:ColumnSeries Title="Good" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                    <ChartToolkit:ColumnSeries.DataPointStyle>
+                        <Style TargetType="ChartToolkit:ColumnDataPoint">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ChartToolkit:ColumnDataPoint">
+                                        <Grid>
+                                            <Rectangle Fill="{TemplateBinding Background}" Stroke="Black"/>
+                                            <Grid Margin="0 -20 0 0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                                <TextBlock Text="{TemplateBinding FormattedDependentValue}" Margin="2"/>
+                                            </Grid>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Setter Property="Background" Value="#132B4F"/>
+                        </Style>
+                    </ChartToolkit:ColumnSeries.DataPointStyle>
                 </ChartToolkit:ColumnSeries>
                 <ChartToolkit:ColumnSeries Title="Adequate" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                    <ChartToolkit:ColumnSeries.DataPointStyle>
+                        <Style TargetType="ChartToolkit:ColumnDataPoint">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ChartToolkit:ColumnDataPoint">
+                                        <Grid>
+                                            <Rectangle Fill="{TemplateBinding Background}" Stroke="Black"/>
+                                            <Grid Margin="0 -20 0 0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                                <TextBlock Text="{TemplateBinding FormattedDependentValue}" Margin="2"/>
+                                            </Grid>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Setter Property="Background" Value="#C2912E"/>
+                        </Style>
+                    </ChartToolkit:ColumnSeries.DataPointStyle>
                 </ChartToolkit:ColumnSeries>
                 <ChartToolkit:ColumnSeries Title="Need Improvement"   IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                    <ChartToolkit:ColumnSeries.DataPointStyle>
+                        <Style TargetType="ChartToolkit:ColumnDataPoint">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ChartToolkit:ColumnDataPoint">
+                                        <Grid>
+                                            <Rectangle Fill="{TemplateBinding Background}" Stroke="Black"/>
+                                            <Grid Margin="0 -20 0 0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                                <TextBlock Text="{TemplateBinding FormattedDependentValue}" Margin="2"/>
+                                            </Grid>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Setter Property="Background" Value="#FAC826"/>
+                        </Style>
+                    </ChartToolkit:ColumnSeries.DataPointStyle>
                 </ChartToolkit:ColumnSeries>
                 <ChartToolkit:ColumnSeries Title="Poor" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                    <ChartToolkit:ColumnSeries.DataPointStyle>
+                        <Style TargetType="ChartToolkit:ColumnDataPoint">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ChartToolkit:ColumnDataPoint">
+                                        <Grid>
+                                            <Rectangle Fill="{TemplateBinding Background}" Stroke="Black"/>
+                                            <Grid Margin="0 -20 0 0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                                <TextBlock Text="{TemplateBinding FormattedDependentValue}" Margin="2"/>
+                                            </Grid>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            
+                            <Setter Property="Background" Value="#0D4F4C"/>
+                        </Style>
+                    </ChartToolkit:ColumnSeries.DataPointStyle>
                 </ChartToolkit:ColumnSeries>
                 <ChartToolkit:ColumnSeries Title="Don't know" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                    <ChartToolkit:ColumnSeries.DataPointStyle>
+                        <Style TargetType="ChartToolkit:ColumnDataPoint">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ChartToolkit:ColumnDataPoint">
+                                        <Grid>
+                                            <Rectangle Fill="{TemplateBinding Background}" Stroke="Black"/>
+                                            <Grid Margin="0 -20 0 0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                                <TextBlock Text="{TemplateBinding FormattedDependentValue}" Margin="2"/>
+                                            </Grid>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Setter Property="Background" Value="#F79420"/>
+                        </Style>
+                    </ChartToolkit:ColumnSeries.DataPointStyle>
                 </ChartToolkit:ColumnSeries>
             </ChartToolkit:Chart.Series>
         </ChartToolkit:Chart>

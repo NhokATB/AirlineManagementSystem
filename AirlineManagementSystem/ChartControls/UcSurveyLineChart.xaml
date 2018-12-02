@@ -11,19 +11,54 @@
     <Grid>
         <ChartToolkit:Chart Canvas.Top="80" Canvas.Left="10" Name="mcChart"  Width="1245" Height="380" Background="LightSteelBlue">
             <ChartToolkit:Chart.Series>
-                <ChartToolkit:LineSeries Title="Outstanding"   IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                <ChartToolkit:LineSeries Title="Outstanding" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                    <ChartToolkit:LineSeries.DataPointStyle>
+                        <Style TargetType="ChartToolkit:LineDataPoint">
+                            <Setter Property="Background" Value="#064B66"/>
+                        </Style>
+                    </ChartToolkit:LineSeries.DataPointStyle>
                 </ChartToolkit:LineSeries>
-                <ChartToolkit:LineSeries Title="Very Good"   IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                <ChartToolkit:LineSeries Title="Very Good" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                    <ChartToolkit:LineSeries.DataPointStyle>
+                        <Style TargetType="ChartToolkit:LineDataPoint">
+                            <Setter Property="Background" Value="#EDD688"/>
+                        </Style>
+                    </ChartToolkit:LineSeries.DataPointStyle>
                 </ChartToolkit:LineSeries>
-                <ChartToolkit:LineSeries Title="Good"   IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                <ChartToolkit:LineSeries Title="Good" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                    <ChartToolkit:LineSeries.DataPointStyle>
+                        <Style TargetType="ChartToolkit:LineDataPoint">
+                            <Setter Property="Background" Value="#132B4F"/>
+                        </Style>
+                    </ChartToolkit:LineSeries.DataPointStyle>
                 </ChartToolkit:LineSeries>
-                <ChartToolkit:LineSeries Title="Adequate"   IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                <ChartToolkit:LineSeries Title="Adequate" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                    <ChartToolkit:LineSeries.DataPointStyle>
+                        <Style TargetType="ChartToolkit:LineDataPoint">
+                            <Setter Property="Background" Value="#C2912E"/>
+                        </Style>
+                    </ChartToolkit:LineSeries.DataPointStyle>
                 </ChartToolkit:LineSeries>
                 <ChartToolkit:LineSeries Title="Need Improvement"   IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                    <ChartToolkit:LineSeries.DataPointStyle>
+                        <Style TargetType="ChartToolkit:LineDataPoint">
+                            <Setter Property="Background" Value="#FAC826"/>
+                        </Style>
+                    </ChartToolkit:LineSeries.DataPointStyle>
                 </ChartToolkit:LineSeries>
-                <ChartToolkit:LineSeries Title="Poor"   IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                <ChartToolkit:LineSeries Title="Poor" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                    <ChartToolkit:LineSeries.DataPointStyle>
+                        <Style TargetType="ChartToolkit:LineDataPoint">
+                            <Setter Property="Background" Value="#0D4F4C"/>
+                        </Style>
+                    </ChartToolkit:LineSeries.DataPointStyle>
                 </ChartToolkit:LineSeries>
-                <ChartToolkit:LineSeries Title="Don't know"   IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                <ChartToolkit:LineSeries Title="Don't know" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                    <ChartToolkit:LineSeries.DataPointStyle>
+                        <Style TargetType="ChartToolkit:LineDataPoint">
+                            <Setter Property="Background" Value="#F79420"/>
+                        </Style>
+                    </ChartToolkit:LineSeries.DataPointStyle>
                 </ChartToolkit:LineSeries>
             </ChartToolkit:Chart.Series>
         </ChartToolkit:Chart>

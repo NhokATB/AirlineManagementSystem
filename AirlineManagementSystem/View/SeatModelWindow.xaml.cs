@@ -262,6 +262,7 @@ namespace AirportManagerSystem.View
                 if (Tickets.Count == 1)
                 {
                     Tickets[0].Seat = selectedSeat.Seat;
+                    selectedSeat.btnSeat.Background = new SolidColorBrush(AMONICColor.CheckedIn);
                     Db.Context.SaveChanges();
                     MessageBox.Show("Check in successful", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
                 }

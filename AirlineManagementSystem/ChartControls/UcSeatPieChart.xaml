@@ -13,6 +13,7 @@
             <ChartToolkit:Chart.Series>
 
                 <ChartToolkit:PieSeries Title="Left" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                   
                 </ChartToolkit:PieSeries>
 
             </ChartToolkit:Chart.Series>

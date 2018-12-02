@@ -35,15 +35,17 @@
                 <MenuItem Header="Check In" Name="mnCheckIn" Click="mnCheckIn_Click"/>
                 <MenuItem Header="Book Flight" Name="mnBookFlight" Click="mnBookFlight_Click"/>
                 <MenuItem Header="Purchase Amenities" Name="mnPurchaseAmenities" Click="mnPurchaseAmenities_Click"/>
-                <MenuItem Header="Survey Questionaire" Name="mnSurveyQuestionaire" Click="mnSurveyQuestionaire_Click"/>
-                <MenuItem Header="Change Ticket" Name="mnChangeTicket"/>
+                <MenuItem Header="Change Ticket" Name="mnChangeTicket" Click="mnChangeTicket_Click"/>
                 <MenuItem Header="Cancel Ticket" Name="mnCancelTicket"/>
+                <MenuItem Header="Ticket Control" Name="mnTicketControl"/>
+                <MenuItem Header="Survey Questionaire" Name="mnSurveyQuestionaire" Click="mnSurveyQuestionaire_Click"/>
             </MenuItem>
             <MenuItem Header="Report" Name="mnReport">
                 <MenuItem Header="Amenities" Name="mnAmenitiesReprot" Click="mnAmenitiesReprot_Click"/>
                 <MenuItem Header="Survey" Name="mnSurveyReport" Click="mnSurveyReport_Click"/>
-                <MenuItem Header="Short Summary" Name="mnShortSummaryReport" Click="mnShortSummaryReport_Click"/>
                 <MenuItem Header="Revenue" Name="mnRevenueReport"/>
+                <MenuItem Header="Commission" Name="mnCommisstion"/>
+                <MenuItem Header="Short Summary" Name="mnShortSummaryReport" Click="mnShortSummaryReport_Click"/>
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="Amonic Airline" Name="mnAmonicAirline"/>

@@ -198,6 +198,11 @@ namespace AirportManagerSystem.View
             btnSaveAndCofirm.IsEnabled = true;
         }
 
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void ResetAmen()
         {
             wpAmenities.Children.Clear();
