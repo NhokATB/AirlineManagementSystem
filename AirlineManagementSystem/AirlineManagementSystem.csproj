@@ -145,17 +145,14 @@
       <DependentUpon>SurveyDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="UserControls\UcSeatForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\UcSeatForm.Designer.cs">
-      <DependentUpon>UcSeatForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\UcSeat.xaml.cs">
       <DependentUpon>UcSeat.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UcSurvey.xaml.cs">
       <DependentUpon>UcSurvey.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AboutAMONICAirlineWindow.xaml.cs">
+      <DependentUpon>AboutAMONICAirlineWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AddAircraftWindow.xaml.cs">
       <DependentUpon>AddAircraftWindow.xaml</DependentUpon>
@@ -280,6 +277,9 @@
     <Compile Include="View\FlightManagementWindow.xaml.cs">
       <DependentUpon>FlightManagementWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ImportChangeWindow.xaml.cs">
+      <DependentUpon>ImportChangeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginHistoryManagementWindow.xaml.cs">
       <DependentUpon>LoginHistoryManagementWindow.xaml</DependentUpon>
     </Compile>
@@ -358,6 +358,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\UcSurvey.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AboutAMONICAirlineWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -506,6 +510,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\FlightManagementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ImportChangeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -688,9 +696,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UcSeatForm.resx">
-      <DependentUpon>UcSeatForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AddFlightWindow.resx">
       <DependentUpon>AddFlightWindow.cs</DependentUpon>

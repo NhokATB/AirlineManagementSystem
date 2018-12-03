@@ -49,12 +49,12 @@
                 <MenuItem Header="Short Summary" Name="mnShortSummaryReport" Click="mnShortSummaryReport_Click"/>
             </MenuItem>
             <MenuItem Header="Help">
-                <MenuItem Header="About Amonic Airline" Name="mnAmonicAirline"/>
+                <MenuItem Header="About Amonic Airline" Name="mnAmonicAirline" Click="mnAmonicAirline_Click"/>
                 <MenuItem Header="About Amonic Airline Poclicy" Name="mnPolicy">
-                    <MenuItem Header="Change Ticket" Name="mnChangeTicketPolicy"/>
-                    <MenuItem Header="Cancel Ticket" Name="mnCancelTicketPolicy"/>
+                    <MenuItem Header="Change Ticket" Name="mnChangeTicketPolicy" Click="mnChangeTicketPolicy_Click"/>
+                    <MenuItem Header="Cancel Ticket" Name="mnCancelTicketPolicy" Click="mnCancelTicketPolicy_Click"/>
                 </MenuItem>
-                <MenuItem Header="About Automation System" Name="mnAutomationSystem"/>
+                <MenuItem Header="About Automation System" Name="mnAutomationSystem" Click="mnAutomationSystem_Click"/>
             </MenuItem>
         </Menu>
         <TextBlock TextAlignment="Center" FontSize="40" Margin="10,30,10,25" Foreground="DarkGreen" FontWeight="Bold" TextWrapping="Wrap">Welcome to AMONIC Airlines Automation System</TextBlock>

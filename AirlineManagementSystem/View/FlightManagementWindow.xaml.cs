@@ -91,6 +91,8 @@ namespace AirportManagerSystem.View
 
             cbSorBy.ItemsSource = criterias;
             cbSorBy.SelectedIndex = 0;
+
+            LoadFlights();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -111,6 +113,7 @@ namespace AirportManagerSystem.View
             if (dgFlights.Items.Count == 0)
                 MessageBox.Show("No result", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
         private void SetParameter()
         {
             from = cbDepatureAirport.Text;
@@ -119,6 +122,7 @@ namespace AirportManagerSystem.View
             date = dpOutbound.SelectedDate;
             flightNumber = txtFlightNumber.Text;
         }
+
         public void LoadFlights()
         {
             FilterFlights();
@@ -128,15 +132,21 @@ namespace AirportManagerSystem.View
 
         private void FilterFlights()
         {
-            schedules = Db.Context.Schedules.ToList();
-            if (from.Contains("All") == false)
-                schedules = schedules.Where(t => t.Route.Airport.Name == from).ToList();
-            if (to.Contains("All") == false)
-                schedules = schedules.Where(t => t.Route.Airport1.Name == to).ToList();
-            if (flightNumber != "")
-                schedules = schedules.Where(t => t.FlightNumber == flightNumber).ToList();
-            if (date != null)
-                schedules = schedules.Where(t => t.Date == date.Value.Date).ToList();
+            try
+            {
+                schedules = Db.Context.Schedules.ToList();
+                if (from.Contains("All") == false)
+                    schedules = schedules.Where(t => t.Route.Airport.Name == from).ToList();
+                if (to.Contains("All") == false)
+                    schedules = schedules.Where(t => t.Route.Airport1.Name == to).ToList();
+                if (flightNumber != "")
+                    schedules = schedules.Where(t => t.FlightNumber == flightNumber).ToList();
+                if (date != null)
+                    schedules = schedules.Where(t => t.Date == date.Value.Date).ToList();
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void btnCancelFlight_Click(object sender, RoutedEventArgs e)
@@ -249,7 +259,9 @@ namespace AirportManagerSystem.View
 
         private void btnImportChange_Click(object sender, RoutedEventArgs e)
         {
-
+            ImportChangeWindow importChangeWindow = new ImportChangeWindow();
+            importChangeWindow.ManageWindow = this;
+            importChangeWindow.ShowDialog();
         }
 
         private void SortFlights()
@@ -259,6 +271,7 @@ namespace AirportManagerSystem.View
             else if (sortBy == 1) schedules = schedules.OrderByDescending(t => t.EconomyPrice).ToList();
             else schedules = schedules.OrderByDescending(t => t.Confirmed).ToList();
         }
+
         private void DisplayFlights()
         {
             dgFlights.ItemsSource = null;

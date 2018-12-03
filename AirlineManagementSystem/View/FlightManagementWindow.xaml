@@ -46,11 +46,13 @@
                 <DataGridTextColumn Header="Crew" Binding="{Binding Crew}" Width="0.5*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        
         <StackPanel Orientation="Horizontal" Margin="10,5,5,5">
             <DockPanel Width="20" Height="20" Background="#F79420">
             </DockPanel>
             <TextBlock Margin="5">Canceled Flight</TextBlock>
         </StackPanel>
+        
         <Grid Margin="10,15">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.7*"></ColumnDefinition>

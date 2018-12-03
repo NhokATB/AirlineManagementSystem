@@ -261,5 +261,28 @@ namespace AirportManagerSystem.View
             SetUpCrewWindow setUpCrewWindow = new SetUpCrewWindow();
             ShowDialogWindow(setUpCrewWindow);
         }
+
+        private void mnChangeTicketPolicy_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeTicketPolicyWindow changeTicketPolicyWindow = new ChangeTicketPolicyWindow();
+            changeTicketPolicyWindow.ShowDialog();
+        }
+
+        private void mnCancelTicketPolicy_Click(object sender, RoutedEventArgs e)
+        {
+            CancelTicketPolicyWindow cancelTicketPolicyWindow = new CancelTicketPolicyWindow();
+            cancelTicketPolicyWindow.ShowDialog();
+        }
+
+        private void mnAutomationSystem_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void mnAmonicAirline_Click(object sender, RoutedEventArgs e)
+        {
+            AboutAMONICAirlineWindow aboutAMONICAirlineWindow = new AboutAMONICAirlineWindow();
+            ShowDialogWindow(aboutAMONICAirlineWindow);
+        }
     }
 }
