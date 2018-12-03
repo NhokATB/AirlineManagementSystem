@@ -13,7 +13,7 @@ namespace AirportManagerSystem.HelperClass
         public static MediaColor Business = MediaColor.FromRgb(250, 200, 38);
         public static MediaColor Dual = MediaColor.FromRgb(194, 145, 46);
         public static MediaColor CheckedIn = MediaColor.FromRgb(0, 160, 187);
-        public static MediaColor Chaning = MediaColor.FromRgb(13, 79, 76);
+        public static MediaColor Changing = MediaColor.FromRgb(13, 79, 76);
         public static MediaColor Empty = MediaColor.FromRgb(255, 250, 203);
         public static MediaColor First = MediaColor.FromRgb(237, 214, 136);
         public static MediaColor Selected = MediaColor.FromRgb(13, 79, 76);

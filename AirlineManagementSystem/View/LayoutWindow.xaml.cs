@@ -19,9 +19,21 @@ namespace AirportManagerSystem.View
     /// </summary>
     public partial class LayoutWindow : Window
     {
+        public bool IsClosed { get; set; }
         public LayoutWindow()
         {
             InitializeComponent();
+            this.Closed += LayoutWindow_Closed;
+        }
+
+        private void LayoutWindow_Closed(object sender, EventArgs e)
+        {
+            IsClosed = true;
+        }
+
+        public new void ShowDialog()
+        {
+            this.ShowDialog();
         }
     }
 }

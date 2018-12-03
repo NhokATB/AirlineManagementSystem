@@ -138,13 +138,15 @@
     <Compile Include="Model\Position.cs">
       <DependentUpon>AirlineManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\SolidColorBrushComparer.cs" />
     <Compile Include="Model\SurveyDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SurveyDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UserControls\UcFlightProcess.xaml.cs">
+      <DependentUpon>UcFlightProcess.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UcSeat.xaml.cs">
       <DependentUpon>UcSeat.xaml</DependentUpon>
     </Compile>
@@ -277,6 +279,9 @@
     <Compile Include="View\FlightManagementWindow.xaml.cs">
       <DependentUpon>FlightManagementWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\FlightProcessWindow.xaml.cs">
+      <DependentUpon>FlightProcessWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ImportChangeWindow.xaml.cs">
       <DependentUpon>ImportChangeWindow.xaml</DependentUpon>
     </Compile>
@@ -350,6 +355,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ChartControls\UcSurveyLineChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UcFlightProcess.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -510,6 +519,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\FlightManagementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FlightProcessWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -748,6 +761,7 @@
     <Folder Include="Controller\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\WSC2017_TP09_Airplane-Amonic-Single.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

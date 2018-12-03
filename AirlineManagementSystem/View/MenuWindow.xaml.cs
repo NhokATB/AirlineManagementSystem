@@ -284,5 +284,11 @@ namespace AirportManagerSystem.View
             AboutAMONICAirlineWindow aboutAMONICAirlineWindow = new AboutAMONICAirlineWindow();
             ShowDialogWindow(aboutAMONICAirlineWindow);
         }
+
+        private void mnFlightProcess_Click(object sender, RoutedEventArgs e)
+        {
+            FlightProcessWindow flightProcessWindow = new FlightProcessWindow();
+            ShowDialogWindow(flightProcessWindow);
+        }
     }
 }

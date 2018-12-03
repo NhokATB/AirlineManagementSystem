@@ -44,11 +44,14 @@ namespace AirportManagerSystem.View
             if (o.ShowDialog().Value)
             {
                 txtFilePath.Text = o.FileName;
+                ToolTip t = new ToolTip();
+                t.Content = txtFilePath.Text;
+                txtFilePath.ToolTip = t;
             }
-
-            ToolTip t = new ToolTip();
-            t.Content = txtFilePath.Text;
-            txtFilePath.ToolTip = t;
+            else
+            {
+                txtFilePath.ToolTip = null;
+            }
         }
 
         private void btnImport_Click(object sender, RoutedEventArgs e)

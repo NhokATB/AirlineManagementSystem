@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="AirportManagerSystem.UserControls.UcFlightProcess"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AirportManagerSystem.UserControls"
+             mc:Ignorable="d" 
+             Background="White"
+             xmlns:AMONIC="clr-namespace:AirportManagerSystem.HelperClass"
+             d:DesignHeight="185" d:DesignWidth="970">
+    <StackPanel Margin="10" Width="960">
+        <StackPanel.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="White"></Setter>
+            </Style>
+        </StackPanel.Resources>
+        <Grid Width="960" HorizontalAlignment="Center" Height="30">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock FontWeight="Bold" Name="tblFlightStatus" HorizontalAlignment="Center">Flying - </TextBlock>
+                <TextBlock FontWeight="Bold" Name="tblTimeFly" HorizontalAlignment="Center">Time fly</TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <Grid Height="30">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Name="tblFlightInfomation" TextAlignment="Center" Width="auto
+                       " VerticalAlignment="Center">Flight information</TextBlock>
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Height="30">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Name="tblFlightTime" TextAlignment="Center" Width="auto
+                       " VerticalAlignment="Center">Flight time</TextBlock>
+            </StackPanel>
+
+        </Grid>
+        <Grid Height="30">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Name="tblDistance" TextAlignment="Center" VerticalAlignment="Center">Distance</TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <Grid Margin="10,10,10,2" Name="grImageContainer">
+            <Image Name="imgFlight" Width="60" Height="20" Margin="10,0,0,0" HorizontalAlignment="Left"></Image>
+        </Grid>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Name="tblDeparture" Width="45" FontWeight="Bold" FontSize="14" TextAlignment="Center">Departure</TextBlock>
+            <TextBlock Name="tblProcess" Background="Black" Width="860" Margin="5,5,5,5" Height="7"></TextBlock>
+            <TextBlock Name="tblArrival" HorizontalAlignment="Right" FontWeight="Bold" FontSize="14" Width="45" TextAlignment="Center">Arrival</TextBlock>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
