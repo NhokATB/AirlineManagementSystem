@@ -43,6 +43,10 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -123,6 +127,11 @@
       <DependentUpon>AmenitiesDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="HelperClass\AMONICColor.cs" />
+    <Compile Include="Model\CommissionDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommissionDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Model\Crew.cs">
       <DependentUpon>AirlineManagementModel.tt</DependentUpon>
     </Compile>
@@ -234,6 +243,18 @@
     <Compile Include="View\ChooseCrewWindow.xaml.cs">
       <DependentUpon>ChooseCrewWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CommissionDetailWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CommissionDetailWindow.Designer.cs">
+      <DependentUpon>CommissionDetailWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CommissionReportWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CommissionReportWindow.Designer.cs">
+      <DependentUpon>CommissionReportWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\CrewManagementWindow.xaml.cs">
       <DependentUpon>CrewManagementWindow.xaml</DependentUpon>
     </Compile>
@@ -293,6 +314,12 @@
     </Compile>
     <Compile Include="View\MemberManagementWindow.xaml.cs">
       <DependentUpon>MemberManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MyCommissionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MyCommissionWindow.Designer.cs">
+      <DependentUpon>MyCommissionWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="View\OfficesManagementWindow.xaml.cs">
       <DependentUpon>OfficesManagementWindow.xaml</DependentUpon>
@@ -713,8 +740,17 @@
     <EmbeddedResource Include="View\AddFlightWindow.resx">
       <DependentUpon>AddFlightWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\CommissionDetailWindow.resx">
+      <DependentUpon>CommissionDetailWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CommissionReportWindow.resx">
+      <DependentUpon>CommissionReportWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\EditFlightWindow.resx">
       <DependentUpon>EditFlightWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MyCommissionWindow.resx">
+      <DependentUpon>MyCommissionWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\AirlineManagementModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -733,6 +769,17 @@
     </None>
     <None Include="Model\AmenitiesDataSet.xss">
       <DependentUpon>AmenitiesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Model\CommissionDataSet.xsc">
+      <DependentUpon>CommissionDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Model\CommissionDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CommissionDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Model\CommissionDataSet.xss">
+      <DependentUpon>CommissionDataSet.xsd</DependentUpon>
     </None>
     <None Include="Model\SurveyDataSet.xsc">
       <DependentUpon>SurveyDataSet.xsd</DependentUpon>

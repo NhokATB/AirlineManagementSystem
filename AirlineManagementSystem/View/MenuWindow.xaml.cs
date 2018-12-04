@@ -30,6 +30,8 @@ namespace AirportManagerSystem.View
             imgLogo.Source = new BitmapImage(new Uri(@"/AirportManagerSystem;component/Images/WSC2017_TP09_color@4x.png", UriKind.Relative));
             this.Closing += MenuWindow_Closing;
             this.Loaded += MenuWindow_Loaded;
+
+            this.WindowState = WindowState.Maximized;
         }
 
         private void MenuWindow_Loaded(object sender, RoutedEventArgs e)
@@ -289,6 +291,21 @@ namespace AirportManagerSystem.View
         {
             FlightProcessWindow flightProcessWindow = new FlightProcessWindow();
             ShowDialogWindow(flightProcessWindow);
+        }
+
+        private void mnCommisstion_Click(object sender, RoutedEventArgs e)
+        {
+            CommissionReportWindow commissionReportWindow = new CommissionReportWindow();
+            ShowDialogWindow(commissionReportWindow);
+        }
+
+        private void mnMyCommission_Click(object sender, RoutedEventArgs e)
+        {
+            MyCommissionWindow myCommissionWindow = new MyCommissionWindow
+            {
+                User = User.FirstName + " " + User.LastName
+            };
+            ShowDialogWindow(myCommissionWindow);
         }
     }
 }

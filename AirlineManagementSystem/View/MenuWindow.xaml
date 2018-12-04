@@ -13,6 +13,7 @@
                 <MenuItem Header="My Log" Name="mnLogingHistory" Click="mnLogingHistory_Click"/>
                 <MenuItem Header="Profile" Name="mnProfile" Click="mnProfile_Click"/>
                 <MenuItem Header="Change password" Name="mnChangePassword" Click="mnChangePassword_Click"/>
+                <MenuItem Header="My Commission" Name="mnMyCommission" Click="mnMyCommission_Click"/>
                 <Separator/>
                 <MenuItem Header="Exit" Name="mnExit" Click="mnExit_Click"/>
             </MenuItem>
@@ -46,7 +47,7 @@
                 <MenuItem Header="Amenities" Name="mnAmenitiesReprot" Click="mnAmenitiesReprot_Click"/>
                 <MenuItem Header="Survey" Name="mnSurveyReport" Click="mnSurveyReport_Click"/>
                 <MenuItem Header="Revenue" Name="mnRevenueReport"/>
-                <MenuItem Header="Commission" Name="mnCommisstion"/>
+                <MenuItem Header="Commission" Name="mnCommisstion" Click="mnCommisstion_Click"/>
                 <MenuItem Header="Short Summary" Name="mnShortSummaryReport" Click="mnShortSummaryReport_Click"/>
             </MenuItem>
             <MenuItem Header="Help">
