@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace AirportManagerSystem.UserControls
 {
@@ -29,15 +30,16 @@ namespace AirportManagerSystem.UserControls
         public Ticket Ticket { get; internal set; }
         public UcSeat Previous { get; set; }
         public UcSeat After { get; set; }
+        public bool IsSelected { get; internal set; }
+
         public UcSeat()
         {
             InitializeComponent();
             this.Loaded += UcSeat_Loaded;
         }
-
-        private void UcSeat_Loaded(object sender, RoutedEventArgs e)
+     
+        private void SetDataForSeat()
         {
-            btnSeat.Content = Seat;
             if (Ticket != null)
             {
                 ToolTip t = new ToolTip();
@@ -46,14 +48,30 @@ namespace AirportManagerSystem.UserControls
 
                 btnSeat.Background = new SolidColorBrush(AMONICColor.CheckedIn);
             }
-            else if(IsDual == false)
-            {
-                btnSeat.Background = new SolidColorBrush(AMONICColor.Empty);
-            }
             else
             {
-                btnSeat.Background = new SolidColorBrush(AMONICColor.Dual);
+                if (IsSelected)
+                {
+                    btnSeat.Background = new SolidColorBrush(AMONICColor.Selected);
+                }
+                else
+                {
+                    if (IsDual == false)
+                    {
+                        btnSeat.Background = new SolidColorBrush(AMONICColor.Empty);
+                    }
+                    else
+                    {
+                        btnSeat.Background = new SolidColorBrush(AMONICColor.Dual);
+                    }
+                }
             }
+            
+        }
+        private void UcSeat_Loaded(object sender, RoutedEventArgs e)
+        {
+            btnSeat.Content = Seat;
+            SetDataForSeat();
 
             if (CabinId == 3)
             {

@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace AirportManagerSystem.View
 {
@@ -63,11 +64,11 @@ namespace AirportManagerSystem.View
         {
             dgTickets.ItemsSource = null;
 
-            var now = DateTime.Now.Date;
-            now = new DateTime(2018, 11, 30);
+            var today = DateTime.Now.Date;
+            today = new DateTime(2018, 12, 2);
             var time = DateTime.Now.TimeOfDay;
 
-            var tickets = Db.Context.Tickets.Where(t => t.Schedule.Date == now && t.Schedule.Time >= time && t.Confirmed).ToList();
+            var tickets = Db.Context.Schedules.Where(t => t.Date == today && t.Time >= time).SelectMany(t => t.Tickets).Where(t => t.Confirmed && t.Seat == null).ToList();
 
             foreach (var item in selectedTickets)
             {

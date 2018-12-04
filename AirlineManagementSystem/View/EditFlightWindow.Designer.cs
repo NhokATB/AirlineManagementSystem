@@ -35,6 +35,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblDistance = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblFlightTime = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.lblAircraft = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblTo = new System.Windows.Forms.Label();
@@ -52,7 +56,7 @@
             this.btnCancel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Red;
-            this.btnCancel.Location = new System.Drawing.Point(562, 177);
+            this.btnCancel.Location = new System.Drawing.Point(596, 178);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 37);
             this.btnCancel.TabIndex = 19;
@@ -64,7 +68,7 @@
             // 
             this.btnUpdate.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(419, 177);
+            this.btnUpdate.Location = new System.Drawing.Point(453, 178);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(110, 37);
             this.btnUpdate.TabIndex = 18;
@@ -75,7 +79,7 @@
             // nudPrice
             // 
             this.nudPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudPrice.Location = new System.Drawing.Point(523, 124);
+            this.nudPrice.Location = new System.Drawing.Point(557, 123);
             this.nudPrice.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -89,7 +93,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(406, 129);
+            this.label9.Location = new System.Drawing.Point(440, 128);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(111, 16);
             this.label9.TabIndex = 16;
@@ -99,7 +103,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(229, 129);
+            this.label8.Location = new System.Drawing.Point(219, 129);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(42, 16);
             this.label8.TabIndex = 15;
@@ -117,6 +121,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblDistance);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.lblFlightTime);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.lblAircraft);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.lblTo);
@@ -126,16 +134,56 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(660, 79);
+            this.groupBox1.Size = new System.Drawing.Size(694, 79);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Flight route";
+            this.groupBox1.Text = "Flight route information";
+            // 
+            // lblDistance
+            // 
+            this.lblDistance.AutoSize = true;
+            this.lblDistance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDistance.Location = new System.Drawing.Point(580, 38);
+            this.lblDistance.Name = "lblDistance";
+            this.lblDistance.Size = new System.Drawing.Size(51, 16);
+            this.lblDistance.TabIndex = 9;
+            this.lblDistance.Text = "label5";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(517, 38);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(64, 16);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Distance:";
+            // 
+            // lblFlightTime
+            // 
+            this.lblFlightTime.AutoSize = true;
+            this.lblFlightTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFlightTime.Location = new System.Drawing.Point(425, 38);
+            this.lblFlightTime.Name = "lblFlightTime";
+            this.lblFlightTime.Size = new System.Drawing.Size(51, 16);
+            this.lblFlightTime.TabIndex = 7;
+            this.lblFlightTime.Text = "label5";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(355, 38);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(71, 16);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Flight time:";
             // 
             // lblAircraft
             // 
             this.lblAircraft.AutoSize = true;
             this.lblAircraft.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAircraft.Location = new System.Drawing.Point(540, 36);
+            this.lblAircraft.Location = new System.Drawing.Point(256, 38);
             this.lblAircraft.Name = "lblAircraft";
             this.lblAircraft.Size = new System.Drawing.Size(51, 16);
             this.lblAircraft.TabIndex = 5;
@@ -145,7 +193,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(471, 36);
+            this.label6.Location = new System.Drawing.Point(204, 38);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 16);
             this.label6.TabIndex = 4;
@@ -155,7 +203,7 @@
             // 
             this.lblTo.AutoSize = true;
             this.lblTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTo.Location = new System.Drawing.Point(301, 36);
+            this.lblTo.Location = new System.Drawing.Point(151, 38);
             this.lblTo.Name = "lblTo";
             this.lblTo.Size = new System.Drawing.Size(51, 16);
             this.lblTo.TabIndex = 3;
@@ -165,7 +213,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(265, 36);
+            this.label4.Location = new System.Drawing.Point(124, 38);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 16);
             this.label4.TabIndex = 2;
@@ -175,7 +223,8 @@
             // 
             this.lblFrom.AutoSize = true;
             this.lblFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFrom.Location = new System.Drawing.Point(136, 36);
+            this.lblFrom.Location = new System.Drawing.Point(71, 38);
+            this.lblFrom.Margin = new System.Windows.Forms.Padding(0);
             this.lblFrom.Name = "lblFrom";
             this.lblFrom.Size = new System.Drawing.Size(51, 16);
             this.lblFrom.TabIndex = 1;
@@ -185,7 +234,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(84, 36);
+            this.label1.Location = new System.Drawing.Point(28, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 16);
             this.label1.TabIndex = 0;
@@ -206,7 +255,7 @@
             this.dtpTime.CustomFormat = "HH:mm";
             this.dtpTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpTime.Location = new System.Drawing.Point(277, 124);
+            this.dtpTime.Location = new System.Drawing.Point(267, 124);
             this.dtpTime.Name = "dtpTime";
             this.dtpTime.ShowUpDown = true;
             this.dtpTime.Size = new System.Drawing.Size(96, 22);
@@ -217,7 +266,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(684, 241);
+            this.ClientSize = new System.Drawing.Size(718, 241);
             this.Controls.Add(this.dtpTime);
             this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.btnCancel);
@@ -258,5 +307,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.DateTimePicker dtpTime;
+        private System.Windows.Forms.Label lblDistance;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblFlightTime;
+        private System.Windows.Forms.Label label3;
     }
 }

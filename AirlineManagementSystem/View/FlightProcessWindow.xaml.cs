@@ -28,6 +28,13 @@ namespace AirportManagerSystem.View
             InitializeComponent();
             this.Loaded += FlightProcessWindow_Loaded;
             cbSortBy.SelectionChanged += CbSortBy_SelectionChanged;
+
+            this.StateChanged += FlightProcessWindow_StateChanged;
+        }
+
+        private void FlightProcessWindow_StateChanged(object sender, EventArgs e)
+        {
+            scvFlightProcess.Height = this.WindowState == WindowState.Maximized ? 630 : 500;
         }
 
         private void CbSortBy_SelectionChanged(object sender, SelectionChangedEventArgs e)

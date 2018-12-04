@@ -7,21 +7,21 @@
              mc:Ignorable="d" 
              Background="White"
              xmlns:AMONIC="clr-namespace:AirportManagerSystem.HelperClass"
-             d:DesignHeight="185" d:DesignWidth="970">
+             d:DesignHeight="155" d:DesignWidth="980">
     <StackPanel Margin="10" Width="960">
         <StackPanel.Resources>
             <Style TargetType="TextBlock">
                 <Setter Property="Foreground" Value="White"></Setter>
             </Style>
         </StackPanel.Resources>
-        <Grid Width="960" HorizontalAlignment="Center" Height="30">
+        <Grid Width="960" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock FontWeight="Bold" Name="tblFlightStatus" HorizontalAlignment="Center">Flying - </TextBlock>
-                <TextBlock FontWeight="Bold" Name="tblTimeFly" HorizontalAlignment="Center">Time fly</TextBlock>
+                <TextBlock FontWeight="Bold" Name="tblFlightStatus" FontSize="16" HorizontalAlignment="Center">Flying - </TextBlock>
+                <TextBlock FontWeight="Bold" Name="tblTimeFly" HorizontalAlignment="Center" FontSize="16">Time fly</TextBlock>
             </StackPanel>
         </Grid>
 
-        <Grid Height="30">
+        <Grid Height="22">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Name="tblFlightInfomation" TextAlignment="Center" Width="auto
                        " VerticalAlignment="Center">Flight information</TextBlock>
@@ -29,14 +29,14 @@
 
         </Grid>
 
-        <Grid Height="30">
+        <Grid Height="22">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Name="tblFlightTime" TextAlignment="Center" Width="auto
                        " VerticalAlignment="Center">Flight time</TextBlock>
             </StackPanel>
 
         </Grid>
-        <Grid Height="30">
+        <Grid Height="22">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Name="tblDistance" TextAlignment="Center" VerticalAlignment="Center">Distance</TextBlock>
             </StackPanel>
@@ -45,10 +45,10 @@
         <Grid Margin="10,10,10,2" Name="grImageContainer">
             <Image Name="imgFlight" Width="60" Height="20" Margin="10,0,0,0" HorizontalAlignment="Left"></Image>
         </Grid>
-        <StackPanel Orientation="Horizontal">
+        <WrapPanel Orientation="Horizontal">
             <TextBlock Name="tblDeparture" Width="45" FontWeight="Bold" FontSize="14" TextAlignment="Center">Departure</TextBlock>
-            <TextBlock Name="tblProcess" Background="Black" Width="860" Margin="5,5,5,5" Height="7"></TextBlock>
+            <TextBlock Name="tblProcess" Width="860" Background="Black" Margin="5,5,5,5" Height="7"></TextBlock>
             <TextBlock Name="tblArrival" HorizontalAlignment="Right" FontWeight="Bold" FontSize="14" Width="45" TextAlignment="Center">Arrival</TextBlock>
-        </StackPanel>
+        </WrapPanel>
     </StackPanel>
 </UserControl>

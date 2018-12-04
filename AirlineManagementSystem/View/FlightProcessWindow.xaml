@@ -8,22 +8,35 @@
         WindowStartupLocation="CenterScreen"
         Title="Flight Process" Height="650" Width="1040">
     <StackPanel>
-        <GroupBox Header="Filter Flight" Margin="15,15,15,0">
+        <GroupBox Header="Filter Flight" Margin="15,15,15,0" Name="grFilterFlight">
             <GroupBox.Content>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5,5,5,5">
 
-                        <TextBlock Margin="5" VerticalAlignment="Center">Sort by:</TextBlock>
-                        <ComboBox Name="cbSortBy" Width="150" Margin="5"></ComboBox>
-                        
+                    <TextBlock Margin="5" VerticalAlignment="Center">Sort by:</TextBlock>
+                    <ComboBox Name="cbSortBy" Width="150" Margin="5"></ComboBox>
+
                 </StackPanel>
             </GroupBox.Content>
         </GroupBox>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="15" Width="995" Height="500">
+        <ScrollViewer Name="scvFlightProcess" VerticalScrollBarVisibility="Auto" Margin="15" Width="995" Height="500">
             <StackPanel Name="stpFlights">
 
             </StackPanel>
         </ScrollViewer>
-    </StackPanel>
 
+        <!--<Grid x:Name="MainContent" Height="170" MaxHeight="170">
+            <DockPanel LastChildFill="True">
+                <Grid x:Name="Results" Background="Red">
+                    <ScrollViewer>
+                        <StackPanel>
+                            <TextBlock FontSize="24" Text="Result set... 0"/>
+                            <TextBlock FontSize="24" Text="Result set... 1"/>
+                            <TextBlock FontSize="24" Text="Result set... 2"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </DockPanel>
+        </Grid>-->
+    </StackPanel>
 </Window>

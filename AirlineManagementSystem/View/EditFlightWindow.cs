@@ -23,17 +23,15 @@ namespace AirportManagerSystem.View
 
         private void EditFlightWindow_Load(object sender, EventArgs e)
         {
-            //lblFrom.Text = Flight.From.IATACode;
-            //lblTo.Text = Flight.To.IATACode;
-            //lblAircraft.Text = Flight.Aircraft.Name;
-            //dtpDate.Value = Flight.Date;
-            //dtpTime.Value = Flight.Date + Flight.Time;
             lblFrom.Text = Flight.Schedule.Route.Airport.IATACode;
             lblTo.Text = Flight.Schedule.Route.Airport1.IATACode;
             lblAircraft.Text = Flight.Schedule.Aircraft.Name;
             dtpDate.Value = Flight.Schedule.Date;
             dtpTime.Value = Flight.Schedule.Date + Flight.Schedule.Time;
             nudPrice.Value = (int)Flight.EconomyPrice;
+
+            lblDistance.Text = Flight.Schedule.Route.Distance + " kilometers";
+            lblFlightTime.Text = Flight.Schedule.Route.FlightTime + " minutes";
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

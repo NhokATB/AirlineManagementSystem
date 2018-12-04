@@ -30,7 +30,7 @@ namespace AirportManagerSystem.UserControls
             InitializeComponent();
             imgFlight.Source = new BitmapImage(new Uri(@"/AirportManagerSystem;component/Images/WSC2017_TP09_Airplane-Amonic-Single.png", UriKind.Relative));
             this.Loaded += UcFlightProcess_Loaded;
-            timer.Interval = new TimeSpan(0, 0, 0, 2);
+            timer.Interval = new TimeSpan(0, 0, 0, 5);
             timer.Tick += Timer_Tick;
         }
 
@@ -89,7 +89,7 @@ namespace AirportManagerSystem.UserControls
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
-            Now = Now.AddSeconds(10);
+            Now = Now.AddSeconds(5);
             if (Flight != null)
             {
                 if (Flight.Date + Flight.Time < Now)

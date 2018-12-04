@@ -16,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace AirportManagerSystem.View
 {
@@ -24,6 +25,7 @@ namespace AirportManagerSystem.View
     /// </summary>
     public partial class SeatManagementWindow : Window
     {
+        DispatcherTimer timer;
         List<Schedule> schedules;
         List<string> chartTypes = new List<string>() { "Column", "Pie" };
 
@@ -32,11 +34,34 @@ namespace AirportManagerSystem.View
         public SeatManagementWindow()
         {
             InitializeComponent();
+            timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 0, 5);
+            timer.Tick += Timer_Tick;
 
             dpnCheckedInSeat.Background = new SolidColorBrush(AMONICColor.CheckedIn);
             dpnEmptySeat.Background = new SolidColorBrush(AMONICColor.Empty);
 
             this.Loaded += SeatManagementWindow_Loaded;
+            this.Closed += SeatManagementWindow_Closed;
+        }
+
+        private void SeatManagementWindow_Closed(object sender, EventArgs e)
+        {
+            timer.Stop();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadSeat();
+                ShowEmptySeat();
+                ShowDualSeat();
+                LoadChart();
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void SeatManagementWindow_Loaded(object sender, RoutedEventArgs e)
@@ -45,6 +70,8 @@ namespace AirportManagerSystem.View
 
             cbChartType.ItemsSource = chartTypes;
             cbChartType.SelectedIndex = 0;
+
+            timer.Start();
         }
 
         private void dpDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -83,7 +110,8 @@ namespace AirportManagerSystem.View
         {
             wpSeats.Children.Clear();
 
-            var flight = schedules[cbFlights.SelectedIndex];
+            Db.Context = new AirlineManagementSystemEntities();
+            var flight = Db.Context.Schedules.Find(schedules[cbFlights.SelectedIndex].ID);
 
             var numE = flight.Aircraft.EconomySeats;
             var numB = flight.Aircraft.BusinessSeats;
@@ -143,8 +171,6 @@ namespace AirportManagerSystem.View
                         if (uc.Seat.Contains("B")) uc.Width = 175;
                     }
                     else if (uc.Seat.Contains("C")) uc.Width = 175;
-
-                    //uc.btnSeat.Click += BtnSeat_Click;
 
                     wpSeats.Children.Add(uc);
                 }
