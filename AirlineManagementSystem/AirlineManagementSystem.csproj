@@ -147,6 +147,7 @@
     <Compile Include="Model\Position.cs">
       <DependentUpon>AirlineManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\RevenueOfRoute.cs" />
     <Compile Include="Model\SurveyDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -323,6 +324,12 @@
     </Compile>
     <Compile Include="View\OfficesManagementWindow.xaml.cs">
       <DependentUpon>OfficesManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RevenueReportWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RevenueReportWindow.Designer.cs">
+      <DependentUpon>RevenueReportWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="View\RoutesManagementWindow.xaml.cs">
       <DependentUpon>RoutesManagementWindow.xaml</DependentUpon>
@@ -751,6 +758,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MyCommissionWindow.resx">
       <DependentUpon>MyCommissionWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RevenueReportWindow.resx">
+      <DependentUpon>RevenueReportWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\AirlineManagementModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

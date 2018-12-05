@@ -307,5 +307,11 @@ namespace AirportManagerSystem.View
             };
             ShowDialogWindow(myCommissionWindow);
         }
+
+        private void mnRevenueReport_Click(object sender, RoutedEventArgs e)
+        {
+            RevenueReportWindow revenueReportWindow = new RevenueReportWindow();
+            ShowDialogWindow(revenueReportWindow);
+        }
     }
 }

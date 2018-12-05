@@ -31,37 +31,44 @@ namespace AirportManagerSystem.View
         List<Survey> surveys;
         List<string> times;
         int male, female, age18, age25, age40, age60;
+        bool isTheFirstLoadOfDetailTab = true;
+        bool isDetailSelectedTab = false;
 
         public SurveyReportWindow()
         {
             InitializeComponent();
+
+            this.Loaded += SurveyReportWindow_Loaded;
+            this.WindowState = WindowState.Maximized;
+
             rvSummaryReport.ZoomMode = ZoomMode.FullPage;
             rvDetailReport.ZoomMode = ZoomMode.PageWidth;
-            this.Loaded += SurveyReportWindow_Loaded;
+
+            tcSurveyReport.SelectionChanged += TcSurveyReport_SelectionChanged;
+
             dpDateOfFlight.SelectedDateChanged += DpDateOfFlight_SelectedDateChanged;
         }
 
-        private void DpDateOfFlight_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void TcSurveyReport_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var date = dpDateOfFlight.SelectedDate.Value.Date;
-
-            var flightNumbers = Db.Context.Schedules.Where(t=>t.Date == date).Select(t => t.FlightNumber).Distinct().ToList();
-            flightNumbers.Insert(0, "All");
-            cbFlightNumber.ItemsSource = flightNumbers;
-            cbFlightNumber.SelectedIndex = 0;
+            if (tiDetail.IsSelected && isTheFirstLoadOfDetailTab)
+            {
+                if (!isDetailSelectedTab)
+                {
+                    SetColorlegendForAnswer();
+                    isDetailSelectedTab = true;
+                    LoadDataForTabDetail();
+                }
+            }
         }
 
         private void SurveyReportWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            SetColorlegendForAnswer();
-
             LoaddataForTabSummary();
-
-            LoadDataForTabDetail();
-
             LoadDataForTabFilterSurvey();
         }
 
+        #region Summary Report
         private void LoaddataForTabSummary()
         {
             years = Db.Context.Surveys.Select(t => t.Respondent.Schedule.Date.Year.ToString()).Distinct().OrderByDescending(t => t).ToList();
@@ -69,10 +76,65 @@ namespace AirportManagerSystem.View
             cbYear.ItemsSource = years;
             cbYear.SelectedIndex = 0;
         }
+        private void cbYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LoadSummaryReport();
+        }
+        private void LoadSummaryReport()
+        {
+            var report = Db.Context.Respondents.ToList();
+            if (cbYear.SelectedIndex != 0)
+            {
+                var year = int.Parse(years[cbYear.SelectedIndex]);
+                report = report.Where(t => t.Schedule.Date.Year == year).ToList();
+            }
 
+            var items = new List<int>()
+            {
+                report.Count(t=>t.Gender == "M"),
+                report.Count(t=>t.Gender == "F"),
+                report.Count(t=>t.Age >= 18 && t.Age <= 24),
+                report.Count(t=>t.Age >= 25 && t.Age <= 39),
+                report.Count(t=>t.Age >= 40 && t.Age <= 59),
+                report.Count(t=>t.Age >= 60),
+                report.Count(t=>t.CabinType == "Economy"),
+                report.Count(t=>t.CabinType == "Business"),
+                report.Count(t=>t.CabinType == "First Class"),
+                report.Count(t=>t.Arrival == "AUH"),
+                report.Count(t=>t.Arrival == "BAH"),
+                report.Count(t=>t.Arrival == "DOH"),
+                report.Count(t=>t.Arrival == "RUH"),
+                report.Count(t=>t.Arrival == "CAI")
+            };
+
+            SurveyDataSet.SurveyDataTable dt = new SurveyDataSet.SurveyDataTable();
+            dt.AddSurveyRow("", "", 0, items.Sum(), items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13]);
+
+            ReportDataSource rdsByDate = new ReportDataSource();
+            SurveyDataSet dataset = new SurveyDataSet();
+
+            dataset.BeginInit();
+
+            rdsByDate.Name = "DataSet1";
+            rdsByDate.Value = dt;
+            this.rvSummaryReport.LocalReport.DataSources.Clear();
+            this.rvSummaryReport.LocalReport.DataSources.Add(rdsByDate);
+            this.rvSummaryReport.LocalReport.ReportPath = "../../Model/SurveySummaryReport.rdlc";
+
+            dataset.EndInit();
+
+            rvSummaryReport.LocalReport.SetParameters(new ReportParameter("SampleSize", $"Sample size: {report.Count}"));
+            rvSummaryReport.LocalReport.SetParameters(new ReportParameter("Year", $"Time: {years[cbYear.SelectedIndex]}"));
+
+            rvSummaryReport.RefreshReport();
+        }
+        #endregion
+
+        #region Detail Report
         private void LoadDataForTabDetail()
         {
             times = Db.Context.Respondents.Select(t => t.Schedule.Date).Distinct().OrderByDescending(t => t).ToList().Select(t => t.ToString("MMMM yyyy")).Distinct().ToList();
+
             times.Insert(0, "All times");
             cbTimePeriod.ItemsSource = times;
             cbTimePeriod.SelectedIndex = 0;
@@ -80,77 +142,12 @@ namespace AirportManagerSystem.View
             cbGender.ItemsSource = genders;
             cbGender.SelectedIndex = 0;
 
+            isTheFirstLoadOfDetailTab = false;
             cbAge.ItemsSource = ages;
             cbAge.SelectedIndex = 0;
 
-            ResetFilterSurvey();
+            //ResetFilterSurvey();
         }
-
-        private void LoadDataForTabFilterSurvey()
-        {
-            var flightNumbers = Db.Context.Schedules.Select(t => t.FlightNumber).Distinct().ToList();
-            flightNumbers.Insert(0, "All");
-            cbFlightNumber.ItemsSource = flightNumbers;
-            cbFlightNumber.SelectedIndex = 0;
-
-            var airports = Db.Context.Airports.ToList();
-            airports.Insert(0, new Airport() { Name = "All" });
-            cbArrivalAirport.ItemsSource = airports;
-            cbArrivalAirport.DisplayMemberPath = "Name";
-            cbArrivalAirport.SelectedIndex = 0;
-
-            var cabins = Db.Context.CabinTypes.ToList();
-            cabins.Insert(0, new CabinType() { Name = "All" });
-            cbCabinType.ItemsSource = cabins;
-            cbCabinType.DisplayMemberPath = "Name";
-            cbCabinType.SelectedIndex = 0;
-
-            cbChartType.ItemsSource = chartTypes;
-            cbChartType.SelectedIndex = 0;
-        }
-
-        private void LoadChartSurvey()
-        {
-            grdChartContainer.Children.Clear();
-            int i = 0;
-            if (chartTypes[cbChartType.SelectedIndex] == "Line")
-            {
-                UcSurveyLineChart lineChart = new UcSurveyLineChart();
-                foreach (var ans in Db.Context.Answers.Where(t => t.AnswerId != 0).ToList())
-                {
-                    List<KeyValuePair<string, int>> sources = new List<KeyValuePair<string, int>>();
-                    foreach (var ques in Db.Context.Questions.ToList())
-                    {
-                        sources.Add(new KeyValuePair<string, int>(ques.Text, surveys.Count(t => t.AnswerId == ans.AnswerId && t.QuestionId == ques.QuestionId)));
-                    }
-                    ((LineSeries)(lineChart.mcChart).Series[i]).ItemsSource = sources;
-                    i++;
-                }
-                grdChartContainer.Children.Add(lineChart);
-            }
-            else
-            {
-                UcSurveyColumnChart columnChart = new UcSurveyColumnChart();
-                foreach (var ans in Db.Context.Answers.Where(t => t.AnswerId != 0).ToList())
-                {
-                    List<KeyValuePair<string, int>> sources = new List<KeyValuePair<string, int>>();
-                    foreach (var ques in Db.Context.Questions.ToList())
-                    {
-                        sources.Add(new KeyValuePair<string, int>(ques.Text, surveys.Count(t => t.AnswerId == ans.AnswerId && t.QuestionId == ques.QuestionId)));
-                    }
-                   ((ColumnSeries)(columnChart.mcChart).Series[i]).ItemsSource = sources;
-                    i++;
-                }
-                grdChartContainer.Children.Add(columnChart);
-            }
-        }
-
-        private void ResetFilterSurvey()
-        {
-            dgSurveys.ItemsSource = null;
-            grdChartContainer.Children.Clear();
-        }
-
         private void SetColorlegendForAnswer()
         {
             lblOutstanding.Background = new SolidColorBrush(AMONICColor.DarkBlue);
@@ -161,7 +158,6 @@ namespace AirportManagerSystem.View
             lblPoor.Background = new SolidColorBrush(AMONICColor.DarkGreen);
             lblNotKnow.Background = new SolidColorBrush(AMONICColor.MainOrange);
         }
-
         private void LoadDetailReport()
         {
             SetParameterForDetailReport();
@@ -242,7 +238,6 @@ namespace AirportManagerSystem.View
 
             this.rvDetailReport.RefreshReport();
         }
-
         private void SetParameterForDetailReport()
         {
             if (chbGender.IsChecked.Value)
@@ -323,59 +318,124 @@ namespace AirportManagerSystem.View
                 cbAge.SelectedIndex = 0;
             }
         }
-
-        private void LoadSummaryReport()
-        {
-            var report = Db.Context.Respondents.ToList();
-            if (cbYear.SelectedIndex != 0)
-            {
-                var year = int.Parse(years[cbYear.SelectedIndex]);
-                report = report.Where(t => t.Schedule.Date.Year == year).ToList();
-            }
-
-            var items = new List<int>()
-            {
-                report.Count(t=>t.Gender == "M"),
-                report.Count(t=>t.Gender == "F"),
-                report.Count(t=>t.Age >= 18 && t.Age <= 24),
-                report.Count(t=>t.Age >= 25 && t.Age <= 39),
-                report.Count(t=>t.Age >= 40 && t.Age <= 59),
-                report.Count(t=>t.Age >= 60),
-                report.Count(t=>t.CabinType == "Economy"),
-                report.Count(t=>t.CabinType == "Business"),
-                report.Count(t=>t.CabinType == "First Class"),
-                report.Count(t=>t.Arrival == "AUH"),
-                report.Count(t=>t.Arrival == "BAH"),
-                report.Count(t=>t.Arrival == "DOH"),
-                report.Count(t=>t.Arrival == "RUH"),
-                report.Count(t=>t.Arrival == "CAI")
-            };
-
-            SurveyDataSet.SurveyDataTable dt = new SurveyDataSet.SurveyDataTable();
-            dt.AddSurveyRow("", "", 0, items.Sum(), items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13]);
-
-            ReportDataSource rdsByDate = new ReportDataSource();
-            SurveyDataSet dataset = new SurveyDataSet();
-
-            dataset.BeginInit();
-
-            rdsByDate.Name = "DataSet1";
-            rdsByDate.Value = dt;
-            this.rvSummaryReport.LocalReport.DataSources.Clear();
-            this.rvSummaryReport.LocalReport.DataSources.Add(rdsByDate);
-            this.rvSummaryReport.LocalReport.ReportPath = "../../Model/SurveySummaryReport.rdlc";
-
-            dataset.EndInit();
-
-            rvSummaryReport.LocalReport.SetParameters(new ReportParameter("SampleSize", $"Sample size: {report.Count}"));
-            rvSummaryReport.LocalReport.SetParameters(new ReportParameter("Year", $"Time: {years[cbYear.SelectedIndex]}"));
-
-            rvSummaryReport.RefreshReport();
-        }
-
         private void cbTimePeriod_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (!isTheFirstLoadOfDetailTab)
+                LoadDetailReport();
+        }
+        private void chbGender_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                LoadDetailReport();
+            }
+            catch (Exception)
+            {
+            }
+        }
+        private void chbGender_Unchecked(object sender, RoutedEventArgs e)
+        {
             LoadDetailReport();
+        }
+        private void chbAge_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                LoadDetailReport();
+            }
+            catch (Exception)
+            {
+            }
+        }
+        private void chbAge_Unchecked(object sender, RoutedEventArgs e)
+        {
+            LoadDetailReport();
+        }
+        private void cbGender_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!isTheFirstLoadOfDetailTab)
+                LoadDetailReport();
+        }
+        private void cbAge_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LoadDetailReport();
+        }
+        #endregion
+
+        #region Filter Survey Report
+        private void DpDateOfFlight_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var date = dpDateOfFlight.SelectedDate.Value.Date;
+
+            var flightNumbers = Db.Context.Schedules.Where(t => t.Date == date).Select(t => t.FlightNumber).Distinct().ToList();
+            flightNumbers.Insert(0, "All");
+            cbFlightNumber.ItemsSource = flightNumbers;
+            cbFlightNumber.SelectedIndex = 0;
+        }
+
+        private void LoadDataForTabFilterSurvey()
+        {
+            var flightNumbers = Db.Context.Schedules.Select(t => t.FlightNumber).Distinct().ToList();
+            flightNumbers.Insert(0, "All");
+            cbFlightNumber.ItemsSource = flightNumbers;
+            cbFlightNumber.SelectedIndex = 0;
+
+            var airports = Db.Context.Airports.ToList();
+            airports.Insert(0, new Airport() { Name = "All" });
+            cbArrivalAirport.ItemsSource = airports;
+            cbArrivalAirport.DisplayMemberPath = "Name";
+            cbArrivalAirport.SelectedIndex = 0;
+
+            var cabins = Db.Context.CabinTypes.ToList();
+            cabins.Insert(0, new CabinType() { Name = "All" });
+            cbCabinType.ItemsSource = cabins;
+            cbCabinType.DisplayMemberPath = "Name";
+            cbCabinType.SelectedIndex = 0;
+
+            cbChartType.ItemsSource = chartTypes;
+            cbChartType.SelectedIndex = 0;
+        }
+
+        private void LoadChartSurvey()
+        {
+            grdChartContainer.Children.Clear();
+            int i = 0;
+            if (chartTypes[cbChartType.SelectedIndex] == "Line")
+            {
+                UcSurveyLineChart lineChart = new UcSurveyLineChart();
+                foreach (var ans in Db.Context.Answers.Where(t => t.AnswerId != 0).ToList())
+                {
+                    List<KeyValuePair<string, int>> sources = new List<KeyValuePair<string, int>>();
+                    foreach (var ques in Db.Context.Questions.ToList())
+                    {
+                        sources.Add(new KeyValuePair<string, int>(ques.Text, surveys.Count(t => t.AnswerId == ans.AnswerId && t.QuestionId == ques.QuestionId)));
+                    }
+                    ((LineSeries)(lineChart.mcChart).Series[i]).ItemsSource = sources;
+                    i++;
+                }
+                grdChartContainer.Children.Add(lineChart);
+            }
+            else
+            {
+                UcSurveyColumnChart columnChart = new UcSurveyColumnChart();
+                foreach (var ans in Db.Context.Answers.Where(t => t.AnswerId != 0).ToList())
+                {
+                    List<KeyValuePair<string, int>> sources = new List<KeyValuePair<string, int>>();
+                    foreach (var ques in Db.Context.Questions.ToList())
+                    {
+                        sources.Add(new KeyValuePair<string, int>(ques.Text, surveys.Count(t => t.AnswerId == ans.AnswerId && t.QuestionId == ques.QuestionId)));
+                    }
+                   ((ColumnSeries)(columnChart.mcChart).Series[i]).ItemsSource = sources;
+                    i++;
+                }
+                grdChartContainer.Children.Add(columnChart);
+            }
+        }
+
+        private void ResetFilterSurvey()
+        {
+            dgSurveys.ItemsSource = null;
+            grdChartContainer.Children.Clear();
         }
 
         private void cbArrivalAirport_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -429,22 +489,6 @@ namespace AirportManagerSystem.View
             }
         }
 
-        private void cbYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            LoadSummaryReport();
-        }
-
-        private void chbGender_Checked(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                LoadDetailReport();
-            }
-            catch (Exception)
-            {
-            }
-        }
-
         private void cbFlightNumber_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ResetFilterSurvey();
@@ -454,36 +498,6 @@ namespace AirportManagerSystem.View
         {
             ResetFilterSurvey();
         }
-
-        private void chbGender_Unchecked(object sender, RoutedEventArgs e)
-        {
-            LoadDetailReport();
-        }
-
-        private void chbAge_Checked(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                LoadDetailReport();
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        private void chbAge_Unchecked(object sender, RoutedEventArgs e)
-        {
-            LoadDetailReport();
-        }
-
-        private void cbGender_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            LoadDetailReport();
-        }
-
-        private void cbAge_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            LoadDetailReport();
-        }
+        #endregion
     }
 }

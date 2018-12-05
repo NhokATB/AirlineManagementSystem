@@ -16,7 +16,7 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <TabControl>
+        <TabControl Name="tcSurveyReport">
             <TabItem>
                 <TabItem.Header>
                     <TextBlock Margin="2,1">Result Summary</TextBlock>
@@ -37,10 +37,10 @@
                 <TabItem.Header>
                     <TextBlock Margin="2,1">Result Detail</TextBlock>
                 </TabItem.Header>
-                <StackPanel Margin="10">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel Margin="10" Width="1254">
+                    <StackPanel Orientation="Horizontal">
                         <TextBlock VerticalAlignment="Center">Time period:</TextBlock>
-                        <ComboBox Name="cbTimePeriod" Margin="5" Width="150" SelectionChanged="cbTimePeriod_SelectionChanged">
+                        <ComboBox Name="cbTimePeriod" Margin="10,5" Width="150" SelectionChanged="cbTimePeriod_SelectionChanged">
                         </ComboBox>
                     </StackPanel>
                     <WindowsFormsHost Name="wfDetailReport" Margin="0,2,0,7" Height="530" Width="1254">
@@ -70,7 +70,7 @@
                     </StackPanel>
                 </StackPanel>
             </TabItem>
-            <TabItem>
+            <TabItem Name="tiFilterSurvey">
                 <TabItem.Header>
                     <TextBlock Margin="2,1">Filter Survey</TextBlock>
                 </TabItem.Header>

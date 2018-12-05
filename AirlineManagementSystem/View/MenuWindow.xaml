@@ -46,7 +46,7 @@
             <MenuItem Header="Report" Name="mnReport">
                 <MenuItem Header="Amenities" Name="mnAmenitiesReprot" Click="mnAmenitiesReprot_Click"/>
                 <MenuItem Header="Survey" Name="mnSurveyReport" Click="mnSurveyReport_Click"/>
-                <MenuItem Header="Revenue" Name="mnRevenueReport"/>
+                <MenuItem Header="Revenue" Name="mnRevenueReport" Click="mnRevenueReport_Click"/>
                 <MenuItem Header="Commission" Name="mnCommisstion" Click="mnCommisstion_Click"/>
                 <MenuItem Header="Short Summary" Name="mnShortSummaryReport" Click="mnShortSummaryReport_Click"/>
             </MenuItem>
