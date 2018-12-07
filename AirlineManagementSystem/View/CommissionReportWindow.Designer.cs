@@ -41,26 +41,26 @@ namespace AirportManagerSystem.View
             this.ReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DataSet1 = new AirportManagerSystem.Model.CommissionDataSet();
             this.btnExport = new System.Windows.Forms.Button();
-            this.dgvCommission = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chartDetail = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdbByDate = new System.Windows.Forms.RadioButton();
-            this.dtpDate = new System.Windows.Forms.DateTimePicker();
-            this.rdbByMonth = new System.Windows.Forms.RadioButton();
-            this.rdbByYear = new System.Windows.Forms.RadioButton();
-            this.cbYear = new System.Windows.Forms.ComboBox();
-            this.dtpMonth = new System.Windows.Forms.DateTimePicker();
             this.btnApply = new System.Windows.Forms.Button();
+            this.dtpMonth = new System.Windows.Forms.DateTimePicker();
+            this.cbYear = new System.Windows.Forms.ComboBox();
+            this.rdbByYear = new System.Windows.Forms.RadioButton();
+            this.rdbByMonth = new System.Windows.Forms.RadioButton();
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
+            this.rdbByDate = new System.Windows.Forms.RadioButton();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCommission = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.ReportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCommission)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartDetail)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCommission)).BeginInit();
             this.SuspendLayout();
             // 
             // ReportBindingSource
@@ -85,54 +85,6 @@ namespace AirportManagerSystem.View
             this.btnExport.Text = "Export Excel File";
             this.btnExport.UseVisualStyleBackColor = false;
             this.btnExport.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // dgvCommission
-            // 
-            this.dgvCommission.AllowUserToAddRows = false;
-            this.dgvCommission.AllowUserToDeleteRows = false;
-            this.dgvCommission.AllowUserToResizeRows = false;
-            this.dgvCommission.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dgvCommission.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCommission.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCommission.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
-            this.dgvCommission.Location = new System.Drawing.Point(416, 12);
-            this.dgvCommission.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgvCommission.Name = "dgvCommission";
-            this.dgvCommission.ReadOnly = true;
-            this.dgvCommission.RowHeadersVisible = false;
-            this.dgvCommission.RowTemplate.Height = 25;
-            this.dgvCommission.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCommission.Size = new System.Drawing.Size(556, 146);
-            this.dgvCommission.TabIndex = 3;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "User";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Amenities Sold";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Tickets Sold";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 120F;
-            this.Column4.HeaderText = "Commission Earned";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
             // 
             // chartDetail
             // 
@@ -209,6 +161,67 @@ namespace AirportManagerSystem.View
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "View by";
             // 
+            // btnApply
+            // 
+            this.btnApply.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnApply.Location = new System.Drawing.Point(249, 142);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Size = new System.Drawing.Size(99, 37);
+            this.btnApply.TabIndex = 7;
+            this.btnApply.Text = "Apply";
+            this.btnApply.UseVisualStyleBackColor = false;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
+            // 
+            // dtpMonth
+            // 
+            this.dtpMonth.CustomFormat = "MM/yyyy";
+            this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpMonth.Location = new System.Drawing.Point(148, 64);
+            this.dtpMonth.Name = "dtpMonth";
+            this.dtpMonth.ShowUpDown = true;
+            this.dtpMonth.Size = new System.Drawing.Size(200, 23);
+            this.dtpMonth.TabIndex = 5;
+            // 
+            // cbYear
+            // 
+            this.cbYear.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbYear.FormattingEnabled = true;
+            this.cbYear.Location = new System.Drawing.Point(148, 102);
+            this.cbYear.Name = "cbYear";
+            this.cbYear.Size = new System.Drawing.Size(200, 24);
+            this.cbYear.TabIndex = 4;
+            // 
+            // rdbByYear
+            // 
+            this.rdbByYear.AutoSize = true;
+            this.rdbByYear.Location = new System.Drawing.Point(49, 103);
+            this.rdbByYear.Name = "rdbByYear";
+            this.rdbByYear.Size = new System.Drawing.Size(76, 21);
+            this.rdbByYear.TabIndex = 3;
+            this.rdbByYear.Text = "By Year";
+            this.rdbByYear.UseVisualStyleBackColor = true;
+            // 
+            // rdbByMonth
+            // 
+            this.rdbByMonth.AutoSize = true;
+            this.rdbByMonth.Location = new System.Drawing.Point(49, 67);
+            this.rdbByMonth.Name = "rdbByMonth";
+            this.rdbByMonth.Size = new System.Drawing.Size(85, 21);
+            this.rdbByMonth.TabIndex = 2;
+            this.rdbByMonth.Text = "By Month";
+            this.rdbByMonth.UseVisualStyleBackColor = true;
+            // 
+            // dtpDate
+            // 
+            this.dtpDate.CustomFormat = "dd/MM/yyyy";
+            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDate.Location = new System.Drawing.Point(148, 27);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(200, 23);
+            this.dtpDate.TabIndex = 1;
+            // 
             // rdbByDate
             // 
             this.rdbByDate.AutoSize = true;
@@ -221,65 +234,53 @@ namespace AirportManagerSystem.View
             this.rdbByDate.Text = "By date";
             this.rdbByDate.UseVisualStyleBackColor = true;
             // 
-            // dtpDate
+            // Column4
             // 
-            this.dtpDate.CustomFormat = "dd/MM/yyyy";
-            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDate.Location = new System.Drawing.Point(148, 27);
-            this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(200, 23);
-            this.dtpDate.TabIndex = 1;
+            this.Column4.FillWeight = 120F;
+            this.Column4.HeaderText = "Commission Earned";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
-            // rdbByMonth
+            // Column3
             // 
-            this.rdbByMonth.AutoSize = true;
-            this.rdbByMonth.Location = new System.Drawing.Point(49, 67);
-            this.rdbByMonth.Name = "rdbByMonth";
-            this.rdbByMonth.Size = new System.Drawing.Size(85, 21);
-            this.rdbByMonth.TabIndex = 2;
-            this.rdbByMonth.Text = "By Month";
-            this.rdbByMonth.UseVisualStyleBackColor = true;
+            this.Column3.HeaderText = "Tickets Sold";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
-            // rdbByYear
+            // Column2
             // 
-            this.rdbByYear.AutoSize = true;
-            this.rdbByYear.Location = new System.Drawing.Point(49, 103);
-            this.rdbByYear.Name = "rdbByYear";
-            this.rdbByYear.Size = new System.Drawing.Size(76, 21);
-            this.rdbByYear.TabIndex = 3;
-            this.rdbByYear.Text = "By Year";
-            this.rdbByYear.UseVisualStyleBackColor = true;
+            this.Column2.HeaderText = "Amenities Sold";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
-            // cbYear
+            // Column1
             // 
-            this.cbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbYear.FormattingEnabled = true;
-            this.cbYear.Location = new System.Drawing.Point(148, 102);
-            this.cbYear.Name = "cbYear";
-            this.cbYear.Size = new System.Drawing.Size(200, 24);
-            this.cbYear.TabIndex = 4;
+            this.Column1.HeaderText = "User";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
-            // dtpMonth
+            // dgvCommission
             // 
-            this.dtpMonth.CustomFormat = "MM/yyyy";
-            this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpMonth.Location = new System.Drawing.Point(148, 64);
-            this.dtpMonth.Name = "dtpMonth";
-            this.dtpMonth.ShowUpDown = true;
-            this.dtpMonth.Size = new System.Drawing.Size(200, 23);
-            this.dtpMonth.TabIndex = 5;
-            // 
-            // btnApply
-            // 
-            this.btnApply.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnApply.Location = new System.Drawing.Point(249, 142);
-            this.btnApply.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(99, 37);
-            this.btnApply.TabIndex = 7;
-            this.btnApply.Text = "Apply";
-            this.btnApply.UseVisualStyleBackColor = false;
-            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
+            this.dgvCommission.AllowUserToAddRows = false;
+            this.dgvCommission.AllowUserToDeleteRows = false;
+            this.dgvCommission.AllowUserToResizeRows = false;
+            this.dgvCommission.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dgvCommission.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCommission.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCommission.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
+            this.dgvCommission.Location = new System.Drawing.Point(416, 12);
+            this.dgvCommission.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvCommission.Name = "dgvCommission";
+            this.dgvCommission.ReadOnly = true;
+            this.dgvCommission.RowHeadersVisible = false;
+            this.dgvCommission.RowTemplate.Height = 25;
+            this.dgvCommission.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCommission.Size = new System.Drawing.Size(556, 146);
+            this.dgvCommission.TabIndex = 3;
             // 
             // CommissionReportWindow
             // 
@@ -301,10 +302,10 @@ namespace AirportManagerSystem.View
             this.Load += new System.EventHandler(this.FrmReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ReportBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCommission)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartDetail)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCommission)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -312,15 +313,10 @@ namespace AirportManagerSystem.View
         #endregion
 
         private System.Windows.Forms.Button btnExport;
-        private DataGridView dgvCommission;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDetail;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource ReportBindingSource;
         private CommissionDataSet DataSet1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.GroupBox groupBox1;
         private DateTimePicker dtpMonth;
         private ComboBox cbYear;
@@ -329,5 +325,10 @@ namespace AirportManagerSystem.View
         private DateTimePicker dtpDate;
         private RadioButton rdbByDate;
         private Button btnApply;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridView dgvCommission;
     }
 }

@@ -148,11 +148,13 @@
       <DependentUpon>AirlineManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\RevenueOfRoute.cs" />
+    <Compile Include="Model\SummaryRevenue.cs" />
     <Compile Include="Model\SurveyDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SurveyDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Model\TicketRevenue.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UserControls\UcFlightProcess.xaml.cs">
       <DependentUpon>UcFlightProcess.xaml</DependentUpon>
@@ -324,6 +326,12 @@
     </Compile>
     <Compile Include="View\OfficesManagementWindow.xaml.cs">
       <DependentUpon>OfficesManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RevenueDetailWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RevenueDetailWindow.Designer.cs">
+      <DependentUpon>RevenueDetailWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="View\RevenueReportWindow.cs">
       <SubType>Form</SubType>
@@ -758,6 +766,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MyCommissionWindow.resx">
       <DependentUpon>MyCommissionWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RevenueDetailWindow.resx">
+      <DependentUpon>RevenueDetailWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\RevenueReportWindow.resx">
       <DependentUpon>RevenueReportWindow.cs</DependentUpon>

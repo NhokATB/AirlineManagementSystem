@@ -127,8 +127,10 @@ namespace AirportManagerSystem.View
 
         private void mnSurveyReport_Click(object sender, RoutedEventArgs e)
         {
-            SurveyReportWindow wSurveyReport = new SurveyReportWindow();
-            ShowDialogWindow(wSurveyReport);
+            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+            SurveyReportWindow surveyReportWindow = new SurveyReportWindow();
+            ShowDialogWindow(surveyReportWindow);
+            Mouse.OverrideCursor = null;
         }
 
         private void mnSurveyQuestionaire_Click(object sender, RoutedEventArgs e)
@@ -190,6 +192,7 @@ namespace AirportManagerSystem.View
             this.Opacity = 0.5;
             window.ShowDialog();
             this.Opacity = 1;
+            Mouse.OverrideCursor = null;
         }
         private void ShowDialogWindow(Form window)
         {
@@ -310,8 +313,10 @@ namespace AirportManagerSystem.View
 
         private void mnRevenueReport_Click(object sender, RoutedEventArgs e)
         {
+            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
             RevenueReportWindow revenueReportWindow = new RevenueReportWindow();
             ShowDialogWindow(revenueReportWindow);
+            Mouse.OverrideCursor = null;
         }
     }
 }

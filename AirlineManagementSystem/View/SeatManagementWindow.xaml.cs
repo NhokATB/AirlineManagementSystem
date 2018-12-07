@@ -43,6 +43,7 @@ namespace AirportManagerSystem.View
 
             this.Loaded += SeatManagementWindow_Loaded;
             this.Closed += SeatManagementWindow_Closed;
+            this.WindowState = WindowState.Maximized;
         }
 
         private void SeatManagementWindow_Closed(object sender, EventArgs e)

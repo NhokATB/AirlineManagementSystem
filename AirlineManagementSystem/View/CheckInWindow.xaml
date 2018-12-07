@@ -6,16 +6,18 @@
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Check-In" Height="600" Width="800">
+        Title="Check-In" Height="600" Width="850">
     <StackPanel Margin="10,10,10,5">
         <GroupBox Header="Filter by">
             <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
                 <TextBlock VerticalAlignment="Center">Ticket id:</TextBlock>
-                <TextBox Name="txtTicketId" Width="80" Margin="10,5"></TextBox>
+                <TextBox Name="txtTicketId" Width="60" Margin="10,5,20,5"></TextBox>
                 <TextBlock VerticalAlignment="Center">Booking refenrence:</TextBlock>
-                <TextBox Name="txtBookingReference" Width="140" Margin="10,5"></TextBox>
+                <TextBox Name="txtBookingReference" Width="100" Margin="10,5,20,5"></TextBox>
                 <TextBlock VerticalAlignment="Center">Passport number:</TextBlock>
-                <TextBox Name="txtPassportNumber" Width="140" Margin="10,5"></TextBox>
+                <TextBox Name="txtPassportNumber" Width="100" Margin="10,5,20,5"></TextBox>
+                <TextBlock VerticalAlignment="Center">Cabin types:</TextBlock>
+                <ComboBox Name="cbCabinTypes" Width="100" Margin="10,5,0,5"></ComboBox>
             </StackPanel>
         </GroupBox>
 
@@ -43,7 +45,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" VerticalAlignment="Bottom">Selected tickets:</TextBlock>
             <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,4,0,12" HorizontalAlignment="Right">
-                <Button Name="btnAddToSelectedTicket" Width="140" Height="35" Click="btnAddToSelectedTicket_Click">Add to selected ticket</Button>
+                <Button Name="btnAddToSelectedTicket" Width="140" Height="35" Click="btnAddToSelectedTicket_Click">Add to selected tickets</Button>
             </StackPanel>
         </Grid>
 

@@ -1,0 +1,671 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6DB81034-ADC3-4189-9C58-7F923AF6B523}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AirportManagerSystem</RootNamespace>
+    <AssemblyName>AirportManagerSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChartControls\UcSeatColumnChart.xaml.cs">
+      <DependentUpon>UcSeatColumnChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChartControls\UcSeatPieChart.xaml.cs">
+      <DependentUpon>UcSeatPieChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChartControls\UcSurveyColumnChart.xaml.cs">
+      <DependentUpon>UcSurveyColumnChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChartControls\UcSurveyLineChart.xaml.cs">
+      <DependentUpon>UcSurveyLineChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CommandClass.cs" />
+    <Compile Include="Model\AmenitiesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AmenitiesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="HelperClass\AMONICColor.cs" />
+    <Compile Include="Model\CommissionDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommissionDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Crew.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CrewMember.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Flight.cs" />
+    <Compile Include="Model\Member.cs" />
+    <Compile Include="Model\NewFlight.cs" />
+    <Compile Include="Model\NewLog.cs" />
+    <Compile Include="Model\NewSurvey.cs" />
+    <Compile Include="Model\NewTicket.cs" />
+    <Compile Include="Model\Position.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RevenueOfRoute.cs" />
+    <Compile Include="Model\SummaryRevenue.cs" />
+    <Compile Include="Model\SurveyDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SurveyDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UserControls\UcFlightProcess.xaml.cs">
+      <DependentUpon>UcFlightProcess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UcSeat.xaml.cs">
+      <DependentUpon>UcSeat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UcSurvey.xaml.cs">
+      <DependentUpon>UcSurvey.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AboutAMONICAirlineWindow.xaml.cs">
+      <DependentUpon>AboutAMONICAirlineWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddAircraftWindow.xaml.cs">
+      <DependentUpon>AddAircraftWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddAirportWindow.xaml.cs">
+      <DependentUpon>AddAirportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddAmenityWindow.xaml.cs">
+      <DependentUpon>AddAmenityWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddCabinTypeWindow.xaml.cs">
+      <DependentUpon>AddCabinTypeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddCrewWindow.xaml.cs">
+      <DependentUpon>AddCrewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddFlightWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddFlightWindow.Designer.cs">
+      <DependentUpon>AddFlightWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddMemberWindow.xaml.cs">
+      <DependentUpon>AddMemberWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddOfficeWindow.xaml.cs">
+      <DependentUpon>AddOfficeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddRouteWindow.xaml.cs">
+      <DependentUpon>AddRouteWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddUserWindow.xaml.cs">
+      <DependentUpon>AddUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AircraftManagementWindow.xaml.cs">
+      <DependentUpon>AircraftManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AirportManagementWindow.xaml.cs">
+      <DependentUpon>AirportManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AmenitiesManagementWindow.xaml.cs">
+      <DependentUpon>AmenitiesManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AmenitiesReportWindow.xaml.cs">
+      <DependentUpon>AmenitiesReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BillingConfirmationWindow.xaml.cs">
+      <DependentUpon>BillingConfirmationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BookConfirmationWindow.xaml.cs">
+      <DependentUpon>BookConfirmationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BookFlightWindow.xaml.cs">
+      <DependentUpon>BookFlightWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CabinTypesManagementWindow.xaml.cs">
+      <DependentUpon>CabinTypesManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CancelTicketPolicyWindow.xaml.cs">
+      <DependentUpon>CancelTicketPolicyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CancelTicketWindow.xaml.cs">
+      <DependentUpon>CancelTicketWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChangePasswordWindow.xaml.cs">
+      <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChangeTicketPolicyWindow.xaml.cs">
+      <DependentUpon>ChangeTicketPolicyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChangeTicketWindow.xaml.cs">
+      <DependentUpon>ChangeTicketWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CheckInWindow.xaml.cs">
+      <DependentUpon>CheckInWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChooseCrewWindow.xaml.cs">
+      <DependentUpon>ChooseCrewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CommissionDetailWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CommissionDetailWindow.Designer.cs">
+      <DependentUpon>CommissionDetailWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CommissionReportWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CommissionReportWindow.Designer.cs">
+      <DependentUpon>CommissionReportWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CrewManagementWindow.xaml.cs">
+      <DependentUpon>CrewManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditAircraftWindow.xaml.cs">
+      <DependentUpon>EditAircraftWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditAirportWindow.xaml.cs">
+      <DependentUpon>EditAirportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditAmenityWindow.xaml.cs">
+      <DependentUpon>EditAmenityWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditCabinTypeWindow.xaml.cs">
+      <DependentUpon>EditCabinTypeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditCrewWindow.xaml.cs">
+      <DependentUpon>EditCrewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditFlightWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EditFlightWindow.Designer.cs">
+      <DependentUpon>EditFlightWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditMemberWindow.xaml.cs">
+      <DependentUpon>EditMemberWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditOfficeWindow.xaml.cs">
+      <DependentUpon>EditOfficeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditProfileWindow.xaml.cs">
+      <DependentUpon>EditProfileWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CrashWindow.xaml.cs">
+      <DependentUpon>CrashWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditRouteWindow.xaml.cs">
+      <DependentUpon>EditRouteWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditTicketWindow.xaml.cs">
+      <DependentUpon>EditTicketWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FlightManagementWindow.xaml.cs">
+      <DependentUpon>FlightManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FlightProcessWindow.xaml.cs">
+      <DependentUpon>FlightProcessWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ImportChangeWindow.xaml.cs">
+      <DependentUpon>ImportChangeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginHistoryManagementWindow.xaml.cs">
+      <DependentUpon>LoginHistoryManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MemberListWindow.xaml.cs">
+      <DependentUpon>MemberListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MemberManagementWindow.xaml.cs">
+      <DependentUpon>MemberManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MyCommissionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MyCommissionWindow.Designer.cs">
+      <DependentUpon>MyCommissionWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\OfficesManagementWindow.xaml.cs">
+      <DependentUpon>OfficesManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RevenueReportWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RevenueReportWindow.Designer.cs">
+      <DependentUpon>RevenueReportWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\RoutesManagementWindow.xaml.cs">
+      <DependentUpon>RoutesManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SeatManagementWindow.xaml.cs">
+      <DependentUpon>SeatManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SeatModelWindow.xaml.cs">
+      <DependentUpon>SeatModelWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SetUpCrewWindow.xaml.cs">
+      <DependentUpon>SetUpCrewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShortSummaryWindow.xaml.cs">
+      <DependentUpon>ShortSummaryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SurveyQuestionnaireWindow.xaml.cs">
+      <DependentUpon>SurveyQuestionnaireWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SurveyReportWindow.xaml.cs">
+      <DependentUpon>SurveyReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UcFlightDetail.xaml.cs">
+      <DependentUpon>UcFlightDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginHistoryWindow.xaml.cs">
+      <DependentUpon>LoginHistoryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MenuWindow.xaml.cs">
+      <DependentUpon>MenuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PurchaseAmenitiesWindow.xaml.cs">
+      <DependentUpon>PurchaseAmenitiesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TicketControlWindow.xaml.cs">
+      <DependentUpon>TicketControlWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TicketsManagermentWindow.xaml.cs">
+      <DependentUpon>TicketsManagermentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserManagementWindow.xaml.cs">
+      <DependentUpon>UserManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\Aircraft.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AirlineManagementModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AirlineManagementModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AirlineManagementModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AirlineManagementModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AirlineManagementModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Airport.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AmenitiesTicket.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Amenity.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Answer.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CabinType.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Country.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Crash.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Db.cs" />
+    <Compile Include="Model\LoginHistory.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HelperClass\Md5Helper.cs" />
+    <Compile Include="Model\Office.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Question.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Respondent.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Role.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Route.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Schedule.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Survey.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Ticket.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\User.cs">
+      <DependentUpon>AirlineManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View\LayoutWindow.xaml.cs">
+      <DependentUpon>LayoutWindow.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Model\AmenitiesReport.rdlc" />
+    <EmbeddedResource Include="Model\SurveyDetailReport.rdlc" />
+    <EmbeddedResource Include="Model\SurveySummaryReport.rdlc" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AddFlightWindow.resx">
+      <DependentUpon>AddFlightWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CommissionDetailWindow.resx">
+      <DependentUpon>CommissionDetailWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CommissionReportWindow.resx">
+      <DependentUpon>CommissionReportWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EditFlightWindow.resx">
+      <DependentUpon>EditFlightWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MyCommissionWindow.resx">
+      <DependentUpon>MyCommissionWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RevenueReportWindow.resx">
+      <DependentUpon>RevenueReportWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model\AirlineManagementModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AirlineManagementModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\AirlineManagementModel.edmx.diagram">
+      <DependentUpon>AirlineManagementModel.edmx</DependentUpon>
+    </None>
+    <None Include="Model\AmenitiesDataSet.xsc">
+      <DependentUpon>AmenitiesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Model\AmenitiesDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AmenitiesDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Model\AmenitiesDataSet.xss">
+      <DependentUpon>AmenitiesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Model\CommissionDataSet.xsc">
+      <DependentUpon>CommissionDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Model\CommissionDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CommissionDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Model\CommissionDataSet.xss">
+      <DependentUpon>CommissionDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Model\SurveyDataSet.xsc">
+      <DependentUpon>SurveyDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Model\SurveyDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SurveyDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Model\SurveyDataSet.xss">
+      <DependentUpon>SurveyDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controller\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Model\AirlineManagementModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AirlineManagementModel.edmx</DependentUpon>
+      <LastGenOutput>AirlineManagementModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\AirlineManagementModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AirlineManagementModel.edmx</DependentUpon>
+      <LastGenOutput>AirlineManagementModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ReferencePath Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\bin\Debug\De.TorstenMandelkow.MetroChart.dll" />
+    <ReferencePath Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll" />
+    <ReferencePath Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Microsoft.CSharp.dll" />
+    <ReferencePath Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </ReferencePath>
+    <ReferencePath Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll" />
+    <ReferencePath Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.resources.dll" />
+    <ReferencePath Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.DataVisualization.dll" />
+    <ReferencePath Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <ReferencePath Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Design.dll" />
+    <ReferencePath Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Design.resources.dll" />
+    <ReferencePath Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll" />
+    <ReferencePath Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.WinForms.dll" />
+    <ReferencePath Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <ReferencePath Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\mscorlib.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\PresentationCore.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\PresentationFramework.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.ComponentModel.DataAnnotations.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Core.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.DataSetExtensions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Drawing.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Net.Http.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Runtime.Serialization.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Security.dll" />
+    <ReferencePath Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\packages\System.Windows.Controls.DataVisualization.Toolkit.4.0.0.0\lib\net40-Client\System.Windows.Controls.DataVisualization.Toolkit.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Windows.Forms.DataVisualization.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Windows.Forms.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xaml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.Linq.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\UIAutomationProvider.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\WindowsBase.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\WindowsFormsIntegration.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Collections.Concurrent.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Collections.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ComponentModel.Annotations.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ComponentModel.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ComponentModel.EventBasedAsync.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Diagnostics.Contracts.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Diagnostics.Debug.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Diagnostics.Tools.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Diagnostics.Tracing.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Dynamic.Runtime.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Globalization.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.IO.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Linq.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Linq.Expressions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Linq.Parallel.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Linq.Queryable.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Net.NetworkInformation.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Net.Primitives.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Net.Requests.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Net.WebHeaderCollection.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ObjectModel.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Reflection.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Reflection.Emit.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Reflection.Emit.ILGeneration.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Reflection.Emit.Lightweight.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Reflection.Extensions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Reflection.Primitives.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Resources.ResourceManager.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.Extensions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.Handles.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.InteropServices.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.InteropServices.WindowsRuntime.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.Numerics.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.Serialization.Json.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.Serialization.Primitives.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Runtime.Serialization.Xml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Security.Principal.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ServiceModel.Duplex.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ServiceModel.Http.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ServiceModel.NetTcp.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ServiceModel.Primitives.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.ServiceModel.Security.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Text.Encoding.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Text.Encoding.Extensions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Text.RegularExpressions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Threading.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Threading.Tasks.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Threading.Tasks.Parallel.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Threading.Timer.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Xml.ReaderWriter.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Xml.XDocument.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Xml.XmlSerializer.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\ChartControls\UcSeatColumnChart.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\ChartControls\UcSeatPieChart.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\ChartControls\UcSurveyColumnChart.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\ChartControls\UcSurveyLineChart.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\UserControls\UcFlightProcess.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\UserControls\UcSeat.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\UserControls\UcSurvey.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\AboutAMONICAirlineWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\AddAircraftWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\AddAirportWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\AddAmenityWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\AddCabinTypeWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\AddCrewWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\AddMemberWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\AddOfficeWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\AddRouteWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\AddUserWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\AircraftManagementWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\AirportManagementWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\AmenitiesManagementWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\AmenitiesReportWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\BillingConfirmationWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\BookConfirmationWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\BookFlightWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\CabinTypesManagementWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\CancelTicketPolicyWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\CancelTicketWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\ChangePasswordWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\ChangeTicketPolicyWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\ChangeTicketWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\CheckInWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\ChooseCrewWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\CrewManagementWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\EditAircraftWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\EditAirportWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\EditAmenityWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\EditCabinTypeWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\EditCrewWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\EditMemberWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\EditOfficeWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\EditProfileWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\CrashWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\EditRouteWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\EditTicketWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\FlightManagementWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\FlightProcessWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\ImportChangeWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\LoginHistoryManagementWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\MemberListWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\MemberManagementWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\OfficesManagementWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\RoutesManagementWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\SeatManagementWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\SeatModelWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\SetUpCrewWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\ShortSummaryWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\SurveyQuestionnaireWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\SurveyReportWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\UserControls\UcFlightDetail.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\LayoutWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\LoginHistoryWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\LoginWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\MenuWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\PurchaseAmenitiesWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\TicketControlWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\TicketsManagermentWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\View\UserManagementWindow.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\App.g.cs" />
+    <Compile Include="C:\Users\PRO\OneDrive\DoAnTotNghiep\AirlineManagementSystem\AirlineManagementSystem\obj\Debug\AirportManagerSystem_Content.g.cs" />
+  </ItemGroup>
+</Project>

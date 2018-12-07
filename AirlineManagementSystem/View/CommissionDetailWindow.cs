@@ -25,7 +25,7 @@ namespace AirportManagerSystem.View
         private void FrmDetail_Load(object sender, EventArgs e)
         {
             var years = Db.Context.Schedules.Select(t => t.Date.Year).Distinct().OrderBy(t => t).ToList();
-            cbYear.DataSource = years;
+            cbMonth.DataSource = years;
 
             var users = Db.Context.Users.Where(t => t.FirstName + " " + t.LastName == User).ToList();
             userReports = users.Select(t => new UserReport
@@ -93,7 +93,7 @@ namespace AirportManagerSystem.View
         {
             var date = dtpDate.Value.Date;
 
-            var year = int.Parse(cbYear.Text);
+            var year = int.Parse(cbMonth.Text);
 
             for (int i = 1; i < 13; i++)
             {
@@ -128,7 +128,7 @@ namespace AirportManagerSystem.View
                 value = UpdateCommission(tickets).ToString("C0");
             }
 
-            chart1.Series[0].Name = $"{Type} at {cbYear.Text}";
+            chart1.Series[0].Name = $"{Type} at {cbMonth.Text}";
         }
         private void LoadChartByDateInMonth()
         {
@@ -241,6 +241,40 @@ namespace AirportManagerSystem.View
         private void btnApply_Click(object sender, EventArgs e)
         {
             LoadChart();
+        }
+
+        private void rdbByMonth_CheckedChanged(object sender, EventArgs e)
+        {
+            rdbCheckedChanged();
+        }
+
+        private void rdbByYear_CheckedChanged(object sender, EventArgs e)
+        {
+            rdbCheckedChanged();
+        }
+
+        private void rdbByDate_CheckedChanged(object sender, EventArgs e)
+        {
+            rdbCheckedChanged();
+        }
+
+        private void rdbCheckedChanged()
+        {
+            if (rdbByDate.Checked)
+            {
+                dtpDate.Enabled = true;
+                cbMonth.Enabled = false;
+            }
+            else if (rdbByMonth.Checked)
+            {
+                dtpDate.Enabled = false;
+                cbMonth.Enabled = true;
+            }
+            else
+            {
+                dtpDate.Enabled = false;
+                cbMonth.Enabled = false;
+            }
         }
     }
 }

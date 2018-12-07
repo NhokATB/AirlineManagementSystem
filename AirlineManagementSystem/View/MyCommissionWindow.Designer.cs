@@ -102,6 +102,7 @@
             // 
             // cbYear
             // 
+            this.cbYear.BackColor = System.Drawing.SystemColors.ControlLight;
             this.cbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbYear.FormattingEnabled = true;
             this.cbYear.Location = new System.Drawing.Point(462, 27);
@@ -154,6 +155,7 @@
             // cbCriterias
             // 
             this.cbCriterias.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbCriterias.BackColor = System.Drawing.SystemColors.ControlLight;
             this.cbCriterias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCriterias.FormattingEnabled = true;
             this.cbCriterias.Items.AddRange(new object[] {

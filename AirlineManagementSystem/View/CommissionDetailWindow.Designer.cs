@@ -34,7 +34,7 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnApply = new System.Windows.Forms.Button();
-            this.cbYear = new System.Windows.Forms.ComboBox();
+            this.cbMonth = new System.Windows.Forms.ComboBox();
             this.rdbByYear = new System.Windows.Forms.RadioButton();
             this.rdbByMonth = new System.Windows.Forms.RadioButton();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
@@ -54,7 +54,7 @@
             legend1.Name = "Legend1";
             legend1.Title = "Commission Earned";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(0, 106);
+            this.chart1.Location = new System.Drawing.Point(0, 150);
             this.chart1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart1.Name = "chart1";
             series1.BorderColor = System.Drawing.Color.Teal;
@@ -64,7 +64,7 @@
             series1.Legend = "Legend1";
             series1.Name = "Commission Earned";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(984, 505);
+            this.chart1.Size = new System.Drawing.Size(984, 461);
             this.chart1.TabIndex = 8;
             this.chart1.Text = "chart1";
             // 
@@ -72,7 +72,7 @@
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox1.Controls.Add(this.btnApply);
-            this.groupBox1.Controls.Add(this.cbYear);
+            this.groupBox1.Controls.Add(this.cbMonth);
             this.groupBox1.Controls.Add(this.rdbByYear);
             this.groupBox1.Controls.Add(this.rdbByMonth);
             this.groupBox1.Controls.Add(this.dtpDate);
@@ -81,7 +81,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(917, 76);
+            this.groupBox1.Size = new System.Drawing.Size(917, 126);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "View by";
@@ -89,7 +89,7 @@
             // btnApply
             // 
             this.btnApply.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnApply.Location = new System.Drawing.Point(752, 20);
+            this.btnApply.Location = new System.Drawing.Point(620, 47);
             this.btnApply.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(99, 37);
@@ -98,56 +98,60 @@
             this.btnApply.UseVisualStyleBackColor = false;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
-            // cbYear
+            // cbMonth
             // 
-            this.cbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbYear.FormattingEnabled = true;
-            this.cbYear.Location = new System.Drawing.Point(462, 27);
-            this.cbYear.Name = "cbYear";
-            this.cbYear.Size = new System.Drawing.Size(147, 24);
-            this.cbYear.TabIndex = 4;
+            this.cbMonth.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cbMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMonth.FormattingEnabled = true;
+            this.cbMonth.Location = new System.Drawing.Point(454, 54);
+            this.cbMonth.Name = "cbMonth";
+            this.cbMonth.Size = new System.Drawing.Size(147, 24);
+            this.cbMonth.TabIndex = 4;
             // 
             // rdbByYear
             // 
             this.rdbByYear.AutoSize = true;
-            this.rdbByYear.Location = new System.Drawing.Point(646, 30);
+            this.rdbByYear.Location = new System.Drawing.Point(316, 84);
             this.rdbByYear.Name = "rdbByYear";
             this.rdbByYear.Size = new System.Drawing.Size(76, 21);
             this.rdbByYear.TabIndex = 3;
             this.rdbByYear.Text = "By Year";
             this.rdbByYear.UseVisualStyleBackColor = true;
+            this.rdbByYear.CheckedChanged += new System.EventHandler(this.rdbByYear_CheckedChanged);
             // 
             // rdbByMonth
             // 
             this.rdbByMonth.AutoSize = true;
-            this.rdbByMonth.Location = new System.Drawing.Point(322, 30);
+            this.rdbByMonth.Location = new System.Drawing.Point(316, 55);
             this.rdbByMonth.Name = "rdbByMonth";
             this.rdbByMonth.Size = new System.Drawing.Size(134, 21);
             this.rdbByMonth.TabIndex = 2;
             this.rdbByMonth.Text = "By Month in Year";
             this.rdbByMonth.UseVisualStyleBackColor = true;
+            this.rdbByMonth.CheckedChanged += new System.EventHandler(this.rdbByMonth_CheckedChanged);
             // 
             // dtpDate
             // 
             this.dtpDate.CustomFormat = "MM/yyyy";
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDate.Location = new System.Drawing.Point(203, 27);
+            this.dtpDate.Location = new System.Drawing.Point(454, 25);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.ShowUpDown = true;
-            this.dtpDate.Size = new System.Drawing.Size(97, 23);
+            this.dtpDate.Size = new System.Drawing.Size(147, 23);
             this.dtpDate.TabIndex = 1;
             // 
             // rdbByDate
             // 
             this.rdbByDate.AutoSize = true;
             this.rdbByDate.Checked = true;
-            this.rdbByDate.Location = new System.Drawing.Point(65, 30);
+            this.rdbByDate.Location = new System.Drawing.Point(316, 28);
             this.rdbByDate.Name = "rdbByDate";
             this.rdbByDate.Size = new System.Drawing.Size(134, 21);
             this.rdbByDate.TabIndex = 0;
             this.rdbByDate.TabStop = true;
             this.rdbByDate.Text = "By Date in Month";
             this.rdbByDate.UseVisualStyleBackColor = true;
+            this.rdbByDate.CheckedChanged += new System.EventHandler(this.rdbByDate_CheckedChanged);
             // 
             // CommissionDetailWindow
             // 
@@ -175,7 +179,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnApply;
-        private System.Windows.Forms.ComboBox cbYear;
+        private System.Windows.Forms.ComboBox cbMonth;
         private System.Windows.Forms.RadioButton rdbByYear;
         private System.Windows.Forms.RadioButton rdbByMonth;
         private System.Windows.Forms.DateTimePicker dtpDate;

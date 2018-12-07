@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Seat model" Height="600" Width="800">
+        Title="Seat model" Height="600" Width="850">
     <StackPanel Margin="15,15">
         <StackPanel Name="stpNote" Orientation="Horizontal" Margin="10,5,5,5" HorizontalAlignment="Center">
             

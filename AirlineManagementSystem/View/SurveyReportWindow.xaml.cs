@@ -60,6 +60,8 @@ namespace AirportManagerSystem.View
                     LoadDataForTabDetail();
                 }
             }
+
+            Mouse.OverrideCursor = null;
         }
 
         private void SurveyReportWindow_Loaded(object sender, RoutedEventArgs e)

@@ -37,20 +37,21 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbFlightNumber = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbAircraft = new System.Windows.Forms.ComboBox();
+            this.cbTo = new System.Windows.Forms.ComboBox();
+            this.cbFrom = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbFrom = new System.Windows.Forms.ComboBox();
-            this.cbTo = new System.Windows.Forms.ComboBox();
-            this.cbAircraft = new System.Windows.Forms.ComboBox();
-            this.cbFlightNumber = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtpTime
             // 
+            this.dtpTime.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dtpTime.CustomFormat = "HH:mm";
             this.dtpTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -63,6 +64,7 @@
             // 
             // dtpDate
             // 
+            this.dtpDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dtpDate.CustomFormat = "dd/MM/yyyy";
             this.dtpDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -74,6 +76,7 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnCancel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Red;
@@ -88,6 +91,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSave.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -102,6 +106,7 @@
             // 
             // nudPrice
             // 
+            this.nudPrice.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.nudPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudPrice.Location = new System.Drawing.Point(488, 176);
             this.nudPrice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -116,6 +121,7 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(363, 181);
@@ -127,6 +133,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(211, 181);
@@ -138,6 +145,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(13, 181);
@@ -149,6 +157,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox1.Controls.Add(this.cbFlightNumber);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cbAircraft);
@@ -166,6 +175,61 @@
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Flight route";
+            // 
+            // cbFlightNumber
+            // 
+            this.cbFlightNumber.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cbFlightNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFlightNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFlightNumber.FormattingEnabled = true;
+            this.cbFlightNumber.Location = new System.Drawing.Point(430, 80);
+            this.cbFlightNumber.Name = "cbFlightNumber";
+            this.cbFlightNumber.Size = new System.Drawing.Size(121, 24);
+            this.cbFlightNumber.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(327, 83);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(98, 17);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Flight number:";
+            // 
+            // cbAircraft
+            // 
+            this.cbAircraft.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cbAircraft.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAircraft.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbAircraft.FormattingEnabled = true;
+            this.cbAircraft.Location = new System.Drawing.Point(165, 80);
+            this.cbAircraft.Name = "cbAircraft";
+            this.cbAircraft.Size = new System.Drawing.Size(121, 24);
+            this.cbAircraft.TabIndex = 7;
+            // 
+            // cbTo
+            // 
+            this.cbTo.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cbTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTo.FormattingEnabled = true;
+            this.cbTo.Location = new System.Drawing.Point(430, 39);
+            this.cbTo.Name = "cbTo";
+            this.cbTo.Size = new System.Drawing.Size(121, 24);
+            this.cbTo.TabIndex = 6;
+            // 
+            // cbFrom
+            // 
+            this.cbFrom.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cbFrom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFrom.FormattingEnabled = true;
+            this.cbFrom.Location = new System.Drawing.Point(165, 39);
+            this.cbFrom.Name = "cbFrom";
+            this.cbFrom.Size = new System.Drawing.Size(121, 24);
+            this.cbFrom.TabIndex = 5;
             // 
             // label6
             // 
@@ -199,61 +263,6 @@
             this.label1.Size = new System.Drawing.Size(44, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "From:";
-            // 
-            // cbFrom
-            // 
-            this.cbFrom.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.cbFrom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbFrom.FormattingEnabled = true;
-            this.cbFrom.Location = new System.Drawing.Point(165, 39);
-            this.cbFrom.Name = "cbFrom";
-            this.cbFrom.Size = new System.Drawing.Size(121, 24);
-            this.cbFrom.TabIndex = 5;
-            // 
-            // cbTo
-            // 
-            this.cbTo.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.cbTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbTo.FormattingEnabled = true;
-            this.cbTo.Location = new System.Drawing.Point(430, 39);
-            this.cbTo.Name = "cbTo";
-            this.cbTo.Size = new System.Drawing.Size(121, 24);
-            this.cbTo.TabIndex = 6;
-            // 
-            // cbAircraft
-            // 
-            this.cbAircraft.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.cbAircraft.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAircraft.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbAircraft.FormattingEnabled = true;
-            this.cbAircraft.Location = new System.Drawing.Point(165, 80);
-            this.cbAircraft.Name = "cbAircraft";
-            this.cbAircraft.Size = new System.Drawing.Size(121, 24);
-            this.cbAircraft.TabIndex = 7;
-            // 
-            // cbFlightNumber
-            // 
-            this.cbFlightNumber.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.cbFlightNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFlightNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbFlightNumber.FormattingEnabled = true;
-            this.cbFlightNumber.Location = new System.Drawing.Point(430, 80);
-            this.cbFlightNumber.Name = "cbFlightNumber";
-            this.cbFlightNumber.Size = new System.Drawing.Size(121, 24);
-            this.cbFlightNumber.TabIndex = 9;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(327, 83);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 17);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Flight number:";
             // 
             // AddFlightWindow
             // 

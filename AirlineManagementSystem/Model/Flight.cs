@@ -28,6 +28,15 @@ namespace AirportManagerSystem.Model
 
             return cabin.ID == 1 ? price : (cabin.ID == 2 ? bprice : fprice);
         }
+        public static double GetPrice(List<Ticket> tickets, int cabinId)
+        {
+            double price = tickets.Sum(t => (int)t.Schedule.EconomyPrice);
+
+            double bprice = Math.Floor(price * 1.35);
+            double fprice = Math.Floor(bprice * 1.3);
+
+            return cabinId == 1 ? price : (cabinId == 2 ? bprice : fprice);
+        }
 
     }
 }
