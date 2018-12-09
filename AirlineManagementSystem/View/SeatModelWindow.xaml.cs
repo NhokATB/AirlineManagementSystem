@@ -29,12 +29,14 @@ namespace AirportManagerSystem.View
         public List<Ticket> Tickets { get; internal set; }
         Schedule flight;
         bool isCheckedIn;
+        private bool isPrinted;
 
         public SeatModelWindow()
         {
             InitializeComponent();
             this.Loaded += SeatModelWindow_Loaded;
             this.Closed += SeatModelWindow_Closed;
+            this.Closing += SeatModelWindow_Closing;
             this.StateChanged += SeatModelWindow_StateChanged;
 
             timer = new DispatcherTimer();
@@ -45,6 +47,15 @@ namespace AirportManagerSystem.View
             dpnEmptySeat.Background = new SolidColorBrush(AMONICColor.Empty);
             dpnSelectedSeat.Background = new SolidColorBrush(AMONICColor.Selected);
             dpnDualEmptySeat.Background = new SolidColorBrush(AMONICColor.Dual);
+        }
+
+        private void SeatModelWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (isPrinted == false && btnOk.IsEnabled == false)
+            {
+                MessageBox.Show("You must print boarding pass before close form", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                e.Cancel = true;
+            }
         }
 
         private void SeatModelWindow_StateChanged(object sender, EventArgs e)
@@ -145,11 +156,11 @@ namespace AirportManagerSystem.View
 
             if (selectedSeat != null)
             {
-                if (directionOfSelectedSeat == "left" && selectedSeat.Previous.Seat == uc.Previous.Seat)
+                if (directionOfSelectedSeat == "left" && uc.Previous != null && selectedSeat.Previous.Seat == uc.Previous.Seat)
                 {
                     uc.Previous.IsSelected = true;
                 }
-                else if (directionOfSelectedSeat == "right" && selectedSeat.After.Seat == uc.After.Seat)
+                else if (directionOfSelectedSeat == "right" && uc.After != null && selectedSeat.After.Seat == uc.After.Seat)
                 {
                     uc.After.IsSelected = true;
                 }
@@ -368,9 +379,14 @@ namespace AirportManagerSystem.View
 
                 btnReCheckIn.IsEnabled = true;
                 btnOk.IsEnabled = false;
-                
+                btnPrintBoardingPass.IsEnabled = true;
+
                 directionOfSelectedSeat = "";
                 isCheckedIn = true;
+            }
+            else
+            {
+                MessageBox.Show("You must choose seat before check in", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -401,9 +417,30 @@ namespace AirportManagerSystem.View
             }
 
             btnReCheckIn.IsEnabled = false;
+            btnPrintBoardingPass.IsEnabled = false;
             btnOk.IsEnabled = true;
             isCheckedIn = false;
             selectedSeat = null;
+        }
+
+        private void btnPrintBoardingPass_Click(object sender, RoutedEventArgs e)
+        {
+            if (btnOk.IsEnabled == false)
+            {
+                foreach (var item in Tickets)
+                {
+                    PreviewBoardingPassWindow previewBoardingPassWindow = new PreviewBoardingPassWindow();
+                    previewBoardingPassWindow.TicketId = item.ID;
+                    previewBoardingPassWindow.ShowDialog();
+                }
+
+                isPrinted = true;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("You must check in before print ticket", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

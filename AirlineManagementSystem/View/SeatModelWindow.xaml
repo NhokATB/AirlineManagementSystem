@@ -42,7 +42,8 @@
         </StackPanel>
        
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
-            <Button Name="btnReCheckIn" Width="120" Height="35" IsEnabled="False" Click="btnReCheckIn_Click" ToolTipService.ShowOnDisabled="True" ToolTipService.ShowDuration="10000">
+            <Button Name="btnPrintBoardingPass" Width="120" Height="35" IsEnabled="False" Click="btnPrintBoardingPass_Click">Print Boarding Pass</Button>
+            <Button Name="btnReCheckIn" Width="120" Height="35" IsEnabled="False" Click="btnReCheckIn_Click" ToolTipService.ShowOnDisabled="True" ToolTipService.ShowDuration="10000" Margin="10,0,0,0">
                 <Button.ToolTip>
                     <ToolTip>
                         <StackPanel>
@@ -56,7 +57,7 @@
                     ReCheck in
                 </Button.Content>
             </Button>
-            <Button Name="btnOk" Width="120" Height="35" Click="btnOk_Click"  Margin="10,0,0,0">Ok</Button>
+            <Button Name="btnOk" Width="120" Height="35" Click="btnOk_Click"  Margin="10,0,0,0">Check in</Button>
             <Button Name="btnCancel" Width="120" Height="35" Margin="10,0,0,0" Click="btnCancel_Click">Cancel</Button>
         </StackPanel>
     </StackPanel>

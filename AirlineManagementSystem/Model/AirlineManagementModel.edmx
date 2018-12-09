@@ -179,6 +179,7 @@
           <Property Name="Confirmed" Type="bit" Nullable="false" />
           <Property Name="FlightNumber" Type="nvarchar" MaxLength="10" />
           <Property Name="CrewId" Type="int" />
+          <Property Name="Gate" Type="int" />
         </EntityType>
         <EntityType Name="Survey">
           <Key>
@@ -206,7 +207,7 @@
           <Property Name="BookingReference" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="Confirmed" Type="bit" Nullable="false" />
           <Property Name="Seat" Type="varchar" MaxLength="4" />
-          <Property Name="Birthdate" Type="datetime" />
+          <Property Name="Birthdate" Type="date" />
           <Property Name="Controled" Type="bit" />
         </EntityType>
         <EntityType Name="Users">
@@ -999,6 +1000,7 @@
           <NavigationProperty Name="Tickets" Relationship="AirlineManagementSystemModel.FK_Ticket_Schedule" FromRole="Schedule" ToRole="Ticket" />
           <Property Name="CrewId" Type="Int32" />
           <NavigationProperty Name="Crew" Relationship="AirlineManagementSystemModel.FK_Schedules_Crew" FromRole="Schedule" ToRole="Crew" />
+          <Property Name="Gate" Type="Int32" />
         </EntityType>
         <EntityType Name="Survey">
           <Key>
@@ -1029,7 +1031,7 @@
           <Property Name="BookingReference" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
           <Property Name="Confirmed" Type="Boolean" Nullable="false" />
           <Property Name="Seat" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="Birthdate" Type="DateTime" Precision="3" />
+          <Property Name="Birthdate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="AmenitiesTickets" Relationship="AirlineManagementSystemModel.FK_AmenitiesTickets_Tickets" FromRole="Ticket" ToRole="AmenitiesTicket" />
           <NavigationProperty Name="CabinType" Relationship="AirlineManagementSystemModel.FK_Ticket_TravelClass" FromRole="Ticket" ToRole="CabinType" />
           <NavigationProperty Name="Country" Relationship="AirlineManagementSystemModel.FK_Tickets_Countries" FromRole="Ticket" ToRole="Country" />
@@ -1554,6 +1556,7 @@
           <EntitySetMapping Name="Schedules">
             <EntityTypeMapping TypeName="AirlineManagementSystemModel.Schedule">
               <MappingFragment StoreEntitySet="Schedules">
+                <ScalarProperty Name="Gate" ColumnName="Gate" />
                 <ScalarProperty Name="CrewId" ColumnName="CrewId" />
                 <ScalarProperty Name="FlightNumber" ColumnName="FlightNumber" />
                 <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />

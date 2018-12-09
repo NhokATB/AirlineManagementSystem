@@ -23,24 +23,43 @@ namespace AirportManagerSystem.View
     {
         Ticket curentTicket;
         List<Ticket> selectedTickets;
+        List<CabinType> cabins;
 
         public CheckInWindow()
         {
             InitializeComponent();
+            selectedTickets = new List<Ticket>();
+
             this.Loaded += CheckInWindow_Loaded;
+            this.StateChanged += CheckInWindow_StateChanged;
+            dgTickets.SelectedCellsChanged += DgTickets_SelectedCellsChanged;
 
             txtTicketId.TextChanged += TextChanged;
             txtBookingReference.TextChanged += TextChanged;
             txtPassportNumber.TextChanged += TextChanged;
-
-            dgTickets.SelectedCellsChanged += DgTickets_SelectedCellsChanged;
-
-            selectedTickets = new List<Ticket>();
         }
 
+        private void CheckInWindow_StateChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+                dgTickets.Height = 440;
+            else
+                dgTickets.Height = 265;
+        }
 
         private void CheckInWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            dgTickets.Height = 440;
+
+            cabins = Db.Context.CabinTypes.ToList();
+            cabins.Insert(0, new CabinType()
+            {
+                Name = "All cabins"
+            });
+            cbCabinTypes.ItemsSource = cabins;
+            cbCabinTypes.DisplayMemberPath = "Name";
+            cbCabinTypes.SelectedIndex = 0;
+
             SearchTickets();
         }
 
@@ -65,7 +84,7 @@ namespace AirportManagerSystem.View
             dgTickets.ItemsSource = null;
 
             var today = DateTime.Now.Date;
-            today = new DateTime(2018, 12, 2);
+            //today = new DateTime(2018, 12, 2);
             var time = DateTime.Now.TimeOfDay;
 
             var tickets = Db.Context.Schedules.Where(t => t.Date == today && t.Time >= time).SelectMany(t => t.Tickets).Where(t => t.Confirmed && t.Seat == null).ToList();
@@ -77,10 +96,15 @@ namespace AirportManagerSystem.View
 
             if (txtTicketId.Text != "")
                 tickets = tickets.Where(t => t.ID.ToString().Contains(txtTicketId.Text)).ToList();
+
             if (txtPassportNumber.Text != "")
                 tickets = tickets.Where(t => t.PassportNumber.Contains(txtPassportNumber.Text)).ToList();
+
             if (txtBookingReference.Text != "")
                 tickets = tickets.Where(t => t.BookingReference.Contains(txtBookingReference.Text.ToUpper())).ToList();
+
+            if (cbCabinTypes.SelectedIndex != 0)
+                tickets = tickets.Where(t => t.CabinType.Name == cabins[cbCabinTypes.SelectedIndex].Name).ToList();
 
             dgTickets.ItemsSource = tickets;
         }
@@ -109,6 +133,7 @@ namespace AirportManagerSystem.View
                 }
             }
 
+            this.Hide();
             SeatModelWindow seatModelWindow = new SeatModelWindow();
             seatModelWindow.Tickets = selectedTickets;
             seatModelWindow.ShowDialog();
@@ -116,6 +141,7 @@ namespace AirportManagerSystem.View
             selectedTickets.Clear();
             SearchTickets();
             dgSelectedTicket.ItemsSource = null;
+            this.ShowDialog();
         }
 
         private void DeleleTicket(object sender, RoutedEventArgs e)
@@ -168,6 +194,11 @@ namespace AirportManagerSystem.View
             {
                 MessageBox.Show("Please choose a ticket", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void cbCabinTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SearchTickets();
         }
     }
 }

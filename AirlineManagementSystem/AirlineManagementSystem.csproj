@@ -327,6 +327,9 @@
     <Compile Include="View\OfficesManagementWindow.xaml.cs">
       <DependentUpon>OfficesManagementWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PreviewBoardingPassWindow.xaml.cs">
+      <DependentUpon>PreviewBoardingPassWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\RevenueDetailWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -588,6 +591,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\PreviewBoardingPassWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\RoutesManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -748,6 +755,7 @@
     <EmbeddedResource Include="Model\AmenitiesReport.rdlc" />
     <EmbeddedResource Include="Model\SurveyDetailReport.rdlc" />
     <EmbeddedResource Include="Model\SurveySummaryReport.rdlc" />
+    <EmbeddedResource Include="Model\TicketInformationReport.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

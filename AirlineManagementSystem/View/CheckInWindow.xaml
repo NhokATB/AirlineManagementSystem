@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
+        WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
         Title="Check-In" Height="600" Width="850">
     <StackPanel Margin="10,10,10,5">
@@ -17,7 +18,7 @@
                 <TextBlock VerticalAlignment="Center">Passport number:</TextBlock>
                 <TextBox Name="txtPassportNumber" Width="100" Margin="10,5,20,5"></TextBox>
                 <TextBlock VerticalAlignment="Center">Cabin types:</TextBlock>
-                <ComboBox Name="cbCabinTypes" Width="100" Margin="10,5,0,5"></ComboBox>
+                <ComboBox Name="cbCabinTypes" Width="100" Margin="10,5,0,5" SelectionChanged="cbCabinTypes_SelectionChanged"></ComboBox>
             </StackPanel>
         </GroupBox>
 
@@ -27,7 +28,7 @@
             <RadioButton Name="rdbDualCheckin" Margin="10,0" VerticalAlignment="Center" FontSize="14">Dual check-in</RadioButton>
         </StackPanel>
         
-        <DataGrid Name="dgTickets" Margin="0,2,0,3" CanUserAddRows="False" AutoGenerateColumns="False" IsReadOnly="True" RowHeaderWidth="0" Height="270" SelectionMode="Single">
+        <DataGrid Name="dgTickets" Margin="0,2,0,3" CanUserAddRows="False" AutoGenerateColumns="False" IsReadOnly="True" RowHeaderWidth="0" Height="265" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ticket id" Width="0.22*" Binding="{Binding ID}"></DataGridTextColumn>
                 <DataGridTextColumn Header="First name" Width="0.5*" Binding="{Binding Firstname}"></DataGridTextColumn>
