@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AirportManagerSystem.Model
 {
-    class Flight
+    class FlightForBooking
     {
-        public Flight()
+        public FlightForBooking()
         {
         }
 

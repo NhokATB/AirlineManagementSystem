@@ -30,8 +30,8 @@ namespace AirportManagerSystem.View
         private List<Airport> arrivalAirport;
         private List<CabinType> cabins;
 
-        private Flight CurrentOutboundFlight;
-        private Flight CurrentReturnFlight;
+        private FlightForBooking CurrentOutboundFlight;
+        private FlightForBooking CurrentReturnFlight;
 
         public BookFlightWindow()
         {
@@ -53,7 +53,7 @@ namespace AirportManagerSystem.View
         {
             try
             {
-                CurrentReturnFlight = dgReturnFlights.CurrentItem as Flight;
+                CurrentReturnFlight = dgReturnFlights.CurrentItem as FlightForBooking;
             }
             catch (Exception)
             {
@@ -64,7 +64,7 @@ namespace AirportManagerSystem.View
         {
             try
             {
-                CurrentOutboundFlight = dgOutboundFlights.CurrentItem as Flight;
+                CurrentOutboundFlight = dgOutboundFlights.CurrentItem as FlightForBooking;
             }
             catch (Exception)
             {
@@ -174,10 +174,10 @@ namespace AirportManagerSystem.View
             isApplied = true;
         }
 
-        private List<Flight> LoadData(DataGrid dg, string from, string to, bool? isChecked, DateTime date)
+        private List<FlightForBooking> LoadData(DataGrid dg, string from, string to, bool? isChecked, DateTime date)
         {
             dg.ItemsSource = null;
-            List<Flight> flights = new List<Flight>();
+            List<FlightForBooking> flights = new List<FlightForBooking>();
 
             var before = date.AddDays(-3);
             var after = date.AddDays(3);
@@ -187,13 +187,13 @@ namespace AirportManagerSystem.View
 
             foreach (var item in sch1)
             {
-                flights.Add(new Flight()
+                flights.Add(new FlightForBooking()
                 {
                     From = from,
                     To = to,
                     FirstFlight = item,
                     NumberOfStop = 0,
-                    Price = Flight.GetPrice(item, cbCabinType.SelectedItem as CabinType),
+                    Price = FlightForBooking.GetPrice(item, cbCabinType.SelectedItem as CabinType),
                     Flights = new List<Schedule>() { item },
                     FlightNumbers = $"[{item.FlightNumber}]"
                 });
@@ -205,9 +205,9 @@ namespace AirportManagerSystem.View
 
             return flights;
         }
-        private List<Flight> IndirectFlight1(string from, string to, bool isChecked, DateTime date)
+        private List<FlightForBooking> IndirectFlight1(string from, string to, bool isChecked, DateTime date)
         {
-            List<Flight> results = new List<Flight>();
+            List<FlightForBooking> results = new List<FlightForBooking>();
             var before = date.AddDays(-3);
             var after = date.AddDays(3);
             var sch1 = Db.Context.Schedules.Where(t => t.Date >= before && t.Date <= after && t.Route.Airport.IATACode == from && t.Confirmed).ToList();
@@ -223,11 +223,11 @@ namespace AirportManagerSystem.View
 
                 foreach (var s2 in sch2)
                 {
-                    results.Add(new Flight()
+                    results.Add(new FlightForBooking()
                     {
                         From = from,
                         To = to,
-                        Price = Flight.GetPrice(s1, cbCabinType.SelectedItem as CabinType) + Flight.GetPrice(s2, cbCabinType.SelectedItem as CabinType),
+                        Price = FlightForBooking.GetPrice(s1, cbCabinType.SelectedItem as CabinType) + FlightForBooking.GetPrice(s2, cbCabinType.SelectedItem as CabinType),
                         Flights = new List<Schedule>() { s1, s2 },
                         NumberOfStop = 1,
                         FirstFlight = s1,
@@ -238,9 +238,9 @@ namespace AirportManagerSystem.View
 
             return results;
         }
-        private List<Flight> IndirectFlight2(string from, string to, bool isChecked, DateTime date)
+        private List<FlightForBooking> IndirectFlight2(string from, string to, bool isChecked, DateTime date)
         {
-            List<Flight> results = new List<Flight>();
+            List<FlightForBooking> results = new List<FlightForBooking>();
             var before = date.AddDays(-3);
             var after = date.AddDays(3);
             var sch1 = Db.Context.Schedules.Where(t => t.Date >= before && t.Date <= after && t.Route.Airport.IATACode == from && t.Route.Airport1.IATACode != from && t.Route.Airport1.IATACode != to && t.Confirmed).ToList();
@@ -263,11 +263,11 @@ namespace AirportManagerSystem.View
 
                     foreach (var s3 in sch3)
                     {
-                        results.Add(new Flight()
+                        results.Add(new FlightForBooking()
                         {
                             From = from,
                             To = to,
-                            Price = Flight.GetPrice(s1, cbCabinType.SelectedItem as CabinType) + Flight.GetPrice(s2, cbCabinType.SelectedItem as CabinType) + Flight.GetPrice(s3, cbCabinType.SelectedItem as CabinType),
+                            Price = FlightForBooking.GetPrice(s1, cbCabinType.SelectedItem as CabinType) + FlightForBooking.GetPrice(s2, cbCabinType.SelectedItem as CabinType) + FlightForBooking.GetPrice(s3, cbCabinType.SelectedItem as CabinType),
                             Flights = new List<Schedule>() { s1, s2, s3 },
                             NumberOfStop = 2,
                             FirstFlight = s1,
@@ -309,7 +309,7 @@ namespace AirportManagerSystem.View
             }
         }
 
-        private bool CheckDate(Flight flight1, Flight flight2)
+        private bool CheckDate(FlightForBooking flight1, FlightForBooking flight2)
         {
             var date1 = (flight1.Flights.Last().Date + flight1.Flights.Last().Time).AddMinutes(flight1.Flights.Last().Route.FlightTime);
             var date2 = flight2.Flights.First().Date + flight2.Flights.First().Time;
@@ -364,7 +364,7 @@ namespace AirportManagerSystem.View
             this.Close();
         }
 
-        private bool CheckSeat(Flight flight, string v)
+        private bool CheckSeat(FlightForBooking flight, string v)
         {
             var cabin = cbCabinType.SelectedItem as CabinType;
             foreach (var item in flight.Flights)

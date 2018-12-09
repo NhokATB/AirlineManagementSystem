@@ -149,6 +149,40 @@ namespace AirportManagerSystem.View
             }
         }
 
+        private void SortFlights()
+        {
+            if (sortBy == 0)
+                schedules = schedules.OrderByDescending(t => t.Date + t.Time).ToList();
+            else if (sortBy == 1) schedules = schedules.OrderByDescending(t => t.EconomyPrice).ToList();
+            else schedules = schedules.OrderByDescending(t => t.Confirmed).ToList();
+        }
+
+        private void DisplayFlights()
+        {
+            dgFlights.ItemsSource = null;
+
+            flights = new List<NewFlight>();
+
+            foreach (var item in schedules)
+            {
+                double price = (int)item.EconomyPrice;
+                double bprice = Math.Floor(price * 1.35);
+                double fprice = Math.Floor(bprice * 1.3);
+
+                flights.Add(new NewFlight()
+                {
+                    EconomyPrice = price,
+                    BusinessPrice = bprice,
+                    FirstClassPrice = fprice,
+                    Schedule = item,
+                    Aircraft = item.Aircraft.Name + " " + item.Aircraft.MakeModel,
+                    Crew = item.CrewId == null ? "None" : item.Crew.CrewName
+                });
+            }
+
+            dgFlights.ItemsSource = flights;
+        }
+
         private void btnCancelFlight_Click(object sender, RoutedEventArgs e)
         {
             if (currentFlight != null)
@@ -262,40 +296,6 @@ namespace AirportManagerSystem.View
             ImportChangeWindow importChangeWindow = new ImportChangeWindow();
             importChangeWindow.ManageWindow = this;
             importChangeWindow.ShowDialog();
-        }
-
-        private void SortFlights()
-        {
-            if (sortBy == 0)
-                schedules = schedules.OrderByDescending(t => t.Date + t.Time).ToList();
-            else if (sortBy == 1) schedules = schedules.OrderByDescending(t => t.EconomyPrice).ToList();
-            else schedules = schedules.OrderByDescending(t => t.Confirmed).ToList();
-        }
-
-        private void DisplayFlights()
-        {
-            dgFlights.ItemsSource = null;
-
-            flights = new List<NewFlight>();
-
-            foreach (var item in schedules)
-            {
-                double price = (int)item.EconomyPrice;
-                double bprice = Math.Floor(price * 1.35);
-                double fprice = Math.Floor(bprice * 1.3);
-
-                flights.Add(new NewFlight()
-                {
-                    EconomyPrice = price,
-                    BusinessPrice = bprice,
-                    FirstClassPrice = fprice,
-                    Schedule = item,
-                    Aircraft = item.Aircraft.Name + " " + item.Aircraft.MakeModel,
-                    Crew = item.CrewId == null ? "None" : item.Crew.CrewName
-                });
-            }
-
-            dgFlights.ItemsSource = flights;
         }
     }
 }

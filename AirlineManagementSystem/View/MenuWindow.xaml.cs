@@ -318,5 +318,11 @@ namespace AirportManagerSystem.View
             ShowDialogWindow(revenueReportWindow);
             Mouse.OverrideCursor = null;
         }
+
+        private void mnSetUpGate_Click(object sender, RoutedEventArgs e)
+        {
+            SetUpGateForFlightWindow setUpGateForFlightWindow = new SetUpGateForFlightWindow();
+            ShowDialogWindow(setUpGateForFlightWindow);
+        }
     }
 }

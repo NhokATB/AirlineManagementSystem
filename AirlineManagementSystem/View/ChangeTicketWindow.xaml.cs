@@ -57,8 +57,8 @@ namespace AirportManagerSystem.View
 
         private void CalculateCosts()
         {
-            var payed = Flight.GetPrice(ticket.Schedule, ticket.CabinType);
-            var total = currentFlight == null ? Flight.GetPrice(ticket.Schedule, cabins[cbCabinType.SelectedIndex]) : Flight.GetPrice(currentFlight.Schedule, cabins[cbCabinType.SelectedIndex]);
+            var payed = FlightForBooking.GetPrice(ticket.Schedule, ticket.CabinType);
+            var total = currentFlight == null ? FlightForBooking.GetPrice(ticket.Schedule, cabins[cbCabinType.SelectedIndex]) : FlightForBooking.GetPrice(currentFlight.Schedule, cabins[cbCabinType.SelectedIndex]);
 
             tblTotalAfterChange.Text = total.ToString("C0");
             tblTotalPayed.Text = payed.ToString("C0");
@@ -68,7 +68,7 @@ namespace AirportManagerSystem.View
 
         private void CalculateCostIncurred()
         {
-            var ticketPrice = Flight.GetPrice(ticket.Schedule, ticket.CabinType);
+            var ticketPrice = FlightForBooking.GetPrice(ticket.Schedule, ticket.CabinType);
 
             costIncurred = 0;
             var timeBeforeFlightTakeoff = (ticket.Schedule.Date + ticket.Schedule.Time) - DateTime.Now;

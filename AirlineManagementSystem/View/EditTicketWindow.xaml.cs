@@ -58,8 +58,8 @@ namespace AirportManagerSystem.View
 
         private void GetCabinPrice()
         {
-            var total = Flight.GetPrice(NewTicket.Ticket.Schedule, cabins[cbCabinType.SelectedIndex]);
-            var totalPayed = Flight.GetPrice(NewTicket.Ticket.Schedule, NewTicket.Ticket.CabinType);
+            var total = FlightForBooking.GetPrice(NewTicket.Ticket.Schedule, cabins[cbCabinType.SelectedIndex]);
+            var totalPayed = FlightForBooking.GetPrice(NewTicket.Ticket.Schedule, NewTicket.Ticket.CabinType);
             var totalPayable = total - totalPayed;
 
             tblTicketPrice.Text = total.ToString("C0");

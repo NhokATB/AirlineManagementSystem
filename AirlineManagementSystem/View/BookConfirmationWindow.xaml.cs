@@ -27,8 +27,8 @@ namespace AirportManagerSystem.View
 
         public CabinType Cabin { get; internal set; }
         public int Numpass { get; internal set; }
-        internal Flight ReturnFlight { get; set; }
-        internal Flight OutboundFlight { get; set; }
+        internal FlightForBooking ReturnFlight { get; set; }
+        internal FlightForBooking OutboundFlight { get; set; }
         public User User { get; internal set; }
 
         private int SelecetedIndexPassenger = -1;

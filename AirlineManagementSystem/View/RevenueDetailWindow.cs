@@ -128,7 +128,7 @@ namespace AirportManagerSystem.View
                     if (CbTicketViewType.Text == "Revenue")
                     {
                         chartRevenueFromTicket.Series[0].Name = "Revenue";
-                        value = Flight.GetPrice(tickets.Where(t => t.Schedule.Date == date).ToList(), cabinId).ToString("C0");
+                        value = FlightForBooking.GetPrice(tickets.Where(t => t.Schedule.Date == date).ToList(), cabinId).ToString("C0");
                     }
                     else
                     {
@@ -159,7 +159,7 @@ namespace AirportManagerSystem.View
                     if (CbTicketViewType.Text == "Revenue")
                     {
                         chartRevenueFromTicket.Series[0].Name = "Revenue";
-                        value = Flight.GetPrice(tickets.Where(t => t.Schedule.Date.Month == j).ToList(), cabinId).ToString("C0");
+                        value = FlightForBooking.GetPrice(tickets.Where(t => t.Schedule.Date.Month == j).ToList(), cabinId).ToString("C0");
                     }
                     else
                     {
@@ -185,7 +185,7 @@ namespace AirportManagerSystem.View
                     string value;
 
                     if (CbTicketViewType.Text == "Revenue")
-                        value = Flight.GetPrice(tickets.Where(t => t.Schedule.Date.Month == j).ToList(), cabinId).ToString("C0");
+                        value = FlightForBooking.GetPrice(tickets.Where(t => t.Schedule.Date.Month == j).ToList(), cabinId).ToString("C0");
                     else
                         value = tickets.Count(t => t.Schedule.Date.Month == j).ToString();
 
@@ -235,7 +235,7 @@ namespace AirportManagerSystem.View
                 if (CbTicketViewType.Text == "Revenue")
                 {
                     chartRevenueFromTicket.Series[0].Name = "Revenue";
-                    value = Flight.GetPrice(tickets.Where(t => t.CabinTypeID == item.ID).ToList(), item.ID).ToString("C0");
+                    value = FlightForBooking.GetPrice(tickets.Where(t => t.CabinTypeID == item.ID).ToList(), item.ID).ToString("C0");
                 }
                 else
                 {

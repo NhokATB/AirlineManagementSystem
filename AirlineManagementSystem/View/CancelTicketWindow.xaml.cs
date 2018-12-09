@@ -134,7 +134,7 @@ namespace AirportManagerSystem.View
 
         private void CalculateCostIncurred()
         {
-            var ticketPrice = Flight.GetPrice(ticket.Schedule, ticket.CabinType);
+            var ticketPrice = FlightForBooking.GetPrice(ticket.Schedule, ticket.CabinType);
 
             double costIncurred = 100;
             var timeBeforeFlightTakeoff = (ticket.Schedule.Date + ticket.Schedule.Time) - DateTime.Now;

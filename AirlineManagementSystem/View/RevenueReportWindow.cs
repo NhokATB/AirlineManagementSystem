@@ -388,7 +388,7 @@ namespace AirportManagerSystem.View
             double revenue = 0;
             foreach (var item in tickets)
             {
-                revenue += Flight.GetPrice(item.Schedule, item.CabinType);
+                revenue += FlightForBooking.GetPrice(item.Schedule, item.CabinType);
             }
 
             return revenue;
@@ -743,7 +743,7 @@ namespace AirportManagerSystem.View
 
             foreach (var item in tickets)
             {
-                revenue += Flight.GetPrice(item.Schedule, item.CabinType);
+                revenue += FlightForBooking.GetPrice(item.Schedule, item.CabinType);
             }
 
             return revenue;

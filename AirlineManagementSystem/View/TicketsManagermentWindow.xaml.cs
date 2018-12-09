@@ -209,7 +209,7 @@ namespace AirportManagerSystem.View
                 {
                     Ticket = item,
                     FullName = item.Firstname + " " + item.Lastname,
-                    Price = Flight.GetPrice(item.Schedule, item.CabinType),
+                    Price = FlightForBooking.GetPrice(item.Schedule, item.CabinType),
                     Route = item.Schedule.Route.Airport.IATACode + " - " + item.Schedule.Route.Airport1.IATACode
                 });
             }

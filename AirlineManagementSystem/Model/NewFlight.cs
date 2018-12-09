@@ -14,5 +14,7 @@ namespace AirportManagerSystem.Model
         public Schedule Schedule { get; set; }
         public string Aircraft { get; set; }
         public string Crew { get; set; }
+        public string Status { get; set; }
+        public string Gate { get; set; }
     }
 }

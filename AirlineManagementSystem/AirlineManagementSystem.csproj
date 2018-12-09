@@ -138,7 +138,8 @@
     <Compile Include="Model\CrewMember.cs">
       <DependentUpon>AirlineManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Flight.cs" />
+    <Compile Include="Model\FlightForBooking.cs" />
+    <Compile Include="Model\GateList.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\NewFlight.cs" />
     <Compile Include="Model\NewLog.cs" />
@@ -245,6 +246,9 @@
     </Compile>
     <Compile Include="View\ChooseCrewWindow.xaml.cs">
       <DependentUpon>ChooseCrewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChooseGateWindow.xaml.cs">
+      <DependentUpon>ChooseGateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CommissionDetailWindow.cs">
       <SubType>Form</SubType>
@@ -353,6 +357,9 @@
     </Compile>
     <Compile Include="View\SetUpCrewWindow.xaml.cs">
       <DependentUpon>SetUpCrewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SetUpGateForFlightWindow.xaml.cs">
+      <DependentUpon>SetUpGateForFlightWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ShortSummaryWindow.xaml.cs">
       <DependentUpon>ShortSummaryWindow.xaml</DependentUpon>
@@ -515,6 +522,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ChooseGateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CrewManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -608,6 +619,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SetUpCrewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SetUpGateForFlightWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
