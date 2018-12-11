@@ -9,10 +9,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Set up gate for flight" Height="635" Width="800">
-    <Window.Resources>
-        <Model:GateList x:Key="GateList"/>
-        <CollectionViewSource x:Key="Gates" Source="{Binding Gates}"></CollectionViewSource>
-    </Window.Resources>
+  
     <StackPanel>
 
         <GroupBox Header="Filter Flight" Margin="10,5,10,5">

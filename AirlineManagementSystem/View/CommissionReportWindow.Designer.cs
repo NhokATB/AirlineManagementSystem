@@ -38,6 +38,7 @@ namespace AirportManagerSystem.View
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommissionReportWindow));
             this.ReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DataSet1 = new AirportManagerSystem.Model.CommissionDataSet();
             this.btnExport = new System.Windows.Forms.Button();
@@ -295,6 +296,7 @@ namespace AirportManagerSystem.View
             this.Controls.Add(this.dgvCommission);
             this.Controls.Add(this.btnExport);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "CommissionReportWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

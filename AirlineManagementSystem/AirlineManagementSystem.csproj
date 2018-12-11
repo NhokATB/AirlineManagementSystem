@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\AmonicAirline.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="De.TorstenMandelkow.MetroChart">
       <HintPath>..\..\..\..\Desktop\ModernUICharts-WPF-master\packages\De.TorstenMandelkow.MetroChart.1.0.0\lib\De.TorstenMandelkow.MetroChart.dll</HintPath>
@@ -139,7 +142,6 @@
       <DependentUpon>AirlineManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\FlightForBooking.cs" />
-    <Compile Include="Model\GateList.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\NewFlight.cs" />
     <Compile Include="Model\NewLog.cs" />
@@ -853,6 +855,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\WSC2017_TP09_Airplane-Amonic-Single.png" />
+    <Resource Include="Images\AmonicAirline.ico" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

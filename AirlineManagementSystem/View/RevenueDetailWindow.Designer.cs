@@ -30,14 +30,15 @@ namespace AirportManagerSystem.View
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RevenueDetailWindow));
             this.tcRevenueDetail = new System.Windows.Forms.TabControl();
             this.tpFromAmenities = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
@@ -112,12 +113,12 @@ namespace AirportManagerSystem.View
             // 
             // chartRevenueFromAmenities
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartRevenueFromAmenities.ChartAreas.Add(chartArea6);
+            chartArea1.Name = "ChartArea1";
+            this.chartRevenueFromAmenities.ChartAreas.Add(chartArea1);
             this.chartRevenueFromAmenities.Dock = System.Windows.Forms.DockStyle.Bottom;
-            legend6.BackColor = System.Drawing.Color.Transparent;
-            legend6.Name = "Legend1";
-            this.chartRevenueFromAmenities.Legends.Add(legend6);
+            legend1.BackColor = System.Drawing.Color.Transparent;
+            legend1.Name = "Legend1";
+            this.chartRevenueFromAmenities.Legends.Add(legend1);
             this.chartRevenueFromAmenities.Location = new System.Drawing.Point(3, 128);
             this.chartRevenueFromAmenities.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartRevenueFromAmenities.Name = "chartRevenueFromAmenities";
@@ -126,16 +127,16 @@ namespace AirportManagerSystem.View
         System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(160)))), ((int)(((byte)(187))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(145)))), ((int)(((byte)(46))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(79)))), ((int)(((byte)(76)))))};
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Revenue";
-            this.chartRevenueFromAmenities.Series.Add(series6);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Revenue";
+            this.chartRevenueFromAmenities.Series.Add(series1);
             this.chartRevenueFromAmenities.Size = new System.Drawing.Size(1086, 580);
             this.chartRevenueFromAmenities.TabIndex = 21;
-            title6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            title6.Name = "Title1";
-            title6.Text = "Revenue report";
-            this.chartRevenueFromAmenities.Titles.Add(title6);
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            title1.Name = "Title1";
+            title1.Text = "Revenue report";
+            this.chartRevenueFromAmenities.Titles.Add(title1);
             // 
             // label14
             // 
@@ -203,12 +204,12 @@ namespace AirportManagerSystem.View
             // 
             // chartRevenueFromTicket
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chartRevenueFromTicket.ChartAreas.Add(chartArea5);
+            chartArea2.Name = "ChartArea1";
+            this.chartRevenueFromTicket.ChartAreas.Add(chartArea2);
             this.chartRevenueFromTicket.Dock = System.Windows.Forms.DockStyle.Bottom;
-            legend5.BackColor = System.Drawing.Color.Transparent;
-            legend5.Name = "Legend1";
-            this.chartRevenueFromTicket.Legends.Add(legend5);
+            legend2.BackColor = System.Drawing.Color.Transparent;
+            legend2.Name = "Legend1";
+            this.chartRevenueFromTicket.Legends.Add(legend2);
             this.chartRevenueFromTicket.Location = new System.Drawing.Point(3, 128);
             this.chartRevenueFromTicket.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartRevenueFromTicket.Name = "chartRevenueFromTicket";
@@ -217,16 +218,16 @@ namespace AirportManagerSystem.View
         System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(160)))), ((int)(((byte)(187))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(145)))), ((int)(((byte)(46))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(79)))), ((int)(((byte)(76)))))};
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Revenue";
-            this.chartRevenueFromTicket.Series.Add(series5);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Revenue";
+            this.chartRevenueFromTicket.Series.Add(series2);
             this.chartRevenueFromTicket.Size = new System.Drawing.Size(1086, 580);
             this.chartRevenueFromTicket.TabIndex = 26;
-            title5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            title5.Name = "Title1";
-            title5.Text = "Revenue report";
-            this.chartRevenueFromTicket.Titles.Add(title5);
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            title2.Name = "Title1";
+            title2.Text = "Revenue report";
+            this.chartRevenueFromTicket.Titles.Add(title2);
             // 
             // label2
             // 
@@ -273,6 +274,7 @@ namespace AirportManagerSystem.View
             this.ClientSize = new System.Drawing.Size(1100, 740);
             this.Controls.Add(this.tcRevenueDetail);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "RevenueDetailWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

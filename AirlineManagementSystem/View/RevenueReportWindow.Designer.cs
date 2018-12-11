@@ -43,6 +43,7 @@ namespace AirportManagerSystem.View
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RevenueReportWindow));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.filterBySelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -589,6 +590,7 @@ namespace AirportManagerSystem.View
             this.ClientSize = new System.Drawing.Size(1100, 740);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "RevenueReportWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyCommissionWindow));
             this.chartDetail = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnApply = new System.Windows.Forms.Button();
@@ -47,25 +48,25 @@
             // 
             // chartDetail
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartDetail.ChartAreas.Add(chartArea4);
+            chartArea1.Name = "ChartArea1";
+            this.chartDetail.ChartAreas.Add(chartArea1);
             this.chartDetail.Dock = System.Windows.Forms.DockStyle.Bottom;
-            legend4.Alignment = System.Drawing.StringAlignment.Center;
-            legend4.BorderColor = System.Drawing.Color.Black;
-            legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend4.Name = "Legend1";
-            legend4.Title = "Commission Earned";
-            this.chartDetail.Legends.Add(legend4);
+            legend1.Alignment = System.Drawing.StringAlignment.Center;
+            legend1.BorderColor = System.Drawing.Color.Black;
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.Name = "Legend1";
+            legend1.Title = "Commission Earned";
+            this.chartDetail.Legends.Add(legend1);
             this.chartDetail.Location = new System.Drawing.Point(0, 135);
             this.chartDetail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartDetail.Name = "chartDetail";
-            series4.BorderColor = System.Drawing.Color.Teal;
-            series4.BorderWidth = 2;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Legend = "Legend1";
-            series4.Name = "Commission Earned";
-            this.chartDetail.Series.Add(series4);
+            series1.BorderColor = System.Drawing.Color.Teal;
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Commission Earned";
+            this.chartDetail.Series.Add(series1);
             this.chartDetail.Size = new System.Drawing.Size(984, 476);
             this.chartDetail.TabIndex = 8;
             this.chartDetail.Text = "chart1";
@@ -193,6 +194,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chartDetail);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "MyCommissionWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

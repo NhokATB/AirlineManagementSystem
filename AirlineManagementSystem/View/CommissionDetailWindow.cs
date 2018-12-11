@@ -33,12 +33,11 @@ namespace AirportManagerSystem.View
             userReport = new UserReport
             {
                 User = user,
-                Amenities = user.Tickets.Where(k => k.Confirmed).SelectMany(k => k.AmenitiesTickets).ToList(),
                 Tickets = user.Tickets.Where(k => k.Confirmed).ToList(),
                 Commission = 0.0
             };
 
-            this.Text += $"{Type} detail of {User}";
+            this.Text = $"{Type} detail of {User}";
 
             this.Cursor = Cursors.Default;
         }
