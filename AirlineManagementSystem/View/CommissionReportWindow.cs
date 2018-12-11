@@ -49,6 +49,8 @@ namespace AirportManagerSystem.View
             cbYear.DataSource = years;
 
             LoadData();
+
+            this.Cursor = Cursors.Default;
         }
 
         private double UpdateCommission(List<Ticket> tickets)
@@ -115,7 +117,7 @@ namespace AirportManagerSystem.View
             chartDetail.Series[1].Points.Clear();
             chartDetail.Series[2].Points.Clear();
 
-            var users = Db.Context.Users.ToList();
+            var users = Db.Context.Users.Where(t=>t.Role.Title == "User").ToList();
             var userReports = new List<UserReport>();
             foreach (var item in users)
             {

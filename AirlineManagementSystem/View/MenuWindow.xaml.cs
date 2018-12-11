@@ -53,9 +53,24 @@ namespace AirportManagerSystem.View
                     mnManagement.Items.Remove(mnFlights);
                     mnManagement.Items.Remove(mnLogingHistory);
                     mnManagement.Items.Remove(mnCrews);
+                    mnManagement.Items.Remove(mnMembers);
+
+                    mnBusiness.Items.Remove(mnSetUpCrew);
+                    mnBusiness.Items.Remove(mnSetUpGate);
+                    mnBusiness.Items.Remove(mnFlightProcess);
 
                     mnReport.Items.Remove(mnSurveyReport);
+                    mnReport.Items.Remove(mnRevenueReport);
+                    mnReport.Items.Remove(mnCommisstion);
                 }
+                else
+                {
+                    mnSystem.Items.Remove(mnMyCommission);
+                }
+            }
+            else
+            {
+                mnSystem.Items.Remove(mnMyCommission);
             }
         }
 
@@ -298,17 +313,21 @@ namespace AirportManagerSystem.View
 
         private void mnCommisstion_Click(object sender, RoutedEventArgs e)
         {
+            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
             CommissionReportWindow commissionReportWindow = new CommissionReportWindow();
             ShowDialogWindow(commissionReportWindow);
+            Mouse.OverrideCursor = null;
         }
 
         private void mnMyCommission_Click(object sender, RoutedEventArgs e)
         {
+            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
             MyCommissionWindow myCommissionWindow = new MyCommissionWindow
             {
                 User = User.FirstName + " " + User.LastName
             };
             ShowDialogWindow(myCommissionWindow);
+            Mouse.OverrideCursor = null;
         }
 
         private void mnRevenueReport_Click(object sender, RoutedEventArgs e)

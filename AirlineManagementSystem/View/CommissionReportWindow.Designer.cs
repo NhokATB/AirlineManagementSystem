@@ -84,6 +84,7 @@ namespace AirportManagerSystem.View
             this.btnExport.TabIndex = 1;
             this.btnExport.Text = "Export Excel File";
             this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.button1_Click);
             // 
             // chartDetail

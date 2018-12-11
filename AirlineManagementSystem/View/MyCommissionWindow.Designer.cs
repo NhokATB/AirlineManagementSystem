@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartDetail = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnApply = new System.Windows.Forms.Button();
@@ -47,25 +47,25 @@
             // 
             // chartDetail
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartDetail.ChartAreas.Add(chartArea1);
+            chartArea4.Name = "ChartArea1";
+            this.chartDetail.ChartAreas.Add(chartArea4);
             this.chartDetail.Dock = System.Windows.Forms.DockStyle.Bottom;
-            legend1.Alignment = System.Drawing.StringAlignment.Center;
-            legend1.BorderColor = System.Drawing.Color.Black;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.Name = "Legend1";
-            legend1.Title = "Commission Earned";
-            this.chartDetail.Legends.Add(legend1);
+            legend4.Alignment = System.Drawing.StringAlignment.Center;
+            legend4.BorderColor = System.Drawing.Color.Black;
+            legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend4.Name = "Legend1";
+            legend4.Title = "Commission Earned";
+            this.chartDetail.Legends.Add(legend4);
             this.chartDetail.Location = new System.Drawing.Point(0, 135);
             this.chartDetail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartDetail.Name = "chartDetail";
-            series1.BorderColor = System.Drawing.Color.Teal;
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Commission Earned";
-            this.chartDetail.Series.Add(series1);
+            series4.BorderColor = System.Drawing.Color.Teal;
+            series4.BorderWidth = 2;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Legend = "Legend1";
+            series4.Name = "Commission Earned";
+            this.chartDetail.Series.Add(series4);
             this.chartDetail.Size = new System.Drawing.Size(984, 476);
             this.chartDetail.TabIndex = 8;
             this.chartDetail.Text = "chart1";
@@ -104,6 +104,7 @@
             // 
             this.cbYear.BackColor = System.Drawing.SystemColors.ControlLight;
             this.cbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbYear.Enabled = false;
             this.cbYear.FormattingEnabled = true;
             this.cbYear.Location = new System.Drawing.Point(462, 27);
             this.cbYear.Name = "cbYear";
@@ -119,6 +120,7 @@
             this.rdbByYear.TabIndex = 3;
             this.rdbByYear.Text = "By Year";
             this.rdbByYear.UseVisualStyleBackColor = true;
+            this.rdbByYear.CheckedChanged += new System.EventHandler(this.rdbByYear_CheckedChanged);
             // 
             // rdbByMonth
             // 
@@ -129,6 +131,7 @@
             this.rdbByMonth.TabIndex = 2;
             this.rdbByMonth.Text = "By Month in Year";
             this.rdbByMonth.UseVisualStyleBackColor = true;
+            this.rdbByMonth.CheckedChanged += new System.EventHandler(this.rdbByMonth_CheckedChanged);
             // 
             // dtpDate
             // 
@@ -151,6 +154,7 @@
             this.rdbByDate.TabStop = true;
             this.rdbByDate.Text = "By Date in Month";
             this.rdbByDate.UseVisualStyleBackColor = true;
+            this.rdbByDate.CheckedChanged += new System.EventHandler(this.rdbByDate_CheckedChanged);
             // 
             // cbCriterias
             // 

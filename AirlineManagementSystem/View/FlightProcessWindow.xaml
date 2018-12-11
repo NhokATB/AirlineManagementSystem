@@ -6,18 +6,14 @@
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Flight Process" Height="650" Width="1040">
+        Title="Flight Monitoring" Height="650" Width="1040">
     <StackPanel>
-        <GroupBox Header="Filter Flight" Margin="15,15,15,0" Name="grFilterFlight">
-            <GroupBox.Content>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5,5,5,5">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15">
 
-                    <TextBlock Margin="5" VerticalAlignment="Center">Sort by:</TextBlock>
-                    <ComboBox Name="cbSortBy" Width="150" Margin="5"></ComboBox>
+            <TextBlock Margin="5" VerticalAlignment="Center">Sort by:</TextBlock>
+            <ComboBox Name="cbSortBy" Width="150" Margin="5"></ComboBox>
 
-                </StackPanel>
-            </GroupBox.Content>
-        </GroupBox>
+        </StackPanel>
 
         <ScrollViewer Name="scvFlightProcess" VerticalScrollBarVisibility="Auto" Margin="15" Width="995" Height="500">
             <StackPanel Name="stpFlights">

@@ -18,25 +18,29 @@ namespace AirportManagerSystem.View
             InitializeComponent();
         }
 
-        List<UserReport> userReports;
+        UserReport userReport;
         public string Type { get; internal set; }
         public string User { get; internal set; }
 
         private void FrmDetail_Load(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+
             var years = Db.Context.Schedules.Select(t => t.Date.Year).Distinct().OrderBy(t => t).ToList();
             cbMonth.DataSource = years;
 
-            var users = Db.Context.Users.Where(t => t.FirstName + " " + t.LastName == User).ToList();
-            userReports = users.Select(t => new UserReport
+            var user = Db.Context.Users.FirstOrDefault(t => t.FirstName + " " + t.LastName == User);
+            userReport = new UserReport
             {
-                User = t,
-                Amenities = t.Tickets.Where(k => k.Confirmed).SelectMany(k => k.AmenitiesTickets).ToList(),
-                Tickets = t.Tickets.Where(k => k.Confirmed).ToList(),
+                User = user,
+                Amenities = user.Tickets.Where(k => k.Confirmed).SelectMany(k => k.AmenitiesTickets).ToList(),
+                Tickets = user.Tickets.Where(k => k.Confirmed).ToList(),
                 Commission = 0.0
-            }).ToList();
+            };
 
             this.Text += $"{Type} detail of {User}";
+
+            this.Cursor = Cursors.Default;
         }
 
         private void LoadChart()
@@ -74,15 +78,15 @@ namespace AirportManagerSystem.View
             var value = "";
             if (Type.Contains("Amen"))
             {
-                value = userReports.FirstOrDefault().Tickets.ToList().SelectMany(t => t.AmenitiesTickets).Count().ToString();
+                value = userReport.Tickets.ToList().SelectMany(t => t.AmenitiesTickets).Count().ToString();
             }
             else if (Type.Contains("Ticket"))
             {
-                value = userReports.FirstOrDefault().Tickets.Count().ToString();
+                value = userReport.Tickets.Count().ToString();
             }
             else
             {
-                var tickets = userReports.FirstOrDefault().Tickets.ToList();
+                var tickets = userReport.Tickets.ToList();
                 value = UpdateCommission(tickets).ToString("C0");
             }
 
@@ -116,15 +120,15 @@ namespace AirportManagerSystem.View
             var value = "";
             if (Type.Contains("Amen"))
             {
-                value = userReports.FirstOrDefault().Tickets.Where(t => t.Schedule.Date.Year == year).ToList().SelectMany(t => t.AmenitiesTickets).Count().ToString();
+                value = userReport.Tickets.Where(t => t.Schedule.Date.Year == year).ToList().SelectMany(t => t.AmenitiesTickets).Count().ToString();
             }
             else if (Type.Contains("Ticket"))
             {
-                value = userReports.FirstOrDefault().Tickets.Where(t => t.Schedule.Date.Year == year).Count().ToString();
+                value = userReport.Tickets.Where(t => t.Schedule.Date.Year == year).Count().ToString();
             }
             else
             {
-                var tickets = userReports.FirstOrDefault().Tickets.Where(t => t.Schedule.Date.Year == year).ToList();
+                var tickets = userReport.Tickets.Where(t => t.Schedule.Date.Year == year).ToList();
                 value = UpdateCommission(tickets).ToString("C0");
             }
 
@@ -158,15 +162,15 @@ namespace AirportManagerSystem.View
             var value = "";
             if (Type.Contains("Amen"))
             {
-                value = userReports.FirstOrDefault().Tickets.Where(t => t.Schedule.Date.Month == date.Month && t.Schedule.Date.Year == date.Year).ToList().SelectMany(t => t.AmenitiesTickets).Count().ToString();
+                value = userReport.Tickets.Where(t => t.Schedule.Date.Month == date.Month && t.Schedule.Date.Year == date.Year).ToList().SelectMany(t => t.AmenitiesTickets).Count().ToString();
             }
             else if (Type.Contains("Ticket"))
             {
-                value = userReports.FirstOrDefault().Tickets.Where(t => t.Schedule.Date.Month == date.Month && t.Schedule.Date.Year == date.Year).Count().ToString();
+                value = userReport.Tickets.Where(t => t.Schedule.Date.Month == date.Month && t.Schedule.Date.Year == date.Year).Count().ToString();
             }
             else
             {
-                var tickets = userReports.FirstOrDefault().Tickets.Where(t => t.Schedule.Date.Month == date.Month && t.Schedule.Date.Year == date.Year).ToList();
+                var tickets = userReport.Tickets.Where(t => t.Schedule.Date.Month == date.Month && t.Schedule.Date.Year == date.Year).ToList();
                 value = UpdateCommission(tickets).ToString("C0");
             }
 
@@ -175,7 +179,7 @@ namespace AirportManagerSystem.View
 
         private double GetCommission(DateTime i)
         {
-            var tickets = userReports.FirstOrDefault().Tickets.Where(t => t.Schedule.Date == i).ToList();
+            var tickets = userReport.Tickets.Where(t => t.Schedule.Date == i).ToList();
             var revenue = UpdateCommission(tickets);
             return revenue;
         }
@@ -183,13 +187,13 @@ namespace AirportManagerSystem.View
         {
             if (month != 0)
             {
-                var tickets = userReports.FirstOrDefault().Tickets.Where(t => t.Schedule.Date.Month == month && t.Schedule.Date.Year == year).ToList();
+                var tickets = userReport.Tickets.Where(t => t.Schedule.Date.Month == month && t.Schedule.Date.Year == year).ToList();
                 var revenue = UpdateCommission(tickets);
                 return revenue;
             }
             else
             {
-                var tickets = userReports.FirstOrDefault().Tickets.Where(t => t.Schedule.Date.Year == year).ToList();
+                var tickets = userReport.Tickets.Where(t => t.Schedule.Date.Year == year).ToList();
                 var revenue = UpdateCommission(tickets);
                 return revenue;
             }
@@ -216,31 +220,33 @@ namespace AirportManagerSystem.View
 
         private double GetTicket(DateTime i)
         {
-            return userReports.FirstOrDefault().Tickets.Count(t => t.Confirmed && t.Schedule.Date == i);
+            return userReport.Tickets.Count(t => t.Confirmed && t.Schedule.Date == i);
         }
         private double GetTicket(int month, int year)
         {
             if (month != 0)
-                return userReports.FirstOrDefault().Tickets.Count(t => t.Confirmed && t.Schedule.Date.Month == month && t.Schedule.Date.Year == year);
+                return userReport.Tickets.Count(t => t.Confirmed && t.Schedule.Date.Month == month && t.Schedule.Date.Year == year);
             else
-                return userReports.FirstOrDefault().Tickets.Count(t => t.Confirmed && t.Schedule.Date.Year == year);
+                return userReport.Tickets.Count(t => t.Confirmed && t.Schedule.Date.Year == year);
         }
 
         private double GetAmen(DateTime i)
         {
-            return userReports.FirstOrDefault().Tickets.Where(t => t.Schedule.Date == i).SelectMany(t => t.AmenitiesTickets).Count();
+            return userReport.Tickets.Where(t => t.Schedule.Date == i).SelectMany(t => t.AmenitiesTickets).Count();
         }
         private double GetAmen(int month, int year)
         {
             if (month != 0)
-                return userReports.FirstOrDefault().Tickets.Where(t => t.Schedule.Date.Month == month && t.Schedule.Date.Year == year).SelectMany(t => t.AmenitiesTickets).Count();
+                return userReport.Tickets.Where(t => t.Schedule.Date.Month == month && t.Schedule.Date.Year == year).SelectMany(t => t.AmenitiesTickets).Count();
             else
-                return userReports.FirstOrDefault().Tickets.Where(t => t.Schedule.Date.Year == year).SelectMany(t => t.AmenitiesTickets).Count();
+                return userReport.Tickets.Where(t => t.Schedule.Date.Year == year).SelectMany(t => t.AmenitiesTickets).Count();
         }
 
         private void btnApply_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             LoadChart();
+            this.Cursor = Cursors.Default;
         }
 
         private void rdbByMonth_CheckedChanged(object sender, EventArgs e)

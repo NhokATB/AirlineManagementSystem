@@ -11,10 +11,9 @@
     <StackPanel Margin="10,10,10,5">
         <GroupBox Header="Filter by">
             <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
-                <TextBlock VerticalAlignment="Center">Ticket id:</TextBlock>
-                <TextBox Name="txtTicketId" Width="60" Margin="10,5,20,5"></TextBox>
-                <TextBlock VerticalAlignment="Center">Booking refenrence:</TextBlock>
-                <TextBox Name="txtBookingReference" Width="100" Margin="10,5,20,5"></TextBox>
+                <TextBlock VerticalAlignment="Center">Choose flight:</TextBlock>
+                <ComboBox Name="cbFlights" Width="230" Margin="10,5,20,5" SelectionChanged="cbFlights_SelectionChanged" ></ComboBox>
+              
                 <TextBlock VerticalAlignment="Center">Passport number:</TextBlock>
                 <TextBox Name="txtPassportNumber" Width="100" Margin="10,5,20,5"></TextBox>
                 <TextBlock VerticalAlignment="Center">Cabin types:</TextBlock>

@@ -22,7 +22,6 @@ namespace AirportManagerSystem.View
     {
         List<Schedule> schedules;
         List<NewFlight> flights;
-        NewFlight currentFlight;
 
         string from, to, flightNumber;
         DateTime? date;

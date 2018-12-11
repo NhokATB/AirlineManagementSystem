@@ -23,6 +23,8 @@ namespace AirportManagerSystem.View
     public partial class FlightProcessWindow : Window
     {
         List<string> criterias = new List<string>() { "Date - time", "Flight time" };
+        bool isDateTimeIncrease;
+        bool isFlightTimeIncrease;
         public FlightProcessWindow()
         {
             InitializeComponent();
@@ -53,7 +55,7 @@ namespace AirportManagerSystem.View
             cbSortBy.ItemsSource = criterias;
             cbSortBy.SelectedIndex = 0;
         }
-
+        
         private void LoadFlightProcess()
         {
             stpFlights.Children.Clear();
@@ -64,11 +66,29 @@ namespace AirportManagerSystem.View
 
             if (criterias[cbSortBy.SelectedIndex] == "Date - time")
             {
-                flights = flights.OrderByDescending(t => t.Date + t.Time).ToList();
+                if (isDateTimeIncrease)
+                {
+                    flights = flights.OrderByDescending(t => t.Date + t.Time).ToList();
+                    isDateTimeIncrease = false;
+                }
+                else
+                {
+                    flights = flights.OrderBy(t => t.Date + t.Time).ToList();
+                    isDateTimeIncrease = true;
+                }
             }
             else
             {
-                flights = flights.OrderByDescending(t => t.Route.FlightTime).ToList();
+                if (isFlightTimeIncrease)
+                {
+                    flights = flights.OrderByDescending(t => t.Route.FlightTime).ToList();
+                    isFlightTimeIncrease = false;
+                }
+                else
+                {
+                    flights = flights.OrderBy(t => t.Route.FlightTime).ToList();
+                    isFlightTimeIncrease = true;
+                }
             }
 
             int i = 0;
