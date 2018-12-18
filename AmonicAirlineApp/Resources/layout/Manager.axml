@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_marginTop="4dp"
+		android:layout_marginBottom="0dp"	
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+		
+		<Button
+			android:id="@+id/btnRevenueFromTickets"
+			android:layout_marginBottom="5dp"
+			android:layout_marginLeft="3dp"
+			android:layout_width="185dp"
+			android:background="@color/LightGold"
+			android:layout_height="wrap_content"
+			android:textSize="12sp"
+			android:text="Revenue"
+			/>
+		<Button
+			android:id="@+id/btnEmptySeat"
+			android:layout_marginRight="5dp"
+			android:background="@color/MainBlue"
+			android:layout_marginBottom="3dp"	
+			android:layout_marginLeft="3dp"
+			android:layout_width="190dp"
+			android:layout_height="wrap_content"
+			android:textSize="12sp"
+			android:text="Sale ticket and empty seat"
+			/>
+		
+	</LinearLayout>
+
+	<TextView
+			android:id="@+id/tvDateRevenueTicket"
+			android:layout_height="30dp"
+			android:layout_marginTop="10dp"
+			android:layout_marginLeft="10dp"
+			android:layout_marginRight="10dp"
+			android:layout_marginBottom="3dp"	
+			android:layout_width="match_parent"
+			android:textSize="12sp"
+			android:text="@string/selected_date_text"
+			style="@android:style/TextAppearance.Large" />
+
+	<Button
+			android:id="@+id/btnApplyRevenueTicket"
+			android:layout_marginRight="4dp"
+			android:layout_marginLeft="4dp"
+			android:layout_marginBottom="3dp"	
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textSize="12sp"
+			android:text="Apply"
+			/>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/LinearLayout1"
+              android:weightSum="200"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal">
+		  <TextView
+			  android:layout_width="match_parent"
+			  android:layout_height="wrap_content"
+			  android:text="Cabin type"
+			  android:padding="10dp"
+			  android:layout_weight="50"
+			  android:textSize="12sp">
+		  </TextView>
+
+		  <TextView
+			  android:layout_weight="150"
+			  android:text="Revenue"
+			  android:layout_width="match_parent"
+			  android:layout_height="wrap_content"
+			  android:padding="10dp"
+			  android:textSize="12sp">
+		  </TextView>
+
+	</LinearLayout>
+	<ListView
+		android:id="@+id/lvRevenues"
+		android:layout_margin="2dp"
+		android:layout_width="match_parent"
+		android:layout_height="310dp"
+	/>
+	<Button
+			android:id="@+id/btnBack"
+			android:layout_marginRight="4dp"
+			android:layout_marginLeft="4dp"
+			android:layout_marginBottom="3dp"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textSize="12sp"
+			android:text="Back"
+			/>
+</LinearLayout>

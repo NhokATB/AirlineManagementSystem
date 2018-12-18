@@ -35,10 +35,26 @@ namespace AirportManagerSystem.View
             this.Loaded += TicketsManagermentWindow_Loaded;
             dgTickets.LoadingRow += DgTickets_LoadingRow;
             dgTickets.SelectedCellsChanged += DgTickets_SelectedCellsChanged;
+            this.StateChanged += TicketsManagementWindow_StateChanged;
+            this.WindowState = WindowState.Maximized;
+        }
+
+        private void TicketsManagementWindow_StateChanged(object sender, EventArgs e)
+        {
+            if(this.WindowState == WindowState.Maximized)
+            {
+                dgTickets.Height = 480;
+            }
+            else
+            {
+                dgTickets.Height = 400;
+            }
         }
 
         private void TicketsManagermentWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            dgTickets.Height = 480;
+
             arrivalAirports = Db.Context.Airports.ToList();
             arrivalAirports.Insert(0, new Airport() { Name = "All airports" });
             cbArrivalAirport.ItemsSource = arrivalAirports;

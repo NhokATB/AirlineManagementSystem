@@ -37,6 +37,21 @@ namespace AirportManagerSystem.View
             this.Loaded += FlightManagementWindow_Loaded;
             dgFlights.LoadingRow += dgFlights_LoadingRow;
             dgFlights.SelectedCellsChanged += DgFlights_SelectedCellsChanged;
+
+            this.StateChanged += FlightManagementWindow_StateChanged;
+            this.WindowState = WindowState.Maximized;
+        }
+
+        private void FlightManagementWindow_StateChanged(object sender, EventArgs e)
+        {
+            if(this.WindowState == WindowState.Maximized)
+            {
+                dgFlights.Height = 485;
+            }
+            else
+            {
+                dgFlights.Height = 385;
+            }
         }
 
         private void DgFlights_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
@@ -77,6 +92,8 @@ namespace AirportManagerSystem.View
 
         private void FlightManagementWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            dgFlights.Height = 485;
+
             arrivalAirports = Db.Context.Airports.ToList();
             arrivalAirports.Insert(0, new Airport() { Name = "All airports" });
             cbArrivalAirport.ItemsSource = arrivalAirports;

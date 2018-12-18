@@ -8,14 +8,14 @@
         WindowStartupLocation="CenterScreen"
         Title="Amonic Airline" Height="650" Width="1000">
     <StackPanel>
-        <Menu HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="auto">
+        <Menu Name="menu" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="auto">
             <MenuItem Header="System" Name="mnSystem">
                 <MenuItem Header="My Log" Name="mnLogingHistory" Click="mnLogingHistory_Click"/>
                 <MenuItem Header="Profile" Name="mnProfile" Click="mnProfile_Click"/>
                 <MenuItem Header="Change password" Name="mnChangePassword" Click="mnChangePassword_Click"/>
                 <MenuItem Header="My Commission" Name="mnMyCommission" Click="mnMyCommission_Click"/>
                 <Separator/>
-                <MenuItem Header="Exit" Name="mnExit" Click="mnExit_Click"/>
+                <MenuItem Header="Logout" Name="mnExit" Click="mnExit_Click"/>
             </MenuItem>
             <MenuItem Header="Category" Name="mnManagement">
                 <MenuItem Header="Users" Name="mnUsers" Click="MnUsers_Click"/>
@@ -57,7 +57,7 @@
                     <MenuItem Header="Change Ticket" Name="mnChangeTicketPolicy" Click="mnChangeTicketPolicy_Click"/>
                     <MenuItem Header="Cancel Ticket" Name="mnCancelTicketPolicy" Click="mnCancelTicketPolicy_Click"/>
                 </MenuItem>
-                <MenuItem Header="About Automation System" Name="mnAutomationSystem" Click="mnAutomationSystem_Click"/>
+                <MenuItem Header="About System" Name="mnAutomationSystem" Click="mnAutomationSystem_Click"/>
             </MenuItem>
         </Menu>
         <TextBlock TextAlignment="Center" FontSize="40" Margin="10,30,10,25" Foreground="DarkGreen" FontWeight="Bold" TextWrapping="Wrap">Welcome to AMONIC Airlines Automation System</TextBlock>

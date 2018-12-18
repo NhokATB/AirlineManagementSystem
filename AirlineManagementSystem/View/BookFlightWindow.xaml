@@ -39,7 +39,7 @@
                 </StackPanel>
             </GroupBox.Content>
         </GroupBox>
-        <StackPanel Height="150" Margin="10,5,10,5">
+        <StackPanel Name="stpOutbound" Height="150" Margin="10,5,10,5">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
@@ -53,7 +53,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="From" Width="0.15*" Binding="{Binding From}"/>
                     <DataGridTextColumn Header="To" Width="0.15*" Binding="{Binding To}"/>
-                    <DataGridTextColumn Header="Date" Width="0.2*" Binding="{Binding FirstFlight.Date, StringFormat=d}"/>
+                    <DataGridTextColumn Header="Date" Width="0.2*" Binding="{Binding FirstFlight.Date, StringFormat={}{0:dd/MM/yyyy}}"/>
                     <DataGridTextColumn Header="Time" Width="0.15*" Binding="{Binding FirstFlight.Time}"/>
                     <DataGridTextColumn Header="Flight number(s)" Width="0.3*" Binding="{Binding FlightNumbers}"/>
                     <DataGridTextColumn Header="Cabin price" Width="0.2*" Binding="{Binding Price, StringFormat='{}{0:C0}'}"/>
@@ -61,7 +61,7 @@
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
-        <StackPanel Height="150" Margin="10,5,10,5">
+        <StackPanel Name="stpReturn" Height="150" Margin="10,5,10,5">
             <Grid Name="grReturnFlightsDetail">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
@@ -74,7 +74,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="From" Width="0.15*" Binding="{Binding From}"/>
                     <DataGridTextColumn Header="To" Width="0.15*" Binding="{Binding To}"/>
-                    <DataGridTextColumn Header="Date" Width="0.2*" Binding="{Binding FirstFlight.Date, StringFormat=d}"/>
+                    <DataGridTextColumn Header="Date" Width="0.2*" Binding="{Binding FirstFlight.Date, StringFormat={}{0:dd/MM/yyyy}}"/>
                     <DataGridTextColumn Header="Time" Width="0.15*" Binding="{Binding FirstFlight.Time}"/>
                     <DataGridTextColumn Header="Flight number(s)" Width="0.3*" Binding="{Binding FlightNumbers}"/>
                     <DataGridTextColumn Header="Cabin price" Width="0.2*" Binding="{Binding Price, StringFormat='{}{0:C0}'}"/>

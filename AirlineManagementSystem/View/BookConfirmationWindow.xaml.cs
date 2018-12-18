@@ -37,6 +37,21 @@ namespace AirportManagerSystem.View
             InitializeComponent();
             this.Loaded += BookConfirmationWindow_Loaded;
             dgPassengers.SelectionChanged += DgPassengers_SelectionChanged;
+
+            this.StateChanged += BookConfirmationWindow_StateChanged;
+            this.WindowState = WindowState.Maximized;
+        }
+
+        private void BookConfirmationWindow_StateChanged(object sender, EventArgs e)
+        {
+            if(this.WindowState == WindowState.Maximized)
+            {
+                dgPassengers.Height = 220;
+            }
+            else
+            {
+                dgPassengers.Height = 120;
+            }
         }
 
         private void DgPassengers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -52,6 +67,8 @@ namespace AirportManagerSystem.View
 
         private void BookConfirmationWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            dgPassengers.Height = 220;
+
             countries = Db.Context.Countries.ToList();
             cbPassportCountry.ItemsSource = countries;
             cbPassportCountry.DisplayMemberPath = "Name";

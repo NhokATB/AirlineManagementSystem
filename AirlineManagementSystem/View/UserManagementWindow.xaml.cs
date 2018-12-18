@@ -28,7 +28,23 @@ namespace AirportManagerSystem.View
 
             dgUsers.SelectedCellsChanged += DgUsers_SelectedCellsChanged;
             dgUsers.LoadingRow += DgUsers_LoadingRow;
+
+            this.WindowState = WindowState.Maximized;
+            this.StateChanged += UserManagementWindow_StateChanged;
         }
+
+        private void UserManagementWindow_StateChanged(object sender, EventArgs e)
+        {
+            if(this.WindowState == WindowState.Maximized)
+            {
+                dgUsers.Height = 535;
+            }
+            else
+            {
+                dgUsers.Height = 435;
+            }
+        }
+
         private User currentUser;
         private List<Office> offices;
         private List<Role> roles;
@@ -86,6 +102,8 @@ namespace AirportManagerSystem.View
         }
         private void UserManagementWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            dgUsers.Height = 535;
+
             offices = Db.Context.Offices.ToList();
             offices.Insert(0, new Office() { Title = "All offices" });
             cbOffice.ItemsSource = offices;

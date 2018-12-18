@@ -28,6 +28,21 @@ namespace AirportManagerSystem.View
             this.Loaded += CrewManagementWindow_Loaded;
             dgCrews.SelectedCellsChanged += DgCrews_SelectedCellsChanged;
             dgCrews.LoadingRow += DgCrews_LoadingRow;
+
+            this.StateChanged += CrewManagementWindow_StateChanged;
+            this.WindowState = WindowState.Maximized;
+        }
+
+        private void CrewManagementWindow_StateChanged(object sender, EventArgs e)
+        {
+            if(this.WindowState == WindowState.Maximized)
+            {
+                dgCrews.Height = 560;
+            }
+            else
+            {
+                dgCrews.Height = 410;
+            }
         }
 
         private void DgCrews_LoadingRow(object sender, DataGridRowEventArgs e)
@@ -57,6 +72,8 @@ namespace AirportManagerSystem.View
 
         private void CrewManagementWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            dgCrews.Height = 560;
+
             offices = Db.Context.Offices.ToList();
             offices.Insert(0, new Office() { Title = "All" });
             cbOffice.ItemsSource = offices;

@@ -29,6 +29,22 @@ namespace AirportManagerSystem.View
             InitializeComponent();
             this.Loaded += MemberManagementWindow_Loaded;
             dgMembers.SelectedCellsChanged += DgMembers_SelectedCellsChanged;
+
+            this.StateChanged += MemberManagementWindow_StateChanged;
+
+            this.WindowState = WindowState.Maximized;
+        }
+
+        private void MemberManagementWindow_StateChanged(object sender, EventArgs e)
+        {
+            if(this.WindowState == WindowState.Maximized)
+            {
+                dgMembers.Height = 550;
+            }
+            else
+            {
+                dgMembers.Height = 450;
+            }
         }
 
         private void DgMembers_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
@@ -44,6 +60,8 @@ namespace AirportManagerSystem.View
 
         private void MemberManagementWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            dgMembers.Height = 550;
+
             var genders = new List<string>() { "All", "Male", "Female" };
             var crews = Db.Context.Crews.ToList();
             var positions = Db.Context.Positions.ToList();

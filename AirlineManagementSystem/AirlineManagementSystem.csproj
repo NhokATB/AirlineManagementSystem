@@ -123,7 +123,6 @@
     <Compile Include="ChartControls\UcSurveyLineChart.xaml.cs">
       <DependentUpon>UcSurveyLineChart.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Commands\CommandClass.cs" />
     <Compile Include="Model\AmenitiesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -167,6 +166,9 @@
     </Compile>
     <Compile Include="UserControls\UcSurvey.xaml.cs">
       <DependentUpon>UcSurvey.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AboutAirlineManagementSystemSystem.xaml.cs">
+      <DependentUpon>AboutAirlineManagementSystemSystem.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AboutAMONICAirlineWindow.xaml.cs">
       <DependentUpon>AboutAMONICAirlineWindow.xaml</DependentUpon>
@@ -421,6 +423,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\UcSurvey.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AboutAirlineManagementSystemSystem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -854,6 +860,7 @@
     <Folder Include="Controller\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="XMLFile1.xml" />
     <Resource Include="Images\WSC2017_TP09_Airplane-Amonic-Single.png" />
     <Resource Include="Images\AmonicAirline.ico" />
     <Content Include="SqlServerTypes\readme.htm" />

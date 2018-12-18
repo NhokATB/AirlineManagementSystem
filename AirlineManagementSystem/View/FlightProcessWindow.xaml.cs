@@ -32,6 +32,8 @@ namespace AirportManagerSystem.View
             cbSortBy.SelectionChanged += CbSortBy_SelectionChanged;
 
             this.StateChanged += FlightProcessWindow_StateChanged;
+
+            this.WindowState = WindowState.Maximized;
         }
 
         private void FlightProcessWindow_StateChanged(object sender, EventArgs e)
@@ -52,6 +54,7 @@ namespace AirportManagerSystem.View
 
         private void FlightProcessWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            scvFlightProcess.Height = 630;
             cbSortBy.ItemsSource = criterias;
             cbSortBy.SelectedIndex = 0;
         }

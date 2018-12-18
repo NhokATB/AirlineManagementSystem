@@ -47,6 +47,29 @@ namespace AirportManagerSystem.View
             txtNum.Text = numValue.ToString();
             dpReturn.SelectedDate = DateTime.Now;
             dpOutbound.SelectedDate = DateTime.Now;
+
+            this.StateChanged += BookFlightWindow_StateChanged;
+            this.WindowState = WindowState.Maximized;
+        }
+
+        private void BookFlightWindow_StateChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                dgOutboundFlights.Height = 210;
+                dgReturnFlights.Height = 210;
+
+                stpOutbound.Height = 240;
+                stpReturn.Height = 240;
+            }
+            else
+            {
+                dgOutboundFlights.Height = 120;
+                dgReturnFlights.Height = 120;
+
+                stpOutbound.Height = 150;
+                stpReturn.Height = 150;
+            }
         }
 
         private void DgReturnFlights_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -85,6 +108,11 @@ namespace AirportManagerSystem.View
 
         private void BookFlightWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            dgOutboundFlights.Height = 210;
+            dgReturnFlights.Height = 210;
+            stpOutbound.Height = 240;
+            stpReturn.Height = 240;
+
             departureAirport = Db.Context.Airports.ToList();
             cbDepatureAirport.ItemsSource = departureAirport;
             cbDepatureAirport.DisplayMemberPath = "IATACode";
@@ -141,7 +169,13 @@ namespace AirportManagerSystem.View
         {
             if (cbDepatureAirport.Text == cbArrivalAirport.Text)
             {
-                MessageBox.Show("Airport cannot be the same");
+                MessageBox.Show("Airport cannot be the same", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if(dpOutbound.SelectedDate.Value.Date < DateTime.Now.Date)
+            {
+                MessageBox.Show("Outbound date can only >= today", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -149,9 +183,9 @@ namespace AirportManagerSystem.View
 
             if (rdbReturn.IsChecked.Value)
             {
-                if (dpReturn.SelectedDate.Value.Date < dpOutbound.SelectedDate.Value.Date)
+                if (rdate.Date < odate.Date)
                 {
-                    MessageBox.Show("Return date can only after outbound date");
+                    MessageBox.Show("Return date can only after outbound date", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
@@ -161,14 +195,14 @@ namespace AirportManagerSystem.View
 
             if (dgOutboundFlights.Items.Count == 0)
             {
-                MessageBox.Show("No result for outbound flight");
+                MessageBox.Show("No result for outbound flight", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
             if (rdbReturn.IsChecked.Value)
             {
                 if (dgReturnFlights.Items.Count == 0)
                 {
-                    MessageBox.Show("No result for reutrn flight");
+                    MessageBox.Show("No result for reutrn flight", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             isApplied = true;
@@ -385,8 +419,6 @@ namespace AirportManagerSystem.View
 
             return true;
         }
-
-
 
         private void SetParameter()
         {

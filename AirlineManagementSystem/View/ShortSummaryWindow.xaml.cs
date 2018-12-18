@@ -183,11 +183,7 @@ namespace AirportManagerSystem.View
             double revenue = 0;
             foreach (var item in tickets)
             {
-                double price = (int)item.Schedule.EconomyPrice;
-                double bprice = Math.Floor(price * 1.35);
-                double fprice = Math.Floor(bprice * 1.3);
-
-                revenue += item.CabinTypeID == 1 ? price : (item.CabinTypeID == 2 ? bprice : fprice);
+                revenue += FlightForBooking.GetPrice(item.Schedule, item.CabinType);
             }
 
             return revenue;

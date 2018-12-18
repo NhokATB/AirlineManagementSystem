@@ -1,4 +1,16 @@
 <resources>
-    <string name="app_name">AmonicAirlineApp</string>
-    <string name="action_settings">Settings</string>
+  <string name="app_name">Amonic Airline App</string>
+  <string name="action_settings">Settings</string>
+  <string name="selected_date_text">Select Date</string>
+  <string name="pick_date_text">Pick Date</string>
+  <string name="depatureAirport">From:</string>
+  <string name="arrivalAirport">To:</string>
+  <string-array name="airports">
+    <item>Abu Dhabi</item>
+    <item>Cairo</item>
+    <item>Bahrain</item>
+    <item>Aden</item>
+    <item>Doha</item>
+    <item>Riyadh</item>
+  </string-array>
 </resources>

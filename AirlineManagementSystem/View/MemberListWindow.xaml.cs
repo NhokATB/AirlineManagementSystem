@@ -29,8 +29,22 @@ namespace AirportManagerSystem.View
             InitializeComponent();
             this.Loaded += MemberListWindow_Loaded;
             dgMembers.SelectedCellsChanged += DgMembers_SelectedCellsChanged;
+
+            this.StateChanged += MemberListWindow_StateChanged;
+            this.WindowState = WindowState.Maximized;
         }
 
+        private void MemberListWindow_StateChanged(object sender, EventArgs e)
+        {
+            if(this.WindowState == WindowState.Maximized)
+            {
+                dgMembers.Height = 420;
+            }
+            else
+            {
+                dgMembers.Height = 320; 
+            }
+        }
 
         private void DgMembers_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
@@ -45,6 +59,7 @@ namespace AirportManagerSystem.View
 
         private void MemberListWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            dgMembers.Height = 420;
             this.Title = this.Title + " " + Crew.CrewName;
             LoadCrewMembers();
             LoadMemberOfPosition();
@@ -124,7 +139,7 @@ namespace AirportManagerSystem.View
 
         private void btnAddCaptain_Click(object sender, RoutedEventArgs e)
         {
-            if (cbCaptain.SelectedIndex == -1)
+            if (cbCaptain.SelectedIndex != -1)
             {
                 if (Crew.CrewMembers.FirstOrDefault(t => t.Position.PositionName == "Captain") == null)
                 {
@@ -146,7 +161,7 @@ namespace AirportManagerSystem.View
 
         private void btnAddFirstOfficer_Click(object sender, RoutedEventArgs e)
         {
-            if (cbFirstOfficer.SelectedIndex == -1)
+            if (cbFirstOfficer.SelectedIndex != -1)
             {
                 if (Crew.CrewMembers.FirstOrDefault(t => t.Position.PositionName == "First Officer") == null)
                 {
@@ -168,7 +183,7 @@ namespace AirportManagerSystem.View
 
         private void btnAddSecondOfficer_Click(object sender, RoutedEventArgs e)
         {
-            if (cbSecondOfficer.SelectedIndex == -1)
+            if (cbSecondOfficer.SelectedIndex != -1)
             {
                 if (Crew.CrewMembers.FirstOrDefault(t => t.Position.PositionName == "Second Officer") == null)
                 {
@@ -190,7 +205,7 @@ namespace AirportManagerSystem.View
 
         private void btnAddPurser_Click(object sender, RoutedEventArgs e)
         {
-            if (cbPurser.SelectedIndex == -1)
+            if (cbPurser.SelectedIndex != -1)
             {
                 if (Crew.CrewMembers.FirstOrDefault(t => t.Position.PositionName == "Purser") == null)
                 {
@@ -212,7 +227,7 @@ namespace AirportManagerSystem.View
 
         private void btnAddAttendant_Click(object sender, RoutedEventArgs e)
         {
-            if (cbAttendant.SelectedIndex == -1)
+            if (cbAttendant.SelectedIndex != -1)
             {
                 if (Crew.CrewMembers.Count(t => t.Position.PositionName == "Flight Attendant") < Crew.NumberOfMembers - 4)
                 {

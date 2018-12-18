@@ -15,11 +15,11 @@
     </UserControl.Resources>
     <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left">
         <TextBlock>From:</TextBlock>
-        <TextBlock Name="tblFrom" Width="60"></TextBlock>
+        <TextBlock Name="tblFrom" Width="45"></TextBlock>
         <TextBlock>To:</TextBlock>
-        <TextBlock Name="tblTo" Width="60"></TextBlock>
-        <TextBlock>Cabin type:</TextBlock>
-        <TextBlock Name="tblCabinType" Width="80"></TextBlock>
+        <TextBlock Name="tblTo" Width="45"></TextBlock>
+        <TextBlock >Cabin type:</TextBlock>
+        <TextBlock Name="tblCabinType" Width="110"></TextBlock>
         <TextBlock>Date:</TextBlock>
         <TextBlock Name="tblDate" Width="70"></TextBlock>
         <TextBlock>Time:</TextBlock>

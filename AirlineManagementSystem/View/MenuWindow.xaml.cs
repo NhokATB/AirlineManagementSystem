@@ -1,18 +1,10 @@
 ﻿using AirportManagerSystem.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AirportManagerSystem.View
 {
@@ -46,7 +38,11 @@ namespace AirportManagerSystem.View
 
                 mnReport.Items.Remove(mnShortSummaryReport);
 
-                if (User.Role.Title == "User")
+                if (User.Role.Title == "Manager")
+                {
+                    mnSystem.Items.Remove(mnMyCommission);
+                }
+                else
                 {
                     mnManagement.Items.Remove(mnUsers);
                     mnManagement.Items.Remove(mnAmenities);
@@ -61,11 +57,25 @@ namespace AirportManagerSystem.View
 
                     mnReport.Items.Remove(mnSurveyReport);
                     mnReport.Items.Remove(mnRevenueReport);
-                    mnReport.Items.Remove(mnCommisstion);
-                }
-                else
-                {
-                    mnSystem.Items.Remove(mnMyCommission);
+
+                    if (User.Role.Title == "Agent")
+                    {
+                        mnBusiness.Items.Remove(mnCheckIn);
+                        mnBusiness.Items.Remove(mnTicketControl);
+                        mnBusiness.Items.Remove(mnSurveyQuestionaire);
+
+                        mnManagement.Items.Remove(mnTickets);
+                        mnManagement.Items.Remove(mnSeats);
+
+                        mnReport.Items.Remove(mnAmenitiesReprot);
+
+                        menu.Items.Remove(mnManagement);
+                        menu.Items.Remove(mnReport);
+                    }
+                    else
+                    {
+                        mnReport.Items.Remove(mnCommisstion);
+                    }
                 }
             }
             else
@@ -285,18 +295,19 @@ namespace AirportManagerSystem.View
         private void mnChangeTicketPolicy_Click(object sender, RoutedEventArgs e)
         {
             ChangeTicketPolicyWindow changeTicketPolicyWindow = new ChangeTicketPolicyWindow();
-            changeTicketPolicyWindow.ShowDialog();
+            ShowDialogWindow(changeTicketPolicyWindow);
         }
 
         private void mnCancelTicketPolicy_Click(object sender, RoutedEventArgs e)
         {
             CancelTicketPolicyWindow cancelTicketPolicyWindow = new CancelTicketPolicyWindow();
-            cancelTicketPolicyWindow.ShowDialog();
+            ShowDialogWindow(cancelTicketPolicyWindow);
         }
 
         private void mnAutomationSystem_Click(object sender, RoutedEventArgs e)
         {
-            
+            AboutAirlineManagementSystemWindow aboutAirlineManagementSystemWindow = new AboutAirlineManagementSystemWindow();
+            ShowDialogWindow(aboutAirlineManagementSystemWindow);
         }
 
         private void mnAmonicAirline_Click(object sender, RoutedEventArgs e)
