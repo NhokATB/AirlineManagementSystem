@@ -1,0 +1,97 @@
+﻿<Window x:Class="AirportManagerSystem.View.TicketsManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirportManagerSystem.View"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Tickets Management" Height="660" Width="1200">
+    <StackPanel>
+
+        <GroupBox Header="Filter Ticket" Margin="10,5,10,5">
+            <GroupBox.Content>
+                <Grid Width="700" Margin="10">
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Width" Value="65"></Setter>
+                            <Setter Property="TextAlignment" Value="Right"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center">
+                        <TextBlock VerticalAlignment="Center" >Outbound:</TextBlock>
+                        <DatePicker Name="dpOutbound" Width="120" Margin="5"></DatePicker>
+                        <TextBlock VerticalAlignment="Center" Foreground="Red" FontSize="18" Width="auto" Height="20">*</TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center">
+                        <TextBlock VerticalAlignment="Center">From:</TextBlock>
+                        <ComboBox Name="cbDepatureAirport" Margin="5" Width="120"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center">
+                        <TextBlock VerticalAlignment="Center">To:</TextBlock>
+                        <ComboBox Name="cbArrivalAirport" Margin="5" Width="120"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
+                        <TextBlock VerticalAlignment="Center">Cabin type:</TextBlock>
+                        <ComboBox Name="cbCabinType" Margin="5" Width="120"></ComboBox>
+                        <TextBlock VerticalAlignment="Center" Foreground="Red" FontSize="18" Width="auto" Height="20" Visibility="Hidden">*</TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center">
+                        <TextBlock VerticalAlignment="Center">Ticket type:</TextBlock>
+                        <ComboBox Name="cbTicketType" Margin="5" Width="120"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center">
+                        <TextBlock VerticalAlignment="Center">Sort by:</TextBlock>
+                        <ComboBox Name="cbSorBy" Margin="5" Width="120"></ComboBox>
+                    </StackPanel>
+                    <Button Name="btnApply" Width="80" Grid.Column="3" Grid.Row="1" Height="30" Margin="2" Click="btnApply_Click">Apply</Button>
+                </Grid>
+            </GroupBox.Content>
+        </GroupBox>
+
+        <DataGrid RowHeaderWidth="0" IsReadOnly="True" Name="dgTickets" AutoGenerateColumns="False" Margin="10,5,10,5" Height="400" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="FullRow">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Full name" Binding="{Binding FullName}" Width="0.6*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Date" Binding="{Binding Ticket.Schedule.Date, StringFormat={}{0:dd/MM/yyyy}}" Width="0.4*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Time" Binding="{Binding Ticket.Schedule.Time, StringFormat='t'}" Width="0.3*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Route" Binding="{Binding Route}" Width="0.4*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Flight number" Binding="{Binding Ticket.Schedule.FlightNumber}" Width="0.4*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Cabin type" Binding="{Binding Ticket.CabinType.Name}" Width="0.3*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ticket price" Binding="{Binding Price, StringFormat='{}{0:C0}'}" Width="0.3*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Passport number" Binding="{Binding Ticket.PassportNumber, StringFormat='{}{0:C0}'}" Width="0.5*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Passport Country" Binding="{Binding Ticket.Country.Name}" Width="0.5*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Phone" Binding="{Binding Ticket.Phone, StringFormat='{}{0:C0}'}" Width="0.4*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Booking reference" Binding="{Binding Ticket.BookingReference}" Width="0.45*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation="Horizontal" Margin="10,5,5,5">
+            <DockPanel Width="20" Height="20" Background="#F79420">
+            </DockPanel>
+            <TextBlock Margin="5">Canceled Ticket</TextBlock>
+        </StackPanel>
+        <Grid Margin="10,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Button Width="120" Height="35" Name="btnAddTicket" Margin="0,0,15,0" Click="btnAddFlight_Click">Add Ticket</Button>
+                <Button Width="120" Height="35" Name="btnEditTicket" Margin="0,0,15,0" Click="btnEditFlight_Click">Edit Ticket</Button>
+                <Button Width="120" Name="btnDeleteTicket" Margin="0,0,15,0" Click="btnDeleteTicket_Click">Delete Ticket</Button>
+                <Button Visibility="Hidden" Width="120" Height="35" Margin="0,0,15,0" Name="btnCancelTicket"  VerticalAlignment="Top" Click="btnCancelTicket_Click">Cancel Ticket</Button>
+            </StackPanel>
+            <Button Grid.Column="1" Width="120" Height="35" Name="btnCancel"  HorizontalAlignment="Right" Click="btnCancel_Click">Cancel</Button>
+        </Grid>
+    </StackPanel>
+</Window>

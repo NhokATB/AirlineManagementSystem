@@ -167,217 +167,217 @@
     <Compile Include="UserControls\UcSurvey.xaml.cs">
       <DependentUpon>UcSurvey.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AboutAirlineManagementSystemSystem.xaml.cs">
+    <Compile Include="View\Help\AboutAirlineManagementSystemSystem.xaml.cs">
       <DependentUpon>AboutAirlineManagementSystemSystem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AboutAMONICAirlineWindow.xaml.cs">
+    <Compile Include="View\Help\AboutAMONICAirlineWindow.xaml.cs">
       <DependentUpon>AboutAMONICAirlineWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AddAircraftWindow.xaml.cs">
+    <Compile Include="View\Category\AddAircraftWindow.xaml.cs">
       <DependentUpon>AddAircraftWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AddAirportWindow.xaml.cs">
+    <Compile Include="View\Category\AddAirportWindow.xaml.cs">
       <DependentUpon>AddAirportWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AddAmenityWindow.xaml.cs">
+    <Compile Include="View\Category\AddAmenityWindow.xaml.cs">
       <DependentUpon>AddAmenityWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AddCabinTypeWindow.xaml.cs">
+    <Compile Include="View\Category\AddCabinTypeWindow.xaml.cs">
       <DependentUpon>AddCabinTypeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AddCrewWindow.xaml.cs">
+    <Compile Include="View\Category\AddCrewWindow.xaml.cs">
       <DependentUpon>AddCrewWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AddFlightWindow.cs">
+    <Compile Include="View\Category\AddFlightWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\AddFlightWindow.Designer.cs">
+    <Compile Include="View\Category\AddFlightWindow.Designer.cs">
       <DependentUpon>AddFlightWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\AddMemberWindow.xaml.cs">
+    <Compile Include="View\Category\AddMemberWindow.xaml.cs">
       <DependentUpon>AddMemberWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AddOfficeWindow.xaml.cs">
+    <Compile Include="View\Category\AddOfficeWindow.xaml.cs">
       <DependentUpon>AddOfficeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AddRouteWindow.xaml.cs">
+    <Compile Include="View\Category\AddRouteWindow.xaml.cs">
       <DependentUpon>AddRouteWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AddUserWindow.xaml.cs">
+    <Compile Include="View\Category\AddUserWindow.xaml.cs">
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AircraftManagementWindow.xaml.cs">
+    <Compile Include="View\Category\AircraftManagementWindow.xaml.cs">
       <DependentUpon>AircraftManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AirportManagementWindow.xaml.cs">
+    <Compile Include="View\Category\AirportManagementWindow.xaml.cs">
       <DependentUpon>AirportManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AmenitiesManagementWindow.xaml.cs">
+    <Compile Include="View\Category\AmenitiesManagementWindow.xaml.cs">
       <DependentUpon>AmenitiesManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AmenitiesReportWindow.xaml.cs">
+    <Compile Include="View\Report\AmenitiesReportWindow.xaml.cs">
       <DependentUpon>AmenitiesReportWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\BillingConfirmationWindow.xaml.cs">
+    <Compile Include="View\Business\BillingConfirmationWindow.xaml.cs">
       <DependentUpon>BillingConfirmationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\BookConfirmationWindow.xaml.cs">
+    <Compile Include="View\Business\BookConfirmationWindow.xaml.cs">
       <DependentUpon>BookConfirmationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\BookFlightWindow.xaml.cs">
+    <Compile Include="View\Business\BookFlightWindow.xaml.cs">
       <DependentUpon>BookFlightWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CabinTypesManagementWindow.xaml.cs">
+    <Compile Include="View\Category\CabinTypesManagementWindow.xaml.cs">
       <DependentUpon>CabinTypesManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CancelTicketPolicyWindow.xaml.cs">
+    <Compile Include="View\Help\CancelTicketPolicyWindow.xaml.cs">
       <DependentUpon>CancelTicketPolicyWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CancelTicketWindow.xaml.cs">
+    <Compile Include="View\Business\CancelTicketWindow.xaml.cs">
       <DependentUpon>CancelTicketWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ChangePasswordWindow.xaml.cs">
+    <Compile Include="View\System\ChangePasswordWindow.xaml.cs">
       <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ChangeTicketPolicyWindow.xaml.cs">
+    <Compile Include="View\Help\ChangeTicketPolicyWindow.xaml.cs">
       <DependentUpon>ChangeTicketPolicyWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ChangeTicketWindow.xaml.cs">
+    <Compile Include="View\Business\ChangeTicketWindow.xaml.cs">
       <DependentUpon>ChangeTicketWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CheckInWindow.xaml.cs">
+    <Compile Include="View\Business\CheckInWindow.xaml.cs">
       <DependentUpon>CheckInWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ChooseCrewWindow.xaml.cs">
+    <Compile Include="View\Business\ChooseCrewWindow.xaml.cs">
       <DependentUpon>ChooseCrewWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ChooseGateWindow.xaml.cs">
+    <Compile Include="View\Business\ChooseGateWindow.xaml.cs">
       <DependentUpon>ChooseGateWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CommissionDetailWindow.cs">
+    <Compile Include="View\Report\CommissionDetailWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\CommissionDetailWindow.Designer.cs">
+    <Compile Include="View\Report\CommissionDetailWindow.Designer.cs">
       <DependentUpon>CommissionDetailWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\CommissionReportWindow.cs">
+    <Compile Include="View\Report\CommissionReportWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\CommissionReportWindow.Designer.cs">
+    <Compile Include="View\Report\CommissionReportWindow.Designer.cs">
       <DependentUpon>CommissionReportWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\CrewManagementWindow.xaml.cs">
+    <Compile Include="View\Category\CrewManagementWindow.xaml.cs">
       <DependentUpon>CrewManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EditAircraftWindow.xaml.cs">
+    <Compile Include="View\Category\EditAircraftWindow.xaml.cs">
       <DependentUpon>EditAircraftWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EditAirportWindow.xaml.cs">
+    <Compile Include="View\Category\EditAirportWindow.xaml.cs">
       <DependentUpon>EditAirportWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EditAmenityWindow.xaml.cs">
+    <Compile Include="View\Category\EditAmenityWindow.xaml.cs">
       <DependentUpon>EditAmenityWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EditCabinTypeWindow.xaml.cs">
+    <Compile Include="View\Category\EditCabinTypeWindow.xaml.cs">
       <DependentUpon>EditCabinTypeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EditCrewWindow.xaml.cs">
+    <Compile Include="View\Category\EditCrewWindow.xaml.cs">
       <DependentUpon>EditCrewWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EditFlightWindow.cs">
+    <Compile Include="View\Category\EditFlightWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\EditFlightWindow.Designer.cs">
+    <Compile Include="View\Category\EditFlightWindow.Designer.cs">
       <DependentUpon>EditFlightWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\EditMemberWindow.xaml.cs">
+    <Compile Include="View\Category\EditMemberWindow.xaml.cs">
       <DependentUpon>EditMemberWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EditOfficeWindow.xaml.cs">
+    <Compile Include="View\Category\EditOfficeWindow.xaml.cs">
       <DependentUpon>EditOfficeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EditProfileWindow.xaml.cs">
+    <Compile Include="View\Category\EditProfileWindow.xaml.cs">
       <DependentUpon>EditProfileWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CrashWindow.xaml.cs">
       <DependentUpon>CrashWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EditRouteWindow.xaml.cs">
+    <Compile Include="View\Category\EditRouteWindow.xaml.cs">
       <DependentUpon>EditRouteWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EditTicketWindow.xaml.cs">
+    <Compile Include="View\Category\EditTicketWindow.xaml.cs">
       <DependentUpon>EditTicketWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\FlightManagementWindow.xaml.cs">
+    <Compile Include="View\Category\FlightManagementWindow.xaml.cs">
       <DependentUpon>FlightManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\FlightProcessWindow.xaml.cs">
+    <Compile Include="View\Business\FlightProcessWindow.xaml.cs">
       <DependentUpon>FlightProcessWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ImportChangeWindow.xaml.cs">
+    <Compile Include="View\Category\ImportChangeWindow.xaml.cs">
       <DependentUpon>ImportChangeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LoginHistoryManagementWindow.xaml.cs">
+    <Compile Include="View\Category\LoginHistoryManagementWindow.xaml.cs">
       <DependentUpon>LoginHistoryManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MemberListWindow.xaml.cs">
+    <Compile Include="View\Category\MemberListWindow.xaml.cs">
       <DependentUpon>MemberListWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MemberManagementWindow.xaml.cs">
+    <Compile Include="View\Category\MemberManagementWindow.xaml.cs">
       <DependentUpon>MemberManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MyCommissionWindow.cs">
+    <Compile Include="View\System\MyCommissionWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MyCommissionWindow.Designer.cs">
+    <Compile Include="View\System\MyCommissionWindow.Designer.cs">
       <DependentUpon>MyCommissionWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\OfficesManagementWindow.xaml.cs">
+    <Compile Include="View\Category\OfficesManagementWindow.xaml.cs">
       <DependentUpon>OfficesManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PreviewBoardingPassWindow.xaml.cs">
+    <Compile Include="View\Business\PreviewBoardingPassWindow.xaml.cs">
       <DependentUpon>PreviewBoardingPassWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\RevenueDetailWindow.cs">
+    <Compile Include="View\Report\RevenueDetailWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\RevenueDetailWindow.Designer.cs">
+    <Compile Include="View\Report\RevenueDetailWindow.Designer.cs">
       <DependentUpon>RevenueDetailWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\RevenueReportWindow.cs">
+    <Compile Include="View\Report\RevenueReportWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\RevenueReportWindow.Designer.cs">
+    <Compile Include="View\Report\RevenueReportWindow.Designer.cs">
       <DependentUpon>RevenueReportWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\RoutesManagementWindow.xaml.cs">
+    <Compile Include="View\Category\RoutesManagementWindow.xaml.cs">
       <DependentUpon>RoutesManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SeatManagementWindow.xaml.cs">
+    <Compile Include="View\Category\SeatManagementWindow.xaml.cs">
       <DependentUpon>SeatManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SeatModelWindow.xaml.cs">
+    <Compile Include="View\Business\SeatModelWindow.xaml.cs">
       <DependentUpon>SeatModelWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SetUpCrewWindow.xaml.cs">
+    <Compile Include="View\Business\SetUpCrewWindow.xaml.cs">
       <DependentUpon>SetUpCrewWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SetUpGateForFlightWindow.xaml.cs">
+    <Compile Include="View\Business\SetUpGateForFlightWindow.xaml.cs">
       <DependentUpon>SetUpGateForFlightWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ShortSummaryWindow.xaml.cs">
+    <Compile Include="View\Report\ShortSummaryWindow.xaml.cs">
       <DependentUpon>ShortSummaryWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SurveyQuestionnaireWindow.xaml.cs">
       <DependentUpon>SurveyQuestionnaireWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SurveyReportWindow.xaml.cs">
+    <Compile Include="View\Report\SurveyReportWindow.xaml.cs">
       <DependentUpon>SurveyReportWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UcFlightDetail.xaml.cs">
       <DependentUpon>UcFlightDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LoginHistoryWindow.xaml.cs">
+    <Compile Include="View\System\LoginHistoryWindow.xaml.cs">
       <DependentUpon>LoginHistoryWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginWindow.xaml.cs">
@@ -386,16 +386,16 @@
     <Compile Include="View\MenuWindow.xaml.cs">
       <DependentUpon>MenuWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PurchaseAmenitiesWindow.xaml.cs">
+    <Compile Include="View\Business\PurchaseAmenitiesWindow.xaml.cs">
       <DependentUpon>PurchaseAmenitiesWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\TicketControlWindow.xaml.cs">
+    <Compile Include="View\Business\TicketControlWindow.xaml.cs">
       <DependentUpon>TicketControlWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\TicketsManagermentWindow.xaml.cs">
+    <Compile Include="View\Category\TicketsManagermentWindow.xaml.cs">
       <DependentUpon>TicketsManagermentWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserManagementWindow.xaml.cs">
+    <Compile Include="View\Category\UserManagementWindow.xaml.cs">
       <DependentUpon>UserManagementWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="ChartControls\UcSeatColumnChart.xaml">
@@ -426,147 +426,147 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AboutAirlineManagementSystemSystem.xaml">
+    <Page Include="View\Help\AboutAirlineManagementSystemSystem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AboutAMONICAirlineWindow.xaml">
+    <Page Include="View\Help\AboutAMONICAirlineWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddAircraftWindow.xaml">
+    <Page Include="View\Category\AddAircraftWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddAirportWindow.xaml">
+    <Page Include="View\Category\AddAirportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddAmenityWindow.xaml">
+    <Page Include="View\Category\AddAmenityWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddCabinTypeWindow.xaml">
+    <Page Include="View\Category\AddCabinTypeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddCrewWindow.xaml">
+    <Page Include="View\Category\AddCrewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddMemberWindow.xaml">
+    <Page Include="View\Category\AddMemberWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddOfficeWindow.xaml">
+    <Page Include="View\Category\AddOfficeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddRouteWindow.xaml">
+    <Page Include="View\Category\AddRouteWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddUserWindow.xaml">
+    <Page Include="View\Category\AddUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AircraftManagementWindow.xaml">
+    <Page Include="View\Category\AircraftManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AirportManagementWindow.xaml">
+    <Page Include="View\Category\AirportManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AmenitiesManagementWindow.xaml">
+    <Page Include="View\Category\AmenitiesManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AmenitiesReportWindow.xaml">
+    <Page Include="View\Report\AmenitiesReportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\BillingConfirmationWindow.xaml">
+    <Page Include="View\Business\BillingConfirmationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\BookConfirmationWindow.xaml">
+    <Page Include="View\Business\BookConfirmationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\BookFlightWindow.xaml">
+    <Page Include="View\Business\BookFlightWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CabinTypesManagementWindow.xaml">
+    <Page Include="View\Category\CabinTypesManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CancelTicketPolicyWindow.xaml">
+    <Page Include="View\Help\CancelTicketPolicyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CancelTicketWindow.xaml">
+    <Page Include="View\Business\CancelTicketWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ChangePasswordWindow.xaml">
+    <Page Include="View\System\ChangePasswordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ChangeTicketPolicyWindow.xaml">
+    <Page Include="View\Help\ChangeTicketPolicyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ChangeTicketWindow.xaml">
+    <Page Include="View\Business\ChangeTicketWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CheckInWindow.xaml">
+    <Page Include="View\Business\CheckInWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ChooseCrewWindow.xaml">
+    <Page Include="View\Business\ChooseCrewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ChooseGateWindow.xaml">
+    <Page Include="View\Business\ChooseGateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CrewManagementWindow.xaml">
+    <Page Include="View\Category\CrewManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EditAircraftWindow.xaml">
+    <Page Include="View\Category\EditAircraftWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EditAirportWindow.xaml">
+    <Page Include="View\Category\EditAirportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EditAmenityWindow.xaml">
+    <Page Include="View\Category\EditAmenityWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EditCabinTypeWindow.xaml">
+    <Page Include="View\Category\EditCabinTypeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EditCrewWindow.xaml">
+    <Page Include="View\Category\EditCrewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EditMemberWindow.xaml">
+    <Page Include="View\Category\EditMemberWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EditOfficeWindow.xaml">
+    <Page Include="View\Category\EditOfficeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EditProfileWindow.xaml">
+    <Page Include="View\Category\EditProfileWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -574,67 +574,67 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EditRouteWindow.xaml">
+    <Page Include="View\Category\EditRouteWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EditTicketWindow.xaml">
+    <Page Include="View\Category\EditTicketWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\FlightManagementWindow.xaml">
+    <Page Include="View\Category\FlightManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\FlightProcessWindow.xaml">
+    <Page Include="View\Business\FlightProcessWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ImportChangeWindow.xaml">
+    <Page Include="View\Category\ImportChangeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\LoginHistoryManagementWindow.xaml">
+    <Page Include="View\Category\LoginHistoryManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MemberListWindow.xaml">
+    <Page Include="View\Category\MemberListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MemberManagementWindow.xaml">
+    <Page Include="View\Category\MemberManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\OfficesManagementWindow.xaml">
+    <Page Include="View\Category\OfficesManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PreviewBoardingPassWindow.xaml">
+    <Page Include="View\Business\PreviewBoardingPassWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\RoutesManagementWindow.xaml">
+    <Page Include="View\Category\RoutesManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SeatManagementWindow.xaml">
+    <Page Include="View\Category\SeatManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SeatModelWindow.xaml">
+    <Page Include="View\Business\SeatModelWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SetUpCrewWindow.xaml">
+    <Page Include="View\Business\SetUpCrewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SetUpGateForFlightWindow.xaml">
+    <Page Include="View\Business\SetUpGateForFlightWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ShortSummaryWindow.xaml">
+    <Page Include="View\Report\ShortSummaryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -642,7 +642,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SurveyReportWindow.xaml">
+    <Page Include="View\Report\SurveyReportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -732,7 +732,7 @@
     <Compile Include="View\LayoutWindow.xaml.cs">
       <DependentUpon>LayoutWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\LoginHistoryWindow.xaml">
+    <Page Include="View\System\LoginHistoryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -744,19 +744,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PurchaseAmenitiesWindow.xaml">
+    <Page Include="View\Business\PurchaseAmenitiesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\TicketControlWindow.xaml">
+    <Page Include="View\Business\TicketControlWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\TicketsManagermentWindow.xaml">
+    <Page Include="View\Category\TicketsManagermentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserManagementWindow.xaml">
+    <Page Include="View\Category\UserManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -783,25 +783,25 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\AddFlightWindow.resx">
+    <EmbeddedResource Include="View\Category\AddFlightWindow.resx">
       <DependentUpon>AddFlightWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\CommissionDetailWindow.resx">
+    <EmbeddedResource Include="View\Report\CommissionDetailWindow.resx">
       <DependentUpon>CommissionDetailWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\CommissionReportWindow.resx">
+    <EmbeddedResource Include="View\Report\CommissionReportWindow.resx">
       <DependentUpon>CommissionReportWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\EditFlightWindow.resx">
+    <EmbeddedResource Include="View\Category\EditFlightWindow.resx">
       <DependentUpon>EditFlightWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MyCommissionWindow.resx">
+    <EmbeddedResource Include="View\System\MyCommissionWindow.resx">
       <DependentUpon>MyCommissionWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\RevenueDetailWindow.resx">
+    <EmbeddedResource Include="View\Report\RevenueDetailWindow.resx">
       <DependentUpon>RevenueDetailWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\RevenueReportWindow.resx">
+    <EmbeddedResource Include="View\Report\RevenueReportWindow.resx">
       <DependentUpon>RevenueReportWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\AirlineManagementModel.edmx">
@@ -856,11 +856,8 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Controller\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="XMLFile1.xml" />
     <Resource Include="Images\WSC2017_TP09_Airplane-Amonic-Single.png" />
     <Resource Include="Images\AmonicAirline.ico" />
     <Content Include="SqlServerTypes\readme.htm" />

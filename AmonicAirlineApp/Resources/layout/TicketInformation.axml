@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_marginTop="4dp"
+		android:layout_marginLeft="4dp"
+		android:layout_marginRight="4dp"
+		android:layout_marginBottom="0dp"	
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+		<Button
+			android:id="@+id/btnAmenities"
+			android:layout_marginBottom="3dp"	
+			android:layout_width="115dp"
+			android:background="@color/MainBlue"
+			android:layout_height="wrap_content"
+			android:textSize="12sp"
+			android:text="Amenities list"
+			/>
+		<Button
+			android:id="@+id/btnTicketInformation"
+			android:layout_marginBottom="5dp"	
+			android:layout_width="140dp"
+			android:layout_marginLeft="4dp"
+			android:layout_height="wrap_content"
+			android:textSize="12sp"
+			android:background="@color/LightGold"
+			android:text="Ticket information"
+			/>
+		<Button
+			android:id="@+id/btnSearchFlight"
+			android:layout_marginRight="5dp"
+			android:layout_marginLeft="4dp"
+			android:layout_marginBottom="3dp"	
+			android:layout_width="115dp"
+			android:background="@color/MainBlue"
+			android:layout_height="wrap_content"
+			android:textSize="12sp"
+			android:text="Search flights"
+			/>
+		
+	</LinearLayout>
+	<ListView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+	/>
+</LinearLayout>

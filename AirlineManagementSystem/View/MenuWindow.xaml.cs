@@ -180,6 +180,13 @@ namespace AirportManagerSystem.View
         {
             TicketsManagementWindow wTicketsManagement = new TicketsManagementWindow();
             ShowDialogWindow(wTicketsManagement);
+
+            if (wTicketsManagement.IsAddTicket)
+            {
+                BookFlightWindow wBookFlight = new BookFlightWindow();
+                wBookFlight.User = User;
+                ShowDialogWindow(wBookFlight);
+            }
         }
 
         private void mnAmenities_Click(object sender, RoutedEventArgs e)
@@ -260,12 +267,6 @@ namespace AirportManagerSystem.View
         {
             SeatManagementWindow seatManagementWindow = new SeatManagementWindow();
             ShowDialogWindow(seatManagementWindow);
-
-            if (seatManagementWindow.CheckInNavigation)
-            {
-                CheckInWindow checkInWindow = new CheckInWindow();
-                ShowDialogWindow(checkInWindow);
-            }
         }
 
         private void mnChangeTicket_Click(object sender, RoutedEventArgs e)
@@ -353,6 +354,11 @@ namespace AirportManagerSystem.View
         {
             SetUpGateForFlightWindow setUpGateForFlightWindow = new SetUpGateForFlightWindow();
             ShowDialogWindow(setUpGateForFlightWindow);
+        }
+
+        private void MnUserGuide_Click(object sender, RoutedEventArgs e)
+        {
+            //open pdf File
         }
     }
 }

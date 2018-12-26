@@ -1,0 +1,35 @@
+﻿<Window x:Class="AirportManagerSystem.View.AmenitiesReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms" 
+        xmlns:local="clr-namespace:AirportManagerSystem.View"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Amenities Report" Height="650" Width="800">
+    <StackPanel Margin="10,20">
+        <Grid Width="auto" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="Filter" Grid.Column="0">
+                <Grid>
+                    <StackPanel Name="stpFilterByFlightId" Orientation="Horizontal" Margin="10,5" HorizontalAlignment="Center">
+                        <TextBlock VerticalAlignment="Center" Margin="10,5">Flight number:</TextBlock>
+                        <TextBox Name="txtFlightNumber" Margin="5" Width="100"></TextBox>
+                        <TextBlock VerticalAlignment="Center" Margin="10,5">From:</TextBlock>
+                        <DatePicker Name="dpFrom" Margin="5" Width="120"></DatePicker>
+                        <TextBlock VerticalAlignment="Center" Margin="10,5">To:</TextBlock>
+                        <DatePicker Name="dpTo" Margin="5" Width="120"></DatePicker>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+            <Button Name="btnMakeReport" Grid.Column="1" Height="40" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="30,0" Click="btnMakeReport_Click">Make report</Button>
+        </Grid>
+        <WindowsFormsHost Name="wfAmenitiesReport" Margin="10,10,15,10" Visibility="Hidden" Height="490">
+            <rv:ReportViewer x:Name="rvAmenitiesReport"/>
+        </WindowsFormsHost>
+    </StackPanel>
+</Window>
