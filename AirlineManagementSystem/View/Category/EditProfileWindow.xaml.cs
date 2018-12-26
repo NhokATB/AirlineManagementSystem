@@ -1,18 +1,9 @@
-﻿using System;
+﻿using AirportManagerSystem.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using AirportManagerSystem.Model;
 
 namespace AirportManagerSystem.View
 {
@@ -21,12 +12,16 @@ namespace AirportManagerSystem.View
     /// </summary>
     public partial class EditProfileWindow : Window
     {
+        public User User { get; internal set; }
+        public UserManagementWindow ManageWindow { get; internal set; }
+        public User LogonUser { get; internal set; }
+        private List<Office> offices;
         public EditProfileWindow()
         {
             InitializeComponent();
             this.Loaded += EditProfileWindow_Loaded;
         }
-        private List<Office> offices;
+        
         private void EditProfileWindow_Loaded(object sender, RoutedEventArgs e)
         {
             offices = Db.Context.Offices.ToList();
@@ -47,6 +42,10 @@ namespace AirportManagerSystem.View
             if (ManageWindow == null)
             {
                 cbUserRole.IsEnabled = false;
+                if (User.Role.Title == "Agent" || User.Role.Title == "User")
+                {
+                    cbOffice.IsEnabled = false;
+                }
             }
             else
             {
@@ -58,10 +57,6 @@ namespace AirportManagerSystem.View
                 }
             }
         }
-
-        public User User { get; internal set; }
-        public UserManagementWindow ManageWindow { get; internal set; }
-        public User LogonUser { get; internal set; }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {

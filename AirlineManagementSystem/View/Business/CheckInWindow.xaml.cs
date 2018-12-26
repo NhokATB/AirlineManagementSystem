@@ -50,7 +50,7 @@ namespace AirportManagerSystem.View
             flights = Db.Context.Schedules.Where(t => t.Date == today && t.Time >= time).ToList().OrderBy(t => t.Date + t.Time).ToList();
             foreach (var item in flights)
             {
-                cbFlights.Items.Add($"{item.FlightNumber} - {(item.Date + item.Time).ToString("dd/MM/yyyy HH:mm")} - {item.Route.Airport.IATACode} to {item.Route.Airport1.IATACode}");
+                cbFlights.Items.Add($"{item.FlightNumber} - {(item.Date + item.Time).ToString("dd/MM/yyyy - HH:mm")} - {item.Route.Airport.IATACode} to {item.Route.Airport1.IATACode}");
             }
             cbFlights.SelectedIndex = 0;
 

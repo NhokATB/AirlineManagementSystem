@@ -5,17 +5,10 @@ using AirportManagerSystem.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.DataVisualization.Charting;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace AirportManagerSystem.View
@@ -25,9 +18,9 @@ namespace AirportManagerSystem.View
     /// </summary>
     public partial class SeatManagementWindow : Window
     {
-        DispatcherTimer timer;
-        List<Schedule> schedules;
-        List<string> chartTypes = new List<string>() { "Column", "Pie" };
+        private DispatcherTimer timer;
+        private List<Schedule> schedules;
+        private List<string> chartTypes = new List<string>() { "Column", "Pie" };
 
         public SeatManagementWindow()
         {
@@ -70,7 +63,10 @@ namespace AirportManagerSystem.View
             cbChartType.ItemsSource = chartTypes;
             cbChartType.SelectedIndex = 0;
 
-            timer.Start();
+            if (dpDate.SelectedDate.Value.Date >= DateTime.Now.Date)
+            {
+                timer.Start();
+            }
         }
 
         private void dpDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -88,6 +84,11 @@ namespace AirportManagerSystem.View
 
                 cbFlights.ItemsSource = scheduleInfo;
                 cbFlights.SelectedIndex = 0;
+
+                if (date < DateTime.Now.Date)
+                {
+                    timer.Stop();
+                }
             }
         }
 
@@ -163,13 +164,22 @@ namespace AirportManagerSystem.View
 
                     if (cabinId == 3)
                     {
-                        if (uc.Seat.Contains("A")) uc.Width = 175;
+                        if (uc.Seat.Contains("A"))
+                        {
+                            uc.Width = 175;
+                        }
                     }
                     else if (cabinId == 2)
                     {
-                        if (uc.Seat.Contains("B")) uc.Width = 175;
+                        if (uc.Seat.Contains("B"))
+                        {
+                            uc.Width = 175;
+                        }
                     }
-                    else if (uc.Seat.Contains("C")) uc.Width = 175;
+                    else if (uc.Seat.Contains("C"))
+                    {
+                        uc.Width = 175;
+                    }
 
                     wpSeats.Children.Add(uc);
                 }
@@ -211,9 +221,18 @@ namespace AirportManagerSystem.View
                 {
                     if (uc1.Ticket == null && uc2.Ticket == null && (uc1.Seat.Contains("C") || uc1.Seat.Contains("A")))
                     {
-                        if (uc1.CabinId == 1) dualE++;
-                        else if (uc1.CabinId == 2) dualB++;
-                        else dualF++;
+                        if (uc1.CabinId == 1)
+                        {
+                            dualE++;
+                        }
+                        else if (uc1.CabinId == 2)
+                        {
+                            dualB++;
+                        }
+                        else
+                        {
+                            dualF++;
+                        }
                     }
                 }
 
@@ -221,9 +240,18 @@ namespace AirportManagerSystem.View
                 {
                     if (uc1.Ticket == null && uc2.Ticket == null && (uc1.Seat.Contains("A") || uc1.Seat.Contains("B") || uc1.Seat.Contains("D") || uc1.Seat.Contains("E")))
                     {
-                        if (uc1.CabinId == 1) dualE++;
-                        else if (uc1.CabinId == 2) dualB++;
-                        else dualF++;
+                        if (uc1.CabinId == 1)
+                        {
+                            dualE++;
+                        }
+                        else if (uc1.CabinId == 2)
+                        {
+                            dualB++;
+                        }
+                        else
+                        {
+                            dualF++;
+                        }
                     }
                 }
             }

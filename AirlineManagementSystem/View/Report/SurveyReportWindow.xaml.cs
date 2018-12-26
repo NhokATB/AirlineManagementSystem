@@ -55,6 +55,7 @@ namespace AirportManagerSystem.View
             {
                 if (!isDetailSelectedTab)
                 {
+                    Mouse.OverrideCursor = Cursors.Wait;
                     SetColorlegendForAnswer();
                     isDetailSelectedTab = true;
                     LoadDataForTabDetail();

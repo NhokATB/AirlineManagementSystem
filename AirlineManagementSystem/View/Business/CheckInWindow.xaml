@@ -17,7 +17,7 @@
                 <TextBlock VerticalAlignment="Center">Passport number:</TextBlock>
                 <TextBox Name="txtPassportNumber" Width="100" Margin="10,5,20,5"></TextBox>
                 <TextBlock VerticalAlignment="Center">Cabin types:</TextBlock>
-                <ComboBox Name="cbCabinTypes" Width="100" Margin="10,5,0,5" SelectionChanged="cbCabinTypes_SelectionChanged"></ComboBox>
+                <ComboBox Name="cbCabinTypes" Width="120" Margin="10,5,0,5" SelectionChanged="cbCabinTypes_SelectionChanged"></ComboBox>
             </StackPanel>
         </GroupBox>
 
