@@ -83,13 +83,13 @@ namespace AirportManagerSystem.View
                 if ((date - DateTime.Now).TotalHours >= 24)
                 {
                     ticketIds.Add(item.ID);
-                    cbFlights.Items.Add($"{item.Schedule.FlightNumber}, {item.Schedule.Route.Airport.IATACode} - {item.Schedule.Route.Airport1.IATACode}, {item.Schedule.Date.ToString("dd/MM/yyyy")}, {item.Schedule.Time.ToString(@"hh\:mm")} - {item.Firstname} {item.Lastname}");
+                    cbFlights.Items.Add($"{item.Schedule.FlightNumber}, {item.Schedule.Route.Airport.IATACode} - {item.Schedule.Route.Airport1.IATACode}, {item.Schedule.Date.ToString("dd/MM/yyyy")}, {item.Schedule.Time.ToString(@"hh\:mm")} - {item.Firstname} {item.Lastname} - {item.PassportNumber}");
                 }
             }
 
             if (ticketIds.Count == 0)
             {
-                MessageBox.Show("This service is avalable up to 24 hours before each flight");
+                MessageBox.Show("This service is avalable up to 24 hours before each flight", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {

@@ -6,22 +6,31 @@
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Cancel Ticket" Height="360" Width="800">
+        Title="Cancel Ticket" Height="440" Width="800">
     <StackPanel Margin="10">
-        <Grid Margin="10,5,10,10">
+        <Grid Margin="10,5,10,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
             <StackPanel Orientation="Horizontal"  Grid.Column="0">
-                <TextBlock TextAlignment="Right" VerticalAlignment="Center">Ticket id:</TextBlock>
-                <TextBox Width="120" Name="txtTicketId" Margin="5,10,0,10"></TextBox>
-                <Button Width="100" Name="btnOk" Margin="5,5,0,5" Click="btnOk_Click" Height="35">Ok</Button>
+                <TextBlock TextAlignment="Right" VerticalAlignment="Center">Booking refenrence:</TextBlock>
+                <TextBox Width="120" Name="txtBookingReference" Margin="5,12,0,10"></TextBox>
+                <Button Width="100" Name="btnOk" Margin="5,5,0,5" Click="btnOk_Click" Height="30">Ok</Button>
             </StackPanel>
+            
             <Button Grid.Column="1" Name="btnCancelTicketPolicy" Width="120" Margin="5" HorizontalAlignment="Right" Height="35" Visibility="Hidden" Click="btnCancelTicketPolicy_Click">Cancel ticket policy</Button>
         </Grid>
 
+        <GroupBox Header="Tickets list" Margin="10,5,10,10">
+            <GroupBox.Content>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5,0,5,5" Height="40">
+                    <TextBlock TextAlignment="Right" Width="80" VerticalAlignment="Center">Choose ticket:</TextBlock>
+                    <ComboBox Name="cbTickets" SelectionChanged="CbTickets_SelectionChanged" Width="500" Margin="5,8,0,8"></ComboBox>
+                </StackPanel>
+            </GroupBox.Content>
+        </GroupBox>
         
         <GroupBox Header="Ticket information" Margin="10,0,10,5" Height="85">
             <GroupBox.Content>

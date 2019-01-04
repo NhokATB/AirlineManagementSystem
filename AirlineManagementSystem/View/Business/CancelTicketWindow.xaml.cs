@@ -2,16 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AirportManagerSystem.View
 {
@@ -20,12 +12,14 @@ namespace AirportManagerSystem.View
     /// </summary>
     public partial class CancelTicketWindow : Window
     {
-        List<CabinType> cabins;
-        Ticket ticket;
+        private List<CabinType> cabins;
+        private List<Ticket> changeableTickets;
         public CancelTicketWindow()
         {
             InitializeComponent();
             this.Loaded += CancelTicketWindow_Loaded;
+
+            changeableTickets = new List<Ticket>();
         }
 
         private void CancelTicketWindow_Loaded(object sender, RoutedEventArgs e)
@@ -47,7 +41,7 @@ namespace AirportManagerSystem.View
         {
             try
             {
-                ticket.Confirmed = false;
+                changeableTickets[cbTickets.SelectedIndex].Confirmed = false;
                 Db.Context.SaveChanges();
                 ResetData();
 
@@ -67,48 +61,48 @@ namespace AirportManagerSystem.View
         {
             ResetData();
 
-            if (txtTicketId.Text.Trim() == "")
+            if (txtBookingReference.Text.Trim() == "")
             {
-                MessageBox.Show("Please enter ticket id", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Please enter booking reference", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            int id;
-            try
+            var tickets = Db.Context.Tickets.Where(t => t.BookingReference == txtBookingReference.Text).ToList();
+            if (tickets.Count == 0)
             {
-                id = int.Parse(txtTicketId.Text.Trim());
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ticket id must be integer", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("This booking reference not found!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            ticket = Db.Context.Tickets.Find(id);
-
-            if (ticket == null)
+            foreach (var item in tickets)
             {
-                MessageBox.Show("Ticket id not found", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                var date = item.Schedule.Date + item.Schedule.Time;
+
+                if (date > DateTime.Now)
+                {
+                    changeableTickets.Add(item);
+
+                    cbTickets.Items.Add($"{item.Schedule.FlightNumber}, {item.Schedule.Route.Airport.IATACode} - {item.Schedule.Route.Airport1.IATACode}, {item.Schedule.Date.ToString("dd/MM/yyyy")}, {item.Schedule.Time.ToString(@"hh\:mm")} - {item.Firstname} {item.Lastname} - {item.PassportNumber}");
+                }
             }
 
-            if (ticket.Confirmed == false)
+            if (cbTickets.Items.Count == 0)
             {
-                MessageBox.Show("Your ticket was canceled", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
+                MessageBox.Show("Tickets for this booking reference cannot be changed because the flight for this ticket was took off", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
-            if (ticket.Schedule.Date < DateTime.Now.Date)
+            else
             {
-                MessageBox.Show("This ticket cannot be changed because the flight for this ticket was took off", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                cbTickets.SelectedIndex = 0;
+
+                btnCancelTicket.IsEnabled = true;
             }
+        }
 
-            LoadTicketInformation(ticket);
-            LoadScheduleInformation(ticket.Schedule);
-            CalculateCostIncurred();
-
-            btnCancelTicket.IsEnabled = true;
+        private void LoadInfomation()
+        {
+            LoadTicketInformation(changeableTickets[cbTickets.SelectedIndex]);
+            LoadScheduleInformation(changeableTickets[cbTickets.SelectedIndex].Schedule);
+            CalculateCostIncurred(changeableTickets[cbTickets.SelectedIndex]);
         }
 
         private void LoadTicketInformation(Ticket ticket)
@@ -132,20 +126,29 @@ namespace AirportManagerSystem.View
             tblFlightNumber.Text = schedule.FlightNumber;
         }
 
-        private void CalculateCostIncurred()
+        private void CalculateCostIncurred(Ticket ticket)
         {
             var ticketPrice = FlightForBooking.GetPrice(ticket.Schedule, ticket.CabinType);
 
             double costIncurred = 100;
             var timeBeforeFlightTakeoff = (ticket.Schedule.Date + ticket.Schedule.Time) - DateTime.Now;
 
-            if (timeBeforeFlightTakeoff.TotalDays <= 3)
+            if (timeBeforeFlightTakeoff.TotalHours < 12)
+            {
                 MessageBox.Show("This ticket cann't be canceled! See cancel ticket policy for more information.", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
-            else if (timeBeforeFlightTakeoff.TotalDays > 3 && timeBeforeFlightTakeoff.TotalDays <= 5)
+            }
+            else if (timeBeforeFlightTakeoff.TotalDays >= 3 && timeBeforeFlightTakeoff.TotalDays <= 5)
+            {
                 costIncurred = 20;
+            }
             else if (timeBeforeFlightTakeoff.TotalDays > 5 && timeBeforeFlightTakeoff.TotalDays <= 7)
+            {
                 costIncurred = 10;
-            else costIncurred = 0;
+            }
+            else
+            {
+                costIncurred = 0;
+            }
 
             costIncurred = (ticketPrice * costIncurred / 100);
 
@@ -155,8 +158,10 @@ namespace AirportManagerSystem.View
 
         private void ResetData()
         {
+            cbTickets.Items.Clear();
+            changeableTickets.Clear();
+
             cbCabinType.SelectedIndex = -1;
-            ticket = null;
             btnCancelTicket.IsEnabled = false;
 
             tblAircraft.Text = "";
@@ -173,6 +178,11 @@ namespace AirportManagerSystem.View
 
             tblCostIncurred.Text = "";
             tblReturn.Text = "";
+        }
+
+        private void CbTickets_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LoadInfomation();
         }
     }
 }

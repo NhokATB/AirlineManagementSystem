@@ -170,8 +170,10 @@ namespace AirportManagerSystem.View
         {
             if (sortBy == 0)
                 schedules = schedules.OrderByDescending(t => t.Date + t.Time).ToList();
-            else if (sortBy == 1) schedules = schedules.OrderByDescending(t => t.EconomyPrice).ToList();
-            else schedules = schedules.OrderByDescending(t => t.Confirmed).ToList();
+            else if (sortBy == 1)
+                schedules = schedules.OrderByDescending(t => t.EconomyPrice).ToList();
+            else
+                schedules = schedules.OrderByDescending(t => t.Confirmed).ToList();
         }
 
         private void DisplayFlights()

@@ -59,10 +59,9 @@ namespace AirportManagerSystem.View
                     SetColorlegendForAnswer();
                     isDetailSelectedTab = true;
                     LoadDataForTabDetail();
+                    Mouse.OverrideCursor = Cursors.Arrow;
                 }
             }
-
-            Mouse.OverrideCursor = null;
         }
 
         private void SurveyReportWindow_Loaded(object sender, RoutedEventArgs e)
@@ -371,6 +370,12 @@ namespace AirportManagerSystem.View
             var date = dpDateOfFlight.SelectedDate.Value.Date;
 
             var flightNumbers = Db.Context.Schedules.Where(t => t.Date == date).Select(t => t.FlightNumber).Distinct().ToList();
+
+            if(dpDateOfFlight.Text == "")
+            {
+                flightNumbers = Db.Context.Schedules.Select(t => t.FlightNumber).Distinct().ToList();
+            }
+
             flightNumbers.Insert(0, "All");
             cbFlightNumber.ItemsSource = flightNumbers;
             cbFlightNumber.SelectedIndex = 0;
@@ -448,6 +453,8 @@ namespace AirportManagerSystem.View
 
         private void btnApply_Click(object sender, RoutedEventArgs e)
         {
+            Mouse.OverrideCursor = Cursors.Wait;
+
             ResetFilterSurvey();
             FilterSurvey();
 
@@ -468,6 +475,8 @@ namespace AirportManagerSystem.View
 
             LoadChartSurvey();
             dgSurveys.ItemsSource = newSurveys;
+
+            Mouse.OverrideCursor = Cursors.Arrow;
         }
 
         private void FilterSurvey()

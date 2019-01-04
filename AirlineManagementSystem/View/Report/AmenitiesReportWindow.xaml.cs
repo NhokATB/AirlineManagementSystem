@@ -3,16 +3,8 @@ using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AirportManagerSystem.View
 {
@@ -47,14 +39,14 @@ namespace AirportManagerSystem.View
             }
             else flightNumber = "0";
 
-            if (dpFrom.SelectedDate == null)
+            if (dpFrom.Text == "")
             {
                 MessageBox.Show("Please choose from date", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             else
             {
-                if (dpTo.SelectedDate == null)
+                if (dpTo.Text == "")
                 {
                     tickets = tickets.Where(t => t.Schedule.Date == dpFrom.SelectedDate.Value.Date).ToList();
                     time = "Date: " + dpFrom.SelectedDate.Value.ToString("dd/MM/yyyy");

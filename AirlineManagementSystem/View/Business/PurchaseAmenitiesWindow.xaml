@@ -38,7 +38,7 @@
                 </StackPanel>
             </GroupBox.Content>
         </GroupBox>
-        
+
         <GroupBox Header="AMONIC Airlines Amenities" Margin="10,5,10,10" Height="170">
             <GroupBox.Content>
                 <WrapPanel Height="140" VerticalAlignment="Top" Name="wpAmenities" Margin="5,5,5,5">

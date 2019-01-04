@@ -21,8 +21,8 @@ namespace AirportManagerSystem.View
     public partial class ChangeTicketWindow : Window
     {
         List<CabinType> cabins = new List<CabinType>();
-        Ticket ticket;
         NewFlight currentFlight;
+        List<Ticket> changeableTickets;
         double costIncurred;
         public ChangeTicketWindow()
         {
@@ -30,13 +30,15 @@ namespace AirportManagerSystem.View
             this.Loaded += ChangeTicketWindow_Loaded;
             dgFlights.SelectedCellsChanged += DgFlights_SelectedCellsChanged;
             cbCabinType.SelectionChanged += CbCabinType_SelectionChanged;
+
+            changeableTickets = new List<Ticket>();
         }
 
         private void CbCabinType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-                CalculateCosts();
+                CalculateCosts(changeableTickets[cbTickets.SelectedIndex]);
             }
             catch (Exception)
             {
@@ -48,14 +50,14 @@ namespace AirportManagerSystem.View
             try
             {
                 currentFlight = dgFlights.SelectedItem as NewFlight;
-                CalculateCosts();
+                CalculateCosts(changeableTickets[cbTickets.SelectedIndex]);
             }
             catch (Exception)
             {
             }
         }
 
-        private void CalculateCosts()
+        private void CalculateCosts(Ticket ticket)
         {
             var payed = FlightForBooking.GetPrice(ticket.Schedule, ticket.CabinType);
             var total = currentFlight == null ? FlightForBooking.GetPrice(ticket.Schedule, cabins[cbCabinType.SelectedIndex]) : FlightForBooking.GetPrice(currentFlight.Schedule, cabins[cbCabinType.SelectedIndex]);
@@ -66,7 +68,7 @@ namespace AirportManagerSystem.View
             if (total - payed < 0) tblTotalPayable.Text += " (return for passenger)";
         }
 
-        private void CalculateCostIncurred()
+        private void CalculateCostIncurred(Ticket ticket)
         {
             var ticketPrice = FlightForBooking.GetPrice(ticket.Schedule, ticket.CabinType);
 
@@ -95,10 +97,12 @@ namespace AirportManagerSystem.View
 
         private void ResetData()
         {
+            changeableTickets.Clear();
+            cbTickets.Items.Clear();
+
             cbCabinType.SelectedIndex = -1;
             dgFlights.ItemsSource = null;
             currentFlight = null;
-            ticket = null;
             btnSearch.IsEnabled = false;
             btnSaveAndCofirm.IsEnabled = false;
             grSearchFlight.Header = "Search flight for route: ";
@@ -126,49 +130,49 @@ namespace AirportManagerSystem.View
         {
             ResetData();
 
-            if (txtTicketId.Text.Trim() == "")
+            if (txtBookingReference.Text.Trim() == "")
             {
-                MessageBox.Show("Please enter ticket id", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Please enter booking reference", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            int id;
-            try
+            var tickets = Db.Context.Tickets.Where(t => t.BookingReference == txtBookingReference.Text).ToList();
+            if (tickets.Count == 0)
             {
-                id = int.Parse(txtTicketId.Text.Trim());
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ticket id must be integer", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("This booking reference not found!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            ticket = Db.Context.Tickets.Find(id);
-
-            if (ticket == null)
+            foreach (var item in tickets)
             {
-                MessageBox.Show("Ticket id not found", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                var date = item.Schedule.Date + item.Schedule.Time;
+
+                if (date > DateTime.Now)
+                {
+                    changeableTickets.Add(item);
+
+                    cbTickets.Items.Add($"{item.Schedule.FlightNumber}, {item.Schedule.Route.Airport.IATACode} - {item.Schedule.Route.Airport1.IATACode}, {item.Schedule.Date.ToString("dd/MM/yyyy")}, {item.Schedule.Time.ToString(@"hh\:mm")} - {item.Firstname} {item.Lastname} - {item.PassportNumber}");
+                }
             }
 
-            if (ticket.Confirmed == false)
+            if (cbTickets.Items.Count == 0)
             {
-                MessageBox.Show("Your ticket was canceled", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
+                MessageBox.Show("Tickets for this booking reference cannot be changed because the flight for this ticket was took off", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
-            if (ticket.Schedule.Date < DateTime.Now.Date)
+            else
             {
-                MessageBox.Show("This ticket cannot be changed because the flight for this ticket was took off", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                cbTickets.SelectedIndex = 0;
+
+                btnSearch.IsEnabled = true;
+                btnSaveAndCofirm.IsEnabled = true;
             }
+        }
 
-            LoadTicketInformation(ticket);
-            LoadScheduleInformation(ticket.Schedule);
-            CalculateCostIncurred();
-
-            btnSearch.IsEnabled = true;
-            btnSaveAndCofirm.IsEnabled = true;
+        private void LoadInformation()
+        {
+            LoadTicketInformation(changeableTickets[cbTickets.SelectedIndex]);
+            LoadScheduleInformation(changeableTickets[cbTickets.SelectedIndex]);
+            CalculateCostIncurred(changeableTickets[cbTickets.SelectedIndex]);
         }
 
         private void LoadTicketInformation(Ticket ticket)
@@ -182,16 +186,16 @@ namespace AirportManagerSystem.View
             cbCabinType.SelectedItem = ticket.CabinType;
         }
 
-        private void LoadScheduleInformation(Schedule schedule)
+        private void LoadScheduleInformation(Ticket ticket)
         {
             grSearchFlight.Header += ticket.Schedule.Route.Airport.IATACode + " - " + ticket.Schedule.Route.Airport1.IATACode;
 
-            tblAircraft.Text = schedule.Aircraft.Name;
-            tblDate.Text = schedule.Date.ToString("dd/MM/yyyy");
-            tblTime.Text = schedule.Time.ToString(@"hh\:mm");
-            tblRoute.Text = schedule.Route.Airport.IATACode + " - " + schedule.Route.Airport1.IATACode;
-            tblEconomyPrice.Text = schedule.EconomyPrice.ToString("C0");
-            tblFlightNumber.Text = schedule.FlightNumber;
+            tblAircraft.Text = ticket.Schedule.Aircraft.Name;
+            tblDate.Text = ticket.Schedule.Date.ToString("dd/MM/yyyy");
+            tblTime.Text = ticket.Schedule.Time.ToString(@"hh\:mm");
+            tblRoute.Text = ticket.Schedule.Route.Airport.IATACode + " - " + ticket.Schedule.Route.Airport1.IATACode;
+            tblEconomyPrice.Text = ticket.Schedule.EconomyPrice.ToString("C0");
+            tblFlightNumber.Text = ticket.Schedule.FlightNumber;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -201,7 +205,7 @@ namespace AirportManagerSystem.View
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            if (dpDate.SelectedDate != null)
+            if (dpDate.Text != "")
             {
                 if (dpDate.SelectedDate.Value.Date < DateTime.Now.Date)
                 {
@@ -222,8 +226,8 @@ namespace AirportManagerSystem.View
             dgFlights.ItemsSource = null;
 
             var date = dpDate.SelectedDate.Value.Date;
-            var routeId = ticket.Schedule.RouteID;
-            var scheduleId = ticket.Schedule.ID;
+            var routeId = changeableTickets[cbTickets.SelectedIndex].Schedule.RouteID;
+            var scheduleId = changeableTickets[cbTickets.SelectedIndex].Schedule.ID;
             var schedules = Db.Context.Schedules.Where(t => t.RouteID == routeId && t.Date == date && t.ID != scheduleId).ToList();
 
             if (date == DateTime.Now.Date)
@@ -254,24 +258,24 @@ namespace AirportManagerSystem.View
 
         private void btnSaveAndCofirm_Click(object sender, RoutedEventArgs e)
         {
-            if (ticket.CabinTypeID == cabins[cbCabinType.SelectedIndex].ID)
+            if (changeableTickets[cbTickets.SelectedIndex].CabinTypeID == cabins[cbCabinType.SelectedIndex].ID)
             {
-                if (currentFlight == null || (currentFlight != null && ticket.ScheduleID == currentFlight.Schedule.ID))
+                if (currentFlight == null || (currentFlight != null && changeableTickets[cbTickets.SelectedIndex].ScheduleID == currentFlight.Schedule.ID))
                 {
                     MessageBox.Show("You have not made any changes", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }
 
-            ticket.CabinType = cabins[cbCabinType.SelectedIndex];
+            changeableTickets[cbTickets.SelectedIndex].CabinType = cabins[cbCabinType.SelectedIndex];
             if (currentFlight != null)
             {
-                ticket.Schedule = currentFlight.Schedule;
+                changeableTickets[cbTickets.SelectedIndex].Schedule = currentFlight.Schedule;
             }
 
             Db.Context.SaveChanges();
-            CalculateCosts();
-            LoadScheduleInformation(ticket.Schedule);
+            CalculateCosts(changeableTickets[cbTickets.SelectedIndex]);
+            LoadScheduleInformation(changeableTickets[cbTickets.SelectedIndex]);
             dgFlights.ItemsSource = null;
 
             MessageBox.Show("Change ticket successful", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -281,6 +285,11 @@ namespace AirportManagerSystem.View
         {
             ChangeTicketPolicyWindow changeTicketPolicyWindow = new ChangeTicketPolicyWindow();
             changeTicketPolicyWindow.ShowDialog();
+        }
+
+        private void CbTickets_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LoadInformation();
         }
     }
 }
