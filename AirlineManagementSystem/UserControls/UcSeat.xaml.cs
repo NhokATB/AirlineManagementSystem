@@ -54,6 +54,24 @@ namespace AirportManagerSystem.UserControls
                 {
                     btnSeat.Background = new SolidColorBrush(AMONICColor.Selected);
                 }
+                else if(IsDual && this.Previous != null && this.Previous.IsSelected)
+                {
+                    switch (CabinId)
+                    {
+                        case 2:
+                            if(this.Previous.Seat.Contains("A") || this.Previous.Seat.Contains("C"))
+                            {
+                                btnSeat.Background = new SolidColorBrush(AMONICColor.Selected);
+                            }
+                            break;
+                        case 1:
+                            if (this.Previous.Seat.Contains("A") || this.Previous.Seat.Contains("D"))
+                            {
+                                btnSeat.Background = new SolidColorBrush(AMONICColor.Selected);
+                            }
+                            break;
+                    }
+                }
                 else
                 {
                     if (IsDual == false)
@@ -66,7 +84,6 @@ namespace AirportManagerSystem.UserControls
                     }
                 }
             }
-            
         }
         private void UcSeat_Loaded(object sender, RoutedEventArgs e)
         {

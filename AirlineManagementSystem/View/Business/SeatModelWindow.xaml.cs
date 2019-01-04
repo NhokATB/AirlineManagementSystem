@@ -4,17 +4,9 @@ using AirportManagerSystem.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Windows.Threading;
 
 namespace AirportManagerSystem.View
 {
@@ -23,25 +15,20 @@ namespace AirportManagerSystem.View
     /// </summary>
     public partial class SeatModelWindow : Window
     {
-        DispatcherTimer timer;
-        UcSeat selectedSeat;
-        string directionOfSelectedSeat = "";
+        private UcSeat selectedSeat;
+        private string directionOfSelectedSeat = "";
         public List<Ticket> Tickets { get; internal set; }
-        Schedule flight;
-        bool isCheckedIn;
+
+        private Schedule flight;
+        private bool isCheckedIn;
         private bool isPrinted;
 
         public SeatModelWindow()
         {
             InitializeComponent();
             this.Loaded += SeatModelWindow_Loaded;
-            this.Closed += SeatModelWindow_Closed;
             this.Closing += SeatModelWindow_Closing;
             this.StateChanged += SeatModelWindow_StateChanged;
-
-            timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 0, 1);
-            timer.Tick += Timer_Tick;
 
             dpnCheckedInSeat.Background = new SolidColorBrush(AMONICColor.CheckedIn);
             dpnEmptySeat.Background = new SolidColorBrush(AMONICColor.Empty);
@@ -63,31 +50,11 @@ namespace AirportManagerSystem.View
             scvSeats.Height = this.WindowState == WindowState.Maximized ? 600 : 450;
         }
 
-        private void SeatModelWindow_Closed(object sender, EventArgs e)
-        {
-            timer.Stop();
-        }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            LoadSeat();
-
-            if (Tickets.Count == 2)
-            {
-                ShowDualSeat();
-            }
-            else
-            {
-                stpNote.Children.Remove(tblDualEmptySeat);
-                stpNote.Children.Remove(dpnDualEmptySeat);
-            }
-        }
-
         private void SeatModelWindow_Loaded(object sender, RoutedEventArgs e)
         {
             this.Title = $"Seat model for flight: {Tickets[0].Schedule.FlightNumber} - {Tickets[0].Schedule.Date.ToString("dd/MM/yyyy")} - {Tickets[0].Schedule.Time.ToString(@"hh\:mm")} - {Tickets[0].Schedule.Route.Airport.IATACode} to {Tickets[0].Schedule.Route.Airport1.IATACode}";
 
-            timer.Start();
+            RefreshSeat();
         }
 
         private void ShowDualSeat()
@@ -124,8 +91,15 @@ namespace AirportManagerSystem.View
                     }
                 }
 
-                if (uc1.Ticket != null) uc1.btnSeat.Background = new SolidColorBrush(AMONICColor.CheckedIn);
-                if (uc2.Ticket != null) uc2.btnSeat.Background = new SolidColorBrush(AMONICColor.CheckedIn);
+                if (uc1.Ticket != null)
+                {
+                    uc1.btnSeat.Background = new SolidColorBrush(AMONICColor.CheckedIn);
+                }
+
+                if (uc2.Ticket != null)
+                {
+                    uc2.btnSeat.Background = new SolidColorBrush(AMONICColor.CheckedIn);
+                }
             }
         }
 
@@ -146,8 +120,6 @@ namespace AirportManagerSystem.View
             AddSeat(flight, 1, dayF, 3);
             AddSeat(flight, dayF + 1, dayF + dayB, 2);
             AddSeat(flight, dayF + dayB + 1, dayF + dayB + dayE, 1);
-
-
         }
 
         private void KeepSelectedSeatColor(UcSeat uc)
@@ -172,6 +144,7 @@ namespace AirportManagerSystem.View
             try
             {
                 selectedSeat.btnSeat.Background = new SolidColorBrush(AMONICColor.Empty);
+
                 if (directionOfSelectedSeat != "")
                 {
                     selectedSeat.btnSeat.Background = new SolidColorBrush(AMONICColor.Dual);
@@ -230,13 +203,22 @@ namespace AirportManagerSystem.View
 
                     if (cabinId == 3)
                     {
-                        if (uc.Seat.Contains("A")) uc.Width = 175;
+                        if (uc.Seat.Contains("A"))
+                        {
+                            uc.Width = 175;
+                        }
                     }
                     else if (cabinId == 2)
                     {
-                        if (uc.Seat.Contains("B")) uc.Width = 175;
+                        if (uc.Seat.Contains("B"))
+                        {
+                            uc.Width = 175;
+                        }
                     }
-                    else if (uc.Seat.Contains("C")) uc.Width = 175;
+                    else if (uc.Seat.Contains("C"))
+                    {
+                        uc.Width = 175;
+                    }
 
                     uc.btnSeat.Click += BtnSeat_Click;
 
@@ -247,10 +229,10 @@ namespace AirportManagerSystem.View
 
         private void BtnSeat_Click(object sender, EventArgs e)
         {
-            ResetSelectedSeatColor();
-
             if (!isCheckedIn)
             {
+                ResetSelectedSeatColor();
+
                 var ucSeat = (sender as Button).Parent as UcSeat;
 
                 if (ucSeat.Ticket == null)
@@ -263,10 +245,8 @@ namespace AirportManagerSystem.View
                         }
                         else
                         {
-                            ResetColorBeforeChooseDualSeat();
-
                             selectedSeat = ucSeat;
-                            ucSeat.btnSeat.Background = new SolidColorBrush(AMONICColor.Selected);
+                            selectedSeat.btnSeat.Background = new SolidColorBrush(AMONICColor.Selected);
                         }
                     }
                     else
@@ -281,18 +261,16 @@ namespace AirportManagerSystem.View
                                 }
                                 else
                                 {
-                                    ResetColorBeforeChooseDualSeat();
-
                                     selectedSeat = ucSeat;
-                                    ucSeat.btnSeat.Background = new SolidColorBrush(AMONICColor.Selected);
-                                    if (ucSeat.Previous != null && ucSeat.Previous.Ticket == null)
+                                    selectedSeat.btnSeat.Background = new SolidColorBrush(AMONICColor.Selected);
+                                    if (selectedSeat.Previous != null && selectedSeat.Previous.Ticket == null)
                                     {
-                                        ucSeat.Previous.btnSeat.Background = new SolidColorBrush(AMONICColor.Selected);
+                                        selectedSeat.Previous.btnSeat.Background = new SolidColorBrush(AMONICColor.Selected);
                                         directionOfSelectedSeat = "left";
                                     }
                                     else
                                     {
-                                        ucSeat.After.btnSeat.Background = new SolidColorBrush(AMONICColor.Selected);
+                                        selectedSeat.After.btnSeat.Background = new SolidColorBrush(AMONICColor.Selected);
                                         directionOfSelectedSeat = "right";
                                     }
                                 }
@@ -312,32 +290,6 @@ namespace AirportManagerSystem.View
             else
             {
                 MessageBox.Show("If you want to change seat, Please click reCheck in!", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-        }
-
-        private void ResetColorBeforeChooseDualSeat()
-        {
-            try
-            {
-                if (Tickets.Count == 1)
-                {
-                    selectedSeat.btnSeat.Background = new SolidColorBrush(AMONICColor.Empty);
-                }
-                else
-                {
-                    selectedSeat.btnSeat.Background = new SolidColorBrush(AMONICColor.Dual);
-                    if (directionOfSelectedSeat == "left")
-                    {
-                        selectedSeat.Previous.btnSeat.Background = new SolidColorBrush(AMONICColor.Dual);
-                    }
-                    else if (directionOfSelectedSeat == "right")
-                    {
-                        selectedSeat.After.btnSeat.Background = new SolidColorBrush(AMONICColor.Dual);
-                    }
-                }
-            }
-            catch (Exception)
-            {
             }
         }
 
@@ -381,7 +333,6 @@ namespace AirportManagerSystem.View
                 btnOk.IsEnabled = false;
                 btnPrintBoardingPass.IsEnabled = true;
 
-                directionOfSelectedSeat = "";
                 isCheckedIn = true;
             }
             else
@@ -416,6 +367,7 @@ namespace AirportManagerSystem.View
                 }
             }
 
+            directionOfSelectedSeat = "";
             btnReCheckIn.IsEnabled = false;
             btnPrintBoardingPass.IsEnabled = false;
             btnOk.IsEnabled = true;
@@ -440,6 +392,27 @@ namespace AirportManagerSystem.View
             else
             {
                 MessageBox.Show("You must check in before print ticket", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshSeat();
+        }
+
+        private void RefreshSeat()
+        {
+            selectedSeat = null;
+            LoadSeat();
+
+            if (Tickets.Count == 2)
+            {
+                ShowDualSeat();
+            }
+            else
+            {
+                stpNote.Children.Remove(tblDualEmptySeat);
+                stpNote.Children.Remove(dpnDualEmptySeat);
             }
         }
     }

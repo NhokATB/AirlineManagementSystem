@@ -136,7 +136,7 @@ namespace AirportManagerSystem.View
             from = cbDepatureAirport.Text;
             to = cbArrivalAirport.Text;
             sortBy = cbSorBy.SelectedIndex;
-            date = dpOutbound.SelectedDate;
+            date = dpOutbound.Text == "" ? null : dpOutbound.SelectedDate;
             flightNumber = txtFlightNumber.Text;
         }
 

@@ -3,17 +3,8 @@ using AirportManagerSystem.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AirportManagerSystem.View
 {
@@ -36,14 +27,15 @@ namespace AirportManagerSystem.View
             cbOffice.DisplayMemberPath = "Title";
             cbOffice.SelectedIndex = 0;
 
-            roles = Db.Context.Roles.Where(t=>t.Title != "Administrator").ToList();
+            roles = Db.Context.Roles.Where(t => t.Title != "Administrator").ToList();
             cbUserRole.ItemsSource = roles;
             cbUserRole.DisplayMemberPath = "Title";
             cbUserRole.SelectedIndex = 0;
 
             if (LogonUser.Role.Title == "Manager")
             {
-                cbUserRole.IsEnabled = false;
+                roles.RemoveAt(1);
+                cbUserRole.ItemsSource = roles;
             }
         }
 
@@ -81,9 +73,9 @@ namespace AirportManagerSystem.View
                 MessageBox.Show("Last name was required!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-           
 
-            if(dtpBirthdate.SelectedDate != null)
+
+            if (dtpBirthdate.SelectedDate != null)
             {
                 if (DateTime.Now.Year < 18 - dtpBirthdate.SelectedDate.Value.Year)
                 {

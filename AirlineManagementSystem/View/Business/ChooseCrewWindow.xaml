@@ -29,7 +29,7 @@
             </StackPanel>
         </StackPanel>
 
-        <TextBlock Name="tblChooseCrew" Margin="10,0,10,0" >Choose the crew for flight:</TextBlock>
+        <TextBlock Name="tblChooseCrew" Margin="10,0,10,0" >Member list:</TextBlock>
 
         <DataGrid RowHeaderWidth="0" IsReadOnly="True" Name="dgMembers" AutoGenerateColumns="False" Margin="10,5,10,5" Height="420" CanUserAddRows="False" SelectionMode="Single" SelectionUnit="FullRow">
             <DataGrid.Columns>

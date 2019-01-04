@@ -76,7 +76,6 @@ namespace AirportManagerSystem.View
         double nowAnchor;
         ToolTip t = new ToolTip();
 
-
         private void AddAnnotationForChartRevenueDetail()
         {
             an = new HorizontalLineAnnotation();
@@ -257,7 +256,9 @@ namespace AirportManagerSystem.View
 
             filterBySelectedToolStripMenuItem.Visible = false;
             resetFilterToolStripMenuItem.Visible = false;
-            hideLabelToolStripMenuItem.Text = "Show label";
+            hideLabelToolStripMenuItem.Text = "Hide total";
+
+            ShowTotal();
         }
 
         private void chartRevenueSummaryOfRoute_MouseMove(object sender, MouseEventArgs e)
@@ -393,12 +394,18 @@ namespace AirportManagerSystem.View
 
             return revenue;
         }
-
+        private void ShowTotal()
+        {
+            for (int i = 0; i < chartRevenueRouteDetail.Series[0].Points.Count; i++)
+            {
+                chartRevenueRouteDetail.Series["Nhok-Add"].Points[i].Label = revenueDetails[i].ToString("C0");
+            }
+        }
         private void HideLabelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (hideLabelToolStripMenuItem.Text == "Show label")
+            if (hideLabelToolStripMenuItem.Text == "Show total")
             {
-                hideLabelToolStripMenuItem.Text = "Hide label";
+                hideLabelToolStripMenuItem.Text = "Hide total";
 
                 for (int i = 0; i < chartRevenueRouteDetail.Series[0].Points.Count; i++)
                 {
@@ -407,7 +414,7 @@ namespace AirportManagerSystem.View
             }
             else
             {
-                hideLabelToolStripMenuItem.Text = "Show label";
+                hideLabelToolStripMenuItem.Text = "Show total";
                 for (int i = 0; i < chartRevenueRouteDetail.Series[0].Points.Count; i++)
                 {
                     chartRevenueRouteDetail.Series["Nhok-Add"].Points[i].Label = "";
@@ -507,7 +514,9 @@ namespace AirportManagerSystem.View
 
             resetFilterToolStripMenuItem.Visible = true;
             filterBySelectedToolStripMenuItem.Visible = false;
-            hideLabelToolStripMenuItem.Text = "Show label";
+            hideLabelToolStripMenuItem.Text = "Hide total";
+
+            ShowTotal();
         }
 
         private void cbCriteria_SelectedIndexChanged(object sender, EventArgs e)

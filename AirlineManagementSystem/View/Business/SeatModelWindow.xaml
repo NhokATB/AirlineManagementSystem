@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Seat model" Height="600" Width="850">
+        Title="Seat model" Height="637" Width="800">
     <StackPanel Margin="15,15">
-        <StackPanel Name="stpNote" Orientation="Horizontal" Margin="10,5,5,5" HorizontalAlignment="Center">
+        <StackPanel Name="stpNote" Orientation="Horizontal" Margin="10,5,5,10" HorizontalAlignment="Center">
             
             <DockPanel Width="20" Height="20" Name="dpnCheckedInSeat">
             </DockPanel>
@@ -26,6 +26,9 @@
             </DockPanel>
             <TextBlock Margin="5,5,10,5">Selected seat(s)</TextBlock>
             
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Margin="0,0,0,2">
+            <Button Name="btnRefresh" Click="BtnRefresh_Click" Width="200" Height="30">Refresh</Button>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Width="80" TextAlignment="Center"  VerticalAlignment="Center" FontSize="20">Left</TextBlock>

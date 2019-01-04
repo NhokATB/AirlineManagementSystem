@@ -1,5 +1,6 @@
 ﻿using AirportManagerSystem.Model;
 using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Forms;
@@ -28,6 +29,8 @@ namespace AirportManagerSystem.View
 
         private void MenuWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            mnBusiness.Items.Remove(mnSurveyQuestionaire);
+
             if (User.Role.Title != "Administrator")
             {
                 mnManagement.Items.Remove(mnAircrafts);
@@ -62,7 +65,6 @@ namespace AirportManagerSystem.View
                     {
                         mnBusiness.Items.Remove(mnCheckIn);
                         mnBusiness.Items.Remove(mnTicketControl);
-                        mnBusiness.Items.Remove(mnSurveyQuestionaire);
 
                         mnManagement.Items.Remove(mnTickets);
                         mnManagement.Items.Remove(mnSeats);
@@ -74,7 +76,7 @@ namespace AirportManagerSystem.View
                     }
                     else
                     {
-                        mnReport.Items.Remove(mnCommisstion);
+                        mnSystem.Items.Remove(mnMyCommission);
                     }
                 }
             }
@@ -358,7 +360,23 @@ namespace AirportManagerSystem.View
 
         private void MnUserGuide_Click(object sender, RoutedEventArgs e)
         {
-            //open pdf File
+            try
+            {
+                string fileName = (@"Guide.pdf");
+                System.Diagnostics.Process.Start(fileName);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void mnCommissionReport_Click(object sender, RoutedEventArgs e)
+        {
+            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+            CommissionReportWindow commissionReportWindow = new CommissionReportWindow();
+            ShowDialogWindow(commissionReportWindow);
+            Mouse.OverrideCursor = null;
         }
     }
 }

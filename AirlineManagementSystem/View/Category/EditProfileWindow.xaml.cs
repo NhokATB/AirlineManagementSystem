@@ -21,7 +21,7 @@ namespace AirportManagerSystem.View
             InitializeComponent();
             this.Loaded += EditProfileWindow_Loaded;
         }
-        
+
         private void EditProfileWindow_Loaded(object sender, RoutedEventArgs e)
         {
             offices = Db.Context.Offices.ToList();
@@ -39,22 +39,26 @@ namespace AirportManagerSystem.View
             cbUserRole.SelectedItem = User.Role;
             dtpBirthdate.SelectedDate = User.Birthdate;
 
-            if (ManageWindow == null)
+            if (ManageWindow == null) //Navigate from Edit profile
             {
-                cbUserRole.IsEnabled = false;
-                if (User.Role.Title == "Agent" || User.Role.Title == "User")
+                if (User.Role.Title == "Administrator")
                 {
+
+                }
+                else
+                {
+                    cbUserRole.IsEnabled = false;
                     cbOffice.IsEnabled = false;
                 }
             }
-            else
+            else //Nagigate from UserManagement
             {
                 roles.RemoveAt(0);
-                cbUserRole.ItemsSource = roles;
                 if (LogonUser.Role.Title == "Manager")
                 {
-                    cbUserRole.IsEnabled = false;
+                    roles.RemoveAt(1);
                 }
+                cbUserRole.ItemsSource = roles;
             }
         }
 

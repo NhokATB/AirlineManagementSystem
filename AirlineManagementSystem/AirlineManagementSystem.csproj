@@ -37,9 +37,6 @@
     <ApplicationIcon>Images\AmonicAirline.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="De.TorstenMandelkow.MetroChart">
-      <HintPath>..\..\..\..\Desktop\ModernUICharts-WPF-master\packages\De.TorstenMandelkow.MetroChart.1.0.0\lib\De.TorstenMandelkow.MetroChart.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -808,6 +805,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AirlineManagementModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Files\Guide.pdf" />
     <None Include="Model\AirlineManagementModel.edmx.diagram">
       <DependentUpon>AirlineManagementModel.edmx</DependentUpon>
     </None>
