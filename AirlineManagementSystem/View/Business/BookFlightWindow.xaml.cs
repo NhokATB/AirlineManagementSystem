@@ -214,6 +214,8 @@ namespace AirportManagerSystem.View
             List<FlightForBooking> flights = new List<FlightForBooking>();
 
             var before = date.AddDays(-3);
+            before = before < DateTime.Now.Date ? DateTime.Now.Date : before;
+
             var after = date.AddDays(3);
             var sch1 = Db.Context.Schedules.Where(t => t.Date >= before && t.Date <= after && t.Route.Airport.IATACode == from && t.Route.Airport1.IATACode == to && t.Confirmed).ToList();
             if (!isChecked.Value)
@@ -243,6 +245,8 @@ namespace AirportManagerSystem.View
         {
             List<FlightForBooking> results = new List<FlightForBooking>();
             var before = date.AddDays(-3);
+            before = before < DateTime.Now.Date ? DateTime.Now.Date : before;
+
             var after = date.AddDays(3);
             var sch1 = Db.Context.Schedules.Where(t => t.Date >= before && t.Date <= after && t.Route.Airport.IATACode == from && t.Confirmed).ToList();
             if (!isChecked)
@@ -277,6 +281,8 @@ namespace AirportManagerSystem.View
         {
             List<FlightForBooking> results = new List<FlightForBooking>();
             var before = date.AddDays(-3);
+            before = before < DateTime.Now.Date ? DateTime.Now.Date : before;
+
             var after = date.AddDays(3);
             var sch1 = Db.Context.Schedules.Where(t => t.Date >= before && t.Date <= after && t.Route.Airport.IATACode == from && t.Route.Airport1.IATACode != from && t.Route.Airport1.IATACode != to && t.Confirmed).ToList();
             if (!isChecked)

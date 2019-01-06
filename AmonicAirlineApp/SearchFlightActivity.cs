@@ -95,6 +95,18 @@ namespace AmonicAirlineApp
                 return;
             }
 
+            if (DateTime.Parse(tvDateForSearch.Text).Date < DateTime.Now.Date)
+            {
+                alert.SetTitle("Message");
+                alert.SetMessage("Date must be >= today");
+                alert.SetButton("OK", (c, ev) =>
+                {
+
+                });
+                alert.Show();
+                return;
+            }
+
             if (DateTime.Parse(tvDateForSearch.Text).Date >= new DateTime(2019, 4, 1))
             {
                 alert.SetTitle("Message");

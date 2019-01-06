@@ -34,34 +34,41 @@ namespace AirportManagerSystem.View
 
         private void btnIssueTicket_Click(object sender, RoutedEventArgs e)
         {
-            if (txtEmail.Text.Trim() == "")
+            string br = "";
+
+            if (chbSendEmail.IsChecked.Value)
             {
-                MessageBox.Show("Enter email to receive booking information", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
+                if (txtEmail.Text.Trim() == "")
+                {
+                    MessageBox.Show("Enter email to receive booking information", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                if (!Regex.IsMatch(txtEmail.Text, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+                {
+                    MessageBox.Show("Email is invalid", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                br = GetBr();
+                //Send mail
+                string bookingInfor = $"Booking reference: {br}\n\n" + GetBookingInformation(Tickets);
+                try
+                {
+                    MailProcessing.SendMail(txtEmail.Text, "Your booking information from AMONIC Airline:", bookingInfor);
+                }
+                catch (System.Exception)
+                {
+                    MessageBox.Show("Please connect to the internet!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
             }
 
-            if (!Regex.IsMatch(txtEmail.Text, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
-            {
-                MessageBox.Show("Email is invalid", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            string br = GetBr();
+            br = br == "" ? GetBr() : br;
             foreach (var item in Tickets)
             {
                 item.BookingReference = br;
                 Db.Context.Tickets.Add(item);
-            }
-
-            string bookingInfor = $"Booking reference: {br}\n\n" + GetBookingInformation(Tickets);
-            try
-            {
-                MailProcessing.SendMail(txtEmail.Text, "Your booking information from AMONIC Airline:", bookingInfor);
-            }
-            catch (System.Exception)
-            {
-                MessageBox.Show("Please connect to the internet!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
             }
 
             Db.Context.SaveChanges();
@@ -97,6 +104,30 @@ namespace AirportManagerSystem.View
                 {
                     return br;
                 }
+            }
+        }
+
+        private void chbSendEmail_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                txtEmail.Visibility = Visibility.Visible;
+                tblEmail.Visibility = Visibility.Visible;
+            }
+            catch (System.Exception)
+            {
+            }
+        }
+
+        private void ChbSendEmail_Unchecked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                txtEmail.Visibility = Visibility.Hidden;
+                tblEmail.Visibility = Visibility.Hidden;
+            }
+            catch (System.Exception)
+            {
             }
         }
     }

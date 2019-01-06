@@ -108,7 +108,7 @@ namespace AirportManagerSystem.View
             {
                 if (dpBirthdate.SelectedDate.Value >= DateTime.Now.Date)
                 {
-                    MessageBox.Show("Birthdate is invalid", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Birthdate must be <= today", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }
@@ -151,7 +151,7 @@ namespace AirportManagerSystem.View
 
             if (Regex.IsMatch(txtPhone.Text, @"\D"))
             {
-                MessageBox.Show("Phone is invalid", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Phone must be digits", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

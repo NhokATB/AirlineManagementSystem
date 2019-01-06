@@ -8,11 +8,11 @@
         WindowStartupLocation="CenterScreen"
         Title="Billing Confirmation" Height="350" Width="400">
     <StackPanel>
-        <StackPanel Orientation="Horizontal" Width="150" Margin="5,25" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Width="150" Margin="5,30,5,10" HorizontalAlignment="Center">
             <TextBlock Margin="5">Total amount:</TextBlock>
             <TextBlock Name="tblTotalAmount" Margin="5"></TextBlock>
         </StackPanel>
-        <Grid Width="350">
+        <Grid Width="350" Margin="0,0,0,25">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -24,11 +24,12 @@
                 <RadioButton Margin="5">Voucher</RadioButton>
             </StackPanel>
         </Grid>
+        <CheckBox Name="chbSendEmail" IsChecked="True" Checked="chbSendEmail_Checked" Unchecked="ChbSendEmail_Unchecked" HorizontalAlignment="Center">Send booking information to email</CheckBox>
         <StackPanel Orientation="Horizontal" Margin="5,15,5,5" HorizontalAlignment="Center">
-            <TextBlock Margin="5">Email:</TextBlock>
+            <TextBlock Margin="5" Name="tblEmail">Email:</TextBlock>
             <TextBox Name="txtEmail" Margin="5" Width="180"></TextBox>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,35">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,20">
             <Button Name="btnIssueTicket" Height="35" Width="100" Click="btnIssueTicket_Click" Margin="10">Issue Tickets</Button>
             <Button Name="Cancel" Height="35" Width="100" Margin="10" Click="Cancel_Click">Cancel</Button>
         </StackPanel>

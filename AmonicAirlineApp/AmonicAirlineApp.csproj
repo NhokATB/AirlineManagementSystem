@@ -160,6 +160,18 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ListRevenue.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\OfficeRevenue.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\SaleTicketAndEmptySeat.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\CabinRevenue.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\SearchFlight.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 		Other similar extension points exist, see Microsoft.Common.targets.
