@@ -62,9 +62,9 @@ namespace AirportManagerSystem.View
             var payed = FlightForBooking.GetPrice(ticket.Schedule, ticket.CabinType);
             var total = currentFlight == null ? FlightForBooking.GetPrice(ticket.Schedule, cabins[cbCabinType.SelectedIndex]) : FlightForBooking.GetPrice(currentFlight.Schedule, cabins[cbCabinType.SelectedIndex]);
 
-            tblTotalAfterChange.Text = total.ToString("C0");
-            tblTotalPayed.Text = payed.ToString("C0");
-            tblTotalPayable.Text = (total - payed + costIncurred).ToString("C0");
+            tblTotalAfterChange.Text = total.ToString("C2");
+            tblTotalPayed.Text = payed.ToString("C2");
+            tblTotalPayable.Text = (total - payed + costIncurred).ToString("C2");
             if (total - payed < 0) tblTotalPayable.Text += " (return for passenger)";
         }
 
@@ -83,7 +83,7 @@ namespace AirportManagerSystem.View
                 costIncurred = 10;
 
             costIncurred = (ticketPrice * costIncurred / 100);
-            tblCostIncurred.Text = costIncurred.ToString("C0");
+            tblCostIncurred.Text = costIncurred.ToString("C2");
         }
 
         private void ChangeTicketWindow_Loaded(object sender, RoutedEventArgs e)
@@ -136,7 +136,7 @@ namespace AirportManagerSystem.View
                 return;
             }
 
-            var tickets = Db.Context.Tickets.Where(t => t.BookingReference == txtBookingReference.Text).ToList();
+            var tickets = Db.Context.Tickets.Where(t => t.BookingReference == txtBookingReference.Text && t.Confirmed).ToList();
             if (tickets.Count == 0)
             {
                 MessageBox.Show("This booking reference not found!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -278,6 +278,7 @@ namespace AirportManagerSystem.View
             LoadScheduleInformation(changeableTickets[cbTickets.SelectedIndex]);
             dgFlights.ItemsSource = null;
 
+            ResetData();
             MessageBox.Show("Change ticket successful", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -289,7 +290,13 @@ namespace AirportManagerSystem.View
 
         private void CbTickets_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LoadInformation();
+            try
+            {
+                LoadInformation();
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

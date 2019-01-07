@@ -46,6 +46,7 @@ namespace AirportManagerSystem.View
                 ResetData();
 
                 MessageBox.Show("Cancel ticket successful", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                ResetData();
             }
             catch (Exception)
             {
@@ -67,7 +68,7 @@ namespace AirportManagerSystem.View
                 return;
             }
 
-            var tickets = Db.Context.Tickets.Where(t => t.BookingReference == txtBookingReference.Text).ToList();
+            var tickets = Db.Context.Tickets.Where(t => t.BookingReference == txtBookingReference.Text && t.Confirmed).ToList();
             if (tickets.Count == 0)
             {
                 MessageBox.Show("This booking reference not found!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -122,7 +123,7 @@ namespace AirportManagerSystem.View
             tblDate.Text = schedule.Date.ToString("dd/MM/yyyy");
             tblTime.Text = schedule.Time.ToString(@"hh\:mm");
             tblRoute.Text = schedule.Route.Airport.IATACode + " - " + schedule.Route.Airport1.IATACode;
-            tblEconomyPrice.Text = schedule.EconomyPrice.ToString("C0");
+            tblEconomyPrice.Text = schedule.EconomyPrice.ToString("C2");
             tblFlightNumber.Text = schedule.FlightNumber;
         }
 
@@ -152,8 +153,8 @@ namespace AirportManagerSystem.View
 
             costIncurred = (ticketPrice * costIncurred / 100);
 
-            tblReturn.Text = (ticketPrice - costIncurred).ToString("C0");
-            tblCostIncurred.Text = costIncurred.ToString("C0");
+            tblReturn.Text = (ticketPrice - costIncurred).ToString("C2");
+            tblCostIncurred.Text = costIncurred.ToString("C2");
         }
 
         private void ResetData()
@@ -182,7 +183,13 @@ namespace AirportManagerSystem.View
 
         private void CbTickets_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LoadInfomation();
+            try
+            {
+                LoadInfomation();
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

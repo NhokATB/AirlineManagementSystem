@@ -1,21 +1,12 @@
-﻿using AirportManagerSystem.Model;
+﻿using AirportManagerSystem.HelperClass;
+using AirportManagerSystem.Model;
+using AirportManagerSystem.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using AirportManagerSystem.View;
 using System.Windows.Threading;
-using AirportManagerSystem.HelperClass;
-using System.IO;
 
 namespace AirportManagerSystem
 {
@@ -24,15 +15,17 @@ namespace AirportManagerSystem
     /// </summary>
     public partial class LoginWindow : Window
     {
-        int times = 0, tick = 10;
-        DispatcherTimer timer = new DispatcherTimer();
+        private int times = 0, tick = 10;
+        private DispatcherTimer timer = new DispatcherTimer();
         private string GetBr()
         {
             while (true)
             {
                 var br = System.IO.Path.GetRandomFileName().Substring(0, 6).ToUpper();
                 if (Db.Context.Tickets.Select(t => t.BookingReference).Contains(br) == false)
+                {
                     return br;
+                }
             }
         }
 
@@ -204,6 +197,7 @@ namespace AirportManagerSystem
 
                     MenuWindow menuWindow = new MenuWindow();
                     menuWindow.User = user;
+
                     this.Hide();
                     menuWindow.ShowDialog();
                     this.Show();

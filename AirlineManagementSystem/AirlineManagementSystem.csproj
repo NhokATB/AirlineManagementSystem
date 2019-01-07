@@ -120,6 +120,7 @@
     <Compile Include="ChartControls\UcSurveyLineChart.xaml.cs">
       <DependentUpon>UcSurveyLineChart.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HelperClass\MailProcessing.cs" />
     <Compile Include="Model\AmenitiesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -805,7 +806,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AirlineManagementModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Files\Guide.pdf" />
     <None Include="Model\AirlineManagementModel.edmx.diagram">
       <DependentUpon>AirlineManagementModel.edmx</DependentUpon>
     </None>

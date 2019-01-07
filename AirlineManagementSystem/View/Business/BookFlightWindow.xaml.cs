@@ -253,7 +253,7 @@ namespace AirportManagerSystem.View
                 var arrivalTime = (s1.Date + s1.Time).AddMinutes(s1.Route.FlightTime + 60);
                 var sch2 = Db.Context.Schedules.Where(t => t.Route.Airport.IATACode == s1.Route.Airport1.IATACode && t.Route.Airport1.IATACode == to && t.Confirmed).ToList();
 
-                var limitTime = arrivalTime.AddHours(72);
+                var limitTime = arrivalTime.AddHours(24);
                 sch2 = sch2.Where(t => t.Date + t.Time >= arrivalTime && t.Date + t.Time <= limitTime).ToList();
 
                 foreach (var s2 in sch2)
@@ -287,7 +287,7 @@ namespace AirportManagerSystem.View
                 var arrivalTime = (s1.Date + s1.Time).AddMinutes(s1.Route.FlightTime + 60);
                 var sch2 = Db.Context.Schedules.Where(t => t.Route.Airport.IATACode == s1.Route.Airport1.IATACode && t.Route.Airport1.IATACode != from && t.Route.Airport1.IATACode != to && t.Confirmed).ToList();
 
-                var limitTime = arrivalTime.AddHours(72);
+                var limitTime = arrivalTime.AddHours(24);
                 sch2 = sch2.Where(t => t.Date + t.Time >= arrivalTime && t.Date + t.Time <= limitTime).ToList();
 
                 foreach (var s2 in sch2)
@@ -295,7 +295,7 @@ namespace AirportManagerSystem.View
                     arrivalTime = (s2.Date + s2.Time).AddMinutes(s2.Route.FlightTime + 60);
                     var sch3 = Db.Context.Schedules.Where(t => t.Route.Airport.IATACode == s2.Route.Airport1.IATACode && t.Route.Airport1.IATACode == to && t.Confirmed).ToList();
 
-                    limitTime = arrivalTime.AddHours(72);
+                    limitTime = arrivalTime.AddHours(24);
                     sch3 = sch3.Where(t => t.Date + t.Time >= arrivalTime && t.Date + t.Time <= limitTime).ToList();
 
                     foreach (var s3 in sch3)

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Purchase amenities" Height="570" Width="800">
+        Title="Purchase amenities" Height="590" Width="800">
     <StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10,15,10,10" Height="35">
             <TextBlock Width="105" TextAlignment="Right" VerticalAlignment="Center">Booking reference:</TextBlock>
@@ -27,7 +27,7 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5,0,10,0" Height="35">
                         <TextBlock Width="95" TextAlignment="Center" VerticalAlignment="Center">Full name:</TextBlock>
-                        <TextBlock Name="tblFullName" Width="105" TextAlignment="Left" VerticalAlignment="Center">Full name</TextBlock>
+                        <TextBlock Name="tblFullName" Width="125" TextAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,9">Full name</TextBlock>
                         <TextBlock Width="105" TextAlignment="Left" VerticalAlignment="Center">Passport number:</TextBlock>
                         <TextBlock Name="tblPassportNumber" Width="105" TextAlignment="Left" VerticalAlignment="Center">Passport number</TextBlock>
                     </StackPanel>
@@ -56,14 +56,22 @@
                     <TextBlock Width="100" TextAlignment="Right" VerticalAlignment="Center" Margin="5,5,5,5">Total price:</TextBlock>
                     <TextBlock  Name="tblTotalSelected" Width="105" TextAlignment="Left" VerticalAlignment="Center" Margin="5,5,5,5">Full name</TextBlock>
                 </StackPanel>
+                
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Width="100" TextAlignment="Right" VerticalAlignment="Center" Margin="5,5,5,5">Duties and taxes:</TextBlock>
-                    <TextBlock  Name="tblDuties" Width="105" TextAlignment="Left" VerticalAlignment="Center" Margin="5,5,5,5">Full name</TextBlock>
+                    <TextBlock Name="tblDuties" Width="105" TextAlignment="Left" VerticalAlignment="Center" Margin="5,5,5,5">Full name</TextBlock>
                 </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="100" TextAlignment="Right" VerticalAlignment="Center" Margin="5,5,5,5">Total payed:</TextBlock>
+                    <TextBlock Name="tblPayed" Width="105" TextAlignment="Left" VerticalAlignment="Center" Margin="5,5,5,5">Full name</TextBlock>
+                </StackPanel>
+                
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Width="100" TextAlignment="Right" VerticalAlignment="Center" Margin="5,5,5,5">Total payable:</TextBlock>
                     <TextBlock Name="tblPayable" Width="105" TextAlignment="Left" VerticalAlignment="Center" Margin="5,5,5,5">Full name</TextBlock>
                 </StackPanel>
+                
             </StackPanel>
             <StackPanel Grid.Column="1">
                 <Button HorizontalAlignment="Right" Name="btnSaveAndCofirm" Width="130" Margin="5,5,5,5" Height="35" Click="btnSaveAndCofirm_Click">Save and confirm</Button>

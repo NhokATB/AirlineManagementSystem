@@ -69,7 +69,7 @@ namespace AirportManagerSystem.View
                 return;
             }
 
-            var tickets = Db.Context.Tickets.Where(t => t.BookingReference == txtBookingReference.Text).ToList();
+            var tickets = Db.Context.Tickets.Where(t => t.BookingReference == txtBookingReference.Text && t.Confirmed).ToList();
             if (tickets.Count == 0)
             {
                 MessageBox.Show("This booking reference not found!", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -83,7 +83,7 @@ namespace AirportManagerSystem.View
                 if ((date - DateTime.Now).TotalHours >= 24)
                 {
                     ticketIds.Add(item.ID);
-                    cbFlights.Items.Add($"{item.Schedule.FlightNumber}, {item.Schedule.Route.Airport.IATACode} - {item.Schedule.Route.Airport1.IATACode}, {item.Schedule.Date.ToString("dd/MM/yyyy")}, {item.Schedule.Time.ToString(@"hh\:mm")} - {item.Firstname} {item.Lastname} - {item.PassportNumber}");
+                    cbFlights.Items.Add($"{item.Schedule.FlightNumber}, {item.Schedule.Route.Airport.IATACode} - {item.Schedule.Route.Airport1.IATACode}, {item.Schedule.Date.ToString("dd/MM/yyyy")}, {item.Schedule.Time.ToString(@"hh\:mm")} - {item.Firstname} {item.Lastname}");
                 }
             }
 
@@ -191,6 +191,7 @@ namespace AirportManagerSystem.View
             tblTotalSelected.Text = total.ToString("C2");
             tblDuties.Text = duty.ToString("C2");
             tblPayable.Text = (total - payed + duty - dutyPayed).ToString("C2");
+            tblPayed.Text = payed.ToString("C2");
 
             if (total < payed)
                 tblPayable.Text += " return";
@@ -207,7 +208,7 @@ namespace AirportManagerSystem.View
         {
             wpAmenities.Children.Clear();
             tblFullName.Text = tblPassportNumber.Text = tblCabinType.Text = "";
-            tblTotalSelected.Text = tblPayable.Text = tblDuties.Text = "";
+            tblTotalSelected.Text = tblPayable.Text = tblDuties.Text = tblPayed.Text = "";
             btnSaveAndCofirm.IsEnabled = false;
             total = duty = dutyPayed = payed = 0;
         }

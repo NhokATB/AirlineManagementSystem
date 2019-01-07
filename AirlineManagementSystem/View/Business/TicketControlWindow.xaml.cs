@@ -36,8 +36,9 @@ namespace AirportManagerSystem.View
         private void TicketControlWindow_Loaded(object sender, RoutedEventArgs e)
         {
             var date = DateTime.Now.Date;
+            var time = DateTime.Now.AddMinutes(10).TimeOfDay;
 
-            flights = Db.Context.Schedules.Where(t => t.Date == date).ToList();
+            flights = Db.Context.Schedules.Where(t => t.Date == date).Where(t => t.Time >= time).ToList();
 
             var flightInfor = new List<string>();
             foreach (var item in flights)

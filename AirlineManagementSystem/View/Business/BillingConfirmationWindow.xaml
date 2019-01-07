@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AirportManagerSystem.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Billing Confirmation" Height="300" Width="400">
+        Title="Billing Confirmation" Height="350" Width="400">
     <StackPanel>
         <StackPanel Orientation="Horizontal" Width="150" Margin="5,25" HorizontalAlignment="Center">
             <TextBlock Margin="5">Total amount:</TextBlock>
@@ -24,6 +24,10 @@
                 <RadioButton Margin="5">Voucher</RadioButton>
             </StackPanel>
         </Grid>
+        <StackPanel Orientation="Horizontal" Margin="5,15,5,5" HorizontalAlignment="Center">
+            <TextBlock Margin="5">Email:</TextBlock>
+            <TextBox Name="txtEmail" Margin="5" Width="180"></TextBox>
+        </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,35">
             <Button Name="btnIssueTicket" Height="35" Width="100" Click="btnIssueTicket_Click" Margin="10">Issue Tickets</Button>
             <Button Name="Cancel" Height="35" Width="100" Margin="10" Click="Cancel_Click">Cancel</Button>
