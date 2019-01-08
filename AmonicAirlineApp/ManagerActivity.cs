@@ -58,10 +58,14 @@ namespace AmonicAirlineApp
                 tvDate.Text = time.ToLongDateString();
             });
             frag.Show(FragmentManager, DatePickerFragment.TAG);
+
+            lvRevenues.Adapter = new RevenueAdapter(this, new List<Revenue>());
         }
 
         private void BtnApply_Click(object sender, EventArgs e)
         {
+            lvRevenues.Adapter = new RevenueAdapter(this, new List<Revenue>());
+
             Android.App.AlertDialog.Builder dialog = new Android.App.AlertDialog.Builder(this);
             Android.App.AlertDialog alert = dialog.Create();
 

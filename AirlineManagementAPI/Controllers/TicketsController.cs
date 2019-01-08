@@ -116,5 +116,20 @@ namespace AirlineManagementAPI.Controllers
         {
             return db.Tickets.Count(e => e.ID == id) > 0;
         }
+
+        [HttpGet]
+        [ResponseType(typeof(TicketModel))]
+        public IHttpActionResult GetTicketInformation(string passport)
+        {
+            var tickets = db.Tickets.Where(k => k.PassportNumber == passport).ToList().OrderByDescending(t => t.Schedule.Date + t.Schedule.Time).ToList();
+            List<TicketModel> ticketModels = new List<TicketModel>();
+
+            foreach (var item in tickets)
+            {
+                ticketModels.Add(new TicketModel(item));
+            }
+
+            return Ok(ticketModels);
+        }
     }
 }

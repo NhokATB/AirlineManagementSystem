@@ -296,7 +296,7 @@ namespace AirportManagerSystem.View
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(81, 38);
             this.btnView.TabIndex = 15;
-            this.btnView.Text = "View";
+            this.btnView.Text = "Apply";
             this.btnView.UseVisualStyleBackColor = false;
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 

@@ -1,12 +1,9 @@
 ﻿using AirportManagerSystem.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -14,7 +11,7 @@ namespace AirportManagerSystem.View
 {
     public partial class RevenueReportWindow : Form
     {
-        List<Color> colors = new List<Color>()
+        private List<Color> colors = new List<Color>()
         {
             Color.FromArgb(0, 160, 187),
             Color.FromArgb(6, 75, 102),
@@ -24,11 +21,9 @@ namespace AirportManagerSystem.View
             Color.FromArgb(13, 79, 76),
             Color.FromArgb(247, 148, 32),
         };
-
-        Dictionary<DateTime, TicketRevenue> revenues;
-
-        string viewMode = "";
-        List<IGrouping<DateTime, Schedule>> flights;
+        private Dictionary<DateTime, TicketRevenue> revenues;
+        private string viewMode = "";
+        private List<IGrouping<DateTime, Schedule>> flights;
 
         public RevenueReportWindow()
         {
@@ -59,22 +54,35 @@ namespace AirportManagerSystem.View
         private void InitializeRevenueByDate()
         {
             revenues = new Dictionary<DateTime, TicketRevenue>();
-            flights = Db.Context.Schedules.GroupBy(t => t.Date).ToList();
-            foreach (var item in flights)
+            if (LogonUser.Role.Title == "Manager")
             {
-                var tickets = item.SelectMany(t => t.Tickets).ToList();
-                revenues.Add(item.Key, new TicketRevenue() { Tickets = tickets, Revenue = RevenueFromTickets(tickets) });
+                var ticketss = LogonUser.Office.Users.SelectMany(t => t.Tickets).GroupBy(t => t.Schedule.Date).ToList();
+                foreach (var item in ticketss)
+                {
+                    var tickets = item.ToList();
+                    revenues.Add(item.Key, new TicketRevenue() { Tickets = tickets, Revenue = RevenueFromTickets(tickets) });
+                }
+            }
+            else
+            {
+                flights = Db.Context.Schedules.GroupBy(t => t.Date).ToList();
+
+                foreach (var item in flights)
+                {
+                    var tickets = item.SelectMany(t => t.Tickets).ToList();
+                    revenues.Add(item.Key, new TicketRevenue() { Tickets = tickets, Revenue = RevenueFromTickets(tickets) });
+                }
             }
         }
 
         #region Revenue by Route
-        List<DateTime> datesHaveData = new List<DateTime>();
-        List<double> revenueDetails = new List<double>();
-        HorizontalLineAnnotation an;
-        Color previous;
-        int selected = -1;
-        double nowAnchor;
-        ToolTip t = new ToolTip();
+        private List<DateTime> datesHaveData = new List<DateTime>();
+        private List<double> revenueDetails = new List<double>();
+        private HorizontalLineAnnotation an;
+        private Color previous;
+        private int selected = -1;
+        private double nowAnchor;
+        private ToolTip t = new ToolTip();
 
         private void AddAnnotationForChartRevenueDetail()
         {
@@ -216,7 +224,9 @@ namespace AirportManagerSystem.View
                     foreach (var d in dates)
                     {
                         if (datesHaveData.Contains(d) == false)
+                        {
                             datesHaveData.Add(d);
+                        }
                     }
                 }
             }
@@ -245,8 +255,13 @@ namespace AirportManagerSystem.View
             }
 
             if (chartRevenueRouteDetail.Series.Count == 0)
+            {
                 chartRevenueRouteDetail.Visible = false;
-            else chartRevenueRouteDetail.Visible = true;
+            }
+            else
+            {
+                chartRevenueRouteDetail.Visible = true;
+            }
 
             chartRevenueRouteDetail.Series.Add("Nhok-Add");
             chartRevenueRouteDetail.Series["Nhok-Add"].IsVisibleInLegend = false;
@@ -503,8 +518,13 @@ namespace AirportManagerSystem.View
             }
 
             if (chartRevenueRouteDetail.Series.Count == 0)
+            {
                 chartRevenueRouteDetail.Visible = false;
-            else chartRevenueRouteDetail.Visible = true;
+            }
+            else
+            {
+                chartRevenueRouteDetail.Visible = true;
+            }
 
             chartRevenueRouteDetail.Series.Add("Nhok-Add");
             chartRevenueRouteDetail.Series["Nhok-Add"].IsVisibleInLegend = false;
@@ -530,6 +550,9 @@ namespace AirportManagerSystem.View
 
         #region Revenue Summary
         private List<SummaryRevenue> summaryRevenues;
+
+        public User LogonUser { get; internal set; }
+
         private void SetChartEventForSummaryTab()
         {
             chartSummaryRevenue.MouseClick += ChartSummaryRevenue_MouseClick;
@@ -711,7 +734,7 @@ namespace AirportManagerSystem.View
                 {
                     Time = rdbByTime.Checked ? date.ToString("dd/MM/yyyy") : date.DayOfWeek.ToString(),
                     Total = newRevenues.Where(t => t.Key == date).Sum(t => t.Value.Revenue),
-                    Tickets = newRevenues.Where(t => t.Key == date).SelectMany(t=>t.Value.Tickets).ToList()
+                    Tickets = newRevenues.Where(t => t.Key == date).SelectMany(t => t.Value.Tickets).ToList()
                 };
 
                 summaryRevenues.Add(sr);

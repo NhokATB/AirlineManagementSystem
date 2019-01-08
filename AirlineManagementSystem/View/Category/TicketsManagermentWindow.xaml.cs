@@ -62,9 +62,6 @@ namespace AirportManagerSystem.View
             cbDepatureAirport.DisplayMemberPath = "Name";
             cbDepatureAirport.SelectedIndex = 0;
 
-            cbTicketType.ItemsSource = ticketTypes;
-            cbTicketType.SelectedIndex = 0;
-
             dpOutbound.SelectedDate = DateTime.Now.Date;
 
             cabins = Db.Context.CabinTypes.ToList();
@@ -270,14 +267,9 @@ namespace AirportManagerSystem.View
                 tickets = tickets.Where(t => t.CabinType.Name == cbCabinType.Text).ToList();
             }
 
-            if (cbTicketType.SelectedIndex == 1)
+            if (txtPassport.Text.Trim() != "")
             {
-                tickets = tickets.Where(t => t.Confirmed).ToList();
-            }
-
-            if (cbTicketType.SelectedIndex == 2)
-            {
-                tickets = tickets.Where(t => t.Confirmed == false).ToList();
+                tickets = tickets.Where(t => t.PassportNumber.Contains(txtPassport.Text.Trim())).ToList();
             }
         }
 
@@ -285,6 +277,17 @@ namespace AirportManagerSystem.View
         {
             IsAddTicket = true;
             this.Close();
+        }
+
+        private void TxtPassport_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                LoadTickets();
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

@@ -348,6 +348,7 @@ namespace AirportManagerSystem.View
         {
             Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
             RevenueReportWindow revenueReportWindow = new RevenueReportWindow();
+            revenueReportWindow.LogonUser = User;
             ShowDialogWindow(revenueReportWindow);
             Mouse.OverrideCursor = null;
         }

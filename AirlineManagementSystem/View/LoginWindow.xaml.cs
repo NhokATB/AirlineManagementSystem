@@ -153,8 +153,6 @@ namespace AirportManagerSystem
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Db.Context = new AirlineManagementSystemEntities();
-
             if (txtUsername.Text == "" || pwbPassword.Password == "")
             {
                 MessageBox.Show("Enter username or password");

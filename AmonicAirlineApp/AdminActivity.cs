@@ -48,10 +48,14 @@ namespace AmonicAirlineApp
                 tvDate.Text = time.ToLongDateString();
             });
             frag.Show(FragmentManager, DatePickerFragment.TAG);
+
+            lvRevenueOffice.Adapter = new RevenueAdapter(this, new List<Revenue>());
         }
 
         private void BtnApply_Click(object sender, EventArgs e)
         {
+            lvRevenueOffice.Adapter = new RevenueAdapter(this, new List<Revenue> ());
+
             Android.App.AlertDialog.Builder dialog = new Android.App.AlertDialog.Builder(this);
             Android.App.AlertDialog alert = dialog.Create();
 
@@ -96,9 +100,9 @@ namespace AmonicAirlineApp
             {
                 revenues = new List<Revenue>()
                 {
-                    new Revenue (){ ObjectName= "Abu dhabi", Value = 782098 },
+                    new Revenue (){ ObjectName= "Abu dhabi", Value = 112098 },
                     new Revenue (){ ObjectName= "Cairo", Value = 323528 },
-                    new Revenue (){ ObjectName= "Bahrain", Value = 233492 },
+                    new Revenue (){ ObjectName= "Bahrain", Value = 833492 },
                     new Revenue (){ ObjectName= "Doha", Value = 437492 },
                     new Revenue (){ ObjectName= "Riyadh", Value = 537492 },
                 };

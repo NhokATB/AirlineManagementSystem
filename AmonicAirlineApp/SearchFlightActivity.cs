@@ -56,6 +56,8 @@ namespace AmonicAirlineApp
 
         private void BtnApplySearch_Click(object sender, EventArgs e)
         {
+            lvFlights.Adapter = new FlightAdapter(this, new List<Flight>());
+
             Android.App.AlertDialog.Builder dialog = new Android.App.AlertDialog.Builder(this);
             Android.App.AlertDialog alert = dialog.Create();
 
@@ -167,7 +169,7 @@ namespace AmonicAirlineApp
                     new Flight(){ Outbound = date, Time = new TimeSpan (20, 0, 0), Price = 3514, NumberOfStop = 1},
                 };
             }
-            else 
+            else
             {
                 flights = new List<Flight>()
                 {
@@ -196,7 +198,8 @@ namespace AmonicAirlineApp
                 tvDateForSearch.Text = time.ToLongDateString();
             });
             frag.Show(FragmentManager, DatePickerFragment.TAG);
-        }
 
+            lvFlights.Adapter = new FlightAdapter(this, new List<Flight>());
+        }
     }
 }

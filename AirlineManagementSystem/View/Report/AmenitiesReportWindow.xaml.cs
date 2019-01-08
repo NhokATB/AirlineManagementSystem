@@ -31,6 +31,7 @@ namespace AirportManagerSystem.View
                 if (Db.Context.Schedules.Select(t => t.FlightNumber).Contains(txtFlightNumber.Text.Trim()) == false)
                 {
                     MessageBox.Show("This flight number not exists", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                    this.Cursor = Cursors.Arrow;
                     return;
                 }
 
@@ -42,6 +43,7 @@ namespace AirportManagerSystem.View
             if (dpFrom.Text == "")
             {
                 MessageBox.Show("Please choose from date", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.Cursor = Cursors.Arrow;
                 return;
             }
             else
@@ -56,6 +58,7 @@ namespace AirportManagerSystem.View
                     if (dpTo.SelectedDate.Value.Date < dpFrom.SelectedDate.Value.Date)
                     {
                         MessageBox.Show("From date must <= to date", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                        this.Cursor = Cursors.Arrow;
                         return;
                     }
                     else

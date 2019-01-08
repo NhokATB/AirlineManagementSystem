@@ -1,27 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
+using System;
+using System.Collections.Generic;
 
 namespace AmonicAirlineApp
 {
     [Activity(Label = "EmptySeat")]
     public class EmptySeatActivity : Activity
     {
-        Button btnEmptySeat;
-        Button btnRevenue;
-        Button btnApply;
-        TextView tvDate;
-        ListView lvEmptySeat;
-        List<SeatReport> seatReports;
-        Button btnBack;
+        private Button btnEmptySeat;
+        private Button btnRevenue;
+        private Button btnApply;
+        private TextView tvDate;
+        private ListView lvEmptySeat;
+        private List<SeatReport> seatReports;
+        private Button btnBack;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -56,6 +51,8 @@ namespace AmonicAirlineApp
                 tvDate.Text = time.ToLongDateString();
             });
             frag.Show(FragmentManager, DatePickerFragment.TAG);
+
+            lvEmptySeat.Adapter = new SeatReportAdapter(this, new List<SeatReport>());
         }
 
         private void BtnRevenue_Click(object sender, EventArgs e)
@@ -71,11 +68,13 @@ namespace AmonicAirlineApp
         }
         private void BtnEmptySeat_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void BtnApply_Click(object sender, EventArgs e)
         {
+            lvEmptySeat.Adapter = new SeatReportAdapter(this, new List<SeatReport>());
+
             Android.App.AlertDialog.Builder dialog = new Android.App.AlertDialog.Builder(this);
             Android.App.AlertDialog alert = dialog.Create();
 
@@ -110,7 +109,7 @@ namespace AmonicAirlineApp
         {
             var date = DateTime.Parse(tvDate.Text);
 
-            if(date.DayOfYear % 4 == 0)
+            if (date.DayOfYear % 4 == 0)
             {
                 seatReports = new List<SeatReport>()
                 {
@@ -152,7 +151,7 @@ namespace AmonicAirlineApp
                     new SeatReport (){ From = "CAI", To = "AUH", Time = new TimeSpan(17,0,0), EconomySeat = 160, EconomyTicket = 142, BusinessSeat = 16, BusinessTicket = 12, FirstClassSeat = 6, FirstClassTicket = 4},
                 };
             }
-            else 
+            else
             {
                 seatReports = new List<SeatReport>()
                 {
