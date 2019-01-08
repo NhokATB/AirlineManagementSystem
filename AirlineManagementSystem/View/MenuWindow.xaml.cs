@@ -58,6 +58,7 @@ namespace AirportManagerSystem.View
                     mnBusiness.Items.Remove(mnSetUpGate);
                     mnBusiness.Items.Remove(mnFlightProcess);
 
+                    mnReport.Items.Remove(mnCommisstionReport);
                     mnReport.Items.Remove(mnSurveyReport);
                     mnReport.Items.Remove(mnRevenueReport);
 

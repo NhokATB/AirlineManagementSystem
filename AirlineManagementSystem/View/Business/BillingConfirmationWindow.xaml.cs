@@ -73,7 +73,15 @@ namespace AirportManagerSystem.View
 
             Db.Context.SaveChanges();
             IsConfirm = true;
-            MessageBox.Show("Issue ticket successful\nBooking information was sent to passenger's email", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (chbSendEmail.IsChecked.Value)
+            {
+                MessageBox.Show("Issue ticket successful\nBooking information was sent to passenger's email", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Issue ticket successful", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
             this.Close();
         }
 

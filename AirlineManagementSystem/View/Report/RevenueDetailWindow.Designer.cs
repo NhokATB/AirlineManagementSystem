@@ -91,7 +91,7 @@ namespace AirportManagerSystem.View
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(587, 37);
+            this.label3.Location = new System.Drawing.Point(609, 37);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 17);
             this.label3.TabIndex = 23;
@@ -106,7 +106,7 @@ namespace AirportManagerSystem.View
             this.cbAmenityViewType.Items.AddRange(new object[] {
             "Revenue",
             "Quantity"});
-            this.cbAmenityViewType.Location = new System.Drawing.Point(653, 34);
+            this.cbAmenityViewType.Location = new System.Drawing.Point(675, 34);
             this.cbAmenityViewType.Name = "cbAmenityViewType";
             this.cbAmenityViewType.Size = new System.Drawing.Size(172, 24);
             this.cbAmenityViewType.TabIndex = 22;
@@ -142,7 +142,7 @@ namespace AirportManagerSystem.View
             // 
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(266, 37);
+            this.label14.Location = new System.Drawing.Point(246, 37);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(114, 17);
             this.label14.TabIndex = 18;
@@ -158,9 +158,9 @@ namespace AirportManagerSystem.View
             "Route",
             "Departure Airport",
             "Arrival Airport"});
-            this.cbAmenities.Location = new System.Drawing.Point(386, 34);
+            this.cbAmenities.Location = new System.Drawing.Point(366, 34);
             this.cbAmenities.Name = "cbAmenities";
-            this.cbAmenities.Size = new System.Drawing.Size(172, 24);
+            this.cbAmenities.Size = new System.Drawing.Size(217, 24);
             this.cbAmenities.TabIndex = 16;
             // 
             // tpFromTickets

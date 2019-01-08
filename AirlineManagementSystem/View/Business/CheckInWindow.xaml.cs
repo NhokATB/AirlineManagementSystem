@@ -45,9 +45,7 @@ namespace AirportManagerSystem.View
         {
             dgTickets.Height = 440;
 
-            var today = DateTime.Now.Date;
-            var time = DateTime.Now.TimeOfDay;
-            flights = Db.Context.Schedules.Where(t => t.Date == today && t.Time >= time).ToList().OrderBy(t => t.Date + t.Time).ToList();
+            ReloadFlight();
             foreach (var item in flights)
             {
                 cbFlights.Items.Add($"{item.FlightNumber} - {(item.Date + item.Time).ToString("dd/MM/yyyy - HH:mm")} - {item.Route.Airport.IATACode} to {item.Route.Airport1.IATACode}");
@@ -91,9 +89,6 @@ namespace AirportManagerSystem.View
         private void SearchTickets()
         {
             dgTickets.ItemsSource = null;
-
-            var today = DateTime.Now.Date;
-            var time = DateTime.Now.TimeOfDay;
 
             var tickets = flights[cbFlights.SelectedIndex].Tickets.Where(t => t.Confirmed && t.Seat == null).ToList();
 
@@ -144,10 +139,18 @@ namespace AirportManagerSystem.View
             seatModelWindow.Tickets = selectedTickets;
             seatModelWindow.ShowDialog();
 
+            ReloadFlight();
             selectedTickets.Clear();
             SearchTickets();
             dgSelectedTicket.ItemsSource = null;
             this.ShowDialog();
+        }
+
+        private void ReloadFlight()
+        {
+            var today = DateTime.Now.Date;
+            var time = DateTime.Now.TimeOfDay;
+            flights = Db.Context.Schedules.Where(t => t.Date == today && t.Time >= time).ToList().OrderBy(t => t.Date + t.Time).ToList();
         }
 
         private void DeleleTicket(object sender, RoutedEventArgs e)

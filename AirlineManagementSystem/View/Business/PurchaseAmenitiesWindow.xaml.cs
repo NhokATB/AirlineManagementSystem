@@ -142,8 +142,9 @@ namespace AirportManagerSystem.View
                 };
 
                 c.Checked += C_Checked;
+                c.Unchecked += C_Unchecked;
                 c.IsChecked = item.Price == 0;
-
+                
                 if (updatedTicket.AmenitiesTickets.Select(t => t.AmenityID).Contains(item.ID))
                 {
                     payed += item.Price;
@@ -157,7 +158,17 @@ namespace AirportManagerSystem.View
             btnSaveAndCofirm.IsEnabled = false;
         }
 
+        private void C_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CheckedChanged(sender);
+        }
+
         private void C_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckedChanged(sender);
+        }
+
+        private void CheckedChanged(object sender)
         {
             var c = sender as CheckBox;
             var price = (c.Tag as Amenity).Price;

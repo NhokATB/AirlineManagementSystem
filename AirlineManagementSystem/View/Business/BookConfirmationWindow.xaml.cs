@@ -221,7 +221,8 @@ namespace AirportManagerSystem.View
                         Confirmed = true,
                         UserID = User.ID,
                         Birthdate = p.Birthdate,
-                        Controled = false
+                        Controled = false,
+                        Country = countries[cbPassportCountry.SelectedIndex]
                     };
 
                     tickets.Add(t);
@@ -241,7 +242,9 @@ namespace AirportManagerSystem.View
                             CabinType = Cabin,
                             Confirmed = true,
                             UserID = User.ID,
-                            Birthdate = p.Birthdate
+                            Birthdate = p.Birthdate,
+                            Controled = false,
+                            Country = countries[cbPassportCountry.SelectedIndex]
                         };
 
                         tickets.Add(t);
